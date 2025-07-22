@@ -1,0 +1,40 @@
+.blog-section {
+  padding: 4rem 2rem;
+  background-color: #0d0615;
+  color: #e0e0e0;
+}
+
+.blog-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #9f7aea;
+  margin-bottom: 2rem;
+}
+
+.blog-posts {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-post {
+  background-color: #1a0b2e;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  animation: slideInUp 1s ease-out;
+}
+
+.blog-post h3 {
+  color: #9f7aea;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post a {
+  color: #9f7aea;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+} 
