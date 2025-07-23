@@ -23,61 +23,70 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
+        staggerChildren: 0.2,
+        delayChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: 'spring',
-        stiffness: 80,
-        damping: 15,
-        mass: 0.5
+        stiffness: 100,
+        damping: 10
       }
     }
   };
 
-  const floatVariants = {
+  const floatingVariants = {
     float: {
       y: [0, -15, 0],
       transition: {
-        duration: 6,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut"
       }
     }
   };
 
+  const highlightVariants = {
+    hover: {
+      scale: 1.05,
+      color: '#9f7aea',
+      textShadow: '0 0 8px rgba(159, 122, 234, 0.6)',
+      transition: { duration: 0.3 }
+    }
+  };
+
   return (
     <section id="about" className="about-section" ref={ref}>
-      <div className="floating-particles">
-        {[...Array(15)].map((_, i) => (
+      <div className="floating-shapes">
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
-            className="particle"
+            className="shape"
             animate={{
               y: [0, -100, 0],
-              x: [0, Math.random() * 100 - 50, 0],
-              opacity: [0.3, 0.8, 0.3],
+              x: [0, Math.random() * 80 - 40, 0],
+              rotate: [0, Math.random() * 180 - 90],
+              opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: 10 + Math.random() * 10,
+              duration: 12 + Math.random() * 10,
               repeat: Infinity,
-              delay: Math.random() * 5
+              delay: Math.random() * 3
             }}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 10 + 5}px`,
-              height: `${Math.random() * 10 + 5}px`,
-              background: `rgba(159, 122, 234, ${Math.random() * 0.4 + 0.1})`,
-              borderRadius: '50%'
+              width: `${Math.random() * 15 + 5}px`,
+              height: `${Math.random() * 15 + 5}px`,
+              background: `rgba(159, 122, 234, ${Math.random() * 0.3 + 0.1})`,
+              borderRadius: `${Math.random() * 50}%`
             }}
           />
         ))}
@@ -89,171 +98,123 @@ const About = () => {
         animate={controls}
         variants={containerVariants}
       >
-        <motion.h2 variants={itemVariants}>
-          <motion.span 
-            className="emoji-wrapper"
-            variants={floatVariants}
-            animate="float"
+        <motion.div className="header-wrapper" variants={itemVariants}>
+          <motion.h2 
+            className="section-title"
+            whileHover={{ scale: 1.02 }}
           >
-            👤
-          </motion.span> 
-          <span className="title-text">About Me</span>
-        </motion.h2>
-
-        <motion.div 
-          className="paragraph-container left"
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-        >
-          <motion.p 
-            className="about-paragraph"
-            animate={{
-              y: [0, -5, 0],
-              boxShadow: [
-                "0 4px 15px rgba(0, 0, 0, 0.2)",
-                "0 8px 25px rgba(159, 122, 234, 0.4)",
-                "0 4px 15px rgba(0, 0, 0, 0.2)"
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            Hi! I'm <span className="highlight">Azrul Amaline</span>, a <span className="font-fancy">versatile</span> and <span className="font-fancy">passionate</span> Flutter developer and tech enthusiast from <span className="highlight">Bangladesh</span>. I love creating digital experiences that are clean, engaging, and efficient.
-          </motion.p>
-        </motion.div>
-
-        <motion.div 
-          className="paragraph-container right"
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-        >
-          <motion.p 
-            className="about-paragraph"
-            animate={{
-              y: [0, -5, 0],
-              boxShadow: [
-                "0 4px 15px rgba(0, 0, 0, 0.2)",
-                "0 8px 25px rgba(159, 122, 234, 0.4)",
-                "0 4px 15px rgba(0, 0, 0, 0.2)"
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1
-            }}
-          >
-            I specialize in building <span className="font-fancy">cross-platform</span> mobile and web applications with <span className="font-fancy">elegant UIs</span> and <span className="font-fancy">solid backends</span>. My focus lies in developing apps that are both functional and user-centric.
-          </motion.p>
-        </motion.div>
-
-        <motion.div 
-          className="paragraph-container left"
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-        >
-          <motion.p 
-            className="about-paragraph"
-            animate={{
-              y: [0, -5, 0],
-              boxShadow: [
-                "0 4px 15px rgba(0, 0, 0, 0.2)",
-                "0 8px 25px rgba(159, 122, 234, 0.4)",
-                "0 4px 15px rgba(0, 0, 0, 0.2)"
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-          >
-            With a strong foundation in <span className="font-fancy">software development</span>, <span className="font-fancy">IoT</span>, and <span className="font-fancy">AI research</span>, I have led and contributed to several projects involving Flutter, Firebase, Node.js, and real-time systems.
-          </motion.p>
-        </motion.div>
-
-        <motion.div 
-          className="paragraph-container right"
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-        >
-          <motion.p 
-            className="about-paragraph"
-            animate={{
-              y: [0, -5, 0],
-              boxShadow: [
-                "0 4px 15px rgba(0, 0, 0, 0.2)",
-                "0 8px 25px rgba(159, 122, 234, 0.4)",
-                "0 4px 15px rgba(0, 0, 0, 0.2)"
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 3
-            }}
-          >
-            I'm also a Computer Science student who actively engages in <span className="font-fancy">AI</span>, <span className="font-fancy">cybersecurity</span>, and <span className="font-fancy">cloud computing</span> research. I regularly participate in tech events and contribute to the open-source community through my projects on <span className="highlight">GitHub</span>.
-          </motion.p>
-        </motion.div>
-
-        <motion.div 
-          className="paragraph-container left"
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-        >
-          <motion.p 
-            className="about-paragraph"
-            animate={{
-              y: [0, -5, 0],
-              boxShadow: [
-                "0 4px 15px rgba(0, 0, 0, 0.2)",
-                "0 8px 25px rgba(159, 122, 234, 0.4)",
-                "0 4px 15px rgba(0, 0, 0, 0.2)"
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 4
-            }}
-          >
-            Besides coding, I mentor aspiring developers, take part in hackathons, and share tech tutorials on my <span className="highlight">YouTube channel "Thirsty Bot"</span>. I'm driven by curiosity, and I believe in building things that make life easier and smarter.
-          </motion.p>
-        </motion.div>
-
-        <motion.div 
-          className="cta-container"
-          variants={itemVariants}
-          whileHover={{ scale: 1.05 }}
-        >
-          <motion.a 
-            href="#" 
-            className="cv-btn" 
-            download
-            whileHover={{ 
-              scale: 1.1,
-              boxShadow: "0 12px 30px rgba(159, 122, 234, 0.8)"
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="btn-text">Download CV</span>
             <motion.span 
-              className="btn-icon"
+              className="emoji"
+              variants={floatingVariants}
+              animate="float"
+            >
+              👋
+            </motion.span> 
+            About Me
+          </motion.h2>
+          <motion.div 
+            className="title-underline"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+        </motion.div>
+
+        <motion.div className="about-grid">
+          <motion.div 
+            className="about-card"
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+          >
+            <motion.h3 
+              className="card-title"
+              whileHover="hover"
+              variants={highlightVariants}
+            >
+              Who I Am
+            </motion.h3>
+            <motion.p className="card-text">
+              I'm <motion.span whileHover="hover" variants={highlightVariants}>Azrul Amaline</motion.span>, a passionate Flutter developer and tech enthusiast from Bangladesh, dedicated to creating elegant digital experiences.
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="about-card"
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            transition={{ delay: 0.2 }}
+          >
+            <motion.h3 
+              className="card-title"
+              whileHover="hover"
+              variants={highlightVariants}
+            >
+              My Expertise
+            </motion.h3>
+            <motion.p className="card-text">
+              I specialize in <motion.span whileHover="hover" variants={highlightVariants}>cross-platform</motion.span> development with Flutter, crafting beautiful UIs and robust backends that deliver seamless user experiences.
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="about-card"
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            transition={{ delay: 0.4 }}
+          >
+            <motion.h3 
+              className="card-title"
+              whileHover="hover"
+              variants={highlightVariants}
+            >
+              Beyond Coding
+            </motion.h3>
+            <motion.p className="card-text">
+              As a Computer Science student, I explore <motion.span whileHover="hover" variants={highlightVariants}>AI</motion.span> and <motion.span whileHover="hover" variants={highlightVariants}>IoT</motion.span>, mentor aspiring developers, and share knowledge through my YouTube channel.
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="about-card"
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            transition={{ delay: 0.6 }}
+          >
+            <motion.h3 
+              className="card-title"
+              whileHover="hover"
+              variants={highlightVariants}
+            >
+              My Approach
+            </motion.h3>
+            <motion.p className="card-text">
+              I believe in <motion.span whileHover="hover" variants={highlightVariants}>clean</motion.span>, <motion.span whileHover="hover" variants={highlightVariants}>efficient</motion.span> solutions that solve real problems. Every project is an opportunity to learn and innovate.
+            </motion.p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          className="cta-wrapper"
+          variants={itemVariants}
+          transition={{ delay: 0.8 }}
+        >
+          <motion.a
+            href="#"
+            className="cta-button"
+            whileHover={{ 
+              y: -3,
+              boxShadow: "0 10px 25px rgba(159, 122, 234, 0.5)"
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>Download CV</span>
+            <motion.span
               animate={{
                 y: [0, 5, 0]
               }}
               transition={{
                 duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
+                repeat: Infinity
               }}
             >
               ↓
