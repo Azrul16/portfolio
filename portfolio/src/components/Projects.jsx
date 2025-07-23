@@ -1,6 +1,7 @@
 import React from 'react';
 import './Projects.css';
-import { SiFlutter, SiFirebase, SiReact, SiNodedotjs, SiPython, SiMongodb, SiGooglecloudfirestore } from 'react-icons/si';
+import { SiFlutter, SiFirebase, SiReact, SiNodedotjs, SiPython, SiMongodb } from 'react-icons/si';
+import { RiFirebaseFill } from 'react-icons/ri'; // Firestore icon alternative
 
 const projectList = [
   {
@@ -18,7 +19,7 @@ const projectList = [
   {
     title: 'QuizzApp',
     description: 'Real-time quiz app using Firestore.',
-    tech: [<SiFlutter key="flutter" />, <SiGooglecloudfirestore key="firestore" />],
+    tech: [<SiFlutter key="flutter" />, <RiFirebaseFill key="firestore" />],  // fixed here
     link: '#',
   },
   {
@@ -63,4 +64,4 @@ const Projects = () => {
   );
 }
 
-export default Projects; 
+export default Projects;

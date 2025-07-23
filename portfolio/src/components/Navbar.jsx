@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import logo from '../assets/images/logo/logo.png'; 
+import logo from '../assets/images/logo/logo.png';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleHamburgerClick = () => {
-    setMenuOpen((open) => !open);
+    setMenuOpen(!menuOpen);
   };
 
   const handleLinkClick = () => {
@@ -14,27 +23,41 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo" style={{ alignItems: 'center', display: 'flex', height: '160px' }}>
-        <a href="#home">
-          <img src={logo} alt="Logo" />
-        </a>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <div className="navbar-logo">
+          <a href="#home">
+            <img src={logo} alt="Logo" className="logo-img" />
+          </a>
+        </div>
+        
+        <div 
+          className={`navbar-hamburger ${menuOpen ? 'open' : ''}`} 
+          onClick={handleHamburgerClick}
+          aria-label="Menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </div>
+        
+        <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+          {['About', 'Projects', 'Education', 'Certificates', 'Blog', 'Contact'].map((item) => (
+            <li key={item}>
+              <a 
+                href={`#${item.toLowerCase()}`} 
+                onClick={handleLinkClick}
+                className="nav-link"
+              >
+                <span className="link-text">{item}</span>
+                <span className="link-underline"></span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="navbar-hamburger" onClick={handleHamburgerClick}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul className={`navbar-links${menuOpen ? ' open' : ''}`}>
-        <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-        <li><a href="#projects" onClick={handleLinkClick}>Projects</a></li>
-        <li><a href="#education" onClick={handleLinkClick}>Education</a></li>
-        <li><a href="#certificates" onClick={handleLinkClick}>Certificates</a></li>
-        <li><a href="#blog" onClick={handleLinkClick}>Blog</a></li>
-        <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
-      </ul>
     </nav>
   );
 }
 
-export default Navbar; 
+export default Navbar;

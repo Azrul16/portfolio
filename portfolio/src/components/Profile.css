@@ -1,69 +1,586 @@
+/* Profile.css */
+:root {
+  --primary-color: #9f7aea;
+  --primary-light: #c4a8ff;
+  --primary-dark: #7c5acf;
+  --bg-color: #0d0615;
+  --text-color: #f0e6ff;
+  --text-hover: #ffffff;
+  --transition-speed: 0.6s;
+  --section-padding: 2rem 2rem;
+}
+
+/* Base Styles with Gradient Background */
 .profile-section {
-  padding: 100px 2rem 2rem 2rem;
-  background-color: #0d0615;
-  color: #e0e0e0;
-  text-align: center;
-  min-height: 100vh;
+  padding: var(--section-padding);
+  color: var(--text-color);
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin-bottom: -2rem; /* Reduced bottom space */
 }
 
-.profile-content {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  animation: fadeIn 1.5s ease-in-out;
+/* Animated Particles Background */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.profile-image .image-placeholder {
-  width: 250px;
-  height: 250px;
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--primary-light);
   border-radius: 50%;
-  background-color: #1a0b2e;
-  border: 5px solid #9f7aea;
-  box-shadow: 0 0 20px #9f7aea;
+  opacity: 0.15;
+  animation: float var(--duration) infinite ease-in-out var(--delay);
+  top: var(--y);
+  left: var(--x);
+  filter: blur(1px);
 }
 
-.profile-text h1 {
-  font-size: 3rem;
-  color: #9f7aea;
-  margin-bottom: 0.5rem;
-}
-
-.name-image {
-  width: 300px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 16px #9f7aea);
-  background: transparent;
-}
-
-@media (max-width: 700px) {
-  .name-image {
-    width: 180px !important;
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--random-x), var(--random-y));
   }
 }
 
-.profile-text p {
-  font-size: 1.2rem;
+/* Floating Geometric Shapes */
+.geometric-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.05;
+  border: 1px solid var(--primary-light);
+  animation: float var(--float-duration) infinite ease-in-out;
+}
+
+.triangle {
+  width: 100px;
+  height: 100px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  top: 20%;
+  left: 10%;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  top: 60%;
+  right: 15%;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  top: 30%;
+  right: 20%;
+}
+
+/* Main Content Layout */
+.profile-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  gap: 4rem;
+  padding: 1rem 0;
+}
+
+.profile-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-text-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Profile Image with Advanced Effects */
+.profile-image {
+  opacity: 0;
+  transform: translateY(30px) rotate(-5deg);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 3;
+}
+
+.profile-image.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.image-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  perspective: 1000px;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 50px rgba(159, 122, 234, 0.5);
+  position: relative;
+  z-index: 3;
+  transition: all var(--transition-speed) ease;
+  transform: translateZ(20px);
+}
+
+.image-wrapper:hover .profile-photo {
+  transform: translateZ(30px) rotateY(10deg) scale(1.05);
+  box-shadow: 0 0 80px rgba(159, 122, 234, 0.7);
+}
+
+/* Liquid Effect */
+.liquid-effect {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  filter: blur(15px);
+  opacity: 0;
+  z-index: 1;
+  transition: all var(--transition-speed) ease;
+  animation: liquid-pulse 8s infinite alternate;
+}
+
+@keyframes liquid-pulse {
+  0% { transform: scale(0.95); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+  100% { transform: scale(0.95); opacity: 0.3; }
+}
+
+/* Glow Effect */
+.glow-effect {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  filter: blur(25px);
+  opacity: 0;
+  z-index: 1;
+  transition: all var(--transition-speed) ease;
+  animation: glow-pulse 6s infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% { transform: scale(0.9); opacity: 0.2; }
+  100% { transform: scale(1.1); opacity: 0.5; }
+}
+
+/* Ring Animations */
+.ring-animation {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--primary-light);
+  opacity: 0;
+  animation: ring-expand 4s infinite linear;
+  z-index: 2;
+}
+
+.ring-1 {
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  animation-delay: 0s;
+}
+
+.ring-2 {
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  animation-delay: 1s;
+}
+
+.ring-3 {
+  top: -45px;
+  left: -45px;
+  right: -45px;
+  bottom: -45px;
+  animation-delay: 2s;
+}
+
+@keyframes ring-expand {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Reflection Effect */
+.reflection {
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  width: 80%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(159, 122, 234, 0.4) 0%, transparent 70%);
+  filter: blur(5px);
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotateX(60deg);
+}
+
+/* Name Styling with Animation */
+.name-container {
+  position: relative;
+  display: inline-block;
   margin-bottom: 1.5rem;
 }
 
-.social-links a {
-  color: #e0e0e0;
+.name-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--text-color);
+  text-shadow: 0 0 10px rgba(159, 122, 234, 0.7);
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.name-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.name-last {
+  color: var(--primary-light);
+}
+
+.name-glow {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  right: -10px;
+  bottom: 0px;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 100%);
+  filter: blur(15px);
+  opacity: 0.4;
+  z-index: 1;
+  animation: name-glow-pulse 3s infinite alternate;
+}
+
+@keyframes name-glow-pulse {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.name-underline {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  z-index: 1;
+  transition: width 1s ease 0.5s;
+}
+
+.name-container.visible .name-underline {
+  width: 100%;
+}
+
+/* Tagline Styling */
+.profile-tagline {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: rgba(240, 230, 255, 0.9);
+  max-width: 500px;
+  font-weight: 300;
+  position: relative;
+}
+
+.tagline-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tagline-word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Social Links with Advanced Effects */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.social-link {
+  position: relative;
+  color: var(--text-color);
   text-decoration: none;
-  margin: 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.8rem 1.2rem;
+  overflow: hidden;
+  border-radius: 50px;
+  transition: all var(--transition-speed) ease;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-link.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.link-text {
+  position: relative;
+  z-index: 3;
+  transition: all var(--transition-speed) ease;
+}
+
+.link-icon {
+  position: relative;
+  z-index: 3;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
+  transition: all var(--transition-speed) ease;
+  transform: scale(1);
 }
 
-.social-links a:hover {
-  color: #9f7aea;
+.link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(159, 122, 234, 0.1);
+  transition: width var(--transition-speed) ease;
+  z-index: 1;
+  border-radius: 50px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-} 
+.link-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: 1;
+}
+
+.link-pulse-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.9);
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.5s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.social-link:hover .link-text {
+  color: var(--text-hover);
+  text-shadow: 0 0 10px var(--primary-light);
+}
+
+.social-link:hover .link-icon {
+  transform: scale(1.2);
+}
+
+.social-link:hover .link-underline {
+  width: 100%;
+}
+
+.social-link:hover .link-hover-effect {
+  transform: translateX(100%);
+}
+
+.social-link:hover .link-pulse-effect {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Platform-specific styles */
+.social-link.linkedin {
+  color: #0a66c2;
+}
+.social-link.linkedin:hover {
+  background: rgba(10, 102, 194, 0.1);
+  box-shadow: 0 5px 15px rgba(10, 102, 194, 0.3);
+}
+
+.social-link.github {
+  color: #6e5494;
+}
+.social-link.github:hover {
+  background: rgba(110, 84, 148, 0.1);
+  box-shadow: 0 5px 15px rgba(110, 84, 148, 0.3);
+}
+
+.social-link.twitter {
+  color: #1da1f2;
+}
+.social-link.twitter:hover {
+  background: rgba(29, 161, 242, 0.1);
+  box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);
+}
+
+.social-link.facebook {
+  color: #1877f2;
+}
+.social-link.facebook:hover {
+  background: rgba(24, 119, 242, 0.1);
+  box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .profile-content {
+    gap: 3rem;
+  }
+  
+  .image-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .name-text {
+    font-size: 3rem;
+  }
+  
+  .profile-tagline {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-section {
+    min-height: 70vh;
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .profile-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .profile-image-container, .profile-text-container {
+    width: 100%;
+  }
+  
+  .name-text {
+    font-size: 2.8rem;
+  }
+  
+  .profile-tagline {
+    font-size: 1.2rem;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+  }
+  
+  .social-links {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-section {
+    min-height: 65vh;
+    padding: 1rem 1rem;
+    margin-bottom: -1rem;
+  }
+  
+  .image-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .name-text {
+    font-size: 2.2rem;
+    line-height: 1.3;
+  }
+  
+  .profile-tagline {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .social-link {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .name-container {
+    margin-bottom: 1rem;
+  }
+}
