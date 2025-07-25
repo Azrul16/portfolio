@@ -199,13 +199,14 @@ const About = () => {
           transition={{ delay: 0.8 }}
         >
           <motion.a
-            href="#"
+            href="https://drive.usercontent.google.com/download?id=1ZmV67fJUZ1FATBmHdekrqgkw09bmZkX_&export=download&authuser=0&confirm=t&uuid=f6fd6eaf-b097-4fa9-b482-ab647735efa0&at=AN8xHoodmwJNJQf8ZX1YNOvayv4F:1753280649921"
             className="cta-button"
             whileHover={{ 
               y: -3,
               boxShadow: "0 10px 25px rgba(159, 122, 234, 0.5)"
             }}
             whileTap={{ scale: 0.98 }}
+            download="Azrul_Amaline_CV.pdf"
           >
             <span>Download CV</span>
             <motion.span

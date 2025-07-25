@@ -493,6 +493,14 @@
   box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);
 }
 
+.social-link.youtube {
+  color: #e21d1d;
+}
+.social-link.youtube:hover {
+  background: rgba(29, 161, 242, 0.1);
+  box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);
+}
+
 .social-link.facebook {
   color: #1877f2;
 }

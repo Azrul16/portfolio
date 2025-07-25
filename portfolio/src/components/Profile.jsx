@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Profile.css';
 import profilePhoto from '../assets/images/photo/photo.png';
-import { FaLinkedin, FaGithub, FaTwitter, FaFacebook } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter, FaFacebook, FaYoutube  } from 'react-icons/fa';
 
 const Profile = () => {
   const nameRef = useRef(null);
@@ -128,27 +128,48 @@ const Profile = () => {
             
             {/* Social Links with Hover Effects */}
             <div className="social-links" ref={socialRef}>
-              {[
-                { platform: 'LinkedIn', icon: <FaLinkedin /> },
-                { platform: 'GitHub', icon: <FaGithub /> },
-                { platform: 'Twitter', icon: <FaTwitter /> },
-                { platform: 'Facebook', icon: <FaFacebook /> }
-              ].map(({ platform, icon }) => (
-                <a 
-                  key={platform}
-                  href="#" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={`social-link ${platform.toLowerCase()}`}
-                >
-                  <span className="link-icon">{icon}</span>
-                  <span className="link-text">{platform}</span>
-                  <span className="link-underline"></span>
-                  <span className="link-hover-effect"></span>
-                  <span className="link-pulse-effect"></span>
-                </a>
-              ))}
-            </div>
+  {[
+    { 
+      platform: 'LinkedIn', 
+      icon: <FaLinkedin />,
+      url: 'https://www.linkedin.com/in/azrul-amaline/'
+    },
+    { 
+      platform: 'GitHub', 
+      icon: <FaGithub />,
+      url: 'http://github.com/azrul16'
+    },
+    { 
+      platform: 'Twitter', 
+      icon: <FaTwitter />,
+      url: 'https://x.com/AAmaline9489'
+    },
+    { 
+      platform: 'Youtube', 
+      icon: <FaYoutube />,
+      url: 'https://www.youtube.com/@thirstybot69'
+    },
+    { 
+      platform: 'Facebook', 
+      icon: <FaFacebook />,
+      url: 'http://www.facebook.com/azrulamaline16'
+    }
+  ].map(({ platform, icon, url }) => (
+    <a 
+      key={platform}
+      href={url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className={`social-link ${platform.toLowerCase()}`}
+    >
+      <span className="link-icon">{icon}</span>
+      <span className="link-text">{platform}</span>
+      <span className="link-underline"></span>
+      <span className="link-hover-effect"></span>
+      <span className="link-pulse-effect"></span>
+    </a>
+  ))}
+</div>
           </div>
         </div>
       </div>

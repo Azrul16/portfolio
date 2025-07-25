@@ -21,12 +21,14 @@ function MainSite() {
       <main>
         <Profile />
         <About />
-        <Skills />
-        <Projects />
         <Education />
         <Certificates />
-        <Reviews />
-        <Blog />
+        <Skills />
+        <Projects />
+
+        
+        {/* <Reviews />
+        <Blog /> */}
         <Contact />
       </main>
       <Footer />
