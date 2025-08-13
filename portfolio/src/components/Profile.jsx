@@ -120,9 +120,10 @@ const Profile = () => {
             <p className="profile-tagline" ref={taglineRef}>
               <span className="tagline-word">Software</span>{' '}
               <span className="tagline-word">Developer</span>{' | '}
-              <span className="tagline-word">Web</span>{' '}
+              <span className="tagline-word">Mobile</span>{' '}
+              <span className="tagline-word">Application</span>{' '}
               <span className="tagline-word">Enthusiast</span>{' | '}
-              <span className="tagline-word">Lifelong</span>{' '}
+              <span className="tagline-word">Fast </span>{' '}
               <span className="tagline-word">Learner</span>
             </p>
             
