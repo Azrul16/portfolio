@@ -17,6 +17,15 @@ import { Routes, Route } from 'react-router-dom';
 function MainSite() {
   return (
     <div className="App">
+      <div className="site-background" aria-hidden="true">
+        <div className="background-aurora aurora-one"></div>
+        <div className="background-aurora aurora-two"></div>
+        <div className="background-aurora aurora-three"></div>
+        <div className="starfield starfield-primary"></div>
+        <div className="starfield starfield-secondary"></div>
+        <div className="starfield starfield-tertiary"></div>
+      </div>
+
       <Navbar />
       <main>
         <Profile />
@@ -26,7 +35,6 @@ function MainSite() {
         <Skills />
         <Projects />
 
-        
         {/* <Reviews />
         <Blog /> */}
         <Contact />
