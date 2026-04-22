@@ -65,14 +65,14 @@ const Contact = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 26, filter: 'blur(8px)' },
     visible: {
       opacity: 1,
       y: 0,
+      filter: 'blur(0px)',
       transition: {
-        type: 'spring',
-        stiffness: 120,
-        damping: 16
+        duration: 0.72,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
@@ -89,7 +89,7 @@ const Contact = () => {
 
         <div className="contact-columns">
           <motion.div className="contact-column info-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
-            <div className="contact-card info-card">
+            <div className="contact-card info-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
                 <h3>Contact Information</h3>
@@ -121,7 +121,7 @@ const Contact = () => {
           </motion.div>
 
           <motion.div className="contact-column social-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
-            <div className="contact-card social-card">
+            <div className="contact-card social-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
                 <h3>Social Links</h3>
@@ -136,6 +136,8 @@ const Contact = () => {
                     className="social-item"
                     whileHover={{ y: -4, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
+                    data-pointer-glow
+                    style={{ '--pointer-glow-color': `${social.color}33` }}
                   >
                     <div className="social-icon" style={{ backgroundColor: social.color }}>
                       {social.icon}
@@ -148,7 +150,7 @@ const Contact = () => {
           </motion.div>
 
           <motion.div className="contact-column form-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
-            <form className="contact-card form-card" onSubmit={handleSubmit}>
+            <form className="contact-card form-card" onSubmit={handleSubmit} data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
                 <h3>Send a Message</h3>
@@ -172,7 +174,7 @@ const Contact = () => {
                 <motion.div className="underline" initial={{ scaleX: 0 }} animate={{ scaleX: activeField === 'message' ? 1 : 0 }} transition={{ duration: 0.3 }} />
               </div>
 
-              <motion.button type="submit" className="submit-btn" whileHover={{ scale: 1.01, boxShadow: '0 10px 28px rgba(159, 122, 234, 0.45)' }} whileTap={{ scale: 0.98 }} disabled={isSubmitting}>
+              <motion.button type="submit" className="submit-btn" whileHover={{ scale: 1.01, boxShadow: '0 10px 28px rgba(159, 122, 234, 0.45)' }} whileTap={{ scale: 0.98 }} disabled={isSubmitting} data-pointer-glow>
                 <motion.span className="btn-text" animate={isSubmitting ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}>Send Message</motion.span>
                 <motion.span className="btn-icon" animate={isSubmitting ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}><IoMdSend /></motion.span>
                 <div className="btn-particles"></div>

@@ -101,15 +101,16 @@ const Certificates = () => {
               <motion.article
                 className="certificate-card"
                 key={cert.name}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -8 }}
                 onHoverStart={() => setHoveredCert(cert.name)}
                 onHoverEnd={() => setHoveredCert(null)}
                 onClick={() => openModal(cert)}
-                style={{ '--certificate-glow': cert.glowColor }}
+                style={{ '--certificate-glow': cert.glowColor, '--pointer-glow-color': `${cert.glowColor}33` }}
+                data-pointer-glow
               >
                 <motion.div
                   className="glow-effect"
@@ -148,7 +149,8 @@ const Certificates = () => {
               exit={{ scale: 0.96, y: 24 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              style={{ '--certificate-glow': selectedCert.glowColor }}
+              style={{ '--certificate-glow': selectedCert.glowColor, '--pointer-glow-color': `${selectedCert.glowColor}33` }}
+              data-pointer-glow
             >
               <div className="modal-accent"></div>
               <button className="close-btn" onClick={closeModal}>

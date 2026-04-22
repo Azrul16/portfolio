@@ -6,7 +6,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      <motion.div 
+      <motion.div
         className="footer-container"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ const Footer = () => {
       >
         <div className="footer-logo-container">
           <img src={logo} alt="Azrul Amaline Logo" className="footer-logo" />
-          <motion.div 
+          <motion.div
             className="footer-text"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -23,19 +23,19 @@ const Footer = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             <p>&copy; {new Date().getFullYear()} Azrul Amaline. All rights reserved.</p>
-            <motion.p 
+            <motion.p
               className="footer-heart"
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.7, 1, 0.7]
+                scale: [1, 1.1, 1],
+                opacity: [0.75, 1, 0.75]
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: 'easeInOut'
               }}
             >
-              ❤️
+              Built with care.
             </motion.p>
           </motion.div>
         </div>

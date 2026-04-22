@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './Profile.css';
-import profilePhoto from '../assets/images/photo/photo.png';
+import profilePhoto from '../assets/images/photo/azrullll.jpeg';
 import { FaLinkedin, FaGithub, FaTwitter, FaFacebook, FaYoutube } from 'react-icons/fa';
 
 const socialLinks = [
@@ -101,7 +101,7 @@ const Profile = () => {
 
       <div className="profile-content">
         <div className="profile-image-container">
-          <div className="profile-image">
+          <div className="profile-image" data-pointer-glow>
             <div className="image-wrapper">
               <div className="image-container">
                 <img src={profilePhoto} alt="Azrul Amaline" className="profile-photo" />
@@ -117,8 +117,8 @@ const Profile = () => {
         </div>
 
         <div className="profile-text-container">
-          <div className="profile-text hero-panel">
-            <p className="hero-kicker">Software Developer • Bangladesh</p>
+          <div className="profile-text hero-panel" data-pointer-glow>
+            <p className="hero-kicker">Software Developer | Bangladesh</p>
 
             <div className="name-container">
               <h1 className="name-text">
@@ -144,7 +144,7 @@ const Profile = () => {
 
             <div className="hero-chips">
               {quickHighlights.map((item) => (
-                <span key={item} className="hero-chip">{item}</span>
+                <span key={item} className="hero-chip" data-pointer-glow>{item}</span>
               ))}
             </div>
 
@@ -156,6 +156,7 @@ const Profile = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`social-link ${platform.toLowerCase()}`}
+                  data-pointer-glow
                 >
                   <span className="link-icon">{icon}</span>
                   <span className="link-text">{platform}</span>

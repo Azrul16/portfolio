@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(180deg, #09040f 0%, #0b0513 28%, #0d0615 56%, #09030f 100%);
@@ -117,6 +115,45 @@ main > section + section {
   margin-top: -0.2rem;
 }
 
+[data-pointer-glow] {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --pointer-glow-color: rgba(201, 163, 255, 0.28);
+  --pointer-glow-size: 180px;
+  position: relative;
+  isolation: isolate;
+}
+
+[data-pointer-glow]::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle var(--pointer-glow-size) at var(--pointer-x) var(--pointer-y), var(--pointer-glow-color), transparent 60%);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-pointer-glow].pointer-glow-active::after,
+[data-pointer-glow]:hover::after {
+  opacity: 1;
+}
+
+[data-pointer-glow] > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  [data-pointer-glow]::after {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .App {
     padding-top: 60px;
@@ -200,4 +237,10 @@ main > section + section {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.04em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-pointer-glow]::after {
+    display: none;
+  }
 }

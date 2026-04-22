@@ -1,92 +1,129 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './About.css';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
-const aboutCards = [
+const highlights = [
   {
+    eyebrow: 'Core Focus',
     title: 'Software Developer',
-    text: 'I am Azrul Amaline, a software developer from Bangladesh focused on building clean, practical, and reliable digital products.',
+    text: 'I build clean, practical, and reliable digital products with an emphasis on usability and long-term maintainability.',
     tone: 'featured'
   },
   {
+    eyebrow: 'Specialty',
     title: 'Mobile Development',
-    text: 'My primary focus is cross-platform application development with Flutter, supported by backend integration and product-oriented thinking.',
+    text: 'Flutter is my main tool for shaping cross-platform experiences that feel polished, fast, and consistent.',
     tone: 'accent'
   },
   {
-    title: 'Technical Interests',
-    text: 'I continue to expand my knowledge through work in AI, IoT, and software systems to build better and more adaptable solutions.',
-    tone: 'standard'
-  },
-  {
-    title: 'Work Approach',
-    text: 'I value clarity in design and code, aiming to create products that are useful, efficient, and easy to maintain.',
+    eyebrow: 'Exploration',
+    title: 'AI, IoT, and Systems',
+    text: 'I keep expanding into adjacent technologies so the products I build can be more adaptive, connected, and useful.',
     tone: 'standard'
   }
 ];
 
+const values = [
+  'Product-focused thinking',
+  'Clear interface decisions',
+  'Reliable implementation',
+  'Fast learning mindset'
+];
+
+const stats = [
+  { value: 'Flutter', label: 'Primary stack' },
+  { value: 'Backend', label: 'Practical systems' },
+  { value: 'UX', label: 'Clarity first' }
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.08
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};
+
 const About = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.12, triggerOnce: false });
-
-  useEffect(() => {
-    controls.start(inView ? 'visible' : 'hidden');
-  }, [controls, inView]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.08
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 22, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 14
-      }
-    }
-  };
-
   return (
-    <section id="about" className="about-section" ref={ref}>
+    <section id="about" className="about-section">
       <div className="about-orb about-orb-left" aria-hidden="true"></div>
       <div className="about-orb about-orb-right" aria-hidden="true"></div>
+      <div className="about-grid-glow about-grid-glow-top" aria-hidden="true"></div>
+      <div className="about-grid-glow about-grid-glow-bottom" aria-hidden="true"></div>
 
-      <motion.div className="about-content" initial="hidden" animate={controls} variants={containerVariants}>
+      <motion.div
+        className="about-content"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <motion.div className="section-title-block" variants={itemVariants}>
           <h2>Profile Overview</h2>
         </motion.div>
 
-        <motion.div className="about-grid about-grid-reimagined" variants={containerVariants}>
-          {aboutCards.map((card) => (
-            <motion.article
-              key={card.title}
-              className={`about-card about-card-${card.tone}`}
-              variants={itemVariants}
-              whileHover={{ y: -6 }}
-            >
-              <div className="about-card-inner">
-                <h3 className="card-title">{card.title}</h3>
-                <p className="card-text">{card.text}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+        <div className="about-shell">
+          <motion.article className="about-hero-card" variants={itemVariants} data-pointer-glow>
+            <div className="about-hero-noise" aria-hidden="true"></div>
+            <p className="about-kicker">Developer from Bangladesh</p>
+            <h3>Building mobile products and software experiences that feel calm, capable, and intentional.</h3>
+            <p className="about-lead">
+              My work blends product thinking, interface clarity, and dependable engineering. I care about making software not just functional, but easy to trust and enjoyable to use.
+            </p>
+
+            <div className="about-values">
+              {values.map((item) => (
+                <span key={item} className="about-value-pill">{item}</span>
+              ))}
+            </div>
+
+            <div className="about-stats">
+              {stats.map((stat) => (
+                <div key={stat.label} className="about-stat">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </motion.article>
+
+          <motion.div className="about-cards-grid" variants={containerVariants}>
+            {highlights.map((card) => (
+              <motion.article
+                key={card.title}
+                className={`about-card about-card-${card.tone}`}
+                variants={itemVariants}
+                whileHover={{ y: -8, scale: 1.01 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                data-pointer-glow
+              >
+                <div className="about-card-inner">
+                  <p className="about-card-eyebrow">{card.eyebrow}</p>
+                  <h3 className="card-title">{card.title}</h3>
+                  <p className="card-text">{card.text}</p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
 };
 
 export default About;
-
