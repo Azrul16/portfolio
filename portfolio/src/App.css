@@ -30,8 +30,8 @@ body {
 
 .background-aurora {
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.42;
+  filter: blur(48px);
+  opacity: 0.34;
 }
 
 .aurora-one {
@@ -109,6 +109,13 @@ main > section {
   background: transparent;
   border: 0;
   box-shadow: none;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+main > section#home {
+  content-visibility: visible;
+  contain-intrinsic-size: auto;
 }
 
 main > section + section {
@@ -116,10 +123,7 @@ main > section + section {
 }
 
 [data-pointer-glow] {
-  --pointer-x: 50%;
-  --pointer-y: 50%;
   --pointer-glow-color: rgba(201, 163, 255, 0.28);
-  --pointer-glow-size: 180px;
   position: relative;
   isolation: isolate;
 }
@@ -129,18 +133,15 @@ main > section + section {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background:
-    radial-gradient(circle var(--pointer-glow-size) at var(--pointer-x) var(--pointer-y), var(--pointer-glow-color), transparent 60%);
+  background: radial-gradient(circle at 72% 18%, var(--pointer-glow-color), transparent 58%);
   opacity: 0;
-  filter: blur(10px);
-  transition: opacity 0.22s ease;
+  transition: opacity 0.18s ease;
   pointer-events: none;
   z-index: 0;
 }
 
-[data-pointer-glow].pointer-glow-active::after,
 [data-pointer-glow]:hover::after {
-  opacity: 1;
+  opacity: 0.72;
 }
 
 [data-pointer-glow] > * {

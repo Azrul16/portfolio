@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Skills.css';
 import {
   SiFlutter, SiFirebase, SiPython, SiFastapi, SiFlask,
@@ -38,50 +38,8 @@ const allSkills = [
 ];
 
 const Skills = () => {
-  const [isCompactView, setIsCompactView] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    const updateCompactView = (event) => setIsCompactView(event.matches);
-
-    setIsCompactView(mediaQuery.matches);
-    mediaQuery.addEventListener('change', updateCompactView);
-
-    return () => mediaQuery.removeEventListener('change', updateCompactView);
-  }, []);
-
   return (
     <section id="skills" className="skills-section">
-      {!isCompactView && (
-        <div className="floating-shapes" aria-hidden="true">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="shape"
-              initial={{
-                x: Math.random() * 100,
-                y: Math.random() * 100,
-                rotate: Math.random() * 360,
-                opacity: 0,
-                scale: 0.5
-              }}
-              animate={{
-                x: [null, Math.random() * 100],
-                y: [null, Math.random() * 100],
-                rotate: [null, Math.random() * 360],
-                opacity: [0, 0.16, 0],
-                scale: [0.5, 0.8, 0.5],
-                transition: {
-                  duration: 16 + Math.random() * 12,
-                  repeat: Infinity,
-                  repeatType: 'reverse'
-                }
-              }}
-            />
-          ))}
-        </div>
-      )}
-
       <div className="skills-shell">
         <motion.div
           className="section-title-block"

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Profile.css';
 import profilePhoto from '../assets/images/photo/azrullll.jpeg';
-import { FaLinkedin, FaGithub, FaTwitter, FaFacebook, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaFacebook, FaYoutube } from 'react-icons/fa';
 
 const socialLinks = [
   {
@@ -12,7 +12,7 @@ const socialLinks = [
   {
     platform: 'GitHub',
     icon: <FaGithub />,
-    url: 'http://github.com/azrul16'
+    url: 'https://github.com/azrul16'
   },
   {
     platform: 'Twitter',
@@ -27,7 +27,7 @@ const socialLinks = [
   {
     platform: 'Facebook',
     icon: <FaFacebook />,
-    url: 'http://www.facebook.com/azrulamaline16'
+    url: 'https://www.facebook.com/azrulamaline16'
   }
 ];
 
@@ -129,7 +129,7 @@ const Profile = () => {
             </div>
 
             <p className="hero-lead">
-              Building elegant mobile experiences, practical backend systems, and digital products that feel clear, fast, and memorable.
+              I build Flutter apps, reusable Dart packages, practical backend tools, and AI experiments with a focus on clear product flow and dependable implementation.
             </p>
 
             <p className="profile-tagline">
@@ -157,6 +157,7 @@ const Profile = () => {
                   rel="noopener noreferrer"
                   className={`social-link ${platform.toLowerCase()}`}
                   data-pointer-glow
+                  aria-label={`Open ${platform} profile`}
                 >
                   <span className="link-icon">{icon}</span>
                   <span className="link-text">{platform}</span>

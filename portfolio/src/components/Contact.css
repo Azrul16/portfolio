@@ -152,6 +152,18 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.info-link-item {
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+}
+
+.info-link-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(196, 168, 255, 0.2);
+  background: rgba(255, 255, 255, 0.055);
+}
+
 .info-icon {
   width: 52px;
   height: 52px;
@@ -171,13 +183,15 @@
 }
 
 .info-content p,
-.info-content a {
+.info-content a,
+.info-content span {
   color: rgba(240, 230, 255, 0.72);
   text-decoration: none;
   line-height: 1.6;
 }
 
 .info-content a:hover,
+.info-link-item:hover .info-content span,
 .project-link:hover {
   color: #fff;
 }

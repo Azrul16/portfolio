@@ -286,7 +286,6 @@
   background: linear-gradient(180deg, rgba(31, 16, 49, 0.72), rgba(17, 8, 29, 0.38));
   border: 1px solid rgba(196, 168, 255, 0.12);
   box-shadow: 0 24px 56px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(10px);
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
@@ -563,8 +562,8 @@
 }
 
 .profile-section {
-  padding: 1.8rem 1.1rem 2.35rem;
-  min-height: min(84vh, 840px);
+  padding: calc(var(--navbar-height, 80px) + 1.4rem) 1.1rem 2.35rem;
+  min-height: 100dvh;
 }
 
 .profile-section::before {
@@ -581,16 +580,21 @@
   background: linear-gradient(180deg, rgba(22, 11, 36, 0.38), rgba(16, 8, 27, 0.16));
   box-shadow: none;
   border-color: rgba(196, 168, 255, 0.1);
-  backdrop-filter: blur(6px);
 }
 
 @media (max-width: 768px) {
   .profile-section {
-    padding: 1.2rem 0.7rem 2rem;
+    padding: calc(var(--navbar-height-scrolled, 70px) + 1rem) 0.7rem 2rem;
   }
 
   .profile-section::before {
     inset: 3% 3% auto;
     height: 72%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-section {
+    padding-top: calc(60px + 1rem);
   }
 }

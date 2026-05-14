@@ -6,34 +6,34 @@ const highlights = [
   {
     eyebrow: 'Core Focus',
     title: 'Software Developer',
-    text: 'I build clean, practical, and reliable digital products with an emphasis on usability and long-term maintainability.',
+    text: 'I build practical apps, backend utilities, and reusable tools with an emphasis on clear flows and maintainable implementation.',
     tone: 'featured'
   },
   {
     eyebrow: 'Specialty',
     title: 'Mobile Development',
-    text: 'Flutter is my main tool for shaping cross-platform experiences that feel polished, fast, and consistent.',
+    text: 'Flutter and Dart are my main tools for shaping mobile apps, UI components, and package-style projects.',
     tone: 'accent'
   },
   {
     eyebrow: 'Exploration',
     title: 'AI, IoT, and Systems',
-    text: 'I keep expanding into adjacent technologies so the products I build can be more adaptive, connected, and useful.',
+    text: 'I explore AI, IoT, networking, and automation through focused repos like BanglaSpeech2Text and smart home apps.',
     tone: 'standard'
   }
 ];
 
 const values = [
-  'Product-focused thinking',
-  'Clear interface decisions',
-  'Reliable implementation',
-  'Fast learning mindset'
+  'Flutter app development',
+  'Reusable package thinking',
+  'Backend and automation tools',
+  'AI and IoT exploration'
 ];
 
 const stats = [
   { value: 'Flutter', label: 'Primary stack' },
-  { value: 'Backend', label: 'Practical systems' },
-  { value: 'UX', label: 'Clarity first' }
+  { value: '22+', label: 'Curated GitHub projects' },
+  { value: 'AI + IoT', label: 'Active exploration' }
 ];
 
 const containerVariants = {
@@ -83,7 +83,7 @@ const About = () => {
             <p className="about-kicker">Developer from Bangladesh</p>
             <h3>Building mobile products and software experiences that feel calm, capable, and intentional.</h3>
             <p className="about-lead">
-              My work blends product thinking, interface clarity, and dependable engineering. I care about making software not just functional, but easy to trust and enjoyable to use.
+              I am a Computer Science student at Patuakhali Science and Technology University, focused on Flutter apps, backend utilities, AI experiments, and tools that solve real user problems.
             </p>
 
             <div className="about-values">

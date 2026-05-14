@@ -9,17 +9,18 @@ import {
   FaYoutube,
   FaLinkedin,
   FaGithub,
-  FaTwitter
+  FaTwitter,
+  FaRegEnvelopeOpen
 } from 'react-icons/fa';
 import { IoMdSend } from 'react-icons/io';
 import './Contact.css';
 
 const socialLinks = [
-  { icon: <FaFacebook />, name: 'Facebook', color: '#1877f2', url: 'http://www.facebook.com/azrulamaline16' },
+  { icon: <FaFacebook />, name: 'Facebook', color: '#1877f2', url: 'https://www.facebook.com/azrulamaline16' },
   { icon: <FaInstagram />, name: 'Instagram', color: '#e4405f', url: 'https://www.instagram.com/_azrulamaline/' },
   { icon: <FaYoutube />, name: 'YouTube', color: '#ff0000', url: 'https://www.youtube.com/@thirstybot69' },
   { icon: <FaLinkedin />, name: 'LinkedIn', color: '#0a66c2', url: 'https://www.linkedin.com/in/azrul-amaline/' },
-  { icon: <FaGithub />, name: 'GitHub', color: '#6e5494', url: 'http://github.com/azrul16' },
+  { icon: <FaGithub />, name: 'GitHub', color: '#6e5494', url: 'https://github.com/azrul16' },
   { icon: <FaTwitter />, name: 'Twitter', color: '#1da1f2', url: 'https://x.com/AAmaline9489' }
 ];
 
@@ -36,40 +37,27 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatus('Sending...');
+    setStatus('Preparing email draft...');
 
-    try {
-      const response = await fetch('https://smtp-server-742u.onrender.com/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+    window.setTimeout(() => {
+      const subject = encodeURIComponent(`Portfolio message from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setStatus('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus(result.error || 'Failed to send message.');
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus('Something went wrong.');
-    } finally {
+      window.location.href = `mailto:azrul.amaline16@gmail.com?subject=${subject}&body=${body}`;
+      setStatus('Email draft opened. You can also reach me through the links on this page.');
+      setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
-    }
+    }, 700);
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 26, filter: 'blur(8px)' },
+    hidden: { opacity: 0, y: 26 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: 'blur(0px)',
       transition: {
         duration: 0.72,
         ease: [0.22, 1, 0.36, 1]
@@ -102,13 +90,17 @@ const Contact = () => {
                     <p>Jhenidah, Khulna, Bangladesh</p>
                   </div>
                 </div>
-                <div className="info-item">
+                <a
+                  className="info-item info-link-item"
+                  href="mailto:azrul.amaline16@gmail.com?subject=Portfolio%20Contact"
+                  aria-label="Email Azrul Amaline"
+                >
                   <div className="info-icon"><FaEnvelope /></div>
                   <div className="info-content">
                     <h3>Email</h3>
-                    <a href="mailto:azrul.amaline16@gmail.com">azrul.amaline16@gmail.com</a>
+                    <span>azrul.amaline16@gmail.com</span>
                   </div>
-                </div>
+                </a>
                 <div className="info-item">
                   <div className="info-icon"><FaPhone /></div>
                   <div className="info-content">
@@ -134,6 +126,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-item"
+                    aria-label={`Open ${social.name}`}
                     whileHover={{ y: -4, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                     data-pointer-glow
@@ -153,7 +146,7 @@ const Contact = () => {
             <form className="contact-card form-card" onSubmit={handleSubmit} data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
-                <h3>Send a Message</h3>
+                <h3>Open an Email Draft</h3>
               </div>
 
               <div className={`form-group ${activeField === 'name' ? 'active' : ''}`}>
@@ -175,8 +168,10 @@ const Contact = () => {
               </div>
 
               <motion.button type="submit" className="submit-btn" whileHover={{ scale: 1.01, boxShadow: '0 10px 28px rgba(159, 122, 234, 0.45)' }} whileTap={{ scale: 0.98 }} disabled={isSubmitting} data-pointer-glow>
-                <motion.span className="btn-text" animate={isSubmitting ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}>Send Message</motion.span>
-                <motion.span className="btn-icon" animate={isSubmitting ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}><IoMdSend /></motion.span>
+                <motion.span className="btn-text" animate={isSubmitting ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}>Prepare Email</motion.span>
+                <motion.span className="btn-icon" animate={isSubmitting ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}>
+                  {isSubmitting ? <IoMdSend /> : <FaRegEnvelopeOpen />}
+                </motion.span>
                 <div className="btn-particles"></div>
               </motion.button>
 

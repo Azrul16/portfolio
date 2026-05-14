@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../assets/images/logo/logo.png';
+import cvUrl from '../assets/CV.pdf';
 
 const navItems = ['About', 'Education', 'Certificates', 'Skills', 'Projects', 'Contact'];
-const cvUrl = 'https://drive.usercontent.google.com/download?id=1ZmV67fJUZ1FATBmHdekrqgkw09bmZkX_&export=download&authuser=0&confirm=t&uuid=f6fd6eaf-b097-4fa9-b482-ab647735efa0&at=AN8xHoodmwJNJQf8ZX1YNOvayv4F:1753280649921';
+const cvFileName = 'Azrul Amaline.pdf';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,28 +15,57 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('about');
 
   useEffect(() => {
-    const handleScroll = () => {
+    let animationFrame = null;
+
+    const updateScrolledState = () => {
       setScrolled(window.scrollY > 10);
-
-      const sections = document.querySelectorAll('main section[id]');
-      const scrollPosition = window.scrollY + 160;
-      let currentSection = 'about';
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          currentSection = section.id;
-        }
-      });
-
-      setActiveSection(currentSection);
+      animationFrame = null;
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      if (!animationFrame) {
+        animationFrame = window.requestAnimationFrame(updateScrolledState);
+      }
+    };
+
+    updateScrolledState();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = new Set(navItems.map((item) => item.toLowerCase()));
+    const sections = Array.from(document.querySelectorAll('main section[id]')).filter((section) => sectionIds.has(section.id));
+
+    if (!sections.length || !('IntersectionObserver' in window)) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection) {
+          setActiveSection(visibleSection.target.id);
+        }
+      },
+      {
+        rootMargin: '-28% 0px -58% 0px',
+        threshold: [0.08, 0.18, 0.32, 0.5]
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -44,6 +74,22 @@ const Navbar = () => {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
   const handleHamburgerClick = () => {
@@ -106,22 +152,25 @@ const Navbar = () => {
             className="navbar-cv-btn"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            download="Azrul_Amaline_CV.pdf"
+            download={cvFileName}
           >
             Download CV
           </motion.a>
 
-          <motion.div
+          <motion.button
+            type="button"
             className={`navbar-hamburger ${menuOpen ? 'open' : ''}`}
             onClick={handleHamburgerClick}
-            aria-label="Menu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
             <span className="hamburger-line"></span>
             <span className="hamburger-line"></span>
             <span className="hamburger-line"></span>
-          </motion.div>
+          </motion.button>
         </div>
       </div>
 
@@ -135,6 +184,7 @@ const Navbar = () => {
             onClick={handleLinkClick}
           >
             <motion.ul
+              id="mobile-navigation"
               className="mobile-menu"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -160,13 +210,13 @@ const Navbar = () => {
                 );
               })}
               <div className="mobile-socials">
-                <motion.a href="https://github.com/azrul16" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.a href="https://github.com/azrul16" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <FaGithub />
                 </motion.a>
-                <motion.a href="https://www.linkedin.com/in/azrul-amaline/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.a href="https://www.linkedin.com/in/azrul-amaline/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <FaLinkedin />
                 </motion.a>
-                <motion.a href="https://x.com/AAmaline9489" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.a href="https://x.com/AAmaline9489" target="_blank" rel="noopener noreferrer" aria-label="Open X profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <FaTwitter />
                 </motion.a>
               </div>

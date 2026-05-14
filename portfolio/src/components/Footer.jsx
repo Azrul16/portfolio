@@ -23,20 +23,6 @@ const Footer = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             <p>&copy; {new Date().getFullYear()} Azrul Amaline. All rights reserved.</p>
-            <motion.p
-              className="footer-heart"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.75, 1, 0.75]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }}
-            >
-              Built with care.
-            </motion.p>
           </motion.div>
         </div>
       </motion.div>

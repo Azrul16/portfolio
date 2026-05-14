@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Certificates.css';
 
@@ -75,14 +75,34 @@ const Certificates = () => {
 
   const openModal = (cert) => {
     setSelectedCert(cert);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = (e) => {
     if (e) e.stopPropagation();
     setSelectedCert(null);
-    document.body.style.overflow = 'auto';
   };
+
+  useEffect(() => {
+    if (!selectedCert) {
+      document.body.style.overflow = '';
+      return undefined;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedCert(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedCert]);
 
   return (
     <section id="certificates" className="certificates-section">
@@ -101,14 +121,22 @@ const Certificates = () => {
               <motion.article
                 className="certificate-card"
                 key={cert.name}
-                initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -8 }}
                 onHoverStart={() => setHoveredCert(cert.name)}
                 onHoverEnd={() => setHoveredCert(null)}
                 onClick={() => openModal(cert)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openModal(cert);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
                 style={{ '--certificate-glow': cert.glowColor, '--pointer-glow-color': `${cert.glowColor}33` }}
                 data-pointer-glow
               >
@@ -153,7 +181,7 @@ const Certificates = () => {
               data-pointer-glow
             >
               <div className="modal-accent"></div>
-              <button className="close-btn" onClick={closeModal}>
+              <button type="button" className="close-btn" onClick={closeModal} aria-label="Close certificate preview">
                 <svg viewBox="0 0 24 24" width="24" height="24">
                   <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
                 </svg>
