@@ -13,7 +13,7 @@
   z-index: 0;
 }
 
-.shape {
+.skills-shape {
   position: absolute;
   width: 110px;
   height: 110px;
@@ -135,7 +135,7 @@
   }
 
   .skills-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .skill-logo {
@@ -145,6 +145,12 @@
 
   .skill-name {
     font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

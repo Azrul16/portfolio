@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
@@ -9,10 +9,40 @@ import Education from './components/Education';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AdminPanel from './components/AdminPanel';
 import { Routes, Route } from 'react-router-dom';
 
 function MainSite() {
+  useEffect(() => {
+    const scrollToHashSection = () => {
+      const sectionId = window.location.hash.replace('#', '');
+      if (!sectionId) {
+        return;
+      }
+
+      const target = document.getElementById(sectionId);
+      if (!target) {
+        return;
+      }
+
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar?.getBoundingClientRect().height || 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
+
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: 'auto'
+      });
+    };
+
+    const timeoutIds = [80, 350, 800].map((delay) => window.setTimeout(scrollToHashSection, delay));
+    window.addEventListener('hashchange', scrollToHashSection);
+
+    return () => {
+      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      window.removeEventListener('hashchange', scrollToHashSection);
+    };
+  }, []);
+
   return (
     <div className="App">
       <div className="site-background" aria-hidden="true">
@@ -45,7 +75,6 @@ function MainSite() {
 function App() {
   return (
     <Routes>
-      <Route path="/admin" element={<AdminPanel />} />
       <Route path="/*" element={<MainSite />} />
     </Routes>
   );

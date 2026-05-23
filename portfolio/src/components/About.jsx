@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 const highlights = [
   {
     eyebrow: 'Core Focus',
-    title: 'Software Developer',
-    text: 'I build practical apps, backend utilities, and reusable tools with an emphasis on clear flows and maintainable implementation.',
+    title: 'Product-Minded Developer',
+    text: 'I build practical software with a focus on mobile user flows, reusable implementation patterns, and clear project outcomes.',
     tone: 'featured'
   },
   {
@@ -18,15 +18,17 @@ const highlights = [
   {
     eyebrow: 'Exploration',
     title: 'AI, IoT, and Systems',
-    text: 'I explore AI, IoT, networking, and automation through focused repos like BanglaSpeech2Text and smart home apps.',
+    text: 'I explore AI, IoT, networking, automation, and backend systems through BanglaSpeech2Text, smart home apps, and Flask/Python utilities.',
     tone: 'standard'
   }
 ];
 
 const values = [
   'Flutter app development',
+  'Django and Python backend APIs',
   'Reusable package thinking',
-  'Backend and automation tools',
+  'PSTU CSE student',
+  'Bangladesh-based developer',
   'AI and IoT exploration'
 ];
 
@@ -80,10 +82,10 @@ const About = () => {
         <div className="about-shell">
           <motion.article className="about-hero-card" variants={itemVariants} data-pointer-glow>
             <div className="about-hero-noise" aria-hidden="true"></div>
-            <p className="about-kicker">Developer from Bangladesh</p>
+            <p className="about-kicker">Flutter Developer from Bangladesh</p>
             <h3>Building mobile products and software experiences that feel calm, capable, and intentional.</h3>
             <p className="about-lead">
-              I am a Computer Science student at Patuakhali Science and Technology University, focused on Flutter apps, backend utilities, AI experiments, and tools that solve real user problems.
+              I am Azrul Amaline, a Computer Science student at Patuakhali Science and Technology University (PSTU), focused on Flutter apps, Dart packages, Django/Python backend APIs, AI experiments, and tools that solve real user problems.
             </p>
 
             <div className="about-values">

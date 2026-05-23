@@ -4,24 +4,66 @@ import {
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
   FaLinkedin,
   FaGithub,
-  FaTwitter,
-  FaRegEnvelopeOpen
+  FaRegEnvelopeOpen,
+  FaHandshake,
+  FaMobileAlt,
+  FaTools
 } from 'react-icons/fa';
 import { IoMdSend } from 'react-icons/io';
 import './Contact.css';
 
-const socialLinks = [
-  { icon: <FaFacebook />, name: 'Facebook', color: '#1877f2', url: 'https://www.facebook.com/azrulamaline16' },
-  { icon: <FaInstagram />, name: 'Instagram', color: '#e4405f', url: 'https://www.instagram.com/_azrulamaline/' },
-  { icon: <FaYoutube />, name: 'YouTube', color: '#ff0000', url: 'https://www.youtube.com/@thirstybot69' },
-  { icon: <FaLinkedin />, name: 'LinkedIn', color: '#0a66c2', url: 'https://www.linkedin.com/in/azrul-amaline/' },
-  { icon: <FaGithub />, name: 'GitHub', color: '#6e5494', url: 'https://github.com/azrul16' },
-  { icon: <FaTwitter />, name: 'Twitter', color: '#1da1f2', url: 'https://x.com/AAmaline9489' }
+const contactActions = [
+  {
+    icon: <FaHandshake />,
+    label: 'Hire me for a project',
+    href: 'mailto:azrul.amaline16@gmail.com?subject=Project%20Inquiry%20from%20Portfolio',
+    tone: 'primary'
+  },
+  {
+    icon: <FaMobileAlt />,
+    label: 'Collaborate on an app',
+    href: 'mailto:azrul.amaline16@gmail.com?subject=App%20Collaboration%20Inquiry',
+    tone: 'accent'
+  },
+  {
+    icon: <FaGithub />,
+    label: 'View GitHub',
+    href: 'https://github.com/azrul16',
+    tone: 'github',
+    external: true
+  },
+  {
+    icon: <FaLinkedin />,
+    label: 'Connect on LinkedIn',
+    href: 'https://www.linkedin.com/in/azrul-amaline/',
+    tone: 'linkedin',
+    external: true
+  }
+];
+
+const services = [
+  {
+    title: 'Flutter mobile apps',
+    text: 'Mobile-first interfaces, app flows, reusable widgets, and Firebase-connected features.'
+  },
+  {
+    title: 'Firebase app backends',
+    text: 'Authentication, Firestore data models, storage, and practical app backend setup.'
+  },
+  {
+    title: 'Django/Python backend APIs',
+    text: 'API prototypes, utilities, automation scripts, and practical web service foundations.'
+  },
+  {
+    title: 'AI-assisted tools',
+    text: 'Study tools, speech/text workflows, automation helpers, and experimental AI product ideas.'
+  },
+  {
+    title: 'Bug fixing and app improvement',
+    text: 'UI cleanup, responsiveness fixes, feature polishing, and practical product improvements.'
+  }
 ];
 
 const Contact = () => {
@@ -75,6 +117,21 @@ const Contact = () => {
           <h2>Get In Touch</h2>
         </div>
 
+        <motion.div className="services-block" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={cardVariants}>
+          <div className="services-heading">
+            <FaTools />
+            <h3>What I Can Build</h3>
+          </div>
+          <div className="services-grid">
+            {services.map((service) => (
+              <article className="service-item" key={service.title} data-pointer-glow>
+                <h4>{service.title}</h4>
+                <p>{service.text}</p>
+              </article>
+            ))}
+          </div>
+        </motion.div>
+
         <div className="contact-columns">
           <motion.div className="contact-column info-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
             <div className="contact-card info-card" data-pointer-glow>
@@ -116,29 +173,27 @@ const Contact = () => {
             <div className="contact-card social-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
-                <h3>Social Links</h3>
+                <h3>Start Here</h3>
               </div>
-              <div className="social-grid">
-                {socialLinks.map((social, index) => (
+              <div className="contact-action-grid">
+                {contactActions.map((action) => (
                   <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-item"
-                    aria-label={`Open ${social.name}`}
+                    key={action.label}
+                    href={action.href}
+                    target={action.external ? '_blank' : undefined}
+                    rel={action.external ? 'noopener noreferrer' : undefined}
+                    className={`contact-action contact-action-${action.tone}`}
+                    aria-label={action.label}
                     whileHover={{ y: -4, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                     data-pointer-glow
-                    style={{ '--pointer-glow-color': `${social.color}33` }}
                   >
-                    <div className="social-icon" style={{ backgroundColor: social.color }}>
-                      {social.icon}
-                    </div>
-                    <span className="social-name">{social.name}</span>
+                    <span className="contact-action-icon">{action.icon}</span>
+                    <span>{action.label}</span>
                   </motion.a>
                 ))}
               </div>
+              <p className="contact-action-note">Fastest response: email or LinkedIn.</p>
             </div>
           </motion.div>
 
@@ -185,6 +240,7 @@ const Contact = () => {
             </form>
           </motion.div>
         </div>
+
       </div>
     </section>
   );

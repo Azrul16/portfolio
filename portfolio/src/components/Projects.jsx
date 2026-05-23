@@ -13,6 +13,11 @@ const projectList = [
     details: 'DevDroid is one of the strongest mobile utility projects in the repository list: a code editor experience shaped around developer workflows on Android.',
     challenge: 'Designing a compact coding environment that still feels usable on a small screen.',
     outcome: 'A practical developer tool concept that highlights Flutter UI structure, file-oriented workflows, and mobile productivity thinking.',
+    problem: 'Mobile developers and learners often need a lightweight way to inspect and edit code when they are away from a desktop setup.',
+    role: 'Solo developer responsible for product direction, Flutter UI structure, editor workflow, and repository implementation.',
+    features: ['Mobile-first code editing flow', 'File-oriented workspace structure', 'Developer utility interface', 'Android-focused interaction patterns'],
+    architecture: ['Flutter', 'Dart', 'Android build target', 'Reusable screen and widget structure'],
+    learning: 'Improved my ability to design dense mobile interfaces where navigation, editing, and file context need to stay understandable on a small screen.',
     category: 'Developer Tool',
     status: 'Featured Repo',
     tech: [<SiFlutter key="flutter" />],
@@ -24,11 +29,16 @@ const projectList = [
     title: 'Lecturer App',
     repoName: 'Azrul16/Lecturer-AI_Powered_Study_App',
     description: 'An AI-supported study assistant with summarization, transcription, and quiz features for more structured revision.',
-    details: 'The product centers on making course material easier to revisit through note extraction, simplified learning content, and interactive review loops.',
+    details: 'The product centers on making course material easier to revisit through note extraction, simplified study content, and interactive review loops.',
     challenge: 'Keeping AI features practical and helpful inside real student workflows.',
     outcome: 'A study tool that turns dense content into clearer revision experiences.',
+    problem: 'Students often have long notes, lectures, and study material but need faster ways to summarize, review, and test themselves before exams.',
+    role: 'Built the product concept, mobile app structure, AI-assisted study flows, and Firebase-backed feature direction.',
+    features: ['AI summaries', 'Transcription-oriented study flow', 'Quiz and revision support', 'Student-friendly content organization'],
+    architecture: ['Flutter', 'Dart', 'Firebase', 'AI-assisted content workflows'],
+    learning: 'Learned how to shape AI features around real study habits instead of treating AI as a standalone gimmick.',
     category: 'AI Study Tool',
-    status: 'Product Concept',
+    status: 'Featured Concept',
     tech: [<SiFlutter key="flutter" />, <SiFirebase key="firebase" />],
     highlights: ['AI summaries', 'Revision support', 'Learning workflows'],
     repoUrl: 'https://github.com/Azrul16/Lecturer-AI_Powered_Study_App',
@@ -55,6 +65,11 @@ const projectList = [
     details: 'BanglaSpeech2Text is a language-focused AI project that packages offline speech-to-text support for Bangla using a fine-tuned Whisper model.',
     challenge: 'Making speech recognition useful for Bangla while keeping the package practical for offline use.',
     outcome: 'An open-source AI package with a clear local-language purpose and stronger technical credibility.',
+    problem: 'Bangla speech-to-text support is harder to access offline, especially for developers who want language-focused transcription tools.',
+    role: 'Created the package direction, repository structure, documentation angle, and Whisper-based transcription focus.',
+    features: ['Offline Bangla transcription', 'Whisper-based model direction', 'Package-style developer usage', 'Local-language AI utility'],
+    architecture: ['Python', 'Whisper model workflow', 'Speech-to-text pipeline', 'Package-oriented structure'],
+    learning: 'Deepened my understanding of turning AI experiments into reusable developer tools with a specific language and user need.',
     category: 'AI Package',
     status: 'Open Source',
     tech: [<SiPython key="python" />],
@@ -275,14 +290,19 @@ const projectList = [
   {
     title: 'SSLCOMMERZ Payment Integration',
     repoName: 'Azrul16/sslc-backend',
-    description: 'A Node.js and Flutter Web/Desktop payment integration for production-oriented checkout flows.',
-    details: 'This work focused on connecting payment gateway logic across frontend and backend while keeping checkout reliable and easy to complete.',
+    description: 'A Node.js and Flutter Web/Desktop payment integration focused on checkout flow structure and gateway communication.',
+    details: 'This work focused on connecting payment gateway logic across frontend and backend while keeping checkout states easier to understand.',
     challenge: 'Coordinating frontend and backend payment logic cleanly.',
-    outcome: 'A checkout flow built around reliability, production readiness, and clearer transaction handling.',
+    outcome: 'A checkout flow prototype built around clearer transaction handling and frontend/backend coordination.',
+    problem: 'Payment flows need careful coordination between frontend checkout states and backend gateway communication so transactions remain understandable and reliable.',
+    role: 'Implemented the backend integration direction and connected the payment flow with Flutter/Web or desktop-facing checkout behavior.',
+    features: ['Payment gateway integration', 'Checkout request handling', 'Transaction-oriented backend flow', 'Frontend/backend coordination'],
+    architecture: ['Node.js', 'JavaScript', 'Flutter', 'SSLCOMMERZ gateway flow'],
+    learning: 'Improved my understanding of payment integrations where errors, redirects, and transaction state matter as much as the happy path.',
     category: 'Integration',
-    status: 'Production Ready',
+    status: 'Integration Demo',
     tech: [<SiNodedotjs key="nodejs" />, <SiFlutter key="flutter" />, <SiJavascript key="javascript" />],
-    highlights: ['Gateway integration', 'Checkout logic', 'Production flow'],
+    highlights: ['Gateway integration', 'Checkout logic', 'Payment flow'],
     repoUrl: 'https://github.com/Azrul16/sslc-backend',
     accent: 'rgba(122, 140, 255, 0.18)'
   },
@@ -293,6 +313,11 @@ const projectList = [
     details: 'Online Food is a web project for presenting food items and ordering-oriented content with a public Vercel deployment.',
     challenge: 'Creating a polished food site experience that feels usable and easy to scan.',
     outcome: 'A live food website that visitors can open directly from the portfolio.',
+    problem: 'Restaurant and food-ordering sites need a fast, visual browsing experience that helps visitors move from menu discovery to action.',
+    role: 'Built the web experience, responsive layout, public deployment, and GitHub project presentation.',
+    features: ['Responsive food browsing pages', 'Hosted live demo', 'Restaurant-style visual presentation', 'Menu-oriented user flow'],
+    architecture: ['JavaScript', 'Responsive web UI', 'Vercel deployment', 'Static frontend structure'],
+    learning: 'Improved my deployment workflow and practiced turning a simple web concept into something visitors can open and evaluate immediately.',
     category: 'Web Project',
     status: 'Live Demo',
     tech: [<SiJavascript key="javascript" />],
@@ -330,6 +355,13 @@ const revealVariants = {
 };
 
 const filterOptions = ['All', 'Flutter', 'Packages', 'AI', 'Backend', 'Tools'];
+const caseStudyTitles = [
+  'DevDroid Android Code Editor',
+  'Lecturer App',
+  'BanglaSpeech2Text',
+  'SSLCOMMERZ Payment Integration',
+  'Online Food Website'
+];
 
 const getTechLabels = (project) => {
   const labelMap = {
@@ -377,12 +409,18 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const featuredProjects = useMemo(() => projectList.slice(0, 3), []);
-  const featuredProject = featuredProjects[0];
+  const caseStudyProjects = useMemo(
+    () => caseStudyTitles.map((title) => projectList.find((project) => project.title === title)).filter(Boolean),
+    []
+  );
+  const moreProjects = useMemo(
+    () => projectList.filter((project) => !caseStudyTitles.includes(project.title)),
+    []
+  );
   const filteredProjects = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
 
-    return projectList.filter((project) => {
+    return moreProjects.filter((project) => {
       const matchesFilter = projectMatchesFilter(project, activeFilter);
       const matchesSearch = !normalizedSearch || [
         project.title,
@@ -397,19 +435,19 @@ const Projects = () => {
 
       return matchesFilter && matchesSearch;
     });
-  }, [activeFilter, searchTerm]);
+  }, [activeFilter, moreProjects, searchTerm]);
 
   const stats = useMemo(() => {
     const repoCount = projectList.length;
     const flutterCount = projectList.filter((project) => getTechLabels(project).includes('Flutter')).length;
-    const packageCount = projectList.filter((project) => projectMatchesFilter(project, 'Packages')).length;
+    const caseStudyCount = caseStudyProjects.length;
 
     return [
-      { value: repoCount, label: 'Curated repos' },
+      { value: caseStudyCount, label: 'Case studies' },
       { value: flutterCount, label: 'Flutter builds' },
-      { value: packageCount, label: 'Packages & tools' }
+      { value: repoCount - caseStudyCount, label: 'More projects' }
     ];
-  }, []);
+  }, [caseStudyProjects.length]);
 
   const openProject = (project) => setSelectedProject(project);
   const closeProject = () => setSelectedProject(null);
@@ -447,7 +485,7 @@ const Projects = () => {
           <div className="projects-copy">
             <p className="projects-kicker">GitHub Portfolio</p>
             <p className="projects-intro">
-              A curated map of apps, packages, backend tools, AI experiments, and integration work from my GitHub profile.
+              Five focused case studies first, followed by a searchable project archive for the rest of my apps, packages, backend tools, AI experiments, and integrations.
             </p>
           </div>
 
@@ -461,76 +499,22 @@ const Projects = () => {
           </div>
         </motion.div>
 
-        <motion.div className="projects-showcase" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.16 }} variants={revealVariants}>
-          <article
-            className="project-card featured-project"
-            onClick={() => openProject(featuredProject)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                openProject(featuredProject);
-              }
-            }}
-            data-pointer-glow
-            style={{ '--project-accent': featuredProject.accent }}
-          >
-            <div className="featured-orbit" aria-hidden="true">
-              <span></span>
-              <span></span>
-            </div>
-            <div className="project-copy featured-copy">
-              <div className="project-topline">
-                <p className="project-category">{featuredProject.category}</p>
-                <span className="project-status">{featuredProject.status}</span>
-              </div>
-              <p className="project-repo-name">{featuredProject.repoName}</p>
-              <h3>{featuredProject.title}</h3>
-              <p>{featuredProject.description}</p>
+        <motion.div className="case-study-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.14 }} variants={revealVariants}>
+          <div className="project-subsection-heading">
+            <p className="projects-kicker">Case Studies</p>
+            <h3>Best work to review first</h3>
+          </div>
 
-              <div className="project-highlights">
-                {featuredProject.highlights.map((item) => (
-                  <span key={item} className="project-highlight-pill">{item}</span>
-                ))}
-              </div>
-
-              <div className="project-meta-row">
-                <TechStack project={featuredProject} />
-              </div>
-
-              <button type="button" className="project-open-btn">
-                Explore case <FaArrowRight />
-              </button>
-            </div>
-
-            <div className="project-spotlight">
-              <div className="spotlight-panel">
-                <span className="spotlight-label">Featured Focus</span>
-                <p className="spotlight-copy">{featuredProject.challenge}</p>
-                <div className="spotlight-outcome">
-                  <span>Outcome</span>
-                  <p>{featuredProject.outcome}</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <div className="spotlight-stack">
-            {featuredProjects.slice(1).map((project) => (
-              <button
-                type="button"
-                className="spotlight-mini"
-                key={project.title}
-                onClick={() => openProject(project)}
-                style={{ '--project-accent': project.accent }}
-              >
-                <span>{project.category}</span>
-                <strong>{project.title}</strong>
-                <small>{project.repoName}</small>
-              </button>
+          <div className="case-study-grid">
+            {caseStudyProjects.map((project, index) => (
+              <CaseStudyCard project={project} key={project.title} openProject={openProject} isFeatured={index === 0} />
             ))}
           </div>
+        </motion.div>
+
+        <motion.div className="project-subsection-heading more-projects-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
+          <p className="projects-kicker">More Projects</p>
+          <h3>Additional builds and experiments</h3>
         </motion.div>
 
         <motion.div className="projects-toolbar" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
@@ -560,8 +544,8 @@ const Projects = () => {
         </motion.div>
 
         <div className="projects-result-row">
-          <span>{filteredProjects.length} shown</span>
-          <span>{activeFilter} collection</span>
+          <span>{filteredProjects.length} of {moreProjects.length} more projects shown</span>
+          <span>{activeFilter} filter</span>
         </div>
 
         <motion.div className="projects-grid" layout>
@@ -631,6 +615,23 @@ const Projects = () => {
               <h3>{selectedProject.title}</h3>
               <p className="project-modal-description">{selectedProject.details}</p>
 
+              {selectedProject.problem && (
+                <div className="project-proof-block">
+                  <div className="project-proof-card project-proof-wide">
+                    <span className="modal-label">Problem Solved</span>
+                    <p>{selectedProject.problem}</p>
+                  </div>
+                  <div className="project-proof-card">
+                    <span className="modal-label">My Role</span>
+                    <p>{selectedProject.role}</p>
+                  </div>
+                  <div className="project-proof-card">
+                    <span className="modal-label">What I Improved</span>
+                    <p>{selectedProject.learning}</p>
+                  </div>
+                </div>
+              )}
+
               <div className="project-modal-grid">
                 <div className="project-modal-card">
                   <span className="modal-label">Challenge</span>
@@ -641,6 +642,27 @@ const Projects = () => {
                   <p>{selectedProject.outcome}</p>
                 </div>
               </div>
+
+              {selectedProject.features && (
+                <div className="project-proof-lists">
+                  <div className="project-proof-list">
+                    <span className="modal-label">Key Features</span>
+                    <ul>
+                      {selectedProject.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="project-proof-list">
+                    <span className="modal-label">Architecture / Tools</span>
+                    <ul>
+                      {selectedProject.architecture.map((tool) => (
+                        <li key={tool}>{tool}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
 
               <div className="project-highlights modal-highlights">
                 {selectedProject.highlights.map((item) => (
@@ -672,6 +694,85 @@ const TechStack = ({ project }) => {
   );
 };
 
+const CaseStudyCard = ({ project, openProject, isFeatured }) => {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProject(project);
+    }
+  };
+
+  return (
+    <article
+      className={`project-card case-study-card ${isFeatured ? 'case-study-featured' : ''}`}
+      onClick={() => openProject(project)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      data-pointer-glow
+      style={{ '--project-accent': project.accent }}
+    >
+      <ProjectPreview project={project} />
+
+      <div className="case-study-copy">
+        <div className="project-topline">
+          <p className="project-category">{project.category}</p>
+          <span className="project-status">{project.status}</span>
+        </div>
+        <p className="project-repo-name">{project.repoName}</p>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+
+        <div className="case-study-outcome">
+          <span>Outcome</span>
+          <p>{project.outcome}</p>
+        </div>
+
+        <div className="project-highlights">
+          {project.highlights.map((item) => (
+            <span key={item} className="project-highlight-pill">{item}</span>
+          ))}
+        </div>
+
+        <div className="project-footer">
+          <TechStack project={project} />
+          <ProjectLinks project={project} />
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const ProjectPreview = ({ project }) => {
+  const labels = getTechLabels(project).slice(0, 3);
+
+  return (
+    <div className="project-preview" aria-label={`${project.title} project preview`}>
+      <div className="preview-window">
+        <div className="preview-window-bar" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="preview-content">
+          <span className="preview-category">{project.category}</span>
+          <strong>{project.title}</strong>
+          <div className="preview-lines" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div className="preview-chip-row">
+            {labels.map((label) => (
+              <span key={label}>{label}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const QuickProjectActions = ({ project }) => {
   const stopAction = (event) => event.stopPropagation();
 
@@ -693,16 +794,18 @@ const QuickProjectActions = ({ project }) => {
 };
 
 const ProjectLinks = ({ project }) => {
+  const stopAction = (event) => event.stopPropagation();
+
   return (
     <div className="project-actions">
       {project.repoUrl && (
-        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="project-action-link">
+        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="project-action-link" onClick={stopAction}>
           <FaGithub />
           GitHub
         </a>
       )}
       {project.demoUrl && (
-        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="project-action-link project-action-link-accent">
+        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="project-action-link project-action-link-accent" onClick={stopAction}>
           <FaExternalLinkAlt />
           Live Demo
         </a>

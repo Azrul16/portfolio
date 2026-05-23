@@ -7,19 +7,19 @@ const educationList = [
     institution: 'Patuakhali Science and Technology University',
     degree: 'B.Sc. in Computer Science',
     years: '2022 - Present',
-    details: ['Coursework: Algorithms, Data Structures, AI, Web Development']
+    details: ['Focus areas: algorithms, data structures, AI, web systems, mobile app development, and practical software projects']
   },
   {
     institution: 'Maheshpur Govt Degree College',
     degree: 'Higher Secondary Certificate, Science',
     years: '2018 - 2020',
-    details: ['Activities: Science Club, Debate Team']
+    details: ['Built a science foundation through physics, mathematics, and problem-solving practice']
   },
   {
     institution: 'Maheshpur Govt Pilot Model High School',
     degree: 'Secondary School Certificate, Science',
     years: '2013 - 2018',
-    details: ['Activities: Math Olympiad, Science Fair']
+    details: ['Early academic base in science, mathematics, and technology curiosity']
   }
 ];
 

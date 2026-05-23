@@ -55,7 +55,7 @@ const certificateList = [
     name: 'Python for Deep Learning',
     issuer: 'Udemy',
     image: '/assets/certificates/pythonfordeeplearning.png',
-    description: 'Data manipulation, visualization, and analysis using Pandas, NumPy, and Matplotlib libraries.',
+    description: 'Deep learning fundamentals with Python, neural network concepts, model training workflows, and practical AI experimentation.',
     glowColor: '#60a5fa',
     date: 'October 2022'
   },
@@ -141,7 +141,7 @@ const Certificates = () => {
                 data-pointer-glow
               >
                 <motion.div
-                  className="glow-effect"
+                  className="certificate-glow-effect"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredCert === cert.name ? 1 : 0 }}
                   transition={{ duration: 0.25 }}

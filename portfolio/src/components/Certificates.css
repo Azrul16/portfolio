@@ -198,7 +198,7 @@
   pointer-events: none;
 }
 
-.glow-effect {
+.certificate-glow-effect {
   position: absolute;
   inset: -12%;
   background: radial-gradient(circle at top right, color-mix(in srgb, var(--certificate-glow) 42%, transparent) 0%, transparent 58%);
@@ -279,6 +279,7 @@
   font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .certificate-chip {
@@ -297,12 +298,14 @@
   color: #ffffff;
   font-size: 1.35rem;
   line-height: 1.28;
+  overflow-wrap: anywhere;
 }
 
 .issuer {
   margin: 0;
   color: #d3c2eb;
   font-size: 0.98rem;
+  overflow-wrap: anywhere;
 }
 
 .description {
@@ -657,6 +660,10 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 22px 48px rgba(8, 2, 16, 0.24);
 }
 
+.modal-content {
+  overflow: auto;
+}
+
 .certificate-card::after,
 .modal-content::after {
   content: '';
@@ -759,7 +766,7 @@
   }
 
   .certificate-image-container {
-    height: 110px;
+    height: 128px;
   }
 
   .certificate-content {

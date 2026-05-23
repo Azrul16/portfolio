@@ -1,12 +1,115 @@
-# React + Vite
+# Azrul Amaline Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website for Azrul Amaline, a software developer from Bangladesh focused on Flutter mobile apps, reusable Dart packages, backend utilities, AI experiments, and practical product-oriented software.
 
-Currently, two official plugins are available:
+The site presents profile information, education, certificates, skills, selected projects, GitHub links, CV download, and contact options in a responsive React experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Site
 
-## Expanding the ESLint configuration
+Deployment URL: _Add your live portfolio URL here._
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Repository: [github.com/Azrul16/portfolio](https://github.com/Azrul16/portfolio)
+
+## Preview
+
+![Azrul Amaline portfolio preview](public/assets/brand/azrul-amaline-og.jpeg)
+
+## Features
+
+- Responsive personal portfolio layout
+- Animated profile and section reveals
+- Filterable and searchable project showcase
+- Project detail modal with challenge, outcome, tech stack, GitHub, and demo links
+- Education, certificates, skills, and contact sections
+- Downloadable CV
+- SEO and social sharing metadata
+- Reduced-motion support for accessibility
+
+## Tech Stack
+
+- React 19
+- Vite 7
+- React Router
+- Framer Motion
+- React Icons
+- ESLint
+- CSS modules by component file
+
+## Project Structure
+
+```text
+src/
+  assets/
+    CV.pdf
+    images/
+  components/
+    About.jsx
+    Certificates.jsx
+    Contact.jsx
+    Education.jsx
+    Footer.jsx
+    Navbar.jsx
+    Profile.jsx
+    Projects.jsx
+    Skills.jsx
+  App.jsx
+  main.jsx
+  index.css
+public/
+  assets/
+    brand/
+    certificates/
+```
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+Run lint checks:
+
+```bash
+npm run lint
+```
+
+## Deployment
+
+This project is a static Vite app and can be deployed to platforms such as Vercel, Netlify, GitHub Pages, or Firebase Hosting.
+
+Typical deployment settings:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node package manager: `npm`
+
+## Contact
+
+- Email: [azrul.amaline16@gmail.com](mailto:azrul.amaline16@gmail.com)
+- LinkedIn: [linkedin.com/in/azrul-amaline](https://www.linkedin.com/in/azrul-amaline/)
+- GitHub: [github.com/Azrul16](https://github.com/Azrul16)
+- X: [x.com/AAmaline9489](https://x.com/AAmaline9489)
+
+## License
+
+This portfolio is maintained by Azrul Amaline. Add a license file if you want to make reuse terms explicit.

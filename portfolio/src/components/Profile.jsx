@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Profile.css';
 import profilePhoto from '../assets/images/photo/azrullll.jpeg';
-import { FaGithub, FaLinkedin, FaTwitter, FaFacebook, FaYoutube } from 'react-icons/fa';
+import { FaArrowRight, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const socialLinks = [
   {
@@ -13,25 +13,8 @@ const socialLinks = [
     platform: 'GitHub',
     icon: <FaGithub />,
     url: 'https://github.com/azrul16'
-  },
-  {
-    platform: 'Twitter',
-    icon: <FaTwitter />,
-    url: 'https://x.com/AAmaline9489'
-  },
-  {
-    platform: 'Youtube',
-    icon: <FaYoutube />,
-    url: 'https://www.youtube.com/@thirstybot69'
-  },
-  {
-    platform: 'Facebook',
-    icon: <FaFacebook />,
-    url: 'https://www.facebook.com/azrulamaline16'
   }
 ];
-
-const quickHighlights = ['Mobile App Builder', 'Product-Focused Developer', 'Fast Learner'];
 
 const Profile = () => {
   const profileRef = useRef(null);
@@ -59,7 +42,7 @@ const Profile = () => {
           return;
         }
 
-        const revealTargets = section.querySelectorAll('.profile-image, .hero-panel, .tagline-word, .social-link, .hero-chip');
+        const revealTargets = section.querySelectorAll('.profile-image, .hero-panel, .hero-cta-link, .hero-availability, .social-link');
         revealTargets.forEach((element, index) => {
           element.style.transitionDelay = `${Math.min(index * 0.08, 0.6)}s`;
           element.classList.add('visible');
@@ -118,7 +101,7 @@ const Profile = () => {
 
         <div className="profile-text-container">
           <div className="profile-text hero-panel" data-pointer-glow>
-            <p className="hero-kicker">Software Developer | Bangladesh</p>
+            <p className="hero-kicker">Flutter Developer</p>
 
             <div className="name-container">
               <h1 className="name-text">
@@ -129,26 +112,26 @@ const Profile = () => {
             </div>
 
             <p className="hero-lead">
-              I build Flutter apps, reusable Dart packages, practical backend tools, and AI experiments with a focus on clear product flow and dependable implementation.
+              Flutter developer building mobile apps, reusable Dart packages, and AI-backed tools.
             </p>
 
-            <p className="profile-tagline">
-              <span className="tagline-word">Software</span>{' '}
-              <span className="tagline-word">Developer</span>{' | '}
-              <span className="tagline-word">Mobile</span>{' '}
-              <span className="tagline-word">Application</span>{' '}
-              <span className="tagline-word">Enthusiast</span>{' | '}
-              <span className="tagline-word">Fast</span>{' '}
-              <span className="tagline-word">Learner</span>
-            </p>
-
-            <div className="hero-chips">
-              {quickHighlights.map((item) => (
-                <span key={item} className="hero-chip" data-pointer-glow>{item}</span>
-              ))}
+            <div className="hero-availability" data-pointer-glow>
+              <span>Currently Available For</span>
+              <p>Available for Flutter apps, Django/Python backend work, and AI tool projects.</p>
             </div>
 
-            <div className="social-links">
+            <div className="hero-actions" aria-label="Primary portfolio actions">
+              <a href="#projects" className="hero-cta-link hero-cta-primary" data-pointer-glow>
+                View Projects
+                <FaArrowRight />
+              </a>
+              <a href="#contact" className="hero-cta-link hero-cta-secondary" data-pointer-glow>
+                <FaEnvelope />
+                Hire Me / Contact
+              </a>
+            </div>
+
+            <div className="profile-social-dock" aria-label="Social profile links">
               {socialLinks.map(({ platform, icon, url }) => (
                 <a
                   key={platform}
@@ -161,9 +144,6 @@ const Profile = () => {
                 >
                   <span className="link-icon">{icon}</span>
                   <span className="link-text">{platform}</span>
-                  <span className="link-underline"></span>
-                  <span className="link-hover-effect"></span>
-                  <span className="link-pulse-effect"></span>
                 </a>
               ))}
             </div>

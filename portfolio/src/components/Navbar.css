@@ -81,7 +81,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.5rem;
+  gap: 1.05rem;
   justify-content: center;
   flex: 1;
 }
@@ -146,6 +146,29 @@
 
 .navbar-cv-btn:hover {
   box-shadow: 0 0 24px rgba(159, 122, 234, 0.5), 0 16px 34px rgba(48, 17, 87, 0.36);
+}
+
+.navbar-hire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  min-width: 112px;
+  padding: 0.78rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #170d24;
+  font-size: 0.9rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #c4a8ff);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 0 22px rgba(196, 168, 255, 0.28), 0 12px 26px rgba(48, 17, 87, 0.24);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.navbar-hire-btn:hover {
+  color: #10081a;
+  box-shadow: 0 0 30px rgba(196, 168, 255, 0.42), 0 16px 34px rgba(48, 17, 87, 0.32);
 }
 
 .navbar-hamburger {
@@ -250,9 +273,28 @@
   transform: translateY(-3px);
 }
 
-@media (max-width: 1100px) {
+.mobile-hire-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 46px;
+  margin-top: 0.35rem;
+  border-radius: 16px;
+  color: #170d24;
+  background: linear-gradient(135deg, #ffffff, #c4a8ff);
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 12px 26px rgba(48, 17, 87, 0.24);
+}
+
+@media (max-width: 1180px) {
   .navbar-links {
-    gap: 1rem;
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex;
   }
 
   .navbar-cv-btn {
@@ -266,16 +308,12 @@
     padding: 0 1.2rem;
   }
 
-  .navbar-links {
-    display: none;
-  }
-
   .logo-text {
     display: none;
   }
 
-  .navbar-hamburger {
-    display: flex;
+  .navbar-hire-btn {
+    display: none;
   }
 
   .navbar-cv-btn {
@@ -299,7 +337,7 @@
   }
 
   .navbar-container {
-    padding: 0 0.85rem;
+    padding: 0 0.7rem;
   }
 
   .mobile-menu-backdrop {
@@ -315,12 +353,26 @@
   }
 
   .navbar-right {
-    gap: 0.55rem;
+    gap: 0.45rem;
   }
 
   .navbar-cv-btn {
-    padding: 0.66rem 0.78rem;
-    font-size: 0.76rem;
+    min-width: 42px;
+    width: 42px;
+    height: 38px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .navbar-cv-btn::before {
+    content: 'CV';
+    font-size: 0.74rem;
+    font-weight: 800;
+  }
+
+  .navbar-hamburger {
+    width: 38px;
+    height: 38px;
   }
 
   .mobile-menu {
@@ -332,6 +384,12 @@
 
 .nav-link.active {
   color: #ffffff;
+}
+
+@media (max-width: 560px) {
+  .navbar-cv-btn {
+    display: none;
+  }
 }
 
 .nav-link.active .link-text {

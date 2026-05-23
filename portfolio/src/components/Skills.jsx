@@ -1,7 +1,7 @@
 import React from 'react';
 import './Skills.css';
 import {
-  SiFlutter, SiFirebase, SiPython, SiFastapi, SiFlask,
+  SiFlutter, SiFirebase, SiPython, SiDjango, SiFastapi, SiFlask,
   SiSocketdotio, SiWebmin, SiUbuntu, SiKalilinux, SiWireshark,
   SiTensorflow, SiCplusplus,
   SiArduino, SiEspressif, SiRaspberrypi
@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 const allSkills = [
   { name: 'Flutter', icon: <SiFlutter size="3.5em" />, color: '#02569B' },
   { name: 'Python', icon: <SiPython size="3.5em" />, color: '#3776AB' },
+  { name: 'Django', icon: <SiDjango size="3.5em" />, color: '#44B78B' },
   { name: 'Firebase', icon: <SiFirebase size="3.5em" />, color: '#FFCA28' },
   { name: 'FastAPI', icon: <SiFastapi size="3.5em" />, color: '#009688' },
   { name: 'Flask', icon: <SiFlask size="3.5em" />, color: '#A8B0B9' },
