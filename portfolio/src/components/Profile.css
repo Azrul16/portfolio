@@ -478,6 +478,19 @@
   box-shadow: 0 20px 42px rgba(159, 122, 234, 0.34);
 }
 
+.hero-cta-download {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(180, 126, 255, 0.95), rgba(109, 40, 217, 0.95));
+  border: 1px solid rgba(225, 210, 255, 0.22);
+  box-shadow: 0 16px 34px rgba(109, 40, 217, 0.24);
+}
+
+.hero-cta-download:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px rgba(109, 40, 217, 0.34);
+}
+
 .hero-cta-secondary {
   color: #f3ebff;
   background: rgba(255, 255, 255, 0.05);
@@ -692,6 +705,7 @@
 
   .image-wrapper:hover .profile-photo,
   .hero-cta-primary:hover,
+  .hero-cta-download:hover,
   .hero-cta-secondary:hover,
   .social-link:hover {
     transform: none;

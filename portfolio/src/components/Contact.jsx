@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
   FaMapMarkerAlt,
   FaPhone,
@@ -13,6 +14,12 @@ import {
 } from 'react-icons/fa';
 import { IoMdSend } from 'react-icons/io';
 import './Contact.css';
+
+const emailJsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+};
 
 const contactActions = [
   {
@@ -69,6 +76,7 @@ const services = [
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
+  const [statusType, setStatusType] = useState('idle');
   const [activeField, setActiveField] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -79,20 +87,49 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!emailJsConfig.serviceId || !emailJsConfig.templateId || !emailJsConfig.publicKey) {
+      setStatus('EmailJS needs a template ID and public key in the env file before messages can be sent.');
+      setStatusType('error');
+      return;
+    }
+
     setIsSubmitting(true);
-    setStatus('Preparing email draft...');
+    setStatus('Sending your message...');
+    setStatusType('sending');
 
-    window.setTimeout(() => {
-      const subject = encodeURIComponent(`Portfolio message from ${formData.name}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
+    try {
+      await emailjs.send(
+        emailJsConfig.serviceId,
+        emailJsConfig.templateId,
+        {
+          title: `Portfolio message from ${formData.name.trim()}`,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          from_name: formData.name.trim(),
+          from_email: formData.email.trim(),
+          reply_to: formData.email.trim(),
+          to_name: 'Azrul Amaline',
+          time: new Date().toLocaleString(),
+          message: formData.message.trim()
+        },
+        {
+          publicKey: emailJsConfig.publicKey
+        }
+      );
 
-      window.location.href = `mailto:azrul.amaline16@gmail.com?subject=${subject}&body=${body}`;
-      setStatus('Email draft opened. You can also reach me through the links on this page.');
+      setStatus('Message sent successfully. I will get back to you soon.');
+      setStatusType('success');
       setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS send failed:', error);
+      setStatus('Message could not be sent right now. Please try again or email me directly.');
+      setStatusType('error');
+    } finally {
       setIsSubmitting(false);
-    }, 700);
+    }
   };
 
   const cardVariants = {
@@ -200,39 +237,46 @@ const Contact = () => {
           <motion.div className="contact-column form-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
             <form className="contact-card form-card" onSubmit={handleSubmit} data-pointer-glow>
               <div className="card-glow"></div>
-              <div className="card-heading">
-                <h3>Open an Email Draft</h3>
+              <div className="form-card-topline">
+                <span className="form-card-icon"><FaRegEnvelopeOpen /></span>
+                <div>
+                  <p className="form-kicker">Direct inbox</p>
+                  <h3>Send Me an Email</h3>
+                </div>
+              </div>
+              <p className="form-helper-text">
+                Tell me what you want to build, fix, or improve. The message goes straight to my inbox.
+              </p>
+
+              <div className="form-field-grid">
+                <div className={`form-group ${activeField === 'name' ? 'active' : ''}`}>
+                  <label htmlFor="contact-name">Your Name</label>
+                  <input id="contact-name" type="text" name="name" placeholder="Azrul Amaline" value={formData.name} onChange={handleChange} onFocus={() => setActiveField('name')} onBlur={() => setActiveField(null)} required />
+                </div>
+
+                <div className={`form-group ${activeField === 'email' ? 'active' : ''}`}>
+                  <label htmlFor="contact-email">Your Email</label>
+                  <input id="contact-email" type="email" name="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} onFocus={() => setActiveField('email')} onBlur={() => setActiveField(null)} required />
+                </div>
               </div>
 
-              <div className={`form-group ${activeField === 'name' ? 'active' : ''}`}>
-                <input type="text" name="name" placeholder=" " value={formData.name} onChange={handleChange} onFocus={() => setActiveField('name')} onBlur={() => setActiveField(null)} required />
-                <label>Your Name</label>
-                <motion.div className="underline" initial={{ scaleX: 0 }} animate={{ scaleX: activeField === 'name' ? 1 : 0 }} transition={{ duration: 0.3 }} />
-              </div>
-
-              <div className={`form-group ${activeField === 'email' ? 'active' : ''}`}>
-                <input type="email" name="email" placeholder=" " value={formData.email} onChange={handleChange} onFocus={() => setActiveField('email')} onBlur={() => setActiveField(null)} required />
-                <label>Your Email</label>
-                <motion.div className="underline" initial={{ scaleX: 0 }} animate={{ scaleX: activeField === 'email' ? 1 : 0 }} transition={{ duration: 0.3 }} />
-              </div>
-
-              <div className={`form-group ${activeField === 'message' ? 'active' : ''}`}>
-                <textarea name="message" placeholder=" " rows="5" value={formData.message} onChange={handleChange} onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)} required></textarea>
-                <label>Your Message</label>
-                <motion.div className="underline" initial={{ scaleX: 0 }} animate={{ scaleX: activeField === 'message' ? 1 : 0 }} transition={{ duration: 0.3 }} />
+              <div className={`form-group message-group ${activeField === 'message' ? 'active' : ''}`}>
+                <label htmlFor="contact-message">Your Message</label>
+                <textarea id="contact-message" name="message" placeholder="Share the project idea, app issue, timeline, or anything useful..." rows="6" value={formData.message} onChange={handleChange} onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)} required></textarea>
+                <span className="message-count">{formData.message.length} characters</span>
               </div>
 
               <motion.button type="submit" className="submit-btn" whileHover={{ scale: 1.01, boxShadow: '0 10px 28px rgba(159, 122, 234, 0.45)' }} whileTap={{ scale: 0.98 }} disabled={isSubmitting} data-pointer-glow>
-                <motion.span className="btn-text" animate={isSubmitting ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}>Prepare Email</motion.span>
-                <motion.span className="btn-icon" animate={isSubmitting ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}>
-                  {isSubmitting ? <IoMdSend /> : <FaRegEnvelopeOpen />}
-                </motion.span>
+                <span className="btn-content">
+                  <span className="btn-text">{isSubmitting ? 'Sending Message' : 'Send Message'}</span>
+                  <span className="btn-icon">{isSubmitting ? <IoMdSend /> : <FaRegEnvelopeOpen />}</span>
+                </span>
                 <div className="btn-particles"></div>
               </motion.button>
 
               <AnimatePresence>
                 {status && (
-                  <motion.p className="status-message" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+                  <motion.p className={`status-message status-${statusType}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                     {status}
                   </motion.p>
                 )}

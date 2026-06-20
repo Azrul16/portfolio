@@ -1,24 +1,34 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+dist-ssr/
+
+# Environment variables and local config
+.env
+.env.local
+.env.*.local
+*.local
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-node_modules
-src\firebase.js
 
-node_modules
-dist
-dist-ssr
-*.local
+# Local/generated app files
+src/firebase.js
 
-# Editor directories and files
+# Editor and OS files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj

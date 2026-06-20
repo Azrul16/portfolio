@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './Profile.css';
 import profilePhoto from '../assets/images/photo/azrullll.jpeg';
-import { FaArrowRight, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import cvUrl from '../assets/CV.pdf';
+import { FaArrowRight, FaDownload, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const socialLinks = [
   {
@@ -15,6 +16,7 @@ const socialLinks = [
     url: 'https://github.com/azrul16'
   }
 ];
+const cvFileName = 'Azrul Amaline.pdf';
 
 const Profile = () => {
   const profileRef = useRef(null);
@@ -124,6 +126,10 @@ const Profile = () => {
               <a href="#projects" className="hero-cta-link hero-cta-primary" data-pointer-glow>
                 View Projects
                 <FaArrowRight />
+              </a>
+              <a href={cvUrl} className="hero-cta-link hero-cta-download" download={cvFileName} data-pointer-glow>
+                <FaDownload />
+                Download CV
               </a>
               <a href="#contact" className="hero-cta-link hero-cta-secondary" data-pointer-glow>
                 <FaEnvelope />
