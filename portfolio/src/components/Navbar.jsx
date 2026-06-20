@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBriefcase, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaBriefcase, FaDownload, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../assets/images/logo/logo.png';
 import cvUrl from '../assets/CV.pdf';
@@ -235,7 +235,7 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="mobile-menu-backdrop"
+            className={`mobile-menu-backdrop ${scrolled ? 'scrolled' : ''}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -267,6 +267,10 @@ const Navbar = () => {
                   </motion.li>
                 );
               })}
+              <a href={cvUrl} className="mobile-cv-link" download={cvFileName} onClick={() => setMenuOpen(false)}>
+                <FaDownload />
+                Download CV
+              </a>
               <a href="#contact" onClick={(event) => handleLinkClick(event, 'contact')} className="mobile-hire-link">
                 <FaBriefcase />
                 Hire Me / Contact

@@ -734,6 +734,8 @@
 .project-quick-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.55rem;
 }
 
@@ -1039,6 +1041,16 @@
     align-items: flex-start;
   }
 
+  .project-quick-actions {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .project-filter {
+    flex: 1 1 auto;
+    min-width: min(8rem, 100%);
+  }
+
   .project-topline {
     flex-wrap: wrap;
   }
@@ -1054,6 +1066,16 @@
   .projects-result-row {
     flex-direction: column;
     gap: 0.25rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card:hover,
+  .spotlight-mini:hover,
+  .project-filter:hover,
+  .project-quick-actions a:hover,
+  .project-action-link:hover {
+    transform: none;
   }
 }
 
