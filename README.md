@@ -6,7 +6,7 @@ The site brings together profile details, education, certificates, skills, featu
 
 ## Preview
 
-![Azrul Amaline portfolio preview](azrul.is-a.dev)
+![Azrul Amaline portfolio preview](https://azrul.is-a.dev)
 
 ## Links
 
