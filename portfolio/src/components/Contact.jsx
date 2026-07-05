@@ -10,7 +10,11 @@ import {
   FaRegEnvelopeOpen,
   FaHandshake,
   FaMobileAlt,
-  FaTools
+  FaTools,
+  FaDatabase,
+  FaServer,
+  FaMagic,
+  FaWrench
 } from 'react-icons/fa';
 import { IoMdSend } from 'react-icons/io';
 import './Contact.css';
@@ -52,24 +56,29 @@ const contactActions = [
 
 const services = [
   {
+    icon: <FaMobileAlt />,
     title: 'Flutter mobile apps',
-    text: 'Mobile-first interfaces, app flows, reusable widgets, and Firebase-connected features.'
+    meta: 'Flutter / Dart'
   },
   {
+    icon: <FaDatabase />,
     title: 'Firebase app backends',
-    text: 'Authentication, Firestore data models, storage, and practical app backend setup.'
+    meta: 'Firebase'
   },
   {
+    icon: <FaServer />,
     title: 'Django/Python backend APIs',
-    text: 'API prototypes, utilities, automation scripts, and practical web service foundations.'
+    meta: 'Python'
   },
   {
+    icon: <FaMagic />,
     title: 'AI-assisted tools',
-    text: 'Study tools, speech/text workflows, automation helpers, and experimental AI product ideas.'
+    meta: 'AI tools'
   },
   {
+    icon: <FaWrench />,
     title: 'Bug fixing and app improvement',
-    text: 'UI cleanup, responsiveness fixes, feature polishing, and practical product improvements.'
+    meta: 'Refine'
   }
 ];
 
@@ -162,8 +171,9 @@ const Contact = () => {
           <div className="services-grid">
             {services.map((service) => (
               <article className="service-item" key={service.title} data-pointer-glow>
+                <span className="service-icon">{service.icon}</span>
                 <h4>{service.title}</h4>
-                <p>{service.text}</p>
+                <span className="service-meta">{service.meta}</span>
               </article>
             ))}
           </div>
@@ -230,7 +240,6 @@ const Contact = () => {
                   </motion.a>
                 ))}
               </div>
-              <p className="contact-action-note">Fastest response: email or LinkedIn.</p>
             </div>
           </motion.div>
 
@@ -244,10 +253,6 @@ const Contact = () => {
                   <h3>Send Me an Email</h3>
                 </div>
               </div>
-              <p className="form-helper-text">
-                Tell me what you want to build, fix, or improve. The message goes straight to my inbox.
-              </p>
-
               <div className="form-field-grid">
                 <div className={`form-group ${activeField === 'name' ? 'active' : ''}`}>
                   <label htmlFor="contact-name">Your Name</label>

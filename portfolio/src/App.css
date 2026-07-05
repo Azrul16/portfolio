@@ -1,15 +1,65 @@
 body {
   margin: 0;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(180deg, #09040f 0%, #0b0513 28%, #0d0615 56%, #09030f 100%);
   color: #e0e0e0;
   overflow-x: hidden;
+  transition: background-color 0.28s ease, color 0.28s ease;
+}
+
+body.light-mode {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(159, 122, 234, 0.18), transparent 32%),
+    radial-gradient(circle at 84% 8%, rgba(81, 184, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, #fbf8ff 0%, #f3f7ff 48%, #ffffff 100%);
+  color: #1f1730;
+  scrollbar-color: rgba(106, 66, 184, 0.48) rgba(235, 230, 248, 0.85);
+}
+
+body.light-mode::-webkit-scrollbar-track {
+  background:
+    linear-gradient(180deg, rgba(244, 240, 255, 0.95), rgba(226, 235, 255, 0.92));
+}
+
+body.light-mode::-webkit-scrollbar-thumb {
+  border-color: rgba(238, 233, 248, 0.95);
+  background:
+    linear-gradient(180deg, rgba(143, 92, 247, 0.72), rgba(81, 184, 255, 0.62));
+}
+
+body.light-mode::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, rgba(109, 40, 217, 0.82), rgba(45, 145, 220, 0.76));
 }
 
 html {
   scroll-padding-top: calc(var(--navbar-height, 80px) + 14px);
+  scrollbar-color: rgba(201, 163, 255, 0.55) rgba(12, 6, 21, 0.72);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background:
+    linear-gradient(180deg, rgba(15, 7, 26, 0.86), rgba(10, 4, 18, 0.94));
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid rgba(12, 6, 21, 0.92);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(201, 163, 255, 0.85), rgba(125, 211, 252, 0.72));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, rgba(224, 202, 255, 0.96), rgba(143, 218, 255, 0.86));
 }
 
 .App {
@@ -28,14 +78,15 @@ html {
 }
 
 .background-aurora,
-.starfield {
+.starfield,
+.site-wave-flow {
   position: absolute;
 }
 
 .background-aurora {
   border-radius: 50%;
-  filter: blur(48px);
-  opacity: 0.34;
+  filter: blur(34px);
+  opacity: 0.25;
 }
 
 .aurora-one {
@@ -67,6 +118,37 @@ html {
   background-repeat: repeat;
 }
 
+.site-wave-flow {
+  inset: -18% -8%;
+  --wave-rotate: -9deg;
+  opacity: 0.1;
+  background:
+    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 42px, rgba(201, 163, 255, 0.24) 43px 44px, transparent 45px 86px);
+  transform: rotate(var(--wave-rotate)) translate3d(0, 0, 0);
+  animation: site-water-wave 9s linear infinite alternate;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.wave-flow-two {
+  --wave-rotate: 12deg;
+  opacity: 0.06;
+  background:
+    repeating-radial-gradient(ellipse at 52% 45%, transparent 0 56px, rgba(125, 211, 252, 0.22) 57px 58px, transparent 59px 112px);
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+@keyframes site-water-wave {
+  from {
+    transform: rotate(var(--wave-rotate)) translate3d(-3%, -2%, 0);
+  }
+
+  to {
+    transform: rotate(var(--wave-rotate)) translate3d(3%, 2%, 0);
+  }
+}
+
 .starfield-primary {
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 0.9px, transparent 1.1px),
@@ -74,7 +156,7 @@ html {
     radial-gradient(circle, rgba(210, 224, 255, 0.5) 0 0.7px, transparent 0.95px);
   background-size: 120px 120px, 170px 170px, 240px 240px;
   background-position: 0 0, 38px 56px, 18px 92px;
-  opacity: 0.9;
+  opacity: 0.32;
 }
 
 .starfield-secondary {
@@ -84,7 +166,7 @@ html {
     radial-gradient(circle, rgba(255, 214, 244, 0.26) 0 0.6px, transparent 0.85px);
   background-size: 90px 90px, 140px 140px, 210px 210px;
   background-position: 24px 18px, 72px 44px, 10px 130px;
-  opacity: 0.82;
+  opacity: 0.2;
 }
 
 .starfield-tertiary {
@@ -93,7 +175,7 @@ html {
     radial-gradient(circle, rgba(216, 228, 255, 0.18) 0 0.5px, transparent 0.75px);
   background-size: 60px 60px, 105px 105px;
   background-position: 12px 8px, 42px 26px;
-  opacity: 0.72;
+  opacity: 0.12;
 }
 
 main {
@@ -115,7 +197,7 @@ main > section {
   border: 0;
   box-shadow: none;
   content-visibility: auto;
-  contain-intrinsic-size: 900px;
+  contain-intrinsic-size: 760px;
 }
 
 main > section#home {
@@ -180,8 +262,8 @@ main > section + section {
   }
 
   .background-aurora {
-    filter: blur(70px);
-    opacity: 0.32;
+    filter: blur(42px);
+    opacity: 0.22;
   }
 
   .about-section h2,
@@ -249,4 +331,556 @@ main > section + section {
   [data-pointer-glow]::after {
     display: none;
   }
+
+  .site-wave-flow {
+    animation: none;
+  }
+}
+
+/* Light theme readability layer */
+body.light-mode .site-background {
+  opacity: 0.72;
+}
+
+body.light-mode .background-aurora {
+  opacity: 0.22;
+}
+
+body.light-mode .site-wave-flow {
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+}
+
+body.light-mode .wave-flow-two {
+  opacity: 0.08;
+}
+
+body.light-mode .starfield-primary {
+  opacity: 0.2;
+}
+
+body.light-mode .starfield-secondary,
+body.light-mode .starfield-tertiary {
+  opacity: 0.08;
+}
+
+body.light-mode .navbar-container {
+  border-color: rgba(90, 67, 133, 0.16);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.34) 48%, rgba(159, 122, 234, 0.08)),
+    rgba(255, 255, 255, 0.52);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 18px 42px rgba(49, 28, 84, 0.16);
+}
+
+body.light-mode .logo-text,
+body.light-mode .nav-link,
+body.light-mode .mobile-nav-link {
+  color: #35224d;
+  text-shadow: none;
+}
+
+body.light-mode .navbar-links {
+  background: rgba(255, 255, 255, 0.44);
+  border-color: rgba(80, 54, 122, 0.1);
+}
+
+body.light-mode .nav-link:hover,
+body.light-mode .nav-link.active,
+body.light-mode .nav-link.active .link-text {
+  color: #2b1646;
+}
+
+body.light-mode .nav-link.active::before {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(233, 221, 255, 0.58)),
+    rgba(159, 122, 234, 0.14);
+  border-color: rgba(104, 75, 154, 0.18);
+}
+
+body.light-mode .theme-toggle-btn,
+body.light-mode .navbar-hamburger {
+  color: #321b4d;
+  background: rgba(255, 255, 255, 0.62);
+  border-color: rgba(82, 57, 124, 0.16);
+}
+
+body.light-mode .hamburger-line {
+  background-color: #321b4d;
+}
+
+body.light-mode .mobile-menu {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body.light-mode .mobile-menu-backdrop {
+  background: rgba(32, 22, 48, 0.28);
+}
+
+body.light-mode .mobile-theme-link {
+  color: #321b4d;
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(82, 57, 124, 0.16);
+}
+
+body.light-mode .profile-section,
+body.light-mode .about-section,
+body.light-mode .education-section,
+body.light-mode .certificates-section,
+body.light-mode .skills-section,
+body.light-mode .projects-section,
+body.light-mode .contact-section {
+  color: #241832;
+}
+
+body.light-mode .section-title-block h2 {
+  background: linear-gradient(180deg, #3b235c 0%, #6b3fc2 55%, #8d6be8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 8px 26px rgba(111, 70, 171, 0.18);
+}
+
+body.light-mode .hero-kicker,
+body.light-mode .about-kicker,
+body.light-mode .about-card-eyebrow,
+body.light-mode .projects-kicker,
+body.light-mode .certificate-date,
+body.light-mode .form-kicker {
+  color: #5a2fa0;
+}
+
+body.light-mode .hero-kicker {
+  color: #3b166e;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(232, 222, 255, 0.78)),
+    rgba(255, 255, 255, 0.86);
+  border-color: rgba(90, 47, 160, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 10px 24px rgba(73, 49, 109, 0.12);
+  text-shadow: none;
+}
+
+body.light-mode .name-text {
+  color: #4b2a74;
+  text-shadow: 0 10px 34px rgba(111, 70, 171, 0.28);
+}
+
+body.light-mode .name-last {
+  color: #6d3fc2;
+}
+
+body.light-mode .hero-lead,
+body.light-mode .hero-availability p,
+body.light-mode .about-lead,
+body.light-mode .card-text,
+body.light-mode .degree,
+body.light-mode .edu-details li,
+body.light-mode .issuer,
+body.light-mode .description,
+body.light-mode .projects-intro,
+body.light-mode .project-card p,
+body.light-mode .project-modal-copy p,
+body.light-mode .service-item p,
+body.light-mode .form-helper-text,
+body.light-mode .contact-action-note,
+body.light-mode .info-content p,
+body.light-mode .info-content a,
+body.light-mode .info-content span {
+  color: rgba(35, 24, 51, 0.78);
+}
+
+body.light-mode .hero-availability,
+body.light-mode .about-hero-card,
+body.light-mode .about-card,
+body.light-mode .timeline-content,
+body.light-mode .certificate-card,
+body.light-mode .skill-item,
+body.light-mode .project-card,
+body.light-mode .project-modal,
+body.light-mode .contact-card,
+body.light-mode .services-block,
+body.light-mode .service-item,
+body.light-mode .info-item,
+body.light-mode .contact-action,
+body.light-mode .social-link,
+body.light-mode .hero-cta-secondary {
+  border-color: rgba(103, 77, 145, 0.14);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(246, 240, 255, 0.58)),
+    rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 18px 40px rgba(62, 40, 94, 0.11);
+}
+
+body.light-mode .about-hero-card h3,
+body.light-mode .card-title,
+body.light-mode .timeline-content h3,
+body.light-mode .certificate-content h3,
+body.light-mode .skill-name,
+body.light-mode .project-subsection-heading h3,
+body.light-mode .compact-project h3,
+body.light-mode .case-study-copy h3,
+body.light-mode .project-modal-copy h3,
+body.light-mode .card-heading h3,
+body.light-mode .service-item h4,
+body.light-mode .form-card-topline h3,
+body.light-mode .info-content h3 {
+  color: #211431;
+}
+
+body.light-mode .hero-cta-secondary,
+body.light-mode .social-link {
+  color: #40235f;
+}
+
+body.light-mode .project-category,
+body.light-mode .project-repo-name,
+body.light-mode .projects-result-row {
+  color: rgba(49, 31, 71, 0.62);
+}
+
+body.light-mode .project-status,
+body.light-mode .project-highlight-pill,
+body.light-mode .about-value-pill,
+body.light-mode .timeline-year,
+body.light-mode .stat-card,
+body.light-mode .about-stat {
+  color: #432560;
+  background: rgba(255, 255, 255, 0.66);
+  border-color: rgba(103, 77, 145, 0.12);
+}
+
+body.light-mode .form-card .form-group input,
+body.light-mode .form-card .form-group textarea,
+body.light-mode .project-filter {
+  color: #211431;
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(103, 77, 145, 0.16);
+}
+
+body.light-mode .form-card .form-group input::placeholder,
+body.light-mode .form-card .form-group textarea::placeholder {
+  color: rgba(49, 31, 71, 0.42);
+}
+
+body.light-mode .profile-photo {
+  border-color: #9f7aea;
+  box-shadow: 0 0 38px rgba(111, 70, 171, 0.22);
+}
+
+body.light-mode .footer {
+  color: #2d1c40;
+  border-top-color: rgba(103, 77, 145, 0.12);
+}
+
+body.light-mode .footer-text {
+  color: rgba(45, 28, 64, 0.68);
+}
+
+body.light-mode [data-pointer-glow]::after {
+  --pointer-glow-color: rgba(126, 87, 194, 0.14);
+}
+
+/* Smoother defaults: reduce continuous decorative work on smaller devices. */
+@media (max-width: 768px) {
+  .starfield-secondary,
+  .starfield-tertiary,
+  .particles,
+  .geometric-shapes,
+  .site-wave-flow,
+  .wave-flow-two {
+    display: none;
+  }
+}
+
+/* Final contrast pass for light mode. Keep this at the end so it wins. */
+body.light-mode {
+  --light-ink: #1b1029;
+  --light-ink-soft: #3d2b55;
+  --light-muted: #5f5271;
+  --light-border: rgba(78, 55, 118, 0.18);
+  --light-panel: rgba(255, 255, 255, 0.82);
+  --light-panel-strong: rgba(255, 255, 255, 0.94);
+}
+
+body.light-mode .projects-section::before,
+body.light-mode .contact-bg-gradient {
+  opacity: 0.42;
+}
+
+body.light-mode .projects-intro,
+body.light-mode .about-lead,
+body.light-mode .hero-lead,
+body.light-mode .hero-availability p,
+body.light-mode .card-text,
+body.light-mode .degree,
+body.light-mode .edu-details li,
+body.light-mode .description,
+body.light-mode .issuer,
+body.light-mode .project-card p,
+body.light-mode .case-study-outcome p,
+body.light-mode .project-modal-copy p,
+body.light-mode .service-item p,
+body.light-mode .form-helper-text,
+body.light-mode .info-content p,
+body.light-mode .info-content a,
+body.light-mode .info-content span,
+body.light-mode .contact-action-note {
+  color: var(--light-ink-soft);
+}
+
+body.light-mode .projects-kicker,
+body.light-mode .about-kicker,
+body.light-mode .about-card-eyebrow,
+body.light-mode .certificate-date,
+body.light-mode .form-kicker,
+body.light-mode .modal-label,
+body.light-mode .spotlight-label,
+body.light-mode .case-study-outcome span {
+  color: #6a42b8;
+}
+
+body.light-mode .projects-header,
+body.light-mode .project-subsection-heading,
+body.light-mode .case-study-section,
+body.light-mode .more-projects-heading {
+  color: var(--light-ink);
+}
+
+body.light-mode .stat-card,
+body.light-mode .about-stat,
+body.light-mode .project-modal-card,
+body.light-mode .project-proof-card,
+body.light-mode .project-proof-list,
+body.light-mode .case-study-outcome,
+body.light-mode .modal-visual-panel,
+body.light-mode .modal-copy {
+  border-color: var(--light-border);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(245, 239, 255, 0.78)),
+    var(--light-panel-strong);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 14px 34px rgba(73, 49, 109, 0.12);
+}
+
+body.light-mode .stat-card::after {
+  background: radial-gradient(circle, rgba(126, 87, 194, 0.16), transparent 70%);
+}
+
+body.light-mode .stat-value,
+body.light-mode .about-stat strong,
+body.light-mode .spotlight-stat strong {
+  color: #2b1646;
+  text-shadow: none;
+}
+
+body.light-mode .stat-label,
+body.light-mode .about-stat span,
+body.light-mode .spotlight-stat span {
+  color: #5b4a6f;
+}
+
+body.light-mode .about-hero-card,
+body.light-mode .about-card,
+body.light-mode .timeline-content,
+body.light-mode .certificate-card,
+body.light-mode .skill-item,
+body.light-mode .project-card,
+body.light-mode .contact-card,
+body.light-mode .services-block,
+body.light-mode .service-item,
+body.light-mode .info-item,
+body.light-mode .contact-action,
+body.light-mode .project-toolbar,
+body.light-mode .projects-toolbar,
+body.light-mode .project-filter,
+body.light-mode .social-link,
+body.light-mode .hero-availability {
+  color: var(--light-ink);
+  border-color: var(--light-border);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 241, 255, 0.72)),
+    var(--light-panel);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 16px 38px rgba(73, 49, 109, 0.1);
+}
+
+body.light-mode .about-hero-card::before,
+body.light-mode .about-card::before,
+body.light-mode .timeline-content::before,
+body.light-mode .certificate-card::after,
+body.light-mode .project-card::before,
+body.light-mode .project-modal::before,
+body.light-mode .contact-card::after,
+body.light-mode .info-item::after,
+body.light-mode .contact-action::after,
+body.light-mode .service-item::after,
+body.light-mode .skill-item::before {
+  opacity: 0.34;
+}
+
+body.light-mode .about-hero-card h3,
+body.light-mode .card-title,
+body.light-mode .timeline-content h3,
+body.light-mode .certificate-content h3,
+body.light-mode .modal-copy h3,
+body.light-mode .project-subsection-heading h3,
+body.light-mode .preview-content strong,
+body.light-mode .case-study-copy h3,
+body.light-mode .compact-project h3,
+body.light-mode .project-modal-copy h3,
+body.light-mode .service-item h4,
+body.light-mode .services-heading,
+body.light-mode .services-heading h3,
+body.light-mode .card-heading h3,
+body.light-mode .info-content h3,
+body.light-mode .form-card-topline h3,
+body.light-mode .skill-name {
+  color: var(--light-ink);
+}
+
+body.light-mode .project-category,
+body.light-mode .project-repo-name,
+body.light-mode .projects-result-row,
+body.light-mode .message-count {
+  color: var(--light-muted);
+}
+
+body.light-mode .project-status,
+body.light-mode .project-status.subtle,
+body.light-mode .project-highlight-pill,
+body.light-mode .about-value-pill,
+body.light-mode .timeline-year,
+body.light-mode .view-label,
+body.light-mode .preview-category,
+body.light-mode .preview-chip-row span,
+body.light-mode .modal-pill,
+body.light-mode .modal-badge,
+body.light-mode .modal-year {
+  color: #351c54;
+  background: rgba(255, 255, 255, 0.76);
+  border-color: rgba(78, 55, 118, 0.16);
+}
+
+body.light-mode .project-tech-icon,
+body.light-mode .project-quick-actions a,
+body.light-mode .project-action-link {
+  color: #351c54;
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(78, 55, 118, 0.14);
+}
+
+body.light-mode .project-link,
+body.light-mode .project-open-btn {
+  color: #5a2fa0;
+}
+
+body.light-mode .project-filter.active,
+body.light-mode .project-filter:hover {
+  color: #ffffff;
+  border-color: rgba(106, 66, 184, 0.42);
+  background: linear-gradient(135deg, #8f5cf7, #6d28d9);
+}
+
+body.light-mode .preview-window {
+  border-color: rgba(78, 55, 118, 0.14);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.58), transparent 25%),
+    radial-gradient(circle at 78% 18%, rgba(143, 92, 247, 0.16), transparent 30%),
+    linear-gradient(145deg, rgba(240, 247, 255, 0.92), rgba(238, 229, 255, 0.9));
+}
+
+body.light-mode .preview-lines span {
+  background: rgba(65, 42, 95, 0.14);
+}
+
+body.light-mode .certificate-image-container {
+  background: #ffffff;
+}
+
+body.light-mode .image-overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.12) 40%, rgba(36, 24, 50, 0.1));
+}
+
+body.light-mode .modal-content {
+  color: var(--light-ink);
+  border-color: var(--light-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 242, 255, 0.96));
+}
+
+body.light-mode .modal-image-container {
+  background: linear-gradient(180deg, #ffffff, #f3ecff);
+}
+
+body.light-mode .close-btn,
+body.light-mode .project-modal-close {
+  color: #351c54;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+body.light-mode .project-modal-overlay,
+body.light-mode .certificate-modal {
+  background: rgba(36, 24, 50, 0.32);
+}
+
+body.light-mode .form-card .form-group label {
+  color: #5a2fa0;
+}
+
+body.light-mode .form-card .form-group input,
+body.light-mode .form-card .form-group textarea {
+  color: var(--light-ink);
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(78, 55, 118, 0.18);
+}
+
+body.light-mode .form-card .submit-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #8f5cf7, #6d28d9);
+  box-shadow: 0 14px 30px rgba(109, 40, 217, 0.22);
+}
+
+body.light-mode .contact-action-icon,
+body.light-mode .form-card-icon {
+  color: #ffffff;
+  background: linear-gradient(135deg, #9f7aea, #6d28d9);
+}
+
+body.light-mode .status-sending,
+body.light-mode .status-success,
+body.light-mode .status-error {
+  color: var(--light-ink);
+}
+
+body.light-mode .footer-logo {
+  filter: drop-shadow(0 10px 18px rgba(111, 70, 171, 0.2));
+}
+
+/* Taste pass: keep merged/project/contact areas lighter and less boxed. */
+body.light-mode .projects-toolbar,
+body.light-mode .services-block {
+  border-color: rgba(78, 55, 118, 0.16);
+  background: transparent;
+  box-shadow: none;
+}
+
+body.light-mode .stat-card {
+  color: var(--light-ink);
+  border: 0;
+  border-left: 1px solid rgba(78, 55, 118, 0.2);
+  background: transparent;
+  box-shadow: none;
+}
+
+body.light-mode .stat-card::after {
+  display: none;
+}
+
+body.light-mode .project-filter {
+  background: rgba(255, 255, 255, 0.54);
+  box-shadow: none;
+}
+
+body.light-mode .service-item {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(126, 87, 194, 0.1), transparent 34%),
+    rgba(255, 255, 255, 0.58);
+  box-shadow: none;
 }

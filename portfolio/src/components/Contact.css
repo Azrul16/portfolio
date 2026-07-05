@@ -258,6 +258,16 @@
   margin-bottom: 1.5rem;
 }
 
+.form-group label {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--text-muted);
+  pointer-events: auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -274,22 +284,8 @@
   min-height: 130px;
 }
 
-.form-group label {
-  position: absolute;
-  top: 1rem;
-  left: 0;
-  color: var(--text-muted);
-  pointer-events: none;
-  transition: all var(--transition-speed) ease;
-  transform-origin: left top;
-}
-
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label,
-.form-group textarea:focus + label,
-.form-group textarea:not(:placeholder-shown) + label {
-  transform: translateY(-1.8rem) scale(0.8);
-  color: var(--primary-color);
+.form-group:focus-within label {
+  color: var(--primary-light);
 }
 
 .underline {
@@ -464,11 +460,11 @@
 
 .services-block {
   margin-bottom: 1.45rem;
-  padding: 1.3rem;
-  border-radius: 24px;
-  background: linear-gradient(180deg, rgba(28, 13, 44, 0.78), rgba(16, 8, 27, 0.72));
-  border: 1px solid rgba(210, 184, 255, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 34px rgba(8, 2, 16, 0.18);
+  padding: 1.1rem 0 0;
+  border-top: 1px solid rgba(210, 184, 255, 0.14);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .services-heading {
@@ -497,10 +493,14 @@
 .service-item {
   position: relative;
   overflow: hidden;
-  min-height: 142px;
-  padding: 1rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.045);
+  display: flex;
+  flex-direction: column;
+  min-height: 138px;
+  padding: 1rem 0.95rem;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(196, 168, 255, 0.14), transparent 34%),
+    rgba(255, 255, 255, 0.032);
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
@@ -512,10 +512,25 @@
   pointer-events: none;
 }
 
+.service-icon,
 .service-item h4,
-.service-item p {
+.service-item p,
+.service-meta {
   position: relative;
   z-index: 1;
+}
+
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-bottom: 0.72rem;
+  border-radius: 14px;
+  color: #170d24;
+  background: linear-gradient(135deg, #ffffff, #c4a8ff);
+  box-shadow: 0 12px 24px rgba(159, 122, 234, 0.18);
 }
 
 .service-item h4 {
@@ -528,8 +543,22 @@
 .service-item p {
   margin: 0.65rem 0 0;
   color: rgba(240, 230, 255, 0.7);
-  font-size: 0.86rem;
-  line-height: 1.65;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.service-meta {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 0.9rem;
+  padding: 0.38rem 0.58rem;
+  border-radius: 999px;
+  color: #dccdff;
+  background: rgba(196, 168, 255, 0.1);
+  border: 1px solid rgba(196, 168, 255, 0.14);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .contact-action-grid {
@@ -768,13 +797,13 @@
 }
 
 .form-card .form-group label {
-  position: static;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.62rem;
   color: #dac9ff;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  line-height: 1.25;
   text-transform: uppercase;
   transform: none;
 }
@@ -807,11 +836,8 @@
   box-shadow: 0 0 0 4px rgba(159, 122, 234, 0.12);
 }
 
-.form-card .form-group input:focus + label,
-.form-card .form-group input:not(:placeholder-shown) + label,
-.form-card .form-group textarea:focus + label,
-.form-card .form-group textarea:not(:placeholder-shown) + label {
-  transform: none;
+.form-card .form-group:focus-within label {
+  color: #f1e8ff;
 }
 
 .form-card .form-group textarea {

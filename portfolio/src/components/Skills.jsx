@@ -7,7 +7,7 @@ import {
   SiArduino, SiEspressif, SiRaspberrypi
 } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
-import { FaBrain, FaWindows, FaFingerprint, FaSkull, FaNetworkWired, FaDatabase, FaKey, FaUserSecret } from 'react-icons/fa';
+import { FaWindows, FaFingerprint, FaSkull, FaNetworkWired, FaDatabase, FaKey, FaUserSecret } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const allSkills = [
@@ -31,7 +31,6 @@ const allSkills = [
   { name: 'Ubuntu', icon: <SiUbuntu size="3.5em" />, color: '#E95420' },
   { name: 'Windows Server', icon: <FaWindows size="3.5em" />, color: '#00A4EF' },
   { name: 'C++', icon: <SiCplusplus size="3.5em" />, color: '#00599C' },
-  { name: 'AI', icon: <FaBrain size="3.5em" />, color: '#FF6F61' },
   { name: 'Machine Learning', icon: <SiTensorflow size="3.5em" />, color: '#FF6F00' },
   { name: 'Arduino', icon: <SiArduino size="3.5em" />, color: '#00979D' },
   { name: 'ESP32-CAM', icon: <SiEspressif size="3.5em" />, color: '#3A4F62' },

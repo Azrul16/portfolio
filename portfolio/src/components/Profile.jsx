@@ -35,7 +35,7 @@ const Profile = () => {
 
     const floatElements = section.querySelectorAll('.float-animation');
     floatElements.forEach((element) => {
-      element.style.setProperty('--float-duration', `${Math.random() * 6 + 10}s`);
+      element.style.setProperty('--float-duration', `${Math.random() * 4 + 6}s`);
     });
 
     const observer = new IntersectionObserver(
@@ -46,7 +46,7 @@ const Profile = () => {
 
         const revealTargets = section.querySelectorAll('.profile-image, .hero-panel, .hero-cta-link, .hero-availability, .social-link');
         revealTargets.forEach((element, index) => {
-          element.style.transitionDelay = `${Math.min(index * 0.08, 0.6)}s`;
+          element.style.transitionDelay = `${Math.min(index * 0.04, 0.28)}s`;
           element.classList.add('visible');
         });
 
@@ -63,14 +63,14 @@ const Profile = () => {
   return (
     <section id="home" className="profile-section" ref={profileRef}>
       <div className="particles" aria-hidden="true">
-        {[...Array(16)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
             className="particle"
             style={{
               '--size': `${Math.random() * 0.35 + 0.1}rem`,
               '--delay': `${Math.random() * 5}s`,
-              '--duration': `${Math.random() * 10 + 12}s`,
+              '--duration': `${Math.random() * 5 + 7}s`,
               '--x': `${Math.random() * 100}%`,
               '--y': `${Math.random() * 100}%`
             }}
@@ -113,13 +113,8 @@ const Profile = () => {
               <div className="name-underline"></div>
             </div>
 
-            <p className="hero-lead">
-              Flutter developer building mobile apps, reusable Dart packages, and AI-backed tools.
-            </p>
-
             <div className="hero-availability" data-pointer-glow>
-              <span>Currently Available For</span>
-              <p>Available for Flutter apps, Django/Python backend work, and AI tool projects.</p>
+              <span>Available for Flutter, Django/Python, and product UI work</span>
             </div>
 
             <div className="hero-actions" aria-label="Primary portfolio actions">

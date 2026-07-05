@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBriefcase, FaDownload, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaBriefcase, FaDownload, FaGithub, FaLinkedin, FaMoon, FaSun, FaTwitter } from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../assets/images/logo/logo.png';
 import cvUrl from '../assets/CV.pdf';
@@ -21,31 +21,26 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [activeSection, setActiveSection] = useState('home');
+  const scrolledRef = useRef(false);
+  const activeSectionRef = useRef('home');
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') {
+      return 'dark';
+    }
+
+    const savedTheme = window.localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return savedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  });
 
   useEffect(() => {
-    let animationFrame = null;
-
-    const updateScrolledState = () => {
-      setScrolled(window.scrollY > 10);
-      animationFrame = null;
-    };
-
-    const handleScroll = () => {
-      if (!animationFrame) {
-        animationFrame = window.requestAnimationFrame(updateScrolledState);
-      }
-    };
-
-    updateScrolledState();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (animationFrame) {
-        window.cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, []);
+    document.body.classList.toggle('light-mode', theme === 'light');
+    document.body.classList.toggle('dark-mode', theme === 'dark');
+    window.localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     let animationFrame = null;
@@ -56,6 +51,12 @@ const Navbar = () => {
     };
 
     const updateActiveSection = () => {
+      const nextScrolled = window.scrollY > 10;
+      if (scrolledRef.current !== nextScrolled) {
+        scrolledRef.current = nextScrolled;
+        setScrolled(nextScrolled);
+      }
+
       const sections = navItems
         .map((item) => document.getElementById(item.id))
         .filter(Boolean);
@@ -73,7 +74,10 @@ const Navbar = () => {
             return section.offsetTop <= scrollPosition ? section : current;
           }, sections[0]);
 
-      setActiveSection(currentSection.id);
+      if (activeSectionRef.current !== currentSection.id) {
+        activeSectionRef.current = currentSection.id;
+        setActiveSection(currentSection.id);
+      }
       animationFrame = null;
     };
 
@@ -124,6 +128,10 @@ const Navbar = () => {
     setMenuOpen((current) => !current);
   };
 
+  const toggleTheme = () => {
+    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+  };
+
   const scrollToSection = (sectionId) => {
     const target = document.getElementById(sectionId);
     if (!target) {
@@ -138,6 +146,7 @@ const Navbar = () => {
       top: Math.max(targetTop, 0),
       behavior: 'smooth'
     });
+    activeSectionRef.current = sectionId;
     setActiveSection(sectionId);
   };
 
@@ -217,6 +226,20 @@ const Navbar = () => {
 
           <motion.button
             type="button"
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-pressed={theme === 'light'}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <span className="theme-toggle-icon">
+              {theme === 'dark' ? <FaSun /> : <FaMoon />}
+            </span>
+          </motion.button>
+
+          <motion.button
+            type="button"
             className={`navbar-hamburger ${menuOpen ? 'open' : ''}`}
             onClick={handleHamburgerClick}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -275,6 +298,10 @@ const Navbar = () => {
                 <FaBriefcase />
                 Hire Me / Contact
               </a>
+              <button type="button" className="mobile-theme-link" onClick={toggleTheme}>
+                {theme === 'dark' ? <FaSun /> : <FaMoon />}
+                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </button>
               <div className="mobile-socials">
                 <motion.a href="https://github.com/azrul16" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <FaGithub />

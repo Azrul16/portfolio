@@ -156,7 +156,6 @@ const Certificates = () => {
                   <p className="certificate-date">{cert.date}</p>
                   <h3>{cert.name}</h3>
                   <p className="issuer">{cert.issuer}</p>
-                  <p className="description">{cert.description}</p>
                   <div className="certificate-footer">
                     <span className="view-label">View Certificate</span>
                   </div>

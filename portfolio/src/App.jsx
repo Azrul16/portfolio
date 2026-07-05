@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
-import About from './components/About';
+import DeveloperConsole from './components/DeveloperConsole';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
@@ -49,6 +49,8 @@ function MainSite() {
         <div className="background-aurora aurora-one"></div>
         <div className="background-aurora aurora-two"></div>
         <div className="background-aurora aurora-three"></div>
+        <div className="site-wave-flow wave-flow-one"></div>
+        <div className="site-wave-flow wave-flow-two"></div>
         <div className="starfield starfield-primary"></div>
         <div className="starfield starfield-secondary"></div>
         <div className="starfield starfield-tertiary"></div>
@@ -57,7 +59,7 @@ function MainSite() {
       <Navbar />
       <main>
         <Profile />
-        <About />
+        <DeveloperConsole />
         <Education />
         <Certificates />
         <Skills />

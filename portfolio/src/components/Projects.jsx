@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Projects.css';
 import { SiCplusplus, SiFirebase, SiFlutter, SiJavascript, SiNodedotjs, SiPython } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
-import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaSearch, FaTimes } from 'react-icons/fa';
-import { AnimatePresence, motion } from 'framer-motion';
+import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaTimes } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const projectList = [
   {
@@ -348,7 +348,7 @@ const revealVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.72,
+      duration: 0.42,
       ease: [0.22, 1, 0.36, 1]
     }
   }
@@ -362,6 +362,14 @@ const caseStudyTitles = [
   'SSLCOMMERZ Payment Integration',
   'Online Food Website'
 ];
+
+const repeatProjects = (projects, repeatCount = 3) => {
+  if (!projects.length) {
+    return [];
+  }
+
+  return Array.from({ length: repeatCount }, () => projects).flat();
+};
 
 const getTechLabels = (project) => {
   const labelMap = {
@@ -407,35 +415,32 @@ const projectMatchesFilter = (project, activeFilter) => {
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
+  const dragState = useRef({
+    isDragging: false,
+    startX: 0,
+    scrollLeft: 0,
+    suppressClick: false
+  });
 
   const caseStudyProjects = useMemo(
     () => caseStudyTitles.map((title) => projectList.find((project) => project.title === title)).filter(Boolean),
     []
+  );
+  const caseStudyCarouselProjects = useMemo(
+    () => repeatProjects(caseStudyProjects),
+    [caseStudyProjects]
   );
   const moreProjects = useMemo(
     () => projectList.filter((project) => !caseStudyTitles.includes(project.title)),
     []
   );
   const filteredProjects = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
+    return moreProjects.filter((project) => projectMatchesFilter(project, activeFilter));
+  }, [activeFilter, moreProjects]);
 
-    return moreProjects.filter((project) => {
-      const matchesFilter = projectMatchesFilter(project, activeFilter);
-      const matchesSearch = !normalizedSearch || [
-        project.title,
-        project.repoName,
-        project.category,
-        project.status,
-        project.description,
-        project.details,
-        ...project.highlights,
-        ...getTechLabels(project)
-      ].join(' ').toLowerCase().includes(normalizedSearch);
-
-      return matchesFilter && matchesSearch;
-    });
-  }, [activeFilter, moreProjects, searchTerm]);
+  const carouselProjects = useMemo(() => {
+    return repeatProjects(filteredProjects);
+  }, [filteredProjects]);
 
   const stats = useMemo(() => {
     const repoCount = projectList.length;
@@ -451,6 +456,67 @@ const Projects = () => {
 
   const openProject = (project) => setSelectedProject(project);
   const closeProject = () => setSelectedProject(null);
+
+  const handleCarouselPointerDown = (event) => {
+    if (event.button !== undefined && event.button !== 0) {
+      return;
+    }
+
+    const carousel = event.currentTarget;
+    dragState.current = {
+      isDragging: true,
+      startX: event.clientX,
+      scrollLeft: carousel.scrollLeft,
+      suppressClick: false
+    };
+    carousel.classList.add('is-dragging');
+    carousel.setPointerCapture?.(event.pointerId);
+  };
+
+  const handleCarouselPointerMove = (event) => {
+    const state = dragState.current;
+    if (!state.isDragging) {
+      return;
+    }
+
+    const movement = event.clientX - state.startX;
+    if (Math.abs(movement) > 6) {
+      state.suppressClick = true;
+    }
+
+    const carousel = event.currentTarget;
+    carousel.scrollLeft = state.scrollLeft - movement;
+
+    const loopWidth = carousel.scrollWidth / 3;
+    if (loopWidth > 0) {
+      if (carousel.scrollLeft < loopWidth * 0.45) {
+        carousel.scrollLeft += loopWidth;
+        state.scrollLeft += loopWidth;
+      } else if (carousel.scrollLeft > loopWidth * 1.55) {
+        carousel.scrollLeft -= loopWidth;
+        state.scrollLeft -= loopWidth;
+      }
+    }
+  };
+
+  const stopCarouselDrag = (event) => {
+    const carousel = event.currentTarget;
+    carousel.classList.remove('is-dragging');
+    carousel.releasePointerCapture?.(event.pointerId);
+    dragState.current.isDragging = false;
+  };
+
+  const handleCarouselClickCapture = (event) => {
+    if (!dragState.current.suppressClick) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    window.setTimeout(() => {
+      dragState.current.suppressClick = false;
+    }, 0);
+  };
 
   useEffect(() => {
     if (!selectedProject) {
@@ -481,14 +547,7 @@ const Projects = () => {
           <h2>Selected Projects</h2>
         </motion.div>
 
-        <motion.div className="projects-header" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={revealVariants}>
-          <div className="projects-copy">
-            <p className="projects-kicker">GitHub Portfolio</p>
-            <p className="projects-intro">
-              Five focused case studies first, followed by a searchable project archive for the rest of my apps, packages, backend tools, AI experiments, and integrations.
-            </p>
-          </div>
-
+        <motion.div className="projects-header compact-projects-header" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={revealVariants}>
           <div className="projects-stats">
             {stats.map((stat, index) => (
               <div className={`stat-card ${index === 0 ? 'accent' : ''}`} data-pointer-glow key={stat.label}>
@@ -505,10 +564,21 @@ const Projects = () => {
             <h3>Best work to review first</h3>
           </div>
 
-          <div className="case-study-grid">
-            {caseStudyProjects.map((project, index) => (
-              <CaseStudyCard project={project} key={project.title} openProject={openProject} isFeatured={index === 0} />
+          <div
+            className="projects-carousel case-study-carousel"
+            aria-label="Auto-scrolling case studies"
+            onPointerDown={handleCarouselPointerDown}
+            onPointerMove={handleCarouselPointerMove}
+            onPointerUp={stopCarouselDrag}
+            onPointerCancel={stopCarouselDrag}
+            onPointerLeave={stopCarouselDrag}
+            onClickCapture={handleCarouselClickCapture}
+          >
+            <div className="projects-track case-study-track">
+            {caseStudyCarouselProjects.map((project, index) => (
+              <CaseStudyCard project={project} key={`${project.title}-${index}`} openProject={openProject} />
             ))}
+            </div>
           </div>
         </motion.div>
 
@@ -518,17 +588,6 @@ const Projects = () => {
         </motion.div>
 
         <motion.div className="projects-toolbar" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
-          <div className="project-search">
-            <FaSearch />
-            <input
-              type="search"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search repos, stacks, categories..."
-              aria-label="Search projects"
-            />
-          </div>
-
           <div className="project-filters" aria-label="Filter projects">
             {filterOptions.map((filter) => (
               <button
@@ -544,16 +603,25 @@ const Projects = () => {
         </motion.div>
 
         <div className="projects-result-row">
-          <span>{filteredProjects.length} of {moreProjects.length} more projects shown</span>
+          <span>{filteredProjects.length} of {moreProjects.length} projects in view</span>
           <span>{activeFilter} filter</span>
         </div>
 
-        <motion.div className="projects-grid" layout>
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
-            <motion.article
+        <motion.div
+          className="projects-carousel"
+          aria-label="Auto-scrolling project archive"
+          onPointerDown={handleCarouselPointerDown}
+          onPointerMove={handleCarouselPointerMove}
+          onPointerUp={stopCarouselDrag}
+          onPointerCancel={stopCarouselDrag}
+          onPointerLeave={stopCarouselDrag}
+          onClickCapture={handleCarouselClickCapture}
+        >
+          <div className="projects-track">
+            {carouselProjects.map((project, index) => (
+            <article
               className="project-card compact-project"
-              key={project.title}
+              key={`${project.title}-${index}`}
               onClick={() => openProject(project)}
               role="button"
               tabIndex={0}
@@ -564,11 +632,6 @@ const Projects = () => {
                 }
               }}
               data-pointer-glow
-              layout
-              initial={{ opacity: 0, y: 18, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 14, scale: 0.98 }}
-              transition={{ duration: 0.24, delay: Math.min(index * 0.015, 0.08) }}
               style={{ '--project-accent': project.accent }}
             >
               <div className="project-card-sheen" aria-hidden="true"></div>
@@ -578,15 +641,13 @@ const Projects = () => {
               </div>
               <p className="project-repo-name">{project.repoName}</p>
               <h3>{project.title}</h3>
-              <p>{project.description}</p>
-
               <div className="project-footer">
                 <TechStack project={project} />
                 <QuickProjectActions project={project} />
               </div>
-            </motion.article>
+            </article>
           ))}
-          </AnimatePresence>
+          </div>
         </motion.div>
       </div>
 
@@ -721,8 +782,6 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
         </div>
         <p className="project-repo-name">{project.repoName}</p>
         <h3>{project.title}</h3>
-        <p>{project.description}</p>
-
         <div className="case-study-outcome">
           <span>Outcome</span>
           <p>{project.outcome}</p>
