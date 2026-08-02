@@ -1,8 +1,12 @@
 import React, { useEffect, useRef } from 'react';
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import './Profile.css';
 import profilePhoto from '../assets/images/photo/azrullll.jpeg';
 import cvUrl from '../assets/CV.pdf';
-import { FaArrowRight, FaDownload, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaDownload, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { fadeScale, fadeUp, smoothEase, springHover, staggerContainer } from './motionConfig';
+import FancyTilt from './FancyTilt';
+import { celebrateAction } from '../utils/celebrate';
 
 const socialLinks = [
   {
@@ -18,8 +22,59 @@ const socialLinks = [
 ];
 const cvFileName = 'Azrul Amaline.pdf';
 
+const heroContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.06
+    }
+  }
+};
+
+const portraitVariants = {
+  hidden: {
+    opacity: 0,
+    y: 34,
+    rotate: -5,
+    scale: 0.97
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotate: 0,
+    scale: 1,
+    transition: {
+      duration: 0.38,
+      ease: smoothEase
+    }
+  }
+};
+
+const heroPanelVariants = {
+  hidden: {
+    opacity: 0,
+    y: 22
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.34,
+      ease: smoothEase,
+      staggerChildren: 0.04,
+      delayChildren: 0.02
+    }
+  }
+};
+
 const Profile = () => {
   const profileRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
+  const bannerX = useMotionValue(0);
+  const bannerY = useMotionValue(0);
+  const smoothBannerX = useSpring(bannerX, { stiffness: 70, damping: 18, mass: 0.35 });
+  const smoothBannerY = useSpring(bannerY, { stiffness: 70, damping: 18, mass: 0.35 });
 
   useEffect(() => {
     const section = profileRef.current;
@@ -38,27 +93,39 @@ const Profile = () => {
       element.style.setProperty('--float-duration', `${Math.random() * 4 + 6}s`);
     });
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        const revealTargets = section.querySelectorAll('.profile-image, .hero-panel, .hero-cta-link, .hero-availability, .social-link');
-        revealTargets.forEach((element, index) => {
-          element.style.transitionDelay = `${Math.min(index * 0.04, 0.28)}s`;
-          element.classList.add('visible');
-        });
-
-        observer.disconnect();
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
+    return undefined;
   }, []);
+
+  useEffect(() => {
+    const section = profileRef.current;
+    const canTrackPointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (!section || shouldReduceMotion || !canTrackPointer) {
+      return undefined;
+    }
+
+    const handlePointerMove = (event) => {
+      const rect = section.getBoundingClientRect();
+      const xProgress = (event.clientX - rect.left) / rect.width - 0.5;
+      const yProgress = (event.clientY - rect.top) / rect.height - 0.5;
+
+      bannerX.set(xProgress * 34);
+      bannerY.set(yProgress * 26);
+    };
+
+    const resetBanner = () => {
+      bannerX.set(0);
+      bannerY.set(0);
+    };
+
+    section.addEventListener('pointermove', handlePointerMove);
+    section.addEventListener('pointerleave', resetBanner);
+
+    return () => {
+      section.removeEventListener('pointermove', handlePointerMove);
+      section.removeEventListener('pointerleave', resetBanner);
+    };
+  }, [bannerX, bannerY, shouldReduceMotion]);
 
   return (
     <section id="home" className="profile-section" ref={profileRef}>
@@ -84,57 +151,69 @@ const Profile = () => {
         <div className="shape square float-animation"></div>
       </div>
 
-      <div className="profile-content">
+      <motion.div
+        className="profile-content"
+        variants={heroContainer}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="profile-image-container">
-          <div className="profile-image" data-pointer-glow>
-            <div className="image-wrapper">
-              <div className="image-container">
-                <img src={profilePhoto} alt="Azrul Amaline" className="profile-photo" />
-                <div className="liquid-effect"></div>
-                <div className="glow-effect"></div>
-                <div className="ring-animation ring-1"></div>
-                <div className="ring-animation ring-2"></div>
-                <div className="ring-animation ring-3"></div>
+          <motion.div
+            className="profile-image"
+            variants={portraitVariants}
+            style={{ x: smoothBannerX, y: smoothBannerY }}
+            data-pointer-glow
+          >
+            <FancyTilt className="profile-tilt" glare scale={1.015} tiltMaxAngleX={5} tiltMaxAngleY={5}>
+              <div className="image-wrapper">
+                <div className="image-container">
+                  <img src={profilePhoto} alt="Azrul Amaline" className="profile-photo" />
+                  <div className="liquid-effect"></div>
+                  <div className="glow-effect"></div>
+                  <div className="ring-animation ring-1"></div>
+                  <div className="ring-animation ring-2"></div>
+                  <div className="ring-animation ring-3"></div>
+                </div>
+                <div className="reflection"></div>
               </div>
-              <div className="reflection"></div>
-            </div>
-          </div>
+            </FancyTilt>
+          </motion.div>
         </div>
 
         <div className="profile-text-container">
-          <div className="profile-text hero-panel" data-pointer-glow>
-            <p className="hero-kicker">Flutter Developer</p>
+          <motion.div className="profile-text hero-panel" variants={heroPanelVariants} data-pointer-glow>
+            <motion.p className="hero-kicker" variants={fadeUp}>I'm</motion.p>
 
-            <div className="name-container">
+            <motion.div className="name-container" variants={fadeScale}>
               <h1 className="name-text">
                 Azrul <span className="name-last">Amaline</span>
               </h1>
               <div className="name-glow"></div>
               <div className="name-underline"></div>
-            </div>
+            </motion.div>
 
-            <div className="hero-availability" data-pointer-glow>
-              <span>Available for Flutter, Django/Python, and product UI work</span>
-            </div>
+            <motion.p className="hero-role" variants={fadeUp}>
+              Flutter Developer & Backend Engineer
+            </motion.p>
 
-            <div className="hero-actions" aria-label="Primary portfolio actions">
-              <a href="#projects" className="hero-cta-link hero-cta-primary" data-pointer-glow>
-                View Projects
-                <FaArrowRight />
-              </a>
-              <a href={cvUrl} className="hero-cta-link hero-cta-download" download={cvFileName} data-pointer-glow>
+            <motion.p className="hero-lead" variants={fadeUp}>
+              I design and develop clean mobile apps, practical backend systems, and AI-assisted tools that turn complex ideas into usable software.
+            </motion.p>
+
+            <motion.div className="hero-actions" aria-label="Primary portfolio actions" variants={staggerContainer}>
+              <motion.a href={cvUrl} className="hero-cta-link hero-cta-download" download={cvFileName} onClick={celebrateAction} variants={fadeUp} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }} transition={springHover} data-pointer-glow>
                 <FaDownload />
                 Download CV
-              </a>
-              <a href="#contact" className="hero-cta-link hero-cta-secondary" data-pointer-glow>
+              </motion.a>
+              <motion.a href="#contact" className="hero-cta-link hero-cta-secondary" onClick={celebrateAction} variants={fadeUp} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }} transition={springHover} data-pointer-glow>
                 <FaEnvelope />
                 Hire Me / Contact
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
-            <div className="profile-social-dock" aria-label="Social profile links">
+            <motion.div className="profile-social-dock" aria-label="Social profile links" variants={staggerContainer}>
               {socialLinks.map(({ platform, icon, url }) => (
-                <a
+                <motion.a
                   key={platform}
                   href={url}
                   target="_blank"
@@ -142,15 +221,19 @@ const Profile = () => {
                   className={`social-link ${platform.toLowerCase()}`}
                   data-pointer-glow
                   aria-label={`Open ${platform} profile`}
+                  variants={fadeUp}
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={springHover}
                 >
                   <span className="link-icon">{icon}</span>
                   <span className="link-text">{platform}</span>
-                </a>
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

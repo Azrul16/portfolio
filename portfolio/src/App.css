@@ -125,7 +125,7 @@ html {
   background:
     repeating-radial-gradient(ellipse at 50% 50%, transparent 0 42px, rgba(201, 163, 255, 0.24) 43px 44px, transparent 45px 86px);
   transform: rotate(var(--wave-rotate)) translate3d(0, 0, 0);
-  animation: site-water-wave 9s linear infinite alternate;
+  animation: site-water-wave 18s linear infinite alternate;
   mix-blend-mode: screen;
   will-change: transform;
 }
@@ -135,7 +135,7 @@ html {
   opacity: 0.06;
   background:
     repeating-radial-gradient(ellipse at 52% 45%, transparent 0 56px, rgba(125, 211, 252, 0.22) 57px 58px, transparent 59px 112px);
-  animation-duration: 12s;
+  animation-duration: 24s;
   animation-direction: reverse;
 }
 
@@ -196,17 +196,18 @@ main > section {
   background: transparent;
   border: 0;
   box-shadow: none;
-  content-visibility: auto;
-  contain-intrinsic-size: 760px;
-}
-
-main > section#home {
-  content-visibility: visible;
-  contain-intrinsic-size: auto;
 }
 
 main > section + section {
   margin-top: -0.2rem;
+}
+
+.section-loading {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  color: rgba(240, 230, 255, 0.62);
+  font-weight: 800;
 }
 
 [data-pointer-glow] {
@@ -264,6 +265,10 @@ main > section + section {
   .background-aurora {
     filter: blur(42px);
     opacity: 0.22;
+  }
+
+  .site-wave-flow {
+    animation: none;
   }
 
   .about-section h2,
@@ -328,6 +333,15 @@ main > section + section {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
   [data-pointer-glow]::after {
     display: none;
   }
@@ -590,6 +604,18 @@ body.light-mode [data-pointer-glow]::after {
   .wave-flow-two {
     display: none;
   }
+
+  .background-aurora {
+    filter: blur(24px);
+    opacity: 0.16;
+  }
+}
+
+@media (max-width: 520px) {
+  .starfield-primary,
+  .background-aurora {
+    display: none;
+  }
 }
 
 /* Final contrast pass for light mode. Keep this at the end so it wins. */
@@ -687,6 +713,8 @@ body.light-mode .project-card,
 body.light-mode .contact-card,
 body.light-mode .services-block,
 body.light-mode .service-item,
+body.light-mode .availability-card,
+body.light-mode .collaboration-shell,
 body.light-mode .info-item,
 body.light-mode .contact-action,
 body.light-mode .project-toolbar,
@@ -734,6 +762,32 @@ body.light-mode .info-content h3,
 body.light-mode .form-card-topline h3,
 body.light-mode .skill-name {
   color: var(--light-ink);
+}
+
+body.light-mode .availability-card h3,
+body.light-mode .collaboration-copy h2 {
+  color: var(--light-ink);
+}
+
+body.light-mode .availability-card p,
+body.light-mode .collaboration-copy p:last-child {
+  color: var(--light-ink-soft);
+}
+
+body.light-mode .command-palette {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 242, 255, 0.96));
+}
+
+body.light-mode .command-palette-header h2,
+body.light-mode .command-palette input,
+body.light-mode .command-list button {
+  color: var(--light-ink);
+}
+
+body.light-mode .command-palette input,
+body.light-mode .command-list button:hover,
+body.light-mode .command-list button:focus-visible {
+  background: rgba(103, 77, 145, 0.08);
 }
 
 body.light-mode .project-category,
@@ -883,4 +937,102 @@ body.light-mode .service-item {
     radial-gradient(circle at 18% 8%, rgba(126, 87, 194, 0.1), transparent 34%),
     rgba(255, 255, 255, 0.58);
   box-shadow: none;
+}
+
+/* Cleaner standard theme pass: keep Tahoe glass, reduce noisy glow. */
+.background-aurora,
+.site-wave-flow,
+.starfield-secondary,
+.starfield-tertiary {
+  display: none;
+}
+
+.starfield-primary {
+  opacity: 0.08;
+}
+
+[data-pointer-glow]::after {
+  opacity: 0 !important;
+}
+
+.section-title-block h2 {
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+
+.section-title-block h2::first-letter {
+  color: #8b5cf6;
+}
+
+.section-title-block::after {
+  width: 96px;
+  background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+  box-shadow: none;
+}
+
+.contact-bg-gradient,
+.projects-section::before,
+.certificates-orb,
+.certificates-grid-glow {
+  display: none;
+}
+
+.contact-card,
+.project-card,
+.certificate-card,
+.skill-item,
+.timeline-content,
+.developer-console-shell,
+.services-block,
+.service-item,
+.collaboration-shell {
+  box-shadow: none !important;
+}
+
+.cursor-glow-ring {
+  opacity: 0.48;
+}
+
+/* Final light-mode contrast fixes after the cleaner dark-theme pass. */
+body.light-mode .section-title-block h2 {
+  color: #211431;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+}
+
+body.light-mode .section-title-block h2::first-letter,
+body.light-mode .availability-heading h2::first-letter {
+  color: #8b5cf6;
+}
+
+body.light-mode .availability-section {
+  background: #f8f5ff;
+}
+
+body.light-mode .availability-heading h2,
+body.light-mode .availability-row h3 {
+  color: #211431;
+}
+
+body.light-mode .availability-heading p,
+body.light-mode .availability-row p {
+  color: #4a3a61;
+}
+
+body.light-mode .availability-row {
+  color: #211431;
+  border-bottom-color: rgba(109, 40, 217, 0.18);
+}
+
+body.light-mode .availability-row.active {
+  background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+}
+
+body.light-mode .availability-row.active h3,
+body.light-mode .availability-row.active p {
+  color: #ffffff;
 }

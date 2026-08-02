@@ -24,38 +24,38 @@ const educationList = [
 ];
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.16,
-      delayChildren: 0.08
+      staggerChildren: 0.045,
+      delayChildren: 0.02
     }
   }
 };
 
 const itemVariants = {
   hidden: {
-    opacity: 0,
-    y: 34
+    opacity: 1,
+    y: 0
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.82,
+      duration: 0.34,
       ease: [0.22, 1, 0.36, 1]
     }
   }
 };
 
 const lineVariants = {
-  hidden: { scaleY: 0, opacity: 0.35 },
+  hidden: { scaleY: 1, opacity: 1 },
   visible: {
     scaleY: 1,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.32,
       ease: [0.16, 1, 0.3, 1]
     }
   }
@@ -86,17 +86,17 @@ const Education = () => {
               key={edu.institution}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              transition={{ duration: 0.28, ease: 'easeOut' }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
             >
               <div className="timeline-marker">
                 <motion.span
                   className="timeline-dot"
-                  initial={{ scale: 0.6, opacity: 0 }}
+                  initial={{ scale: 1, opacity: 1 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{
-                    duration: 0.45,
-                    delay: 0.12 + index * 0.08,
+                    duration: 0.24,
+                    delay: 0.04 + index * 0.035,
                     ease: [0.22, 1, 0.36, 1]
                   }}
                 ></motion.span>
@@ -104,12 +104,12 @@ const Education = () => {
               <div className="timeline-body">
                 <motion.div
                   className="timeline-year"
-                  initial={{ opacity: 0, x: -18 }}
+                  initial={{ opacity: 1, x: 0 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.7 }}
                   transition={{
-                    duration: 0.55,
-                    delay: 0.14 + index * 0.08,
+                    duration: 0.28,
+                    delay: 0.04 + index * 0.035,
                     ease: [0.22, 1, 0.36, 1]
                   }}
                 >
@@ -122,12 +122,12 @@ const Education = () => {
                     {edu.details.map((detail) => (
                       <motion.li
                         key={detail}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 1, y: 0 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.7 }}
                         transition={{
-                          duration: 0.4,
-                          delay: 0.2 + index * 0.08,
+                          duration: 0.24,
+                          delay: 0.06 + index * 0.035,
                           ease: [0.22, 1, 0.36, 1]
                         }}
                       >

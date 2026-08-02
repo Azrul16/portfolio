@@ -2,13 +2,17 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
-import DeveloperConsole from './components/DeveloperConsole';
+import Footer from './components/Footer';
+import CursorGlow from './components/CursorGlow';
+import IntroLoader from './components/IntroLoader';
+import CommandPalette from './components/CommandPalette';
+import Availability from './components/Availability';
+import Collaboration from './components/Collaboration';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 
 function MainSite() {
@@ -45,6 +49,7 @@ function MainSite() {
 
   return (
     <div className="App">
+      <IntroLoader />
       <div className="site-background" aria-hidden="true">
         <div className="background-aurora aurora-one"></div>
         <div className="background-aurora aurora-two"></div>
@@ -56,14 +61,17 @@ function MainSite() {
         <div className="starfield starfield-tertiary"></div>
       </div>
 
+      <CursorGlow />
+      <CommandPalette />
       <Navbar />
       <main>
         <Profile />
-        <DeveloperConsole />
+        <Availability />
         <Education />
         <Certificates />
         <Skills />
         <Projects />
+        <Collaboration />
 
         {/* <Reviews />
         <Blog /> */}

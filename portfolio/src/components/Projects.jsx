@@ -2,8 +2,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Projects.css';
 import { SiCplusplus, SiFirebase, SiFlutter, SiJavascript, SiNodedotjs, SiPython } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
-import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaTimes } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaGripHorizontal, FaList, FaTimes } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
+import CountUp from 'react-countup';
+import FancyTilt from './FancyTilt';
+import { springHover, staggerContainer } from './motionConfig';
 
 const projectList = [
   {
@@ -343,12 +346,12 @@ const projectList = [
 ];
 
 const revealVariants = {
-  hidden: { opacity: 0, y: 26 },
+  hidden: { opacity: 1, y: 0 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.42,
+      duration: 0.24,
       ease: [0.22, 1, 0.36, 1]
     }
   }
@@ -415,6 +418,8 @@ const projectMatchesFilter = (project, activeFilter) => {
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [archiveView, setArchiveView] = useState('carousel');
+  const projectCloseButtonRef = useRef(null);
   const dragState = useRef({
     isDragging: false,
     startX: 0,
@@ -540,6 +545,42 @@ const Projects = () => {
     };
   }, [selectedProject]);
 
+  useEffect(() => {
+    if (!selectedProject) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      projectCloseButtonRef.current?.focus();
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [selectedProject]);
+
+  const handleProjectModalKeyDown = (event) => {
+    if (event.key !== 'Tab') {
+      return;
+    }
+
+    const focusableElements = event.currentTarget.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!firstElement || !lastElement) {
+      return;
+    }
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
+
   return (
     <section id="projects" className="projects-section">
       <div className="projects-shell">
@@ -548,14 +589,24 @@ const Projects = () => {
         </motion.div>
 
         <motion.div className="projects-header compact-projects-header" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={revealVariants}>
-          <div className="projects-stats">
+          <motion.div className="projects-stats" variants={staggerContainer}>
             {stats.map((stat, index) => (
-              <div className={`stat-card ${index === 0 ? 'accent' : ''}`} data-pointer-glow key={stat.label}>
-                <span className="stat-value">{stat.value}</span>
-                <span className="stat-label">{stat.label}</span>
-              </div>
+              <FancyTilt className="stat-card-tilt" glare scale={1.015} tiltMaxAngleX={4} tiltMaxAngleY={4} key={stat.label}>
+                <motion.div
+                  className={`stat-card ${index === 0 ? 'accent' : ''}`}
+                  data-pointer-glow
+                  variants={revealVariants}
+                  whileHover={{ y: -3 }}
+                  transition={springHover}
+                >
+                  <span className="stat-value">
+                    <CountUp end={stat.value} duration={0.9} enableScrollSpy scrollSpyOnce />
+                  </span>
+                  <span className="stat-label">{stat.label}</span>
+                </motion.div>
+              </FancyTilt>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div className="case-study-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.14 }} variants={revealVariants}>
@@ -566,7 +617,7 @@ const Projects = () => {
 
           <div
             className="projects-carousel case-study-carousel"
-            aria-label="Auto-scrolling case studies"
+            aria-label="Scrollable case studies"
             onPointerDown={handleCarouselPointerDown}
             onPointerMove={handleCarouselPointerMove}
             onPointerUp={stopCarouselDrag}
@@ -590,15 +641,26 @@ const Projects = () => {
         <motion.div className="projects-toolbar" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
           <div className="project-filters" aria-label="Filter projects">
             {filterOptions.map((filter) => (
-              <button
+              <motion.button
                 type="button"
                 key={filter}
                 className={`project-filter ${activeFilter === filter ? 'active' : ''}`}
                 onClick={() => setActiveFilter(filter)}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                transition={springHover}
               >
                 {filter}
-              </button>
+              </motion.button>
             ))}
+          </div>
+          <div className="project-view-toggle" aria-label="Project view mode">
+            <button type="button" className={archiveView === 'carousel' ? 'active' : ''} onClick={() => setArchiveView('carousel')} aria-label="Show carousel view" aria-pressed={archiveView === 'carousel'}>
+              <FaGripHorizontal />
+            </button>
+            <button type="button" className={archiveView === 'grid' ? 'active' : ''} onClick={() => setArchiveView('grid')} aria-label="Show grid view" aria-pressed={archiveView === 'grid'}>
+              <FaList />
+            </button>
           </div>
         </motion.div>
 
@@ -607,63 +669,58 @@ const Projects = () => {
           <span>{activeFilter} filter</span>
         </div>
 
-        <motion.div
-          className="projects-carousel"
-          aria-label="Auto-scrolling project archive"
-          onPointerDown={handleCarouselPointerDown}
-          onPointerMove={handleCarouselPointerMove}
-          onPointerUp={stopCarouselDrag}
-          onPointerCancel={stopCarouselDrag}
-          onPointerLeave={stopCarouselDrag}
-          onClickCapture={handleCarouselClickCapture}
-        >
-          <div className="projects-track">
-            {carouselProjects.map((project, index) => (
-            <article
-              className="project-card compact-project"
-              key={`${project.title}-${index}`}
-              onClick={() => openProject(project)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  openProject(project);
-                }
-              }}
-              data-pointer-glow
-              style={{ '--project-accent': project.accent }}
-            >
-              <div className="project-card-sheen" aria-hidden="true"></div>
-              <div className="project-topline">
-                <p className="project-category">{project.category}</p>
-                <span className="project-status subtle">{project.status}</span>
-              </div>
-              <p className="project-repo-name">{project.repoName}</p>
-              <h3>{project.title}</h3>
-              <div className="project-footer">
-                <TechStack project={project} />
-                <QuickProjectActions project={project} />
-              </div>
-            </article>
-          ))}
-          </div>
-        </motion.div>
+        {archiveView === 'carousel' ? (
+          <motion.div
+            className="projects-carousel"
+            aria-label="Scrollable project archive"
+            onPointerDown={handleCarouselPointerDown}
+            onPointerMove={handleCarouselPointerMove}
+            onPointerUp={stopCarouselDrag}
+            onPointerCancel={stopCarouselDrag}
+            onPointerLeave={stopCarouselDrag}
+            onClickCapture={handleCarouselClickCapture}
+          >
+            <div className="projects-track">
+              {carouselProjects.map((project, index) => (
+                <ProjectArchiveCard project={project} openProject={openProject} key={`${project.title}-${index}`} />
+              ))}
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div className="projects-scan-grid" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.08 }} variants={staggerContainer}>
+            {filteredProjects.map((project) => (
+              <ProjectArchiveCard project={project} openProject={openProject} key={project.title} />
+            ))}
+          </motion.div>
+        )}
       </div>
 
-      {selectedProject && (
-        <div className="project-modal-overlay" onClick={closeProject} role="presentation">
+      <AnimatePresence>
+        {selectedProject && (
           <motion.div
-            className="project-modal project-modal-simple"
-            onClick={(event) => event.stopPropagation()}
-            data-pointer-glow
-            initial={{ opacity: 0, y: 20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.98 }}
-            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            style={{ '--project-accent': selectedProject.accent }}
+            className="project-modal-overlay"
+            onClick={closeProject}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+            aria-describedby="project-modal-description"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.14 }}
+            onKeyDown={handleProjectModalKeyDown}
           >
-            <button type="button" className="project-modal-close" onClick={closeProject} aria-label="Close project details">
+            <motion.div
+              className="project-modal project-modal-simple"
+              onClick={(event) => event.stopPropagation()}
+              data-pointer-glow
+              initial={{ opacity: 0, y: 14, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 14, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              style={{ '--project-accent': selectedProject.accent }}
+            >
+            <button ref={projectCloseButtonRef} type="button" className="project-modal-close" onClick={closeProject} aria-label="Close project details">
               <FaTimes />
             </button>
 
@@ -673,25 +730,23 @@ const Projects = () => {
                 <span className="project-status">{selectedProject.status}</span>
               </div>
               <p className="project-repo-name modal-repo-name">{selectedProject.repoName}</p>
-              <h3>{selectedProject.title}</h3>
-              <p className="project-modal-description">{selectedProject.details}</p>
+              <h3 id="project-modal-title">{selectedProject.title}</h3>
+              <p className="project-modal-description" id="project-modal-description">{selectedProject.details}</p>
 
-              {selectedProject.problem && (
-                <div className="project-proof-block">
-                  <div className="project-proof-card project-proof-wide">
-                    <span className="modal-label">Problem Solved</span>
-                    <p>{selectedProject.problem}</p>
-                  </div>
-                  <div className="project-proof-card">
-                    <span className="modal-label">My Role</span>
-                    <p>{selectedProject.role}</p>
-                  </div>
-                  <div className="project-proof-card">
-                    <span className="modal-label">What I Improved</span>
-                    <p>{selectedProject.learning}</p>
-                  </div>
+              <div className="project-proof-block">
+                <div className="project-proof-card project-proof-wide">
+                  <span className="modal-label">Problem Solved</span>
+                  <p>{selectedProject.problem || selectedProject.description}</p>
                 </div>
-              )}
+                <div className="project-proof-card">
+                  <span className="modal-label">My Role</span>
+                  <p>{selectedProject.role || 'Solo developer responsible for planning, implementation, interface decisions, and repository maintenance.'}</p>
+                </div>
+                <div className="project-proof-card">
+                  <span className="modal-label">What I Improved</span>
+                  <p>{selectedProject.learning || 'Improved practical product thinking, UI structure, and implementation discipline through a focused build.'}</p>
+                </div>
+              </div>
 
               <div className="project-modal-grid">
                 <div className="project-modal-card">
@@ -704,26 +759,24 @@ const Projects = () => {
                 </div>
               </div>
 
-              {selectedProject.features && (
-                <div className="project-proof-lists">
-                  <div className="project-proof-list">
-                    <span className="modal-label">Key Features</span>
-                    <ul>
-                      {selectedProject.features.map((feature) => (
-                        <li key={feature}>{feature}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="project-proof-list">
-                    <span className="modal-label">Architecture / Tools</span>
-                    <ul>
-                      {selectedProject.architecture.map((tool) => (
-                        <li key={tool}>{tool}</li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="project-proof-lists">
+                <div className="project-proof-list">
+                  <span className="modal-label">Key Features</span>
+                  <ul>
+                    {(selectedProject.features || selectedProject.highlights).map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
                 </div>
-              )}
+                <div className="project-proof-list">
+                  <span className="modal-label">Architecture / Tools</span>
+                  <ul>
+                    {(selectedProject.architecture || getTechLabels(selectedProject)).map((tool) => (
+                      <li key={tool}>{tool}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
 
               <div className="project-highlights modal-highlights">
                 {selectedProject.highlights.map((item) => (
@@ -736,12 +789,46 @@ const Projects = () => {
                 <ProjectLinks project={selectedProject} />
               </div>
             </div>
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </section>
   );
 };
+
+const ProjectArchiveCard = ({ project, openProject }) => (
+  <motion.article
+    className="project-card compact-project"
+    onClick={() => openProject(project)}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProject(project);
+      }
+    }}
+    data-pointer-glow
+    style={{ '--project-accent': project.accent }}
+    variants={revealVariants}
+    whileHover={{ y: -4, scale: 1.005 }}
+    whileTap={{ scale: 0.99 }}
+    transition={springHover}
+  >
+    <div className="project-card-sheen" aria-hidden="true"></div>
+    <div className="project-topline">
+      <p className="project-category">{project.category}</p>
+      <span className="project-status subtle">{project.status}</span>
+    </div>
+    <p className="project-repo-name">{project.repoName}</p>
+    <h3>{project.title}</h3>
+    <div className="project-footer">
+      <TechStack project={project} />
+      <QuickProjectActions project={project} />
+    </div>
+  </motion.article>
+);
 
 const TechStack = ({ project }) => {
   return (
@@ -764,7 +851,7 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
   };
 
   return (
-    <article
+    <motion.article
       className={`project-card case-study-card ${isFeatured ? 'case-study-featured' : ''}`}
       onClick={() => openProject(project)}
       role="button"
@@ -772,6 +859,9 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
       onKeyDown={handleKeyDown}
       data-pointer-glow
       style={{ '--project-accent': project.accent }}
+      whileHover={{ y: -4, scale: 1.005 }}
+      whileTap={{ scale: 0.99 }}
+      transition={springHover}
     >
       <ProjectPreview project={project} />
 
@@ -798,7 +888,7 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
           <ProjectLinks project={project} />
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

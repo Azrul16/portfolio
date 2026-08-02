@@ -9,6 +9,7 @@ import {
 import { RiFirebaseFill } from 'react-icons/ri';
 import { FaWindows, FaFingerprint, FaSkull, FaNetworkWired, FaDatabase, FaKey, FaUserSecret } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { fadeUp, springHover, staggerContainer, viewportOnce } from './motionConfig';
 
 const allSkills = [
   { name: 'Flutter', icon: <SiFlutter size="3.5em" />, color: '#02569B' },
@@ -43,20 +44,21 @@ const Skills = () => {
       <div className="skills-shell">
         <motion.div
           className="section-title-block"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 0.28 }}
+          viewport={viewportOnce}
+          variants={fadeUp}
         >
           <h2>Core Expertise</h2>
         </motion.div>
 
         <motion.div
           className="skills-grid skills-grid-single-page"
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.1 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
+          variants={staggerContainer}
         >
           {allSkills.map((skill) => (
             <SkillItem key={skill.name} skill={skill} />
@@ -72,9 +74,10 @@ const SkillItem = ({ skill }) => {
     <motion.div
       className="skill-item"
       style={{ '--hover-color': skill.color, '--pointer-glow-color': `${skill.color}33` }}
-      whileHover={{ y: -4, boxShadow: `0 0 22px ${skill.color}30` }}
+      variants={fadeUp}
+      whileHover={{ y: -6, scale: 1.02, boxShadow: `0 0 22px ${skill.color}30` }}
       whileTap={{ scale: 0.98 }}
-      transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+      transition={springHover}
       data-pointer-glow
     >
       <div className="skill-logo">{skill.icon}</div>

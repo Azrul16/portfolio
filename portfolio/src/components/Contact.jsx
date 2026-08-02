@@ -10,14 +10,12 @@ import {
   FaRegEnvelopeOpen,
   FaHandshake,
   FaMobileAlt,
-  FaTools,
-  FaDatabase,
-  FaServer,
-  FaMagic,
-  FaWrench
+  FaCopy
 } from 'react-icons/fa';
 import { IoMdSend } from 'react-icons/io';
 import './Contact.css';
+import { fadeUp, springHover, viewportOnce } from './motionConfig';
+import { celebrateAction } from '../utils/celebrate';
 
 const emailJsConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -51,34 +49,6 @@ const contactActions = [
     href: 'https://www.linkedin.com/in/azrul-amaline/',
     tone: 'linkedin',
     external: true
-  }
-];
-
-const services = [
-  {
-    icon: <FaMobileAlt />,
-    title: 'Flutter mobile apps',
-    meta: 'Flutter / Dart'
-  },
-  {
-    icon: <FaDatabase />,
-    title: 'Firebase app backends',
-    meta: 'Firebase'
-  },
-  {
-    icon: <FaServer />,
-    title: 'Django/Python backend APIs',
-    meta: 'Python'
-  },
-  {
-    icon: <FaMagic />,
-    title: 'AI-assisted tools',
-    meta: 'AI tools'
-  },
-  {
-    icon: <FaWrench />,
-    title: 'Bug fixing and app improvement',
-    meta: 'Refine'
   }
 ];
 
@@ -132,6 +102,7 @@ const Contact = () => {
       setStatus('Message sent successfully. I will get back to you soon.');
       setStatusType('success');
       setFormData({ name: '', email: '', message: '' });
+      celebrateAction(e);
     } catch (error) {
       console.error('EmailJS send failed:', error);
       setStatus('Message could not be sent right now. Please try again or email me directly.');
@@ -141,17 +112,26 @@ const Contact = () => {
     }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 26 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.72,
-        ease: [0.22, 1, 0.36, 1]
-      }
+  const handleCopyEmail = async (event) => {
+    try {
+      await navigator.clipboard.writeText('azrul.amaline16@gmail.com');
+      setStatus('Email copied to clipboard.');
+      setStatusType('success');
+      celebrateAction(event);
+    } catch {
+      setStatus('Copy failed. You can still email me directly at azrul.amaline16@gmail.com.');
+      setStatusType('error');
     }
   };
+
+  const fallbackMailHref = `mailto:azrul.amaline16@gmail.com?subject=${encodeURIComponent(`Portfolio message from ${formData.name.trim() || 'a visitor'}`)}&body=${encodeURIComponent(
+    [
+      formData.message.trim() || 'Hi Azrul, I want to discuss a project.',
+      '',
+      `Name: ${formData.name.trim() || ''}`,
+      `Email: ${formData.email.trim() || ''}`
+    ].join('\n')
+  )}`;
 
   return (
     <section id="contact" className="contact-section">
@@ -163,24 +143,8 @@ const Contact = () => {
           <h2>Get In Touch</h2>
         </div>
 
-        <motion.div className="services-block" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={cardVariants}>
-          <div className="services-heading">
-            <FaTools />
-            <h3>What I Can Build</h3>
-          </div>
-          <div className="services-grid">
-            {services.map((service) => (
-              <article className="service-item" key={service.title} data-pointer-glow>
-                <span className="service-icon">{service.icon}</span>
-                <h4>{service.title}</h4>
-                <span className="service-meta">{service.meta}</span>
-              </article>
-            ))}
-          </div>
-        </motion.div>
-
         <div className="contact-columns">
-          <motion.div className="contact-column info-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
+          <motion.div className="contact-column info-column" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
             <div className="contact-card info-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
@@ -194,17 +158,18 @@ const Contact = () => {
                     <p>Jhenidah, Khulna, Bangladesh</p>
                   </div>
                 </div>
-                <a
-                  className="info-item info-link-item"
-                  href="mailto:azrul.amaline16@gmail.com?subject=Portfolio%20Contact"
-                  aria-label="Email Azrul Amaline"
-                >
+                <div className="info-item email-info-item">
                   <div className="info-icon"><FaEnvelope /></div>
                   <div className="info-content">
                     <h3>Email</h3>
-                    <span>azrul.amaline16@gmail.com</span>
+                    <span className="email-line">
+                      <a href="mailto:azrul.amaline16@gmail.com?subject=Portfolio%20Contact">azrul.amaline16@gmail.com</a>
+                      <button type="button" className="copy-email-icon-btn" onClick={handleCopyEmail} aria-label="Copy email address">
+                        <FaCopy />
+                      </button>
+                    </span>
                   </div>
-                </a>
+                </div>
                 <div className="info-item">
                   <div className="info-icon"><FaPhone /></div>
                   <div className="info-content">
@@ -216,7 +181,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          <motion.div className="contact-column social-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
+          <motion.div className="contact-column social-column" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
             <div className="contact-card social-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
@@ -231,8 +196,10 @@ const Contact = () => {
                     rel={action.external ? 'noopener noreferrer' : undefined}
                     className={`contact-action contact-action-${action.tone}`}
                     aria-label={action.label}
+                    onClick={action.tone === 'primary' || action.tone === 'accent' ? celebrateAction : undefined}
                     whileHover={{ y: -4, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
+                    transition={springHover}
                     data-pointer-glow
                   >
                     <span className="contact-action-icon">{action.icon}</span>
@@ -243,7 +210,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          <motion.div className="contact-column form-column" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
+          <motion.div className="contact-column form-column" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
             <form className="contact-card form-card" onSubmit={handleSubmit} data-pointer-glow>
               <div className="card-glow"></div>
               <div className="form-card-topline">
@@ -271,7 +238,7 @@ const Contact = () => {
                 <span className="message-count">{formData.message.length} characters</span>
               </div>
 
-              <motion.button type="submit" className="submit-btn" whileHover={{ scale: 1.01, boxShadow: '0 10px 28px rgba(159, 122, 234, 0.45)' }} whileTap={{ scale: 0.98 }} disabled={isSubmitting} data-pointer-glow>
+              <motion.button type="submit" className="submit-btn" whileHover={{ scale: 1.01, boxShadow: '0 10px 28px rgba(159, 122, 234, 0.45)' }} whileTap={{ scale: 0.98 }} transition={springHover} disabled={isSubmitting} data-pointer-glow>
                 <span className="btn-content">
                   <span className="btn-text">{isSubmitting ? 'Sending Message' : 'Send Message'}</span>
                   <span className="btn-icon">{isSubmitting ? <IoMdSend /> : <FaRegEnvelopeOpen />}</span>
@@ -281,9 +248,14 @@ const Contact = () => {
 
               <AnimatePresence>
                 {status && (
-                  <motion.p className={`status-message status-${statusType}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                    {status}
-                  </motion.p>
+                  <motion.div className={`status-message status-${statusType}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+                    <p>{status}</p>
+                    {statusType === 'error' && (
+                      <a className="status-fallback-link" href={fallbackMailHref}>
+                        Open email instead
+                      </a>
+                    )}
+                  </motion.div>
                 )}
               </AnimatePresence>
             </form>

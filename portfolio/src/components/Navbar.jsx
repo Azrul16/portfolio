@@ -4,6 +4,7 @@ import { FaBriefcase, FaDownload, FaGithub, FaLinkedin, FaMoon, FaSun, FaTwitter
 import './Navbar.css';
 import logo from '../assets/images/logo/logo.png';
 import cvUrl from '../assets/CV.pdf';
+import { celebrateAction } from '../utils/celebrate';
 
 const navItems = [
   { label: 'Home', id: 'home' },
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [activeSection, setActiveSection] = useState('home');
+  const [hoveredSection, setHoveredSection] = useState(null);
   const scrolledRef = useRef(false);
   const activeSectionRef = useRef('home');
   const [theme, setTheme] = useState(() => {
@@ -124,6 +126,38 @@ const Navbar = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
+  useEffect(() => {
+    const main = document.querySelector('main');
+    const canTrackPointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (!main || !canTrackPointer) {
+      return undefined;
+    }
+
+    const sectionIds = new Set(navItems.map((item) => item.id));
+
+    const handlePointerMove = (event) => {
+      const section = event.target.closest?.('section[id]');
+      const sectionId = section?.id;
+
+      if (sectionId && sectionIds.has(sectionId)) {
+        setHoveredSection((current) => (current === sectionId ? current : sectionId));
+      }
+    };
+
+    const handlePointerLeave = () => {
+      setHoveredSection(null);
+    };
+
+    main.addEventListener('pointermove', handlePointerMove, { passive: true });
+    main.addEventListener('pointerleave', handlePointerLeave);
+
+    return () => {
+      main.removeEventListener('pointermove', handlePointerMove);
+      main.removeEventListener('pointerleave', handlePointerLeave);
+    };
+  }, []);
+
   const handleHamburgerClick = () => {
     setMenuOpen((current) => !current);
   };
@@ -153,17 +187,20 @@ const Navbar = () => {
   const handleLinkClick = (event, sectionId) => {
     event.preventDefault();
     setMenuOpen(false);
+    setHoveredSection(null);
     window.requestAnimationFrame(() => scrollToSection(sectionId));
   };
 
+  const highlightedSection = hoveredSection || activeSection;
+
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${hoveredSection ? 'section-hovering' : ''}`}>
       <div className="navbar-container">
         <motion.div
           className="navbar-logo"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.25 }}
         >
           <a href="#home" onClick={(event) => handleLinkClick(event, 'home')}>
             <img src={logo} alt="Azrul Amaline logo" className="logo-img" />
@@ -174,18 +211,19 @@ const Navbar = () => {
         <ul className="navbar-links">
           {navItems.map((item, index) => {
             const itemId = item.id;
-            const isActive = activeSection === itemId;
+            const isActive = highlightedSection === itemId;
+            const isPointerSection = hoveredSection === itemId;
 
             return (
               <motion.li
                 key={item.id}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.18, delay: index * 0.025 }}
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <a href={`#${itemId}`} onClick={(event) => handleLinkClick(event, itemId)} className={`nav-link ${isActive ? 'active' : ''}`}>
+                <a href={`#${itemId}`} onClick={(event) => handleLinkClick(event, itemId)} className={`nav-link ${isActive ? 'active' : ''} ${isPointerSection ? 'section-hovered' : ''}`}>
                   <span className="link-text">{item.label}</span>
                   <motion.span
                     className="link-underline"
@@ -194,7 +232,7 @@ const Navbar = () => {
                       width: hoveredItem === index || isActive ? '100%' : 0,
                       backgroundColor: hoveredItem === index || isActive ? 'var(--primary-color)' : 'transparent'
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.16 }}
                   />
                 </a>
               </motion.li>
@@ -209,6 +247,7 @@ const Navbar = () => {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             download={cvFileName}
+            onClick={celebrateAction}
           >
             Download CV
           </motion.a>
@@ -216,7 +255,10 @@ const Navbar = () => {
           <motion.a
             href="#contact"
             className="navbar-hire-btn"
-            onClick={(event) => handleLinkClick(event, 'contact')}
+            onClick={(event) => {
+              celebrateAction(event);
+              handleLinkClick(event, 'contact');
+            }}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -270,19 +312,19 @@ const Navbar = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              transition={{ type: 'spring', stiffness: 520, damping: 38, mass: 0.6 }}
               onClick={(event) => event.stopPropagation()}
             >
               {navItems.map((item, index) => {
                 const itemId = item.id;
-                const isActive = activeSection === itemId;
+                const isActive = highlightedSection === itemId;
 
                 return (
                   <motion.li
                     key={item.id}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
+                    transition={{ delay: index * 0.035 + 0.05, duration: 0.16 }}
                   >
                     <a href={`#${itemId}`} onClick={(event) => handleLinkClick(event, itemId)} className={`mobile-nav-link ${isActive ? 'active' : ''}`}>
                       {item.label}
@@ -290,11 +332,17 @@ const Navbar = () => {
                   </motion.li>
                 );
               })}
-              <a href={cvUrl} className="mobile-cv-link" download={cvFileName} onClick={() => setMenuOpen(false)}>
+              <a href={cvUrl} className="mobile-cv-link" download={cvFileName} onClick={(event) => {
+                celebrateAction(event);
+                setMenuOpen(false);
+              }}>
                 <FaDownload />
                 Download CV
               </a>
-              <a href="#contact" onClick={(event) => handleLinkClick(event, 'contact')} className="mobile-hire-link">
+              <a href="#contact" onClick={(event) => {
+                celebrateAction(event);
+                handleLinkClick(event, 'contact');
+              }} className="mobile-hire-link">
                 <FaBriefcase />
                 Hire Me / Contact
               </a>

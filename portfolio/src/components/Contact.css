@@ -5,7 +5,7 @@
   --accent-color: #f472b6;
   --text-color: #f0e6ff;
   --text-muted: #b8b8b8;
-  --transition-speed: 0.4s;
+  --transition-speed: 0.2s;
 }
 
 .contact-section {
@@ -166,6 +166,44 @@
   background: rgba(255, 255, 255, 0.055);
 }
 
+.email-info-item {
+  transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+}
+
+.email-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.email-line a {
+  min-width: 0;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.copy-email-icon-btn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 168, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4a8ff;
+  background: rgba(255, 255, 255, 0.055);
+  font-size: 0.82rem;
+}
+
+.copy-email-icon-btn:hover {
+  color: #ffffff;
+  border-color: rgba(196, 168, 255, 0.42);
+  background: rgba(139, 92, 246, 0.22);
+}
+
 .info-icon {
   width: 52px;
   height: 52px;
@@ -311,7 +349,7 @@
   font-weight: 700;
   font-size: 1.05rem;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
   margin-top: 0.5rem;
   position: relative;
   overflow: hidden;
@@ -320,7 +358,7 @@
 .btn-text,
 .btn-icon {
   position: absolute;
-  transition: all 0.3s ease;
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
 .btn-icon {
@@ -903,6 +941,25 @@
   text-align: left;
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.form-card .status-message p {
+  margin: 0;
+}
+
+.status-fallback-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  margin-top: 0.75rem;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  color: #170d24;
+  background: linear-gradient(135deg, #ffffff, #c4a8ff);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .status-sending {

@@ -11,7 +11,7 @@ const Footer = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.28 }}
       >
         <div className="footer-logo-container">
           <img src={logo} alt="Azrul Amaline Logo" className="footer-logo" />
@@ -20,7 +20,7 @@ const Footer = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.06, duration: 0.22 }}
           >
             <p>&copy; {new Date().getFullYear()} Azrul Amaline. All rights reserved.</p>
           </motion.div>

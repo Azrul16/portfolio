@@ -59,6 +59,10 @@
   gap: 1.1rem;
 }
 
+.stat-card-tilt {
+  display: inline-flex;
+}
+
 .stat-card {
   position: relative;
   overflow: visible;
@@ -132,7 +136,7 @@
 }
 
 .case-study-track {
-  animation-duration: 140s;
+  animation-duration: 220s;
 }
 
 .case-study-card {
@@ -347,7 +351,7 @@
   color: #fff;
   text-align: left;
   cursor: pointer;
-  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
 }
 
 .spotlight-mini::after {
@@ -410,6 +414,36 @@
   gap: 0.55rem;
 }
 
+.project-view-toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(14, 7, 24, 0.54);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.project-view-toggle button {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(244, 238, 255, 0.72);
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-view-toggle button.active {
+  color: #170d24;
+  background: linear-gradient(135deg, #ffffff, #c4a8ff);
+}
+
 .project-filter {
   min-height: 2.65rem;
   padding: 0 0.9rem;
@@ -419,7 +453,7 @@
   color: rgba(244, 238, 255, 0.76);
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 
 .project-filter:hover,
@@ -430,6 +464,17 @@
     linear-gradient(135deg, rgba(201, 163, 255, 0.22), rgba(125, 211, 252, 0.08)),
     rgba(159, 122, 234, 0.12);
   color: #fff;
+}
+
+.projects-scan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.projects-scan-grid .compact-project {
+  flex: none;
+  min-height: 17rem;
 }
 
 .projects-result-row {
@@ -450,8 +495,7 @@
   cursor: grab;
   user-select: none;
   touch-action: pan-y;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  scroll-padding-inline: 0;
 }
 
 .projects-carousel.is-dragging {
@@ -477,8 +521,7 @@
   width: max-content;
   gap: 1rem;
   align-items: stretch;
-  animation: projects-auto-scroll 180s linear infinite;
-  will-change: transform;
+  animation: none;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
@@ -540,7 +583,7 @@
   background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.1) 45%, transparent 70%);
   opacity: 0;
   transform: translateX(-80%);
-  transition: opacity 0.16s ease, transform 0.28s ease;
+  transition: opacity 0.12s ease, transform 0.18s ease;
   pointer-events: none;
 }
 
@@ -763,7 +806,7 @@
 }
 
 .project-open-btn svg {
-  transition: transform 0.22s ease;
+  transition: transform 0.16s ease;
 }
 
 .featured-project:hover .project-open-btn svg {
@@ -789,7 +832,7 @@
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   text-decoration: none;
-  transition: transform 0.22s ease, background 0.22s ease;
+  transition: transform 0.16s ease, background 0.16s ease;
 }
 
 .project-quick-actions a:hover {
@@ -972,7 +1015,7 @@
   font-size: 0.88rem;
   font-weight: 800;
   text-decoration: none;
-  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
 }
 
 .project-action-link:hover {
@@ -1061,11 +1104,11 @@
   }
 
   .projects-track {
-    animation-duration: 140s;
+    animation: none;
   }
 
   .case-study-track {
-    animation-duration: 120s;
+    animation: none;
   }
 
   .compact-project {
@@ -1130,6 +1173,31 @@
   .projects-result-row {
     flex-direction: column;
     gap: 0.25rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .projects-scan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .project-filters {
+    justify-content: flex-start;
+  }
+
+  .project-view-toggle {
+    width: fit-content;
+  }
+
+  .projects-scan-grid {
+    grid-template-columns: 1fr;
   }
 }
 
