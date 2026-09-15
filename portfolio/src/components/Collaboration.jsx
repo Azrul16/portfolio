@@ -8,17 +8,17 @@ const Collaboration = () => (
   <section id="collaboration" className="collaboration-section" aria-labelledby="collaboration-title">
     <motion.div className="collaboration-shell" initial={false} whileInView="visible" viewport={viewportOnce} variants={staggerContainer}>
       <motion.div className="collaboration-copy" variants={fadeUp} data-pointer-glow>
-        <p className="collaboration-kicker">Get in touch</p>
+        <p className="collaboration-kicker">Open to job opportunities</p>
         <h2 id="collaboration-title">Let’s talk about your team.</h2>
         <p>
-          Tell me what you are building, the technical requirements, and your timeline. You can review my code on GitHub or contact me directly.
+          I am looking for a developer role in mobile apps and backend systems. I am open to remote, onsite, and hybrid work, and willing to relocate. Available to start immediately. Share the role and what your team is building.
         </p>
       </motion.div>
 
       <motion.div className="collaboration-actions" variants={staggerContainer}>
         <motion.a href="#contact" variants={fadeUp}>
           <FaHandshake />
-          Start a project
+          Discuss a Role
         </motion.a>
         <motion.a href="https://github.com/azrul16" target="_blank" rel="noopener noreferrer" variants={fadeUp}>
           <FaGithub />

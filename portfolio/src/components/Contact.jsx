@@ -25,14 +25,14 @@ const emailJsConfig = {
 const contactActions = [
   {
     icon: <FaHandshake />,
-    label: 'Hire me for a project',
-    href: 'mailto:azrul.amaline16@gmail.com?subject=Project%20Inquiry%20from%20Portfolio',
+    label: 'Discuss a job opportunity',
+    href: 'mailto:azrul.amaline16@gmail.com?subject=Job%20Opportunity%20from%20Portfolio',
     tone: 'primary'
   },
   {
     icon: <FaMobileAlt />,
-    label: 'Collaborate on an app',
-    href: 'mailto:azrul.amaline16@gmail.com?subject=App%20Collaboration%20Inquiry',
+    label: 'Talk about your team',
+    href: 'mailto:azrul.amaline16@gmail.com?subject=Developer%20Role%20Inquiry',
     tone: 'accent'
   },
   {
@@ -133,7 +133,7 @@ const Contact = () => {
 
   const fallbackMailHref = `mailto:azrul.amaline16@gmail.com?subject=${encodeURIComponent(`Portfolio message from ${formData.name.trim() || 'a visitor'}`)}&body=${encodeURIComponent(
     [
-      formData.message.trim() || 'Hi Azrul, I want to discuss a project.',
+      formData.message.trim() || 'Hi Azrul, I would like to discuss a job opportunity.',
       '',
       `Name: ${formData.name.trim() || ''}`,
       `Email: ${formData.email.trim() || ''}`
@@ -241,7 +241,7 @@ const Contact = () => {
 
               <div className={`form-group message-group ${activeField === 'message' ? 'active' : ''}`}>
                 <label htmlFor="contact-message">Your Message</label>
-                <textarea id="contact-message" name="message" maxLength={5000} placeholder="Share the project idea, app issue, timeline, or anything useful..." rows="6" value={formData.message} onChange={handleChange} onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)} required></textarea>
+                <textarea id="contact-message" name="message" maxLength={5000} placeholder="Share the role, company, job description, and how I can get in touch..." rows="6" value={formData.message} onChange={handleChange} onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)} required></textarea>
                 <span className="message-count">{formData.message.length} characters</span>
               </div>
 

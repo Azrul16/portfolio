@@ -6,7 +6,7 @@ const educationList = [
   {
     institution: 'Patuakhali Science and Technology University',
     degree: 'B.Sc. in Computer Science',
-    years: '2022 - Present',
+    years: '2022 - August 2026',
     details: ['Focus areas: algorithms, data structures, AI, web systems, mobile app development, and practical software projects']
   },
 

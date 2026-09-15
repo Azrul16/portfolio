@@ -123,7 +123,7 @@ const Profile = () => {
             </motion.p>
 
             <motion.p className="hero-lead" variants={fadeUp}>
-              I build Flutter mobile apps and Python backends. I am a CSE student at PSTU in Bangladesh, with projects in mobile tools, study apps, and API integrations.
+              As a Computer Science and Engineering graduate from PSTU, Bangladesh, I focus on Flutter mobile development and Python backend systems. I am seeking a developer role where I can contribute to application development, solve technical challenges, and grow within an engineering team. Available to start immediately, I welcome remote, onsite, and hybrid opportunities and am open to relocation.
             </motion.p>
 
             <motion.div className="hero-actions" aria-label="Primary portfolio actions" variants={staggerContainer}>
@@ -133,7 +133,7 @@ const Profile = () => {
               </motion.a>
               <motion.a href="#contact" className="hero-cta-link hero-cta-secondary" variants={fadeUp} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }} transition={springHover} data-pointer-glow>
                 <FaEnvelope />
-                Contact Me
+                Discuss a Role
               </motion.a>
             </motion.div>
 
