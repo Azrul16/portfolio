@@ -65,6 +65,7 @@
 
 .skill-item {
   min-width: 0;
+  -webkit-tap-highlight-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,6 +77,11 @@
   border: 1px solid rgba(196, 168, 255, 0.14);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
   cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .skills-section .skill-item { transition: transform .18s ease, box-shadow .18s ease; }
+  .skills-section .skill-item:hover { transform: translateY(-4px); box-shadow: 0 0 18px var(--pointer-glow-color); }
 }
 
 .skill-logo {
@@ -219,3 +225,16 @@ body.light-mode .skill-logo {
   color: var(--light-icon-color, var(--hover-color));
 }
 
+
+@media (hover: none), (pointer: coarse) {
+  .skills-section .skill-item {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: pan-y pinch-zoom;
+    background: #20142f;
+    box-shadow: none;
+  }
+  body.light-mode .skills-section .skill-item { background: #f0e9fa; }
+  .skills-section .skill-item::before, .skills-section .skill-item::after { display: none; }
+}

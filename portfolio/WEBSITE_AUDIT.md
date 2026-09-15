@@ -139,3 +139,13 @@ Recruiter concerns remaining (judgment, not confirmed implementation defects):
 6. The one-second splash and decorative styling are preferences, not functional defects. Keep them subordinate to accessible project evidence.
 
 No invented experience, testimonials, benchmarks, user counts, or hiring claims were added.
+
+
+## Mobile scroll and touch rendering fix
+
+In response to reported black/blue flickering near What I Build and a held Raspberry Pi skill glitch, limited content-visibility layout skipping to desktop fine-pointer devices. Phones/tablets now keep section layouts rendered. Removed skill press scaling and moved skill hover effects to mouse-only CSS. Touch service rows no longer translate or animate shadows, and active rows retain their border height.
+
+Build/lint passed. Chromium and WebKit touch-emulation checks passed at 375/820 px for repeated section scrolling, visible section rendering, a held skill tile without transforms, tapping service rows without transforms, horizontal bounds, and runtime errors. The original physical-phone flicker was not reproduced in emulation; confirmation on the affected phone remains needed. Changes are local.
+
+
+Mobile follow-up: live azrul.is-a.dev was checked after the report that Netlify still flickered. The live mobile page already reported visible section rendering and no held skill transform, so stale deployment was not established. Added a touch-only static page background, opaque navbar without backdrop filters, and opaque skill tiles without selection/callout highlights. Desktop visuals remain unchanged. Physical-device flicker remains unconfirmed locally; this is a further mitigation, not a verified root-cause diagnosis.

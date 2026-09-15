@@ -57,7 +57,7 @@
 }
 
 .availability-row.active {
-  border: 0;
+  border-bottom: 1px solid transparent;
   background:
     linear-gradient(90deg, rgba(125, 211, 252, 0.2), transparent 72%),
     linear-gradient(90deg, #8b5cf6, rgba(79, 38, 146, 0.72));
@@ -130,3 +130,8 @@
 
 .availability-section { padding-block: 2.5rem; }
 .availability-section .availability-row { min-height: auto; padding-block: 1rem; }
+
+@media (hover: none), (pointer: coarse) {
+  .availability-row { transition: none; -webkit-tap-highlight-color: transparent; }
+  .availability-row.active { transform: none; box-shadow: none; }
+}

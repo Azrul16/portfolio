@@ -9,7 +9,7 @@ import {
 import { RiFirebaseFill } from 'react-icons/ri';
 import { FaWindows, FaFingerprint, FaSkull, FaNetworkWired, FaDatabase, FaKey, FaUserSecret } from 'react-icons/fa';
 import { m as motion } from 'framer-motion';
-import { fadeUp, springHover, staggerContainer, viewportOnce } from './motionConfig';
+import { fadeUp, staggerContainer, viewportOnce } from './motionConfig';
 
 const allSkills = [
   { name: 'Flutter', icon: <SiFlutter size="3.5em" />, color: '#02569B' },
@@ -75,9 +75,6 @@ const SkillItem = ({ skill }) => {
       className="skill-item"
       style={{ '--hover-color': skill.color, '--light-icon-color': skill.lightColor || skill.color, '--pointer-glow-color': `${skill.color}33` }}
       variants={fadeUp}
-      whileHover={{ y: -6, scale: 1.02, boxShadow: `0 0 22px ${skill.color}30` }}
-      whileTap={{ scale: 0.98 }}
-      transition={springHover}
       data-pointer-glow
     >
       <div className="skill-logo">{skill.icon}</div>
