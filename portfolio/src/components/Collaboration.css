@@ -27,6 +27,10 @@
   text-transform: uppercase;
 }
 
+body.light-mode .collaboration-kicker {
+  color: #6b3fac;
+}
+
 .collaboration-copy h2 {
   margin: 0;
   max-width: 760px;

@@ -2,17 +2,15 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Projects.css';
 import { SiCplusplus, SiFirebase, SiFlutter, SiJavascript, SiNodedotjs, SiPython } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
-import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaGripHorizontal, FaList, FaTimes } from 'react-icons/fa';
-import { AnimatePresence, motion } from 'framer-motion';
-import CountUp from 'react-countup';
-import FancyTilt from './FancyTilt';
+import { FaExternalLinkAlt, FaGithub, FaGripHorizontal, FaList, FaTimes } from 'react-icons/fa';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { springHover, staggerContainer } from './motionConfig';
 
 const projectList = [
   {
     title: 'DevDroid Android Code Editor',
     repoName: 'Azrul16/DevDroid-android-code-editor',
-    description: 'A Flutter-based Android code editor built for writing and managing code directly from a mobile device.',
+    description: 'A Flutter code editor for writing and managing files on Android.',
     details: 'DevDroid is one of the strongest mobile utility projects in the repository list: a code editor experience shaped around developer workflows on Android.',
     challenge: 'Designing a compact coding environment that still feels usable on a small screen.',
     outcome: 'A practical developer tool concept that highlights Flutter UI structure, file-oriented workflows, and mobile productivity thinking.',
@@ -31,7 +29,7 @@ const projectList = [
   {
     title: 'Lecturer App',
     repoName: 'Azrul16/Lecturer-AI_Powered_Study_App',
-    description: 'An AI-supported study assistant with summarization, transcription, and quiz features for more structured revision.',
+    description: 'A study app concept for summaries, transcription, and revision quizzes.',
     details: 'The product centers on making course material easier to revisit through note extraction, simplified study content, and interactive review loops.',
     challenge: 'Keeping AI features practical and helpful inside real student workflows.',
     outcome: 'A study tool that turns dense content into clearer revision experiences.',
@@ -64,7 +62,7 @@ const projectList = [
   {
     title: 'BanglaSpeech2Text',
     repoName: 'Azrul16/BanglaSpeech2Text',
-    description: 'An offline Bangla speech-to-text package fine-tuned on Whisper for Bangla language transcription.',
+    description: 'A Python package for offline Bangla transcription using Whisper.',
     details: 'BanglaSpeech2Text is a language-focused AI project that packages offline speech-to-text support for Bangla using a fine-tuned Whisper model.',
     challenge: 'Making speech recognition useful for Bangla while keeping the package practical for offline use.',
     outcome: 'An open-source AI package with a clear local-language purpose and stronger technical credibility.',
@@ -293,7 +291,7 @@ const projectList = [
   {
     title: 'SSLCOMMERZ Payment Integration',
     repoName: 'Azrul16/sslc-backend',
-    description: 'A Node.js and Flutter Web/Desktop payment integration focused on checkout flow structure and gateway communication.',
+    description: 'A Node.js payment integration connecting Flutter checkout to SSLCOMMERZ.',
     details: 'This work focused on connecting payment gateway logic across frontend and backend while keeping checkout states easier to understand.',
     challenge: 'Coordinating frontend and backend payment logic cleanly.',
     outcome: 'A checkout flow prototype built around clearer transaction handling and frontend/backend coordination.',
@@ -312,7 +310,7 @@ const projectList = [
   {
     title: 'Online Food Website',
     repoName: 'Azrul16/onlinefood',
-    description: 'A deployed food ordering website with a restaurant-style browsing experience and hosted live preview.',
+    description: 'A responsive food browsing website with a live preview.',
     details: 'Online Food is a web project for presenting food items and ordering-oriented content with a public Vercel deployment.',
     challenge: 'Creating a polished food site experience that feels usable and easy to scan.',
     outcome: 'A live food website that visitors can open directly from the portfolio.',
@@ -366,14 +364,6 @@ const caseStudyTitles = [
   'Online Food Website'
 ];
 
-const repeatProjects = (projects, repeatCount = 3) => {
-  if (!projects.length) {
-    return [];
-  }
-
-  return Array.from({ length: repeatCount }, () => projects).flat();
-};
-
 const getTechLabels = (project) => {
   const labelMap = {
     cplusplus: 'C++',
@@ -406,8 +396,8 @@ const projectMatchesFilter = (project, activeFilter) => {
 
   const filterMatchers = {
     Flutter: () => searchText.includes('flutter'),
-    Packages: () => searchText.includes('package') || searchText.includes('component') || searchText.includes('utility'),
-    AI: () => searchText.includes('ai') || searchText.includes('whisper') || searchText.includes('detection'),
+    Packages: () => /package|component/i.test(`${project.category} ${project.status}`),
+    AI: () => /\bai\b/.test(searchText) || searchText.includes('whisper') || searchText.includes('detection'),
     Backend: () => searchText.includes('backend') || searchText.includes('server') || searchText.includes('node') || searchText.includes('flask'),
     Tools: () => searchText.includes('tool') || searchText.includes('editor') || searchText.includes('browser') || searchText.includes('utility')
   };
@@ -420,6 +410,7 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [archiveView, setArchiveView] = useState('carousel');
   const projectCloseButtonRef = useRef(null);
+  const caseStudyCarouselRef = useRef(null);
   const dragState = useRef({
     isDragging: false,
     startX: 0,
@@ -431,10 +422,6 @@ const Projects = () => {
     () => caseStudyTitles.map((title) => projectList.find((project) => project.title === title)).filter(Boolean),
     []
   );
-  const caseStudyCarouselProjects = useMemo(
-    () => repeatProjects(caseStudyProjects),
-    [caseStudyProjects]
-  );
   const moreProjects = useMemo(
     () => projectList.filter((project) => !caseStudyTitles.includes(project.title)),
     []
@@ -443,26 +430,13 @@ const Projects = () => {
     return moreProjects.filter((project) => projectMatchesFilter(project, activeFilter));
   }, [activeFilter, moreProjects]);
 
-  const carouselProjects = useMemo(() => {
-    return repeatProjects(filteredProjects);
-  }, [filteredProjects]);
 
-  const stats = useMemo(() => {
-    const repoCount = projectList.length;
-    const flutterCount = projectList.filter((project) => getTechLabels(project).includes('Flutter')).length;
-    const caseStudyCount = caseStudyProjects.length;
-
-    return [
-      { value: caseStudyCount, label: 'Case studies' },
-      { value: flutterCount, label: 'Flutter builds' },
-      { value: repoCount - caseStudyCount, label: 'More projects' }
-    ];
-  }, [caseStudyProjects.length]);
 
   const openProject = (project) => setSelectedProject(project);
   const closeProject = () => setSelectedProject(null);
 
   const handleCarouselPointerDown = (event) => {
+    if (event.pointerType !== 'mouse' || event.target.closest('a, button')) return;
     if (event.button !== undefined && event.button !== 0) {
       return;
     }
@@ -475,7 +449,7 @@ const Projects = () => {
       suppressClick: false
     };
     carousel.classList.add('is-dragging');
-    carousel.setPointerCapture?.(event.pointerId);
+
   };
 
   const handleCarouselPointerMove = (event) => {
@@ -487,21 +461,12 @@ const Projects = () => {
     const movement = event.clientX - state.startX;
     if (Math.abs(movement) > 6) {
       state.suppressClick = true;
+      event.currentTarget.setPointerCapture?.(event.pointerId);
     }
 
     const carousel = event.currentTarget;
     carousel.scrollLeft = state.scrollLeft - movement;
 
-    const loopWidth = carousel.scrollWidth / 3;
-    if (loopWidth > 0) {
-      if (carousel.scrollLeft < loopWidth * 0.45) {
-        carousel.scrollLeft += loopWidth;
-        state.scrollLeft += loopWidth;
-      } else if (carousel.scrollLeft > loopWidth * 1.55) {
-        carousel.scrollLeft -= loopWidth;
-        state.scrollLeft -= loopWidth;
-      }
-    }
   };
 
   const stopCarouselDrag = (event) => {
@@ -529,6 +494,7 @@ const Projects = () => {
       return undefined;
     }
 
+    const previousFocus = document.activeElement;
     document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (event) => {
@@ -541,6 +507,7 @@ const Projects = () => {
 
     return () => {
       document.body.style.overflow = '';
+      previousFocus?.focus({ preventScroll: true });
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedProject]);
@@ -584,39 +551,26 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <div className="projects-shell">
-        <motion.div className="section-title-block" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={revealVariants}>
+        <motion.div className="section-title-block" initial={false} whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={revealVariants}>
           <h2>Selected Projects</h2>
         </motion.div>
 
-        <motion.div className="projects-header compact-projects-header" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={revealVariants}>
-          <motion.div className="projects-stats" variants={staggerContainer}>
-            {stats.map((stat, index) => (
-              <FancyTilt className="stat-card-tilt" glare scale={1.015} tiltMaxAngleX={4} tiltMaxAngleY={4} key={stat.label}>
-                <motion.div
-                  className={`stat-card ${index === 0 ? 'accent' : ''}`}
-                  data-pointer-glow
-                  variants={revealVariants}
-                  whileHover={{ y: -3 }}
-                  transition={springHover}
-                >
-                  <span className="stat-value">
-                    <CountUp end={stat.value} duration={0.9} enableScrollSpy scrollSpyOnce />
-                  </span>
-                  <span className="stat-label">{stat.label}</span>
-                </motion.div>
-              </FancyTilt>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        <motion.div className="case-study-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.14 }} variants={revealVariants}>
-          <div className="project-subsection-heading">
-            <p className="projects-kicker">Case Studies</p>
-            <h3>Best work to review first</h3>
+        <motion.div className="case-study-section" initial={false} whileInView="visible" viewport={{ once: true, amount: 0.14 }} variants={revealVariants}>
+          <div className="project-subsection-heading case-study-heading">
+            <div className="case-study-navigation">
+              {[-1, 1].map((direction) => (
+                <button type="button" key={direction} aria-label={direction < 0 ? 'Previous case study' : 'Next case study'} onClick={() => {
+                  const carousel = caseStudyCarouselRef.current;
+                  const card = carousel?.querySelector('.case-study-card');
+                  if (card) carousel.scrollBy({ left: direction * (card.getBoundingClientRect().width + 24), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+                }}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={direction < 0 ? 'M19 12H5m7-7-7 7 7 7' : 'M5 12h14m-7-7 7 7-7 7'} /></svg></button>
+              ))}
+            </div>
           </div>
 
           <div
             className="projects-carousel case-study-carousel"
+            ref={caseStudyCarouselRef}
             aria-label="Scrollable case studies"
             onPointerDown={handleCarouselPointerDown}
             onPointerMove={handleCarouselPointerMove}
@@ -626,19 +580,18 @@ const Projects = () => {
             onClickCapture={handleCarouselClickCapture}
           >
             <div className="projects-track case-study-track">
-            {caseStudyCarouselProjects.map((project, index) => (
+            {caseStudyProjects.map((project, index) => (
               <CaseStudyCard project={project} key={`${project.title}-${index}`} openProject={openProject} />
             ))}
             </div>
           </div>
         </motion.div>
 
-        <motion.div className="project-subsection-heading more-projects-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
-          <p className="projects-kicker">More Projects</p>
-          <h3>Additional builds and experiments</h3>
+        <motion.div className="project-subsection-heading more-projects-heading" initial={false} whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
+          <h3>More Projects</h3>
         </motion.div>
 
-        <motion.div className="projects-toolbar" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
+        <motion.div className="projects-toolbar" initial={false} whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={revealVariants}>
           <div className="project-filters" aria-label="Filter projects">
             {filterOptions.map((filter) => (
               <motion.button
@@ -646,6 +599,7 @@ const Projects = () => {
                 key={filter}
                 className={`project-filter ${activeFilter === filter ? 'active' : ''}`}
                 onClick={() => setActiveFilter(filter)}
+                aria-pressed={activeFilter === filter}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.96 }}
                 transition={springHover}
@@ -656,15 +610,15 @@ const Projects = () => {
           </div>
           <div className="project-view-toggle" aria-label="Project view mode">
             <button type="button" className={archiveView === 'carousel' ? 'active' : ''} onClick={() => setArchiveView('carousel')} aria-label="Show carousel view" aria-pressed={archiveView === 'carousel'}>
-              <FaGripHorizontal />
+              <FaGripHorizontal /><span>Carousel</span>
             </button>
             <button type="button" className={archiveView === 'grid' ? 'active' : ''} onClick={() => setArchiveView('grid')} aria-label="Show grid view" aria-pressed={archiveView === 'grid'}>
-              <FaList />
+              <FaList /><span>Grid</span>
             </button>
           </div>
         </motion.div>
 
-        <div className="projects-result-row">
+        <div className="sr-only" role="status">
           <span>{filteredProjects.length} of {moreProjects.length} projects in view</span>
           <span>{activeFilter} filter</span>
         </div>
@@ -681,13 +635,13 @@ const Projects = () => {
             onClickCapture={handleCarouselClickCapture}
           >
             <div className="projects-track">
-              {carouselProjects.map((project, index) => (
+              {filteredProjects.map((project, index) => (
                 <ProjectArchiveCard project={project} openProject={openProject} key={`${project.title}-${index}`} />
               ))}
             </div>
           </motion.div>
         ) : (
-          <motion.div className="projects-scan-grid" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.08 }} variants={staggerContainer}>
+          <motion.div className="projects-scan-grid" initial={false} whileInView="visible" viewport={{ once: true, amount: 0.08 }} variants={staggerContainer}>
             {filteredProjects.map((project) => (
               <ProjectArchiveCard project={project} openProject={openProject} key={project.title} />
             ))}
@@ -731,33 +685,7 @@ const Projects = () => {
               </div>
               <p className="project-repo-name modal-repo-name">{selectedProject.repoName}</p>
               <h3 id="project-modal-title">{selectedProject.title}</h3>
-              <p className="project-modal-description" id="project-modal-description">{selectedProject.details}</p>
-
-              <div className="project-proof-block">
-                <div className="project-proof-card project-proof-wide">
-                  <span className="modal-label">Problem Solved</span>
-                  <p>{selectedProject.problem || selectedProject.description}</p>
-                </div>
-                <div className="project-proof-card">
-                  <span className="modal-label">My Role</span>
-                  <p>{selectedProject.role || 'Solo developer responsible for planning, implementation, interface decisions, and repository maintenance.'}</p>
-                </div>
-                <div className="project-proof-card">
-                  <span className="modal-label">What I Improved</span>
-                  <p>{selectedProject.learning || 'Improved practical product thinking, UI structure, and implementation discipline through a focused build.'}</p>
-                </div>
-              </div>
-
-              <div className="project-modal-grid">
-                <div className="project-modal-card">
-                  <span className="modal-label">Challenge</span>
-                  <p>{selectedProject.challenge}</p>
-                </div>
-                <div className="project-modal-card">
-                  <span className="modal-label">Outcome</span>
-                  <p>{selectedProject.outcome}</p>
-                </div>
-              </div>
+              <p className="project-modal-description" id="project-modal-description">{selectedProject.description}</p>
 
               <div className="project-proof-lists">
                 <div className="project-proof-list">
@@ -769,7 +697,7 @@ const Projects = () => {
                   </ul>
                 </div>
                 <div className="project-proof-list">
-                  <span className="modal-label">Architecture / Tools</span>
+                  <span className="modal-label">Tools & Structure</span>
                   <ul>
                     {(selectedProject.architecture || getTechLabels(selectedProject)).map((tool) => (
                       <li key={tool}>{tool}</li>
@@ -801,14 +729,6 @@ const ProjectArchiveCard = ({ project, openProject }) => (
   <motion.article
     className="project-card compact-project"
     onClick={() => openProject(project)}
-    role="button"
-    tabIndex={0}
-    onKeyDown={(event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openProject(project);
-      }
-    }}
     data-pointer-glow
     style={{ '--project-accent': project.accent }}
     variants={revealVariants}
@@ -821,8 +741,7 @@ const ProjectArchiveCard = ({ project, openProject }) => (
       <p className="project-category">{project.category}</p>
       <span className="project-status subtle">{project.status}</span>
     </div>
-    <p className="project-repo-name">{project.repoName}</p>
-    <h3>{project.title}</h3>
+    <h3><button type="button" className="project-title-button" aria-haspopup="dialog" onClick={(event) => { event.stopPropagation(); openProject(project); }}>{project.title}</button></h3>
     <div className="project-footer">
       <TechStack project={project} />
       <QuickProjectActions project={project} />
@@ -843,20 +762,11 @@ const TechStack = ({ project }) => {
 };
 
 const CaseStudyCard = ({ project, openProject, isFeatured }) => {
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      openProject(project);
-    }
-  };
 
   return (
     <motion.article
       className={`project-card case-study-card ${isFeatured ? 'case-study-featured' : ''}`}
       onClick={() => openProject(project)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
       data-pointer-glow
       style={{ '--project-accent': project.accent }}
       whileHover={{ y: -4, scale: 1.005 }}
@@ -870,21 +780,18 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
           <p className="project-category">{project.category}</p>
           <span className="project-status">{project.status}</span>
         </div>
-        <p className="project-repo-name">{project.repoName}</p>
-        <h3>{project.title}</h3>
-        <div className="case-study-outcome">
-          <span>Outcome</span>
-          <p>{project.outcome}</p>
-        </div>
+        <h3><button type="button" className="project-title-button" aria-haspopup="dialog" onClick={(event) => { event.stopPropagation(); openProject(project); }}>{project.title}</button></h3>
+
+        <p className="case-study-summary">{project.description}</p>
 
         <div className="project-highlights">
-          {project.highlights.map((item) => (
+          {getTechLabels(project).slice(0, 3).map((item) => (
             <span key={item} className="project-highlight-pill">{item}</span>
           ))}
         </div>
 
         <div className="project-footer">
-          <TechStack project={project} />
+          <button type="button" className="project-action-link case-study-details" aria-haspopup="dialog" onClick={(event) => { event.stopPropagation(); openProject(project); }}>View Details <span aria-hidden="true">↗</span></button>
           <ProjectLinks project={project} />
         </div>
       </div>
@@ -893,32 +800,26 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
 };
 
 const ProjectPreview = ({ project }) => {
-  const labels = getTechLabels(project).slice(0, 3);
-
+  const editor = project.title.startsWith('DevDroid');
+  const study = project.title === 'Lecturer App';
+  const speech = project.title === 'BanglaSpeech2Text';
+  const payment = project.title.startsWith('SSLCOMMERZ');
   return (
-    <div className="project-preview" aria-label={`${project.title} project preview`}>
-      <div className="preview-window">
-        <div className="preview-window-bar" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div className="preview-content">
-          <span className="preview-category">{project.category}</span>
-          <strong>{project.title}</strong>
-          <div className="preview-lines" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div className="preview-chip-row">
-            {labels.map((label) => (
-              <span key={label}>{label}</span>
-            ))}
+    <figure className={`project-preview concept-preview ${editor || study ? 'concept-mobile' : 'concept-desktop'}`}>
+      <figcaption>Concept preview</figcaption>
+      <div className="concept-stage" aria-hidden="true">
+        <div className={`concept-device ${editor || study ? 'concept-phone' : 'concept-window'}`}>
+          <div className="concept-device-bar"><i /><span>{editor ? 'Workspace' : study ? 'Study space' : speech ? 'Audio → text' : payment ? 'Payment flow' : 'Fresh picks'}</span><i /></div>
+          <div className="concept-screen">
+            {editor ? <><div className="concept-tabs">main.dart <span>＋</span></div><pre><span>01  // Build something</span>{'\n02  class MyApp {\n03    Widget build() {\n04      return Scaffold(\n05        body: Text(\n06          "Hello, world!"\n07        ),\n08      );\n09    }\n10  }'}</pre><div className="concept-banner">Dart workspace <span>⌘</span></div></>
+              : study ? <><small>YOUR NEXT CHAPTER</small><strong>Learn a little.<br />Remember more.</strong><div className="concept-note">Lecture notes<span>Summarize your material</span></div><div className="concept-mini-grid"><span>✦<br />Summary</span><span>✓<br />Practice quiz</span></div><div className="concept-banner">Make room for a new idea</div></>
+                : speech ? <><small>OFFLINE TRANSCRIPTION</small><strong>A voice.<br />A written word.</strong><div className="concept-wave">{[16, 32, 22, 48, 34, 56, 28, 42, 18, 36, 50, 24, 38, 16].map((height, index) => <i key={index} style={{ height }} />)}</div><div className="concept-note" lang="bn">বাংলা ভাষার কথা<span>Bangla speech → readable text</span></div></>
+                  : payment ? <><small>BACKEND INTEGRATION</small><strong>Connect the checkout.</strong><div className="concept-flow"><span>Order</span><b>↓</b><span>Payment gateway</span><b>↓</b><span>Server verification</span></div></>
+                    : <><small>THE MENU IS OPEN</small><strong>Find your next<br />favorite bite.</strong><div className="concept-food-grid"><div><span>🍔</span>Burgers</div><div><span>🍕</span>Pizza</div><div><span>🥗</span>Fresh bowls</div></div><div className="concept-banner">Browse. Choose. Enjoy.</div></>}
           </div>
         </div>
       </div>
-    </div>
+    </figure>
   );
 };
 

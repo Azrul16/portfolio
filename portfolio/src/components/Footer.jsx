@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import logo from '../assets/images/logo/logo.png';
+import { m as motion } from 'framer-motion';
+import logo from '../assets/images/logo/logo.webp';
 import './Footer.css';
 
 const Footer = () => {
@@ -8,16 +8,16 @@ const Footer = () => {
     <footer className="footer">
       <motion.div
         className="footer-container"
-        initial={{ opacity: 0, y: 20 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.28 }}
       >
         <div className="footer-logo-container">
-          <img src={logo} alt="Azrul Amaline Logo" className="footer-logo" />
+          <img src={logo} alt="Azrul Amaline Logo" className="footer-logo" width="160" height="160" loading="lazy" decoding="async" />
           <motion.div
             className="footer-text"
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.06, duration: 0.22 }}

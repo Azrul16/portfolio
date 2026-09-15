@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { FaBug, FaCodeBranch, FaDatabase, FaFire, FaMobileAlt, FaUsers } from 'react-icons/fa';
 import { fadeUp, staggerContainer, viewportOnce } from './motionConfig';
 import './Availability.css';
@@ -31,10 +31,10 @@ const Availability = () => {
 
   return (
     <section id="about" className="availability-section" aria-labelledby="availability-title">
-      <motion.div className="availability-shell" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={staggerContainer}>
+      <motion.div className="availability-shell" initial={false} whileInView="visible" viewport={viewportOnce} variants={staggerContainer}>
         <motion.div className="availability-heading" variants={fadeUp}>
-          <h2 id="availability-title">My Professional Services</h2>
-          <p>I bring ideas to life with cross-platform mobile apps, optimized backends, and practical software support.</p>
+          <h2 id="availability-title">What I Build</h2>
+          <p>My focus is mobile interfaces, backend APIs, and connecting the two.</p>
         </motion.div>
 
         <motion.div className="availability-list" variants={staggerContainer} onPointerMove={handlePointerMove}>

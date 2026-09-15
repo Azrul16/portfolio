@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-14T19:41:17.566Z",
+  "url": "http://127.0.0.1:4173/",
+  "lighthouseVersion": "13.4.1",
+  "formFactor": "mobile",
+  "scores": {
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.3 s",
+    "largest-contentful-paint": "1.5 s",
+    "total-blocking-time": "0 ms",
+    "cumulative-layout-shift": "0"
+  },
+  "note": "Local production preview. Report saved before Windows Lighthouse cleanup EPERM. Email responses mocked; no real delivery tested."
+}

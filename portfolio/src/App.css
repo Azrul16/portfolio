@@ -992,10 +992,6 @@ body.light-mode .service-item {
   box-shadow: none !important;
 }
 
-.cursor-glow-ring {
-  opacity: 0.48;
-}
-
 /* Final light-mode contrast fixes after the cleaner dark-theme pass. */
 body.light-mode .section-title-block h2 {
   color: #211431;
@@ -1036,3 +1032,14 @@ body.light-mode .availability-row.active h3,
 body.light-mode .availability-row.active p {
   color: #ffffff;
 }
+
+body.light-mode .availability-row:not(.active) .availability-number { color: #6d28d9; }
+/* Skip layout and paint work for distant sections; their HTML stays searchable. */
+@supports (content-visibility: auto) {
+  #about, #education, #certificates, #skills, #collaboration, #contact {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 900px;
+  }
+}
+
+.site-background .site-wave-flow { animation: none; opacity: .12; }

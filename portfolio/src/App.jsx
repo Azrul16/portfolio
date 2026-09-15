@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import DeferredSection from './components/DeferredSection';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
-import CursorGlow from './components/CursorGlow';
-import IntroLoader from './components/IntroLoader';
 import CommandPalette from './components/CommandPalette';
 import Availability from './components/Availability';
 import Collaboration from './components/Collaboration';
@@ -13,9 +12,8 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
-import { Routes, Route } from 'react-router-dom';
 
-function MainSite() {
+function App() {
   useEffect(() => {
     const scrollToHashSection = () => {
       const sectionId = window.location.hash.replace('#', '');
@@ -49,7 +47,7 @@ function MainSite() {
 
   return (
     <div className="App">
-      <IntroLoader />
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="site-background" aria-hidden="true">
         <div className="background-aurora aurora-one"></div>
         <div className="background-aurora aurora-two"></div>
@@ -61,32 +59,21 @@ function MainSite() {
         <div className="starfield starfield-tertiary"></div>
       </div>
 
-      <CursorGlow />
       <CommandPalette />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Profile />
-        <Availability />
-        <Education />
-        <Certificates />
-        <Skills />
-        <Projects />
-        <Collaboration />
+        <DeferredSection id="projects"><Projects /></DeferredSection>
+        <DeferredSection id="skills"><Skills /></DeferredSection>
+        <DeferredSection id="about"><Availability /></DeferredSection>
+        <DeferredSection id="education"><Education /></DeferredSection>
+        <DeferredSection id="certificates"><Certificates /></DeferredSection>
+        <DeferredSection id="collaboration"><Collaboration /></DeferredSection>
 
-        {/* <Reviews />
-        <Blog /> */}
-        <Contact />
+        <DeferredSection id="contact"><Contact /></DeferredSection>
       </main>
       <Footer />
     </div>
-  );
-}
-
-function App() {
-  return (
-    <Routes>
-      <Route path="/*" element={<MainSite />} />
-    </Routes>
   );
 }
 

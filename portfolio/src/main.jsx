@@ -1,13 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import './components/IntroLoader.css'
 import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
+import SiteProviders from './SiteProviders'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const site = (
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+      <SiteProviders><App /></SiteProviders>
+  </React.StrictMode>
 )
+
+const root = document.getElementById('root')
+if (root.hasChildNodes()) ReactDOM.hydrateRoot(root, site)
+else ReactDOM.createRoot(root).render(site)

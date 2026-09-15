@@ -17,6 +17,7 @@ const FancyTilt = ({ children, className = '', glare = false, scale = 1.01, tilt
       glareMaxOpacity={0.18}
       glareColor="#ffffff"
       glarePosition="all"
+      glareBorderRadius="inherit"
     >
       {children}
     </Tilt>

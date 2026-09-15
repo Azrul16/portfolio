@@ -215,3 +215,7 @@
   position: relative;
   z-index: 1;
 }
+body.light-mode .skill-logo {
+  color: var(--light-icon-color, var(--hover-color));
+}
+

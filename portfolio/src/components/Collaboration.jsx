@@ -1,17 +1,17 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { FaGithub, FaHandshake, FaLinkedin } from 'react-icons/fa';
 import { fadeUp, staggerContainer, viewportOnce } from './motionConfig';
 import './Collaboration.css';
 
 const Collaboration = () => (
-  <section className="collaboration-section" aria-labelledby="collaboration-title">
-    <motion.div className="collaboration-shell" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={staggerContainer}>
+  <section id="collaboration" className="collaboration-section" aria-labelledby="collaboration-title">
+    <motion.div className="collaboration-shell" initial={false} whileInView="visible" viewport={viewportOnce} variants={staggerContainer}>
       <motion.div className="collaboration-copy" variants={fadeUp} data-pointer-glow>
-        <p className="collaboration-kicker">Open to real feedback</p>
-        <h2 id="collaboration-title">Available for client work, collaborations, and academic software projects.</h2>
+        <p className="collaboration-kicker">Get in touch</p>
+        <h2 id="collaboration-title">Let’s talk about your team.</h2>
         <p>
-          I am currently building my public track record. If we work together, I can add real testimonials and project outcomes here after delivery.
+          Tell me what you are building, the technical requirements, and your timeline. You can review my code on GitHub or contact me directly.
         </p>
       </motion.div>
 

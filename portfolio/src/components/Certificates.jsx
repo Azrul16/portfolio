@@ -1,17 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import './Certificates.css';
 
 const certificateList = [
   {
-    name: 'Basics in Computer Networking',
-    issuer: 'Cisco Networking Academy',
-    issuerLogo: 'CN',
+    name: 'Basics of Computer Networking',
+    issuer: 'Great Learning Academy',
+    issuerLogo: 'GL',
     image: '/assets/certificates/basicincomputernetworking.png',
     description: 'Fundamental concepts of computer networking, including protocols, models, and network design.',
+    overview: 'Network protocols, models, and design fundamentals.',
     glowColor: '#9f7aea',
-    date: 'June 2021',
+    date: 'March 2024',
     skills: ['Network models', 'Protocols', 'Network design']
   },
   {
@@ -20,38 +21,42 @@ const certificateList = [
     issuerLogo: 'CN',
     image: '/assets/certificates/introductiontopackettracer.png',
     description: 'Hands-on experience with Cisco Packet Tracer for network simulation and troubleshooting.',
+    overview: 'Network simulation and troubleshooting with Packet Tracer.',
     glowColor: '#FFCA28',
-    date: 'July 2021',
+    date: 'February 20, 2024',
     skills: ['Simulation', 'Troubleshooting', 'Packet Tracer']
   },
   {
     name: 'National Cyber Drill 2022',
-    issuer: 'ICT Division, Bangladesh',
-    issuerLogo: 'ICT',
+    issuer: 'BGD e-GOV CIRT (N-CERT)',
+    issuerLogo: 'CIRT',
     image: '/assets/certificates/nationalCyberDrill2022.png',
     description: 'Participation in a national-level cyber drill focusing on cybersecurity awareness and incident response.',
+    overview: 'Cybersecurity awareness and incident response practice.',
     glowColor: '#FF6F61',
-    date: 'March 2022',
+    date: '2022',
     skills: ['Cybersecurity', 'Incident response', 'Awareness']
   },
   {
-    name: 'Complete Python Masterclass 2022',
+    name: 'Python Masterclass 2022: Python 3 Programming for Beginners',
     issuer: 'Udemy',
     issuerLogo: 'U',
     image: '/assets/certificates/pythonmasterclass.png',
-    description: 'Comprehensive Python programming course covering basics to advanced topics, including data structures, OOP, and web development.',
+    description: 'Completed a 9.5-hour introductory Python 3 programming course from Tech Academy on Udemy.',
+    overview: 'Introductory Python 3 programming fundamentals.',
     glowColor: '#FF9B42',
-    date: 'May 2022',
-    skills: ['Python', 'OOP', 'Data structures']
+    date: 'July 8, 2025',
+    skills: ['Python 3', 'Programming fundamentals']
   },
   {
-    name: 'Complete Django Bootcamp',
-    issuer: 'Edge, ICT Division, Bangladesh',
+    name: 'Python (Django) Training',
+    issuer: 'EDGE, Bangladesh Computer Council / PSTU',
     issuerLogo: 'EDGE',
     image: '/assets/certificates/completeDjangopython.png',
-    description: 'Full-stack web development using Django, covering models, views, templates, and REST APIs.',
+    description: 'Completed Python (Django) training at PSTU under the EDGE project, from February to March 2024.',
+    overview: 'Python and Django training through the EDGE project.',
     glowColor: '#58c7ff',
-    date: 'August 2022',
+    date: 'March 27, 2024',
     skills: ['Django', 'REST APIs', 'Full-stack']
   },
   {
@@ -60,8 +65,9 @@ const certificateList = [
     issuerLogo: 'U',
     image: '/assets/certificates/pythonformachinelearning.png',
     description: 'Machine learning fundamentals using Python, including data preprocessing, model training, and evaluation.',
+    overview: 'Data preprocessing, model training, and evaluation.',
     glowColor: '#4ade80',
-    date: 'September 2022',
+    date: 'July 7, 2025',
     skills: ['Machine learning', 'Model training', 'Evaluation']
   },
   {
@@ -70,18 +76,20 @@ const certificateList = [
     issuerLogo: 'U',
     image: '/assets/certificates/pythonfordeeplearning.png',
     description: 'Deep learning fundamentals with Python, neural network concepts, model training workflows, and practical AI experimentation.',
+    overview: 'Neural networks and deep learning with Python.',
     glowColor: '#60a5fa',
-    date: 'October 2022',
+    date: 'July 16, 2025',
     skills: ['Deep learning', 'Neural networks', 'AI workflow']
   },
   {
-    name: 'Concepts of Operating System',
+    name: 'Concepts of Operating Systems',
     issuer: 'Udemy',
     issuerLogo: 'U',
     image: '/assets/certificates/conceptsofOperatingSystem.png',
     description: 'Understanding operating system principles, including process management, memory management, and file systems.',
+    overview: 'Processes, memory management, and file systems.',
     glowColor: '#f472b6',
-    date: 'November 2022',
+    date: 'July 11, 2025',
     skills: ['Processes', 'Memory', 'File systems']
   }
 ];
@@ -164,7 +172,7 @@ const CertificateModal = ({ selectedCert, closeModal }) => {
             <div className="modal-layout">
               <div className="modal-visual-panel">
                 <div className="modal-image-container">
-                  <img src={selectedCert.image} alt={selectedCert.name} />
+                  <img src={selectedCert.image.replace('.png', '-preview.webp')} alt={selectedCert.name} decoding="async" fetchPriority="high" />
                 </div>
               </div>
 
@@ -200,7 +208,30 @@ const CertificateModal = ({ selectedCert, closeModal }) => {
 
 const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState(null);
-  const [hoveredCert, setHoveredCert] = useState(null);
+
+  useEffect(() => {
+    const section = document.getElementById('certificates');
+    const preload = () => {
+      certificateList.forEach((cert) => {
+        const image = new Image();
+        image.decoding = 'async';
+        image.src = cert.image.replace('.png', '-preview.webp');
+        image.decode().catch(() => {});
+      });
+    };
+    if (!section || !('IntersectionObserver' in window)) {
+      preload();
+      return undefined;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        preload();
+        observer.disconnect();
+      }
+    }, { rootMargin: '600px 0px' });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const openModal = (cert) => {
     setSelectedCert(cert);
@@ -217,6 +248,7 @@ const Certificates = () => {
       return undefined;
     }
 
+    const previousFocus = document.activeElement;
     document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (event) => {
@@ -229,6 +261,7 @@ const Certificates = () => {
 
     return () => {
       document.body.style.overflow = '';
+      previousFocus?.focus({ preventScroll: true });
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedCert]);
@@ -241,55 +274,17 @@ const Certificates = () => {
 
       <div className="certificates-shell">
         <div className="section-title-block">
-          <h2>Professional Credentials</h2>
+          <h2>Certificates & Training</h2>
         </div>
 
         <div className="certificates-container">
           <div className="certificates-grid">
             {certificateList.map((cert) => (
-              <motion.article
-                className="certificate-card"
-                key={cert.name}
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4 }}
-                onHoverStart={() => setHoveredCert(cert.name)}
-                onHoverEnd={() => setHoveredCert(null)}
-                onClick={() => openModal(cert)}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    openModal(cert);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-                style={{ '--certificate-glow': cert.glowColor, '--pointer-glow-color': `${cert.glowColor}33` }}
-                data-pointer-glow
-              >
-                <motion.div
-                  className="certificate-glow-effect"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredCert === cert.name ? 1 : 0 }}
-                  transition={{ duration: 0.14 }}
-                />
-
-                <div className="certificate-image-container">
-                  <div className="certificate-image" style={{ backgroundImage: `url(${cert.image})` }} />
-                  <div className="image-overlay"></div>
-                </div>
-
-                <div className="certificate-content">
-                  <p className="certificate-date">{cert.date}</p>
-                  <h3>{cert.name}</h3>
-                  <p className="issuer">{cert.issuer}</p>
-                  <div className="certificate-footer">
-                    <span className="view-label">View Certificate</span>
-                  </div>
-                </div>
-              </motion.article>
+              <button type="button" className="certificate-row" key={cert.name} onClick={() => openModal(cert)} aria-haspopup="dialog">
+                <img className="certificate-row-thumbnail" src={cert.image.replace('.png', '.webp')} alt="" loading="lazy" decoding="async" width="160" height="112" />
+                <span className="certificate-row-details"><strong>{cert.name}</strong><span className="certificate-row-issuer">{cert.issuer} &middot; {cert.date}</span></span>
+                <span className="certificate-row-overview">{cert.overview}</span>
+              </button>
             ))}
           </div>
         </div>

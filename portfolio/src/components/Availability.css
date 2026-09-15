@@ -127,3 +127,6 @@
     padding-inline: 0.8rem;
   }
 }
+
+.availability-section { padding-block: 2.5rem; }
+.availability-section .availability-row { min-height: auto; padding-block: 1rem; }

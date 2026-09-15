@@ -193,7 +193,7 @@
   content: '';
   position: absolute;
   inset: 1px;
-  border-radius: 27px;
+  border-radius: inherit;
   border: 1px solid rgba(255, 255, 255, 0.03);
   pointer-events: none;
 }
@@ -216,8 +216,9 @@
 .certificate-image {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: center;
+  display: block;
   transform: scale(1.01);
   transition: transform 0.45s ease;
 }
@@ -938,4 +939,28 @@
   .modal-image-container {
     min-height: min(230px, 34dvh);
   }
+}
+
+.certificates-section .certificates-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.certificate-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; text-align: left; font: inherit; color: #f4eeff; background: #20142f; border: 1px solid #665079; border-radius: 14px; cursor: pointer; }
+.certificate-row strong { display: block; font-size: .95rem; line-height: 1.4; }
+.certificate-row-issuer { display: block; margin-top: .4rem; font-size: .8rem; line-height: 1.5; color: #cfc0df; }
+.certificate-row-overview { flex: 0 0 34%; font-size: .8rem; line-height: 1.5; color: #cfc0df; }
+.certificate-row > span:first-child { min-width: 0; }
+body.light-mode .certificate-row-overview { color: #594669; }
+@media (max-width: 480px) { .certificate-row { flex-direction: column; align-items: flex-start; gap: .65rem; } .certificate-row-overview { flex-basis: auto; } }
+.certificate-row:hover { border-color: #b89aff; }
+.certificate-row:focus-visible { outline: 3px solid #a78bfa; outline-offset: 3px; }
+body.light-mode .certificate-row { color: #251437; background: #faf7ff; border-color: #cbbadb; }
+body.light-mode .certificate-row-issuer { color: #594669; }
+@media (max-width: 640px) { .certificates-section .certificates-grid { grid-template-columns: 1fr; } }
+
+.certificates-section .certificate-row { display: grid; grid-template-columns: 140px minmax(0, 1fr); align-items: center; gap: .65rem 1rem; }
+.certificate-row-thumbnail { grid-row: 1 / 3; display: block; width: 100%; height: 112px; object-fit: contain; background: #fff; border-radius: 6px; }
+.certificate-row-details { min-width: 0; }
+.certificate-row-overview { grid-column: 2; }
+@media (max-width: 480px) {
+  .certificates-section .certificate-row { grid-template-columns: 100px minmax(0, 1fr); gap: .75rem; }
+  .certificate-row-thumbnail { grid-row: 1; height: 80px; }
+  .certificate-row-overview { grid-column: 1 / -1; }
 }

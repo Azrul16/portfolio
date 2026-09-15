@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import './Education.css';
 
 const educationList = [
@@ -9,18 +9,7 @@ const educationList = [
     years: '2022 - Present',
     details: ['Focus areas: algorithms, data structures, AI, web systems, mobile app development, and practical software projects']
   },
-  {
-    institution: 'Maheshpur Govt Degree College',
-    degree: 'Higher Secondary Certificate, Science',
-    years: '2018 - 2020',
-    details: ['Built a science foundation through physics, mathematics, and problem-solving practice']
-  },
-  {
-    institution: 'Maheshpur Govt Pilot Model High School',
-    degree: 'Secondary School Certificate, Science',
-    years: '2013 - 2018',
-    details: ['Early academic base in science, mathematics, and technology curiosity']
-  }
+
 ];
 
 const containerVariants = {
@@ -69,13 +58,13 @@ const Education = () => {
 
       <motion.div
         className="education-container"
-        initial="hidden"
+        initial={false}
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <motion.div className="section-title-block" variants={itemVariants}>
-          <h2>Academic Journey</h2>
+          <h2>Education</h2>
         </motion.div>
 
         <div className="timeline">

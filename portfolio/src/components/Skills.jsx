@@ -8,34 +8,34 @@ import {
 } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
 import { FaWindows, FaFingerprint, FaSkull, FaNetworkWired, FaDatabase, FaKey, FaUserSecret } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { fadeUp, springHover, staggerContainer, viewportOnce } from './motionConfig';
 
 const allSkills = [
   { name: 'Flutter', icon: <SiFlutter size="3.5em" />, color: '#02569B' },
+  { name: 'Firebase', icon: <SiFirebase size="3.5em" />, color: '#FFCA28' },
+  { name: 'Firestore', icon: <RiFirebaseFill size="3.5em" />, color: '#FFCA28' },
   { name: 'Python', icon: <SiPython size="3.5em" />, color: '#3776AB' },
   { name: 'Django', icon: <SiDjango size="3.5em" />, color: '#44B78B' },
-  { name: 'Firebase', icon: <SiFirebase size="3.5em" />, color: '#FFCA28' },
   { name: 'FastAPI', icon: <SiFastapi size="3.5em" />, color: '#009688' },
-  { name: 'Flask', icon: <SiFlask size="3.5em" />, color: '#A8B0B9' },
-  { name: 'Firestore', icon: <RiFirebaseFill size="3.5em" />, color: '#FFCA28' },
-  { name: 'WebSockets', icon: <SiSocketdotio size="3.5em" />, color: '#E6E6E6' },
+  { name: 'Flask', icon: <SiFlask size="3.5em" />, color: '#A8B0B9', lightColor: '#526274' },
+  { name: 'WebSockets', icon: <SiSocketdotio size="3.5em" />, color: '#E6E6E6', lightColor: '#453452' },
+  { name: 'C++', icon: <SiCplusplus size="3.5em" />, color: '#00599C' },
+  { name: 'Machine Learning', icon: <SiTensorflow size="3.5em" />, color: '#FF6F00' },
+  { name: 'Ubuntu', icon: <SiUbuntu size="3.5em" />, color: '#E95420' },
+  { name: 'Windows Server', icon: <FaWindows size="3.5em" />, color: '#00A4EF' },
+  { name: 'Webmin', icon: <SiWebmin size="3.5em" />, color: '#4F6474' },
+  { name: 'Kali Linux', icon: <SiKalilinux size="3.5em" />, color: '#557CDA' },
+  { name: 'Nmap', icon: <FaNetworkWired size="3.5em" />, color: '#3B82F6' },
+  { name: 'Wireshark', icon: <SiWireshark size="3.5em" />, color: '#1679C5' },
   { name: 'Forensics', icon: <FaFingerprint size="3.5em" />, color: '#8AD1FF' },
   { name: 'Autopsy', icon: <FaSkull size="3.5em" />, color: '#B5B5B5' },
   { name: 'SQL Injection', icon: <FaDatabase size="3.5em" />, color: '#4DB6AC' },
   { name: 'Hashcat', icon: <FaKey size="3.5em" />, color: '#FFC857' },
   { name: 'John the Ripper', icon: <FaUserSecret size="3.5em" />, color: '#C084FC' },
-  { name: 'Nmap', icon: <FaNetworkWired size="3.5em" />, color: '#3B82F6' },
-  { name: 'Wireshark', icon: <SiWireshark size="3.5em" />, color: '#1679C5' },
-  { name: 'Webmin', icon: <SiWebmin size="3.5em" />, color: '#4F6474' },
-  { name: 'Kali Linux', icon: <SiKalilinux size="3.5em" />, color: '#557CDA' },
-  { name: 'Ubuntu', icon: <SiUbuntu size="3.5em" />, color: '#E95420' },
-  { name: 'Windows Server', icon: <FaWindows size="3.5em" />, color: '#00A4EF' },
-  { name: 'C++', icon: <SiCplusplus size="3.5em" />, color: '#00599C' },
-  { name: 'Machine Learning', icon: <SiTensorflow size="3.5em" />, color: '#FF6F00' },
   { name: 'Arduino', icon: <SiArduino size="3.5em" />, color: '#00979D' },
   { name: 'ESP32-CAM', icon: <SiEspressif size="3.5em" />, color: '#3A4F62' },
-  { name: 'Raspberry Pi', icon: <SiRaspberrypi size="3.5em" />, color: '#C51A4A' }
+  { name: 'Raspberry Pi', icon: <SiRaspberrypi size="3.5em" />, color: '#C51A4A' },
 ];
 
 const Skills = () => {
@@ -44,18 +44,18 @@ const Skills = () => {
       <div className="skills-shell">
         <motion.div
           className="section-title-block"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           transition={{ duration: 0.28 }}
           viewport={viewportOnce}
           variants={fadeUp}
         >
-          <h2>Core Expertise</h2>
+          <h2>Skills & Technologies</h2>
         </motion.div>
 
         <motion.div
           className="skills-grid skills-grid-single-page"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.08 }}
           variants={staggerContainer}
@@ -73,7 +73,7 @@ const SkillItem = ({ skill }) => {
   return (
     <motion.div
       className="skill-item"
-      style={{ '--hover-color': skill.color, '--pointer-glow-color': `${skill.color}33` }}
+      style={{ '--hover-color': skill.color, '--light-icon-color': skill.lightColor || skill.color, '--pointer-glow-color': `${skill.color}33` }}
       variants={fadeUp}
       whileHover={{ y: -6, scale: 1.02, boxShadow: `0 0 22px ${skill.color}30` }}
       whileTap={{ scale: 0.98 }}

@@ -5,12 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    assetsInlineLimit: 0,
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom', 'react-router-dom'],
+          react: ['react', 'react-dom', 'react-dom/client'],
           motion: ['framer-motion'],
-          visuals: ['canvas-confetti', 'react-countup', 'react-icons', 'react-parallax-tilt'],
         },
       },
     },

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import {
   FaMapMarkerAlt,
   FaPhone,
@@ -69,8 +68,15 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (isSubmitting) return;
+    if (!formData.name.trim() || !formData.message.trim()) {
+      setStatus('Please enter your name and a message, not only spaces.');
+      setStatusType('error');
+      return;
+    }
+
     if (!emailJsConfig.serviceId || !emailJsConfig.templateId || !emailJsConfig.publicKey) {
-      setStatus('EmailJS needs a template ID and public key in the env file before messages can be sent.');
+      setStatus('The contact form is temporarily unavailable. Please use the email link below.');
       setStatusType('error');
       return;
     }
@@ -80,6 +86,7 @@ const Contact = () => {
     setStatusType('sending');
 
     try {
+      const { default: emailjs } = await import('@emailjs/browser');
       await emailjs.send(
         emailJsConfig.serviceId,
         emailJsConfig.templateId,
@@ -144,7 +151,7 @@ const Contact = () => {
         </div>
 
         <div className="contact-columns">
-          <motion.div className="contact-column info-column" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
+          <motion.div className="contact-column info-column" initial={false} whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
             <div className="contact-card info-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
@@ -181,7 +188,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          <motion.div className="contact-column social-column" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
+          <motion.div className="contact-column social-column" initial={false} whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
             <div className="contact-card social-card" data-pointer-glow>
               <div className="card-glow"></div>
               <div className="card-heading">
@@ -210,7 +217,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          <motion.div className="contact-column form-column" initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
+          <motion.div className="contact-column form-column" initial={false} whileInView="visible" viewport={viewportOnce} variants={fadeUp}>
             <form className="contact-card form-card" onSubmit={handleSubmit} data-pointer-glow>
               <div className="card-glow"></div>
               <div className="form-card-topline">
@@ -223,18 +230,18 @@ const Contact = () => {
               <div className="form-field-grid">
                 <div className={`form-group ${activeField === 'name' ? 'active' : ''}`}>
                   <label htmlFor="contact-name">Your Name</label>
-                  <input id="contact-name" type="text" name="name" placeholder="Azrul Amaline" value={formData.name} onChange={handleChange} onFocus={() => setActiveField('name')} onBlur={() => setActiveField(null)} required />
+                  <input id="contact-name" type="text" name="name" autoComplete="name" maxLength={120} placeholder="Your name" value={formData.name} onChange={handleChange} onFocus={() => setActiveField('name')} onBlur={() => setActiveField(null)} required />
                 </div>
 
                 <div className={`form-group ${activeField === 'email' ? 'active' : ''}`}>
                   <label htmlFor="contact-email">Your Email</label>
-                  <input id="contact-email" type="email" name="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} onFocus={() => setActiveField('email')} onBlur={() => setActiveField(null)} required />
+                  <input id="contact-email" type="email" name="email" autoComplete="email" maxLength={254} placeholder="you@example.com" value={formData.email} onChange={handleChange} onFocus={() => setActiveField('email')} onBlur={() => setActiveField(null)} required />
                 </div>
               </div>
 
               <div className={`form-group message-group ${activeField === 'message' ? 'active' : ''}`}>
                 <label htmlFor="contact-message">Your Message</label>
-                <textarea id="contact-message" name="message" placeholder="Share the project idea, app issue, timeline, or anything useful..." rows="6" value={formData.message} onChange={handleChange} onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)} required></textarea>
+                <textarea id="contact-message" name="message" maxLength={5000} placeholder="Share the project idea, app issue, timeline, or anything useful..." rows="6" value={formData.message} onChange={handleChange} onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)} required></textarea>
                 <span className="message-count">{formData.message.length} characters</span>
               </div>
 
@@ -248,7 +255,7 @@ const Contact = () => {
 
               <AnimatePresence>
                 {status && (
-                  <motion.div className={`status-message status-${statusType}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+                  <motion.div role="status" aria-live="polite" className={`status-message status-${statusType}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                     <p>{status}</p>
                     {statusType === 'error' && (
                       <a className="status-fallback-link" href={fallbackMailHref}>
