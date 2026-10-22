@@ -13,8 +13,16 @@
   border-radius: 26px;
   border: 1px solid rgba(216, 197, 255, 0.13);
   background:
-    radial-gradient(circle at 12% 16%, rgba(125, 211, 252, 0.12), transparent 30%),
-    radial-gradient(circle at 88% 22%, rgba(196, 168, 255, 0.16), transparent 34%),
+    radial-gradient(
+      circle at 12% 16%,
+      rgba(125, 211, 252, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 22%,
+      rgba(196, 168, 255, 0.16),
+      transparent 34%
+    ),
     linear-gradient(180deg, rgba(29, 14, 47, 0.78), rgba(15, 7, 26, 0.76));
 }
 
@@ -39,10 +47,36 @@ body.light-mode .collaboration-kicker {
   line-height: 1.08;
 }
 
-.collaboration-copy p:last-child {
+.collaboration-copy > p:not(.collaboration-kicker) {
   margin: 0.8rem 0 0;
   max-width: 68ch;
   color: rgba(240, 230, 255, 0.72);
+}
+
+body.light-mode .collaboration-copy > p:not(.collaboration-kicker) {
+  color: var(--light-ink-soft);
+}
+
+.collaboration-work-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collaboration-work-modes li {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(196, 168, 255, 0.22);
+  border-radius: 999px;
+  color: #d8c9ed;
+  font-size: 0.8rem;
+}
+
+body.light-mode .collaboration-work-modes li {
+  color: #59406f;
+  border-color: var(--light-border);
 }
 
 .collaboration-actions {

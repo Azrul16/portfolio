@@ -510,6 +510,12 @@
 }
 
 /* macOS Tahoe-inspired floating glass navigation */
+.navbar-download-icon { display: none; }
+@media (max-width: 480px) {
+  .navbar-cv-btn .navbar-download-icon { display: block; font-size: 1rem; }
+  .navbar-cv-btn .navbar-download-label { display: none; }
+  .navbar-cv-btn::before { content: none; }
+}
 .navbar {
   height: calc(var(--navbar-height) + 18px);
   padding: 14px clamp(0.8rem, 2vw, 1.4rem) 0;
@@ -678,7 +684,7 @@
   min-width: 126px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05)),
-    linear-gradient(135deg, rgba(190, 132, 255, 0.92), rgba(112, 45, 220, 0.88));
+    linear-gradient(135deg, #6726b7, #4c1d95);
   border-color: rgba(255, 255, 255, 0.24);
   box-shadow: 0 12px 28px rgba(91, 40, 155, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }

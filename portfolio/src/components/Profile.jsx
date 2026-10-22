@@ -1,4 +1,3 @@
-import React from 'react';
 import { m as motion } from 'framer-motion';
 import './Profile.css';
 import profilePhoto from '../assets/images/photo/portrait.webp';
@@ -7,19 +6,25 @@ import profilePhotoMedium from '../assets/images/photo/portrait-640.avif';
 import profilePhotoLarge from '../assets/images/photo/portrait-800.avif';
 import cvUrl from '../assets/CV.pdf';
 import { FaDownload, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { fadeScale, fadeUp, smoothEase, springHover, staggerContainer } from './motionConfig';
+import {
+  fadeScale,
+  fadeUp,
+  smoothEase,
+  springHover,
+  staggerContainer,
+} from './motionConfig';
 
 const socialLinks = [
   {
     platform: 'LinkedIn',
     icon: <FaLinkedin />,
-    url: 'https://www.linkedin.com/in/azrul-amaline/'
+    url: 'https://www.linkedin.com/in/azrul-amaline/',
   },
   {
     platform: 'GitHub',
     icon: <FaGithub />,
-    url: 'https://github.com/azrul16'
-  }
+    url: 'https://github.com/azrul16',
+  },
 ];
 const cvFileName = 'Azrul Amaline.pdf';
 
@@ -28,9 +33,9 @@ const heroContainer = {
   visible: {
     transition: {
       staggerChildren: 0.04,
-      delayChildren: 0.06
-    }
-  }
+      delayChildren: 0.06,
+    },
+  },
 };
 
 const portraitVariants = {
@@ -38,7 +43,7 @@ const portraitVariants = {
     opacity: 0,
     y: 34,
     rotate: -5,
-    scale: 0.97
+    scale: 0.97,
   },
   visible: {
     opacity: 1,
@@ -47,15 +52,15 @@ const portraitVariants = {
     scale: 1,
     transition: {
       duration: 0.38,
-      ease: smoothEase
-    }
-  }
+      ease: smoothEase,
+    },
+  },
 };
 
 const heroPanelVariants = {
   hidden: {
     opacity: 0,
-    y: 22
+    y: 22,
   },
   visible: {
     opacity: 1,
@@ -64,9 +69,9 @@ const heroPanelVariants = {
       duration: 0.34,
       ease: smoothEase,
       staggerChildren: 0.04,
-      delayChildren: 0.02
-    }
-  }
+      delayChildren: 0.02,
+    },
+  },
 };
 
 const Profile = () => {
@@ -88,8 +93,20 @@ const Profile = () => {
               <div className="image-wrapper">
                 <div className="image-container">
                   <picture>
-                    <source type="image/avif" srcSet={`${profilePhotoSmall} 480w, ${profilePhotoMedium} 640w, ${profilePhotoLarge} 800w`} sizes="(max-width: 480px) 85vw, 420px" />
-                    <img src={profilePhoto} alt="Azrul Amaline" className="profile-photo" width="800" height="800" fetchPriority="high" decoding="async" />
+                    <source
+                      type="image/avif"
+                      srcSet={`${profilePhotoSmall} 480w, ${profilePhotoMedium} 640w, ${profilePhotoLarge} 800w`}
+                      sizes="(max-width: 480px) 85vw, 420px"
+                    />
+                    <img
+                      src={profilePhoto}
+                      alt="Azrul Amaline"
+                      className="profile-photo"
+                      width="800"
+                      height="800"
+                      fetchPriority="high"
+                      decoding="async"
+                    />
                   </picture>
                   <div className="liquid-effect"></div>
                   <div className="glow-effect"></div>
@@ -104,10 +121,16 @@ const Profile = () => {
         </div>
 
         <div className="profile-text-container">
-          <motion.div className="profile-text hero-panel" variants={heroPanelVariants} data-pointer-glow>
+          <motion.div
+            className="profile-text hero-panel"
+            variants={heroPanelVariants}
+            data-pointer-glow
+          >
             <motion.p className="hero-kicker hero-greeting" variants={fadeUp}>
               Assalamu alaikum{' '}
-              <span lang="ar" dir="rtl">(السلام عليكم)</span>
+              <span lang="ar" dir="rtl">
+                (السلام عليكم)
+              </span>
             </motion.p>
 
             <motion.div className="name-container" variants={fadeScale}>
@@ -119,25 +142,56 @@ const Profile = () => {
             </motion.div>
 
             <motion.p className="hero-role" variants={fadeUp}>
-              Flutter Mobile App & Backend Developer
+              Flutter &amp; Backend Developer{' '}
+              <span className="hero-role-secondary">
+                DevOps / Cloud Enthusiast
+              </span>
             </motion.p>
 
             <motion.p className="hero-lead" variants={fadeUp}>
-              As a Computer Science and Engineering graduate from PSTU, Bangladesh, I focus on Flutter mobile development and Python backend systems. I am seeking a developer role where I can contribute to application development, solve technical challenges, and grow within an engineering team. Available to start immediately, I welcome remote, onsite, and hybrid opportunities and am open to relocation.
+              I build cross-platform mobile apps, backend APIs, and
+              deployment-ready systems with Flutter, Python, Firebase, Docker,
+              and Linux. I enjoy taking products from development to deployment
+              with practical, maintainable architecture.
             </motion.p>
 
-            <motion.div className="hero-actions" aria-label="Primary portfolio actions" variants={staggerContainer}>
-              <motion.a href={cvUrl} className="hero-cta-link hero-cta-download" download={cvFileName} variants={fadeUp} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }} transition={springHover} data-pointer-glow>
+            <motion.div
+              className="hero-actions"
+              aria-label="Primary portfolio actions"
+              variants={staggerContainer}
+            >
+              <motion.a
+                href={cvUrl}
+                className="hero-cta-link hero-cta-download"
+                download={cvFileName}
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                transition={springHover}
+                data-pointer-glow
+              >
                 <FaDownload />
                 Download CV
               </motion.a>
-              <motion.a href="#contact" className="hero-cta-link hero-cta-secondary" variants={fadeUp} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }} transition={springHover} data-pointer-glow>
+              <motion.a
+                href="#contact"
+                className="hero-cta-link hero-cta-secondary"
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                transition={springHover}
+                data-pointer-glow
+              >
                 <FaEnvelope />
-                Discuss a Role
+                Let’s Talk
               </motion.a>
             </motion.div>
 
-            <motion.div className="profile-social-dock" aria-label="Social profile links" variants={staggerContainer}>
+            <motion.div
+              className="profile-social-dock"
+              aria-label="Social profile links"
+              variants={staggerContainer}
+            >
               {socialLinks.map(({ platform, icon, url }) => (
                 <motion.a
                   key={platform}

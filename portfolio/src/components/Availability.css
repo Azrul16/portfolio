@@ -66,7 +66,9 @@
 }
 
 .availability-row:focus-visible {
-  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.34), 0 18px 46px rgba(59, 130, 246, 0.14);
+  box-shadow:
+    0 0 0 3px rgba(125, 211, 252, 0.34),
+    0 18px 46px rgba(59, 130, 246, 0.14);
 }
 
 .availability-number {
@@ -128,10 +130,27 @@
   }
 }
 
-.availability-section { padding-block: 2.5rem; }
-.availability-section .availability-row { min-height: auto; padding-block: 1rem; }
+.availability-section {
+  padding-block: 2.5rem;
+}
+.availability-section .availability-row {
+  min-height: auto;
+  padding-block: 1rem;
+}
+
+.availability-row h3 {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
 
 @media (hover: none), (pointer: coarse) {
-  .availability-row { transition: none; -webkit-tap-highlight-color: transparent; }
-  .availability-row.active { transform: none; box-shadow: none; }
+  .availability-row {
+    transition: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .availability-row.active {
+    transform: none;
+    box-shadow: none;
+  }
 }

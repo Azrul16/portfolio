@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 
 const sections = new Map();
 
@@ -21,9 +21,12 @@ function VisibilityGate({ id, children }) {
       if (element) {
         state = { ready: false };
         state.promise = new Promise((resolve) => {
-          const observer = new IntersectionObserver((entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) state.reveal();
-          }, { rootMargin: '600px 0px' });
+          const observer = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((entry) => entry.isIntersecting)) state.reveal();
+            },
+            { rootMargin: '200px 0px' }
+          );
           state.reveal = () => {
             state.ready = true;
             observer.disconnect();
@@ -41,7 +44,13 @@ function VisibilityGate({ id, children }) {
 
 export default function DeferredSection({ id, children }) {
   return (
-    <Suspense fallback={<section id={id} className="section-loading" aria-busy="true">Loading section…</section>}>
+    <Suspense
+      fallback={
+        <section id={id} className="section-loading" aria-busy="true">
+          Loading section…
+        </section>
+      }
+    >
       <VisibilityGate id={id}>{children}</VisibilityGate>
     </Suspense>
   );

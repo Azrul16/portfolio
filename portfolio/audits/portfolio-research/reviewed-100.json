@@ -1,0 +1,4495 @@
+{
+  "date": "2026-10-13",
+  "directory": "https://github.com/emmabostian/developer-portfolios",
+  "sampling": "Developer-directory entries sorted by SHA-256(URL + fixed study seed); unique initial hostnames; qualifying sites selected after inspection. Convenience sample, not representative of the profession.",
+  "reviewScope": "Chromium-rendered desktop homepage content, heading/navigation structure and links. Images/fonts/media blocked during scan. No claim of 100 full visual, mobile, accessibility or hiring-outcome audits.",
+  "attempted": 138,
+  "loadedWithSufficientContent": 120,
+  "reviewed": 100,
+  "excludedAfterInspection": [
+    {
+      "name": "Hien Dao",
+      "url": "https://hiendao.dev/",
+      "reason": "Entry experience prevented a meaningful content review."
+    },
+    {
+      "name": "Brianna Brockington",
+      "url": "https://briannab1997.github.io/BBPortfolio/",
+      "reason": "Current positioning is primarily customer success rather than software development."
+    },
+    {
+      "name": "Seyoon Puvi",
+      "url": "https://seyoonpuvi.github.io/personal-portfolio/",
+      "reason": "Displayed identity differs from the directory entry; excluded rather than attributing copied content."
+    },
+    {
+      "name": "Aditya Chauhan",
+      "url": "https://aditya-chauhan.vercel.app/",
+      "reason": "Desktop simulation and unlock screen made the ordinary structure ambiguous."
+    },
+    {
+      "name": "Michelle Brenner",
+      "url": "https://www.michellebrenner.com/",
+      "reason": "Current homepage promotes coaching and speaking rather than engineering work."
+    },
+    {
+      "name": "Dzmitry Drepin",
+      "url": "https://linktr.ee/drepin",
+      "reason": "Redirected to a Linktree profile."
+    },
+    {
+      "name": "Claudia Freitas",
+      "url": "https://www.icfclaudia.com/",
+      "reason": "Current positioning is product management."
+    },
+    {
+      "name": "David Dolph",
+      "url": "https://github.com/o6uoq",
+      "reason": "Redirected to a GitHub profile rather than a portfolio site."
+    },
+    {
+      "name": "Elon Feng",
+      "url": "https://dinq.me/elonfeng",
+      "reason": "Hosted profile card rather than a full personal portfolio."
+    },
+    {
+      "name": "Ícaro Galvão",
+      "url": "https://icaro0310.github.io/",
+      "reason": "Current homepage is predominantly a developer-tool product landing page."
+    },
+    {
+      "name": "Flora Liu",
+      "url": "https://floraliu.dev/",
+      "reason": "Current positioning is hardware/mechanical engineering."
+    },
+    {
+      "name": "Hungry Bear Studio",
+      "url": "https://www.hungrybearstudios.com/",
+      "reason": "Animation studio rather than a software developer."
+    },
+    {
+      "name": "Enea",
+      "url": "https://eneawork.it/",
+      "reason": "Current positioning is UX design; excluded from this software-focused sample."
+    },
+    {
+      "name": "Ryan Burgess",
+      "url": "https://www.ryanburgess.com/",
+      "reason": "Current site is a photography portfolio."
+    }
+  ],
+  "unavailable": [
+    {
+      "name": "Pep Alonso",
+      "url": "https://pepalonso.com",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Abdul Wahab Khan",
+      "url": "https://wahab-khan.github.io/Abdul-Wahab-Khan",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Ishaan Ray",
+      "url": "https://galaxir.vercel.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Vaibhav Raj",
+      "url": "https://vaibhav5860.vercel.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Yashita Namdeo",
+      "url": "https://yashitanamdeo.github.io",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Luís Oliveira",
+      "url": "https://lo-devpage.netlify.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Nicholas Gannon",
+      "url": "https://nicholasgannon.io",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Anas Boubechra",
+      "url": "https://cschad.com",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Vitaliy Ivanov",
+      "url": "https://vitaliy.vercel.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Tim Jones",
+      "url": "https://timmoth.com",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Sabittwa Banerjee",
+      "url": "https://strangelytrue.vercel.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Chaitanya Sai Meka",
+      "url": "https://chaitanya-sai-meka.vercel.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Abhijit Mondal",
+      "url": "https://abhijitmondal.info",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Barthélémy Pousset",
+      "url": "https://barthelemypousset.com",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Donna Szeto",
+      "url": "https://www.donnaszeto.com",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Lamine Neggazi",
+      "url": "https://lamine.cc",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Gii-DE",
+      "url": "https://g-dea.com",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    },
+    {
+      "name": "Oraz Gulchayew",
+      "url": "https://orazgulcayew.vercel.app",
+      "status": 200,
+      "error": "Insufficient homepage content or challenge/error page."
+    }
+  ],
+  "portfolios": [
+    {
+      "number": 1,
+      "name": "Sahil Bajaj",
+      "url": "https://sahilbajajportfolio.vercel.app/",
+      "listedUrl": "https://sahilbajajportfolio.vercel.app",
+      "scanOrdinal": 1,
+      "observation": "Career history, education, skills, projects and services share a long homepage; shows the breadth possible, but also the need to prioritize.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Sahil Bajaj 👋"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H2",
+          "text": "Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Check out my latest work"
+        },
+        {
+          "level": "H2",
+          "text": "What I Build"
+        },
+        {
+          "level": "H2",
+          "text": "I like building things"
+        },
+        {
+          "level": "H2",
+          "text": "Get in Touch"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 4,
+      "emailLinks": 1
+    },
+    {
+      "number": 2,
+      "name": "Abraham Bankole",
+      "url": "https://www.abrahambankole.dev/",
+      "listedUrl": "https://abrahambankole.dev",
+      "scanOrdinal": 2,
+      "observation": "Short navigation groups biography, selected engineering work and contact; toolkit remains supporting content.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "ABRAHAM BANKOLE"
+        },
+        {
+          "level": "H2",
+          "text": "SOFTWARE, SYSTEMS & THINGS I FIND INTERESTING"
+        },
+        {
+          "level": "H2",
+          "text": "03 / TOOLKIT"
+        },
+        {
+          "level": "H2",
+          "text": "04 / CONTACT"
+        }
+      ],
+      "navigation": [
+        "ABRAHAM BANKOLE",
+        "ABOUT",
+        "SELECTED WORK",
+        "CONTACT"
+      ],
+      "sectionIds": [
+        "about",
+        "work",
+        "contact"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 1
+    },
+    {
+      "number": 3,
+      "name": "Anil Khatri",
+      "url": "https://imkaka.github.io/",
+      "listedUrl": "https://imkaka.github.io",
+      "scanOrdinal": 3,
+      "observation": "Minimal engineer introduction sends visitors to separate blog, resume and project pages.",
+      "headings": [],
+      "navigation": [
+        "Anil Khatri",
+        "menu",
+        "Home",
+        "Blog",
+        "Resume",
+        "Projects"
+      ],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 2
+    },
+    {
+      "number": 4,
+      "name": "Noel Young",
+      "url": "https://noeljyoung.github.io/portfolio/",
+      "listedUrl": "https://noeljyoung.github.io/portfolio/",
+      "scanOrdinal": 4,
+      "observation": "Backend positioning connects specific systems and integrations to grouped skills, recommendations and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Backend Software Engineer"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Notable Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Recommendations"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "About",
+        "Projects",
+        "Skills",
+        "Recommendations",
+        "Contact"
+      ],
+      "sectionIds": [
+        "about",
+        "projects",
+        "skills",
+        "recommendations",
+        "contact"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 5,
+      "name": "Maduakor Emmanuel",
+      "url": "https://emmajs.vercel.app/#work",
+      "listedUrl": "https://emmajs.vercel.app",
+      "scanOrdinal": 5,
+      "observation": "Compact frontend introduction, biography, selected work and contact; resume is an action.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Frontend Dev🧑‍💻"
+        },
+        {
+          "level": "H1",
+          "text": "<About Me />"
+        },
+        {
+          "level": "H1",
+          "text": "These are some of my works"
+        },
+        {
+          "level": "H1",
+          "text": "Let's Connect!"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 11,
+      "emailLinks": 0
+    },
+    {
+      "number": 6,
+      "name": "Barnav Mitra Jos",
+      "url": "https://jos.gg/",
+      "listedUrl": "https://jos.gg",
+      "scanOrdinal": 6,
+      "observation": "Game-development identity distinguishes active projects, past client work and testimonials.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "hi, i'm jos!"
+        },
+        {
+          "level": "H2",
+          "text": "quick intro!"
+        },
+        {
+          "level": "H2",
+          "text": "friends & colleagues"
+        },
+        {
+          "level": "H2",
+          "text": "testimonials"
+        },
+        {
+          "level": "H2",
+          "text": "find me online"
+        },
+        {
+          "level": "H1",
+          "text": "my about-board"
+        },
+        {
+          "level": "H2",
+          "text": "👋 hi, i'm jos!"
+        },
+        {
+          "level": "H1",
+          "text": "clients & work"
+        },
+        {
+          "level": "H2",
+          "text": "current active projects"
+        },
+        {
+          "level": "H2",
+          "text": "past"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 2
+    },
+    {
+      "number": 7,
+      "name": "Leroy Rosales",
+      "url": "https://leroyrosales.com/",
+      "listedUrl": "https://leroyrosales.com",
+      "scanOrdinal": 7,
+      "observation": "Client builds dominate the page; experiments and personal material have separate navigation labels.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "👨🏾‍💻 Leroy Rosales"
+        },
+        {
+          "level": "H2",
+          "text": "Client work"
+        }
+      ],
+      "navigation": [
+        "Skills",
+        "Work",
+        "Experiments",
+        "Personal",
+        "Back to top"
+      ],
+      "sectionIds": [
+        "skills",
+        "personal"
+      ],
+      "githubLinks": 3,
+      "emailLinks": 1
+    },
+    {
+      "number": 8,
+      "name": "Kevin Nguyen",
+      "url": "https://kevinbkdev.vercel.app/",
+      "listedUrl": "https://kevinbkdev.vercel.app",
+      "scanOrdinal": 8,
+      "observation": "Backend/blockchain developer uses writing-led organization with an identity page; different goal from a job-search homepage.",
+      "headings": [],
+      "navigation": [
+        "Kevinbkdev",
+        "📝 Blogs",
+        "📽 Series",
+        "👨‍💻 Uses",
+        "📚 Reading list",
+        "🤷‍♂️ Me",
+        "English",
+        "Tiếng Việt",
+        "RSS",
+        "Open user menu"
+      ],
+      "sectionIds": [],
+      "githubLinks": 0,
+      "emailLinks": 0
+    },
+    {
+      "number": 9,
+      "name": "Omar Gastón Chalas",
+      "url": "https://www.ogaston.com/",
+      "listedUrl": "https://ogaston.com",
+      "scanOrdinal": 9,
+      "observation": "Cloud/AI identity leads into biography, projects, writing and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Omar Gastón Chalas"
+        },
+        {
+          "level": "H2",
+          "text": "Who I am"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Latest posts"
+        },
+        {
+          "level": "H2",
+          "text": "Let's connect"
+        }
+      ],
+      "navigation": [
+        "ogaston.com",
+        "About",
+        "Projects",
+        "Blog",
+        "Contact",
+        ".scls-1{fill:#00bcd4;}.scls-2{fill:#fff;}.scls-3{fill:#3f768c;} ogaston.com"
+      ],
+      "sectionIds": [
+        "about",
+        "projects",
+        "blog",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 0
+    },
+    {
+      "number": 10,
+      "name": "Sakshi Jaiswal",
+      "url": "https://sakshi.is-cool.dev/",
+      "listedUrl": "https://sakshi.is-cool.dev",
+      "scanOrdinal": 10,
+      "observation": "Biography, capabilities, experience, builds and academic history are distinct, although playful navigation labels need interpretation.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Sakshi Jaiswal"
+        },
+        {
+          "level": "H1",
+          "text": "Who Am I?"
+        },
+        {
+          "level": "H2",
+          "text": "Let's Work Together"
+        }
+      ],
+      "navigation": [
+        "Sakshi",
+        "Who am I ?",
+        "My Superpowers",
+        "Experience & Impact",
+        "Things I've Built",
+        "Academic Path",
+        "Let's Talk"
+      ],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 11,
+      "name": "Sanket Chaudhari",
+      "url": "https://sanketchaudhari.in/",
+      "listedUrl": "https://sanketchaudhari.in",
+      "scanOrdinal": 11,
+      "observation": "Software/AI overview is followed by featured systems, skills, milestones and open-source activity.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "SANKET CHAUDHARI"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "FEATURED SYSTEMS"
+        },
+        {
+          "level": "H2",
+          "text": "MY SKILLS"
+        },
+        {
+          "level": "H2",
+          "text": "ACHIEVEMENTS & ACTIVITIES"
+        },
+        {
+          "level": "H2",
+          "text": "GITHUB & DEVELOPMENT"
+        },
+        {
+          "level": "H2",
+          "text": "Curriculum Vitae"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "SANKET.CHAUDHARI"
+      ],
+      "sectionIds": [
+        "about",
+        "projects",
+        "skills",
+        "achievements",
+        "opensource",
+        "resume",
+        "contact"
+      ],
+      "githubLinks": 11,
+      "emailLinks": 3
+    },
+    {
+      "number": 12,
+      "name": "Chambrin Alexandre",
+      "url": "https://www.chambrin.dev/",
+      "listedUrl": "https://chambrin.dev",
+      "scanOrdinal": 13,
+      "observation": "Freelance TypeScript site foregrounds services, deliverables, process and FAQs; client-acquisition structure.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Votre produit SaaS, du prototype à la production."
+        },
+        {
+          "level": "H2",
+          "text": "Trois façons de travailler ensemble."
+        },
+        {
+          "level": "H2",
+          "text": "Des livrables qui tournent en production."
+        },
+        {
+          "level": "H2",
+          "text": "Une stack moderne, choisie pour aller"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "services",
+        "realisations",
+        "competences",
+        "process",
+        "faq",
+        "contact"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 13,
+      "name": "Sammeyak Wankhade",
+      "url": "https://sammeyak-portfolio.netlify.app/",
+      "listedUrl": "https://sammeyak-portfolio.netlify.app",
+      "scanOrdinal": 14,
+      "observation": "Terminal styling still exposes conventional biography, stack, experience, projects and contact sections.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Sammeyak Wankhade_"
+        },
+        {
+          "level": "H2",
+          "text": "about_me"
+        },
+        {
+          "level": "H2",
+          "text": "tech_stack"
+        },
+        {
+          "level": "H2",
+          "text": "work_experience"
+        },
+        {
+          "level": "H2",
+          "text": "projects"
+        },
+        {
+          "level": "H2",
+          "text": "certifications"
+        },
+        {
+          "level": "H2",
+          "text": "terminal"
+        },
+        {
+          "level": "H2",
+          "text": "get_in_touch"
+        }
+      ],
+      "navigation": [
+        "./About",
+        "./Skills",
+        "./Experience",
+        "./Projects",
+        "./Contact"
+      ],
+      "sectionIds": [
+        "hero",
+        "about",
+        "skills",
+        "experience",
+        "projects",
+        "certifications",
+        "terminal-section",
+        "contact"
+      ],
+      "githubLinks": 8,
+      "emailLinks": 2
+    },
+    {
+      "number": 14,
+      "name": "Renan Silva",
+      "url": "https://devrenansilva.netlify.app/",
+      "listedUrl": "https://devrenansilva.netlify.app",
+      "scanOrdinal": 15,
+      "observation": "Experience and projects precede a combined education/certificate block.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Renan Leandro da Silva"
+        },
+        {
+          "level": "H1",
+          "text": "Frontend Developer"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Work Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Education & Certificates"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "about",
+        "experience",
+        "projects",
+        "education"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 1
+    },
+    {
+      "number": 15,
+      "name": "Vivek Ghodadra",
+      "url": "https://vivek-ghodadra.web.app/",
+      "listedUrl": "https://vivek-ghodadra.web.app",
+      "scanOrdinal": 16,
+      "observation": "Mobile specialization is explicit; capability, tools, employment history and app work are differentiated.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Senior React Native Developer."
+        },
+        {
+          "level": "H2",
+          "text": "A little about me."
+        },
+        {
+          "level": "H2",
+          "text": "What I bring to a team."
+        },
+        {
+          "level": "H2",
+          "text": "Tools I work with."
+        },
+        {
+          "level": "H2",
+          "text": "Where I’ve worked."
+        },
+        {
+          "level": "H2",
+          "text": "Apps I’ve worked on."
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "home",
+        "about",
+        "why-hire-me",
+        "skills",
+        "ai-work",
+        "experience",
+        "projects",
+        "education",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 3
+    },
+    {
+      "number": 16,
+      "name": "Alan Khalili",
+      "url": "https://www.alan-khalili.com/",
+      "listedUrl": "https://www.alan-khalili.com",
+      "scanOrdinal": 17,
+      "observation": "Three core destinations: professional history, projects and contact; resume is separate.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Alan"
+        },
+        {
+          "level": "H1",
+          "text": "Khalili"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Contact"
+        }
+      ],
+      "navigation": [
+        "AK",
+        "EXPERIENCE",
+        "PROJECTS",
+        "CONTACT",
+        "RESUME",
+        "LINKEDIN",
+        "EMAIL",
+        "GITHUB",
+        "INSTAGRAM"
+      ],
+      "sectionIds": [
+        "Experience",
+        "Projects",
+        "Contact"
+      ],
+      "githubLinks": 46,
+      "emailLinks": 2
+    },
+    {
+      "number": 17,
+      "name": "Utsav Adhikari",
+      "url": "https://utsavadhikari07.com.np/",
+      "listedUrl": "https://utsavadhikari07.com.np",
+      "scanOrdinal": 18,
+      "observation": "Student/developer structure includes grouped skills, featured projects and certifications after the introduction.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi I 'm"
+        },
+        {
+          "level": "H1",
+          "text": "Utsav Adhikari"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "My Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "My Certifications"
+        },
+        {
+          "level": "H2",
+          "text": "Let's Connect"
+        }
+      ],
+      "navigation": [
+        "Home",
+        "About",
+        "Skills",
+        "Projects",
+        "Certifications",
+        "Contact"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "skills",
+        "projects",
+        "certifications",
+        "contact"
+      ],
+      "githubLinks": 6,
+      "emailLinks": 1
+    },
+    {
+      "number": 18,
+      "name": "Mohammad Araf",
+      "url": "https://araf-portfolio.vercel.app/",
+      "listedUrl": "https://araf-portfolio.vercel.app",
+      "scanOrdinal": 19,
+      "observation": "Technical stack, employment history, selected work and academic background are separate evidence categories.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "MUHAMMAD ARAF"
+        },
+        {
+          "level": "H2",
+          "text": "ABOUT ME"
+        },
+        {
+          "level": "H2",
+          "text": "/ WHAT I DO"
+        },
+        {
+          "level": "H2",
+          "text": "/ TECHNICAL STACK"
+        },
+        {
+          "level": "H2",
+          "text": "/ PROFESSIONAL PATH"
+        },
+        {
+          "level": "H2",
+          "text": "/ SELECTED WORK"
+        },
+        {
+          "level": "H2",
+          "text": "/ ACADEMIC FOUNDATION"
+        },
+        {
+          "level": "H2",
+          "text": "/ RECOGNITION"
+        },
+        {
+          "level": "H2",
+          "text": "/ GET IN"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "hero",
+        "about",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "recognition",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 19,
+      "name": "Masab Qurban",
+      "url": "https://www.masabqurban.com/",
+      "listedUrl": "https://www.masabqurban.com",
+      "scanOrdinal": 20,
+      "observation": "SaaS work and service offerings support a freelance identity; case-study archive is linked separately.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "MASAB QURBAN"
+        },
+        {
+          "level": "H2",
+          "text": "SOFTWARE ENGINEER"
+        },
+        {
+          "level": "H2",
+          "text": "Selected work & explorations"
+        },
+        {
+          "level": "H2",
+          "text": "W E B A P P S A I & S A A S E N T"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 20,
+      "name": "Nilkanth Patadiya",
+      "url": "https://nilkanthpatadiya.vercel.app/",
+      "listedUrl": "https://nilkanthpatadiya.vercel.app",
+      "scanOrdinal": 21,
+      "observation": "Conventional introduction, biography, skills, projects and contact navigation.",
+      "headings": [],
+      "navigation": [
+        "Home",
+        "About",
+        "Skills",
+        "Projects",
+        "Contact"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "skills",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 1
+    },
+    {
+      "number": 21,
+      "name": "Aneeth Kumaar",
+      "url": "https://aneethkumaar.is-a.dev/",
+      "listedUrl": "https://akwastaken.github.io",
+      "scanOrdinal": 22,
+      "observation": "Hybrid developer/creative identity uses project, blog and gallery destinations; less focused on one engineering role.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "HEY, I'M ANEETH"
+        },
+        {
+          "level": "H1",
+          "text": "PROJECTS"
+        },
+        {
+          "level": "H1",
+          "text": "BLOGS"
+        },
+        {
+          "level": "H1",
+          "text": "Aneeth Kumaar"
+        }
+      ],
+      "navigation": [
+        "Gallery",
+        "Projects",
+        "Blog",
+        "Github",
+        "Contact",
+        "ANEETH"
+      ],
+      "sectionIds": [],
+      "githubLinks": 2,
+      "emailLinks": 0
+    },
+    {
+      "number": 22,
+      "name": "Asmaa Abdul-Amin",
+      "url": "https://asmaa.dev/",
+      "listedUrl": "https://asmaa.dev",
+      "scanOrdinal": 23,
+      "observation": "A flagship system and case studies establish AI/systems specialization before broader career and services content.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Building intelligent systems that turn data into decisions."
+        },
+        {
+          "level": "H2",
+          "text": "BLKPVNTHR.OS"
+        },
+        {
+          "level": "H2",
+          "text": "Case studies"
+        },
+        {
+          "level": "H2",
+          "text": "Build an intelligent system for your organization"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H2",
+          "text": "Back story"
+        },
+        {
+          "level": "H2",
+          "text": "Let's connect"
+        }
+      ],
+      "navigation": [
+        "ASMAA"
+      ],
+      "sectionIds": [
+        "services",
+        "experience",
+        "about",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 3
+    },
+    {
+      "number": 23,
+      "name": "Zeel Bhanderi",
+      "url": "https://zeelbhanderi.netlify.app/",
+      "listedUrl": "https://zeelbhanderi.netlify.app",
+      "scanOrdinal": 24,
+      "observation": "Mobile developer combines expertise, project portfolio and work milestones.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Zeel Bhanderi"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "+4"
+        },
+        {
+          "level": "H2",
+          "text": "+15"
+        },
+        {
+          "level": "H2",
+          "text": "+7"
+        },
+        {
+          "level": "H2",
+          "text": "Tech Expertise"
+        },
+        {
+          "level": "H2",
+          "text": "Portfolio"
+        },
+        {
+          "level": "H2",
+          "text": "Hire Me"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 3,
+      "emailLinks": 2
+    },
+    {
+      "number": 24,
+      "name": "Moteeullah Azmi",
+      "url": "https://www.moteeullahazmi.com/",
+      "listedUrl": "https://moteeullahazmi.com",
+      "scanOrdinal": 25,
+      "observation": "Minimal public-work and freelance-experience presentation; concrete deliverables carry the page.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Moteeullah Azmi"
+        },
+        {
+          "level": "H2",
+          "text": "Proof of Work"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 0
+    },
+    {
+      "number": 25,
+      "name": "Prakash Jha",
+      "url": "https://prakashjha.com/",
+      "listedUrl": "https://prakashjha.com",
+      "scanOrdinal": 26,
+      "observation": "Full-stack identity combines featured projects, developer history, stack and personal material.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Full-stack Developer"
+        },
+        {
+          "level": "H1",
+          "text": "GET IN TOUCH"
+        },
+        {
+          "level": "H2",
+          "text": "Prakash Jha"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 8,
+      "emailLinks": 1
+    },
+    {
+      "number": 26,
+      "name": "Prince Bhayani",
+      "url": "https://princeb.dev/",
+      "listedUrl": "https://princeb.dev",
+      "scanOrdinal": 27,
+      "observation": "Biography and technology groups support selected work and employment history.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "PRINCE"
+        },
+        {
+          "level": "H2",
+          "text": "BUILDING THINGS THAT MATTER"
+        },
+        {
+          "level": "H2",
+          "text": "TECHNOLOGIES I WORK WITH"
+        },
+        {
+          "level": "H2",
+          "text": "SELECTED WORK"
+        },
+        {
+          "level": "H2",
+          "text": "WHERE I'VE WORKED"
+        },
+        {
+          "level": "H2",
+          "text": "LET'S BUILD SOMETHING TOGETHER"
+        },
+        {
+          "level": "H2",
+          "text": "PRINCE BHAYANI"
+        }
+      ],
+      "navigation": [
+        "HOME",
+        "ABOUT",
+        "SKILLS",
+        "PROJECTS",
+        "EXPERIENCE"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "skills",
+        "projects",
+        "experience",
+        "contact"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 2
+    },
+    {
+      "number": 27,
+      "name": "Antonio Ferreiro",
+      "url": "https://toniferr.github.io/#github",
+      "listedUrl": "https://toniferr.github.io",
+      "scanOrdinal": 29,
+      "observation": "Software architecture identity leads to featured projects, career progression and a stack map.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hola, soy Antonio Ferreiro"
+        },
+        {
+          "level": "H2",
+          "text": "Ingeniero informático"
+        },
+        {
+          "level": "H2",
+          "text": "Proyectos destacados"
+        },
+        {
+          "level": "H2",
+          "text": "Historial de revisiones"
+        },
+        {
+          "level": "H2",
+          "text": "Capas del stack"
+        },
+        {
+          "level": "H2",
+          "text": "Actividad en GitHub"
+        },
+        {
+          "level": "H2",
+          "text": "¿Construimos algo?"
+        }
+      ],
+      "navigation": [
+        "TF Toni Ferreiro",
+        "PERFIL",
+        "PROYECTOS",
+        "TRAYECTORIA"
+      ],
+      "sectionIds": [
+        "top",
+        "about",
+        "projects",
+        "career",
+        "stack",
+        "github"
+      ],
+      "githubLinks": 16,
+      "emailLinks": 1
+    },
+    {
+      "number": 28,
+      "name": "Dhiraj Basavaraju",
+      "url": "https://dhirajbasavaraju.in/",
+      "listedUrl": "https://portfolio-dhirajb7.vercel.app",
+      "scanOrdinal": 30,
+      "observation": "Senior frontend introduction with skills, experience and resume destinations; compact organization.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Dhiraj Basavaraju"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "Home",
+        "Skills",
+        "Experience",
+        "Resume"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 29,
+      "name": "Taha Hassan",
+      "url": "https://tahahassan.vercel.app/",
+      "listedUrl": "https://tahahassan.vercel.app",
+      "scanOrdinal": 31,
+      "observation": "Creative front page keeps navigation limited to biography, work and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "MAKE MIND MOVE."
+        }
+      ],
+      "navigation": [
+        "01 ABOUT",
+        "02 WORK",
+        "03 CONTACT"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 4
+    },
+    {
+      "number": 30,
+      "name": "Bhavani Ravi",
+      "url": "https://bhavaniravi.com/",
+      "listedUrl": "http://bhavaniravi.com",
+      "scanOrdinal": 32,
+      "observation": "Python/data developer organizes writing, speaking, projects and consulting through a sidebar.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Today I Learned"
+        },
+        {
+          "level": "H2",
+          "text": "Recent Posts"
+        }
+      ],
+      "navigation": [
+        "Bhavani's Digital Garden",
+        "Work With Me",
+        "Hi 👋🏻, I am Bhavani Ravi",
+        "Welcome to my Digital Garden",
+        "Speaking Engagements",
+        "Airflow"
+      ],
+      "sectionIds": [],
+      "githubLinks": 12,
+      "emailLinks": 0
+    },
+    {
+      "number": 31,
+      "name": "Emilia Sonder",
+      "url": "https://builtbyemilia.com/",
+      "listedUrl": "https://isemilia.vercel.app",
+      "scanOrdinal": 33,
+      "observation": "Frontend introduction combines availability with biography, skills, projects and career history.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Emilia Sonder"
+        },
+        {
+          "level": "H2",
+          "text": "Hey there!"
+        },
+        {
+          "level": "H2",
+          "text": "Got an idea?"
+        },
+        {
+          "level": "H2",
+          "text": "Work experience"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 0
+    },
+    {
+      "number": 32,
+      "name": "Anzhelika Kostyuk",
+      "url": "https://a-coderr.github.io/portfolio-website/",
+      "listedUrl": "https://a-coderr.github.io/portfolio-website",
+      "scanOrdinal": 34,
+      "observation": "Skills, professional history, project examples and contact are explicit navigation destinations.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Hi, I am Anzhelika"
+        },
+        {
+          "level": "H2",
+          "text": "Software Developer"
+        },
+        {
+          "level": "H2",
+          "text": "Skills & Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Work Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H2",
+          "text": "SKIF Karate Canada Website"
+        },
+        {
+          "level": "H2",
+          "text": "ThreeRun - 3D Obstacle Course Game"
+        },
+        {
+          "level": "H2",
+          "text": "Anzhelika Kostyuk -"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "home",
+        "skills",
+        "experience",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 0
+    },
+    {
+      "number": 33,
+      "name": "Priyanshu Singh",
+      "url": "https://built-by-priyanshu.netlify.app/",
+      "listedUrl": "https://built-by-priyanshu.netlify.app",
+      "scanOrdinal": 35,
+      "observation": "Student developer presents biography, featured builds, technical capabilities and contact.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Arsenal"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 10,
+      "emailLinks": 2
+    },
+    {
+      "number": 34,
+      "name": "Ridwan Ajanaku",
+      "url": "https://olakunle.dev/",
+      "listedUrl": "https://olakunle.dev",
+      "scanOrdinal": 36,
+      "observation": "Frontend identity puts professional work in context and groups languages, frameworks and tooling.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Ridwan Ajanaku."
+        },
+        {
+          "level": "H2",
+          "text": "Languages, libraries, and tools I work with daily."
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 2,
+      "emailLinks": 0
+    },
+    {
+      "number": 35,
+      "name": "Pavan Gupta",
+      "url": "https://www.pavangupta.in/",
+      "listedUrl": "https://www.pavangupta.in",
+      "scanOrdinal": 37,
+      "observation": "Stack, career history, featured work, services and contact are separate sections.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Pavan Gupta"
+        },
+        {
+          "level": "H2",
+          "text": "Tech Stack"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Services"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "<Pavan/>",
+        "Home",
+        "Tech Stack",
+        "Experience",
+        "Projects",
+        "Services",
+        "Contact",
+        "Hire Me"
+      ],
+      "sectionIds": [
+        "home",
+        "tech",
+        "experience",
+        "projects",
+        "services",
+        "contact"
+      ],
+      "githubLinks": 8,
+      "emailLinks": 1
+    },
+    {
+      "number": 36,
+      "name": "Priyanshu Chauhan",
+      "url": "https://priyanshuportfolioo.netlify.app/",
+      "listedUrl": "https://priyanshuportfolioo.netlify.app",
+      "scanOrdinal": 38,
+      "observation": "Full-stack/mobile identity emphasizes selected ventures, capabilities and personal material.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "HELLO"
+        },
+        {
+          "level": "H1",
+          "text": "PRIYANSHU"
+        },
+        {
+          "level": "H2",
+          "text": "Interfaces you can feel."
+        },
+        {
+          "level": "H2",
+          "text": "VENTURE Showcase"
+        },
+        {
+          "level": "H2",
+          "text": "THE MAGIC Behind"
+        },
+        {
+          "level": "H2",
+          "text": "BEYOND PIXELS"
+        },
+        {
+          "level": "H2",
+          "text": "ARCHITECTURE"
+        },
+        {
+          "level": "H2",
+          "text": "PRIYANSHU"
+        }
+      ],
+      "navigation": [
+        "Home",
+        "About",
+        "Work",
+        "Blogs",
+        "2.0 BETA"
+      ],
+      "sectionIds": [],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 37,
+      "name": "Redoyanul Haque (directory alias: Aaabad Aziz)",
+      "url": "https://www.redoyanulhaque.me/",
+      "listedUrl": "https://red1-for-hek-demo.vercel.app",
+      "scanOrdinal": 39,
+      "observation": "The directory URL redirects to Redoyanul Haque; AI/full-stack work and career timeline are the current content.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Hello! I'm"
+        },
+        {
+          "level": "H1",
+          "text": "REDOYANUL HAQUE"
+        },
+        {
+          "level": "H2",
+          "text": "AI ENGINEER"
+        },
+        {
+          "level": "H2",
+          "text": "FULL-STACK DEVELOPER"
+        },
+        {
+          "level": "H2",
+          "text": "WHAT"
+        },
+        {
+          "level": "H2",
+          "text": "My career & experience"
+        },
+        {
+          "level": "H2",
+          "text": "My Work"
+        },
+        {
+          "level": "H2",
+          "text": "TECH STACK"
+        },
+        {
+          "level": "H2",
+          "text": "Designed and Developed by Redoyanul Haque"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 6,
+      "emailLinks": 2
+    },
+    {
+      "number": 38,
+      "name": "Ayaan Ansari",
+      "url": "https://me.aiyu.co.in/",
+      "listedUrl": "https://me.aiyu.co.in",
+      "scanOrdinal": 40,
+      "observation": "Personal history is prominent; projects, apps, blog and resume are separate destinations.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Ayaan."
+        },
+        {
+          "level": "H2",
+          "text": "Born on a day of heavy rain."
+        },
+        {
+          "level": "H2",
+          "text": "Fourteen years of school, one page at a time."
+        },
+        {
+          "level": "H2",
+          "text": "A laptop, a missing semicolon, and"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "story-origin",
+        "story-school",
+        "story-firstcode",
+        "story-college",
+        "story-bitapp",
+        "story-voice",
+        "story-masters",
+        "story-adrosonic",
+        "story-now",
+        "v2-snapshot",
+        "v2-status",
+        "v2-tech",
+        "v2-about",
+        "v2-showcase",
+        "v2-projects",
+        "v2-blogs",
+        "v2-continue"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 39,
+      "name": "Aravinthaprasath Venkataramanan",
+      "url": "https://aravinthvr.github.io/portfolio/?utm_source=github&utm_medium=developer-portfolios&utm_campaign=personal_branding&utm_content=v1_27_07_25",
+      "listedUrl": "https://aravinthvr.github.io/portfolio/?utm_source=github&utm_medium=developer-portfolios&utm_campaign=personal_branding&utm_content=v1_27_07_25",
+      "scanOrdinal": 41,
+      "observation": "Resume and employment history support engineering/data projects, publications and certifications.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Aravinthaprasath V."
+        },
+        {
+          "level": "H2",
+          "text": "Software Development Engineer & Data Science Enthusiast"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "My Resume"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H2",
+          "text": "My Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Publications 2"
+        },
+        {
+          "level": "H2",
+          "text": "Certifications"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H2",
+          "text": "Achievements"
+        }
+      ],
+      "navigation": [
+        "Aravinth",
+        "Home",
+        "About",
+        "Resume"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "resume",
+        "experience",
+        "projects",
+        "publications",
+        "certifications",
+        "education",
+        "achievements",
+        "skills",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 1
+    },
+    {
+      "number": 40,
+      "name": "Sayeed Joy",
+      "url": "https://sayeedjoy.com/",
+      "listedUrl": "https://sayeedjoy.com",
+      "scanOrdinal": 43,
+      "observation": "Software-engineer profile exposes experience, stack, projects, achievements, writing and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Sayeed Joy"
+        },
+        {
+          "level": "H2",
+          "text": "EXPERIENCE"
+        },
+        {
+          "level": "H2",
+          "text": "STACK"
+        },
+        {
+          "level": "H2",
+          "text": "PROJECTS"
+        },
+        {
+          "level": "H2",
+          "text": "ACHIEVEMENTS"
+        },
+        {
+          "level": "H2",
+          "text": "WRITING"
+        },
+        {
+          "level": "H2",
+          "text": "MOMENTS"
+        },
+        {
+          "level": "H2",
+          "text": "CONTACT"
+        }
+      ],
+      "navigation": [
+        "SAYEED JOY",
+        "/ABOUT",
+        "/PROJECT",
+        "/USES",
+        "/BLOG"
+      ],
+      "sectionIds": [
+        "about",
+        "work",
+        "thoughts",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 0
+    },
+    {
+      "number": 41,
+      "name": "Krupal Sanchaniya",
+      "url": "https://krupal-portfolio.vercel.app/",
+      "listedUrl": "https://krupal-portfolio.vercel.app",
+      "scanOrdinal": 45,
+      "observation": "Flutter/developer site separates company experience from learning projects, then skills and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "sanchu."
+        },
+        {
+          "level": "H2",
+          "text": "Krupal Sanchaniya"
+        },
+        {
+          "level": "H2",
+          "text": "Works"
+        },
+        {
+          "level": "H2",
+          "text": "Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Contact"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "",
+        "",
+        "works",
+        "skills",
+        "contact",
+        ""
+      ],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 42,
+      "name": "Mohibur Rahman Sani",
+      "url": "https://www.sanimohibur.me/",
+      "listedUrl": "https://www.sanimohibur.me",
+      "scanOrdinal": 46,
+      "observation": "Grouped technical skills connect to a combined experience/education block and featured projects.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Mohibur Rahman Sani"
+        },
+        {
+          "level": "H1",
+          "text": "Hi, I'm Mohibur FullStack Developer"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Experience & Education"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        },
+        {
+          "level": "H2",
+          "text": "Mohibur."
+        }
+      ],
+      "navigation": [
+        "About",
+        "Skills",
+        "Projects",
+        "Contact"
+      ],
+      "sectionIds": [
+        "hero",
+        "about",
+        "skills",
+        "experience",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 6,
+      "emailLinks": 2
+    },
+    {
+      "number": 43,
+      "name": "Panhareach Phat",
+      "url": "https://phatpanhareach.vercel.app/",
+      "listedUrl": "https://phatpanhareach.vercel.app",
+      "scanOrdinal": 48,
+      "observation": "Current professional projects are distinguished from personal shipped applications, education and certifications.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Panhareach Phat"
+        },
+        {
+          "level": "H2",
+          "text": "What I've been building"
+        },
+        {
+          "level": "H2",
+          "text": "Things I've shipped"
+        },
+        {
+          "level": "H2",
+          "text": "Where I learned"
+        },
+        {
+          "level": "H2",
+          "text": "Certified & studied"
+        },
+        {
+          "level": "H2",
+          "text": "Tools of the trade"
+        },
+        {
+          "level": "H2",
+          "text": "Fashion gallery"
+        },
+        {
+          "level": "H2",
+          "text": "Frequently asked questions"
+        }
+      ],
+      "navigation": [
+        "Panhareach"
+      ],
+      "sectionIds": [
+        "experiences"
+      ],
+      "githubLinks": 9,
+      "emailLinks": 1
+    },
+    {
+      "number": 44,
+      "name": "Jeslor Ssozi",
+      "url": "https://www.jeslor.com/",
+      "listedUrl": "https://www.jeslor.com",
+      "scanOrdinal": 49,
+      "observation": "Full-stack web/mobile introduction uses a short biography, skills, projects and conversation path.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "I architect scalable software systems."
+        },
+        {
+          "level": "H1",
+          "text": "Jeslor Ssozi"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "landing",
+        "technologies"
+      ],
+      "githubLinks": 6,
+      "emailLinks": 0
+    },
+    {
+      "number": 45,
+      "name": "Mohit Verma",
+      "url": "https://mohitverma.codes/",
+      "listedUrl": "https://mohitverma.codes",
+      "scanOrdinal": 50,
+      "observation": "Creative developer mixes product work, collaboration claims and process; evidence needs to remain easy to find.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "CREATIVE DEVELOPER"
+        },
+        {
+          "level": "H2",
+          "text": "GRAY ENVIRONMENT"
+        },
+        {
+          "level": "H2",
+          "text": "VENTURE SHOWCASE"
+        },
+        {
+          "level": "H2",
+          "text": "THE MAGIC BEHIND"
+        },
+        {
+          "level": "H2",
+          "text": "BUILDING THE BRIDGE BETWEEN IDEAS & EXPERIENCES"
+        },
+        {
+          "level": "H2",
+          "text": "PROOF OF IMPACT"
+        },
+        {
+          "level": "H2",
+          "text": "DISCOVER WHAT KEEPS ME BUILDING"
+        },
+        {
+          "level": "H2",
+          "text": "AVAILABLE"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "home",
+        "work",
+        "about",
+        "more"
+      ],
+      "githubLinks": 3,
+      "emailLinks": 2
+    },
+    {
+      "number": 46,
+      "name": "Junaid Irfan",
+      "url": "https://www.junaidirfan.com/",
+      "listedUrl": "https://www.junaidirfan.com",
+      "scanOrdinal": 51,
+      "observation": "DevSecOps/full-stack career history is followed by systems projects and grouped technical capabilities.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "// EXPERIENCE"
+        },
+        {
+          "level": "H2",
+          "text": "// PROJECTS"
+        },
+        {
+          "level": "H2",
+          "text": "// SKILLS"
+        },
+        {
+          "level": "H2",
+          "text": "// ACADEMICS"
+        },
+        {
+          "level": "H2",
+          "text": "// CREDENTIALS"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "about",
+        "experience",
+        "projects",
+        "skills",
+        "education",
+        "certifications"
+      ],
+      "githubLinks": 7,
+      "emailLinks": 2
+    },
+    {
+      "number": 47,
+      "name": "Lai Huishan",
+      "url": "https://shan-verse.com/",
+      "listedUrl": "https://shan-verse.com",
+      "scanOrdinal": 54,
+      "observation": "Personal technical site groups featured work, publications, web development and writing.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "SHAN VERSE"
+        },
+        {
+          "level": "H2",
+          "text": "Signal Map"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Works"
+        },
+        {
+          "level": "H2",
+          "text": "Latest Posts"
+        },
+        {
+          "level": "H2",
+          "text": "Keep the signal warm"
+        }
+      ],
+      "navigation": [
+        "✧ SHAN-VERSE ✧",
+        "About",
+        "Projects",
+        "Blog",
+        "EN",
+        "中",
+        "日"
+      ],
+      "sectionIds": [],
+      "githubLinks": 4,
+      "emailLinks": 0
+    },
+    {
+      "number": 48,
+      "name": "Prashanth Kumar G",
+      "url": "https://prashanth-kumar-g.github.io/#skills",
+      "listedUrl": "https://prashanth-kumar-g.github.io",
+      "scanOrdinal": 55,
+      "observation": "Software/full-stack profile groups skills, education, projects and certification evidence.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I am Prashanth Kumar G"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Skills & Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Languages"
+        },
+        {
+          "level": "H2",
+          "text": "Frontend"
+        },
+        {
+          "level": "H2",
+          "text": "Backend"
+        },
+        {
+          "level": "H2",
+          "text": "Database"
+        },
+        {
+          "level": "H2",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H2",
+          "text": "Developer Tools"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Certifications & Achievements"
+        }
+      ],
+      "navigation": [
+        "Home",
+        "About"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "skills",
+        "education",
+        "projects",
+        "certifications",
+        "contact"
+      ],
+      "githubLinks": 13,
+      "emailLinks": 2
+    },
+    {
+      "number": 49,
+      "name": "Pranay Bandaru",
+      "url": "https://pranaybandaru.vercel.app/",
+      "listedUrl": "https://pranaybandaru.vercel.app",
+      "scanOrdinal": 56,
+      "observation": "Data/AI profile organizes capabilities by pipeline stages, then research and application projects.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Pen and Paper were too slow, I had to scale up to Silicon speed."
+        },
+        {
+          "level": "H2",
+          "text": "The Full Stack Flow"
+        },
+        {
+          "level": "H2",
+          "text": "The Sandbox"
+        },
+        {
+          "level": "H2",
+          "text": "Latest Discovery Feed"
+        },
+        {
+          "level": "H2",
+          "text": "Building the"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "home",
+        "story",
+        "story",
+        "flow",
+        "lab",
+        "log",
+        "log",
+        "metadata"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 2
+    },
+    {
+      "number": 50,
+      "name": "Muhammad Furqan Yasin",
+      "url": "https://mfurqanyasin.com/",
+      "listedUrl": "https://mfurqanyasin.com",
+      "scanOrdinal": 58,
+      "observation": "Full-stack/AI freelance profile includes employment history, education, grouped skills and service/work pages.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Full Stack Developer"
+        },
+        {
+          "level": "H2",
+          "text": "Personal Info"
+        },
+        {
+          "level": "H2",
+          "text": "My Experience"
+        },
+        {
+          "level": "H2",
+          "text": "My Education"
+        },
+        {
+          "level": "H2",
+          "text": "My Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Industries I Work In"
+        },
+        {
+          "level": "H2",
+          "text": "Look At My Portfolio And Give Me Your Feedback"
+        }
+      ],
+      "navigation": [
+        "HOME"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "prot",
+        "services",
+        "process",
+        "results",
+        "faq",
+        "blog"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 5
+    },
+    {
+      "number": 51,
+      "name": "Sidharth E",
+      "url": "https://sidharthe.dev/",
+      "listedUrl": "https://sidharthe.dev",
+      "scanOrdinal": 59,
+      "observation": "AI/full-stack identity has technology categories, projects, archived work, employment history and academics.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "INTRODUCTION"
+        },
+        {
+          "level": "H1",
+          "text": "SIDHARTH E"
+        },
+        {
+          "level": "H2",
+          "text": "TECH STACK"
+        },
+        {
+          "level": "H2",
+          "text": "PROJECTS"
+        },
+        {
+          "level": "H2",
+          "text": "WORK HISTORY"
+        },
+        {
+          "level": "H2",
+          "text": "ACADEMICS"
+        }
+      ],
+      "navigation": [
+        "HO",
+        "SK",
+        "WO",
+        "JO",
+        "ED"
+      ],
+      "sectionIds": [
+        "home",
+        "skills",
+        "projects",
+        "education"
+      ],
+      "githubLinks": 6,
+      "emailLinks": 1
+    },
+    {
+      "number": 52,
+      "name": "Asad Saeed",
+      "url": "https://asad-saeed.vercel.app/",
+      "listedUrl": "https://asad-saeed-portfolio.vercel.app",
+      "scanOrdinal": 60,
+      "observation": "Senior frontend profile combines stack, development activity, capabilities, background and portfolio destinations.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Asad Saeed"
+        },
+        {
+          "level": "H2",
+          "text": "GitHub Activity"
+        },
+        {
+          "level": "H2",
+          "text": "Stats"
+        },
+        {
+          "level": "H2",
+          "text": "Top Languages"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Repositories"
+        },
+        {
+          "level": "H2",
+          "text": "Achievements"
+        },
+        {
+          "level": "H2",
+          "text": "What I build"
+        }
+      ],
+      "navigation": [
+        "Asad Saeed",
+        "HOME",
+        "SKILLS",
+        "BACKGROUND",
+        "PORTFOLIO",
+        "CONTACT"
+      ],
+      "sectionIds": [
+        "expertise",
+        "certifications",
+        "blog"
+      ],
+      "githubLinks": 8,
+      "emailLinks": 4
+    },
+    {
+      "number": 53,
+      "name": "Furkan Kapukaya",
+      "url": "https://kapukaya.dev/",
+      "listedUrl": "https://furkankapukayaa.github.io",
+      "scanOrdinal": 61,
+      "observation": "Freelance software developer foregrounds services, reference projects, process and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "İşletmenizin işleyişine uygun yazılım çözümleri."
+        },
+        {
+          "level": "H2",
+          "text": "Hizmetler"
+        },
+        {
+          "level": "H2",
+          "text": "Referans projeler"
+        },
+        {
+          "level": "H2",
+          "text": "İki dakikada ihtiyacınızı netleştirin"
+        },
+        {
+          "level": "H2",
+          "text": "Süreç nasıl ilerliyor?"
+        },
+        {
+          "level": "H2",
+          "text": "Furkan Kapukaya"
+        },
+        {
+          "level": "H2",
+          "text": "Referanslar"
+        },
+        {
+          "level": "H2",
+          "text": "Ürünler"
+        },
+        {
+          "level": "H2",
+          "text": "Blog"
+        },
+        {
+          "level": "H2",
+          "text": "Sık sorulan sorular"
+        }
+      ],
+      "navigation": [
+        "FK Furkan"
+      ],
+      "sectionIds": [
+        "hizmetler",
+        "isler",
+        "araclar",
+        "surec",
+        "hakkimda",
+        "urunler",
+        "sss",
+        "iletisim"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 8
+    },
+    {
+      "number": 54,
+      "name": "Sabbir Ahmed",
+      "url": "https://sabbirahmed.net/",
+      "listedUrl": "https://sabbirahmed.net",
+      "scanOrdinal": 63,
+      "observation": "Web developer includes biography, capabilities, experience, services, projects and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Tech Entrepreneur Web Developer"
+        },
+        {
+          "level": "H1",
+          "text": "ABOUT ME"
+        },
+        {
+          "level": "H1",
+          "text": "PROFICIENCIES"
+        },
+        {
+          "level": "H1",
+          "text": "EXPERIENCE"
+        },
+        {
+          "level": "H1",
+          "text": "SERVICES"
+        },
+        {
+          "level": "H1",
+          "text": "FEATURED PROJECTS"
+        },
+        {
+          "level": "H1",
+          "text": "CONTACT ME"
+        },
+        {
+          "level": "H1",
+          "text": "Get The latest Update by Email"
+        }
+      ],
+      "navigation": [
+        "Get In Touch",
+        "Home",
+        "About",
+        "Service"
+      ],
+      "sectionIds": [
+        "about",
+        "service",
+        "portfolio",
+        "testimonials",
+        "contact",
+        "subscriber"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 55,
+      "name": "Derek Chen",
+      "url": "https://www.derekchen.dev/",
+      "listedUrl": "https://www.derekchen.dev",
+      "scanOrdinal": 64,
+      "observation": "Software-engineer/student introduction is supported by substantial featured applications and career links.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Derek"
+        },
+        {
+          "level": "H1",
+          "text": "Derek Chen"
+        },
+        {
+          "level": "H1",
+          "text": "Derek Chen"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "UT Registration Plus ↗"
+        },
+        {
+          "level": "H2",
+          "text": "Guests ↗"
+        },
+        {
+          "level": "H2",
+          "text": "AccounTech ↗"
+        },
+        {
+          "level": "H2",
+          "text": "UT Austin Distribution Viewer ↗"
+        },
+        {
+          "level": "H2",
+          "text": "Pear Desktop (formerly YouTube Music"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 7,
+      "emailLinks": 1
+    },
+    {
+      "number": 56,
+      "name": "Saad Mehmood",
+      "url": "https://iamsaadmehmood.com/",
+      "listedUrl": "https://iamsaadmehmood.com",
+      "scanOrdinal": 65,
+      "observation": "Web/mobile developer separates career history, project work, writing and skills.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Saad Mehmood"
+        },
+        {
+          "level": "H2",
+          "text": "Senior Ful|"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Latest Articles"
+        },
+        {
+          "level": "H2",
+          "text": "Skills & Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "Saad Mehmood",
+        "About",
+        "Experience",
+        "Projects",
+        "Blog"
+      ],
+      "sectionIds": [
+        "about",
+        "experience",
+        "projects",
+        "blog",
+        "skills",
+        "contact"
+      ],
+      "githubLinks": 4,
+      "emailLinks": 2
+    },
+    {
+      "number": 57,
+      "name": "Ahmad Awais",
+      "url": "https://ahmadawais.com/",
+      "listedUrl": "https://ahmadawais.com",
+      "scanOrdinal": 67,
+      "observation": "Developer/founder personal brand is writing-led, with biography, talks, courses and contact destinations.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Ahmad Awais"
+        },
+        {
+          "level": "H1",
+          "text": "Ahmad Awais"
+        },
+        {
+          "level": "H2",
+          "text": "The Full Stack of Terminals Explained: Terminal, Shell, TTY, Console, POSIX, ANSI Escapes, PTYs, Raw/Canonical Modes"
+        },
+        {
+          "level": "H2",
+          "text": "things i’m proud of, I"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 6,
+      "emailLinks": 0
+    },
+    {
+      "number": 58,
+      "name": "Anton Bojko",
+      "url": "https://mrtoxas.github.io/cv/portfolio/",
+      "listedUrl": "https://mrtoxas.github.io/cv/portfolio",
+      "scanOrdinal": 68,
+      "observation": "Frontend CV and portfolio are separate; work samples link directly to implementations.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Anton Bojko"
+        },
+        {
+          "level": "H2",
+          "text": "Work Samples"
+        }
+      ],
+      "navigation": [
+        "CV",
+        "Portfolio"
+      ],
+      "sectionIds": [],
+      "githubLinks": 6,
+      "emailLinks": 0
+    },
+    {
+      "number": 59,
+      "name": "Ditom Baroi Antu",
+      "url": "https://ditom.me/",
+      "listedUrl": "https://xtditom.github.io",
+      "scanOrdinal": 69,
+      "observation": "Student developer leads with featured work and separates tools in use from tools being explored.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "SYSTEM BOOTUP"
+        },
+        {
+          "level": "H1",
+          "text": "Ditom Baroi Antu."
+        },
+        {
+          "level": "H2",
+          "text": "01.Featured Work"
+        },
+        {
+          "level": "H2",
+          "text": "02.Tech Explorer"
+        },
+        {
+          "level": "H2",
+          "text": "03.My Rigs"
+        },
+        {
+          "level": "H2",
+          "text": "04.System Terminal"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "XTDITOM // SYS",
+        "00 Home",
+        "01 Work",
+        "02 Tech"
+      ],
+      "sectionIds": [
+        "hero",
+        "featured",
+        "tech",
+        "rigs",
+        "terminal",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 60,
+      "name": "Khizar Fareed",
+      "url": "https://khizarfareed.netlify.app/",
+      "listedUrl": "https://khizarfareed.netlify.app",
+      "scanOrdinal": 70,
+      "observation": "Education and experience lead into skills, certifications and projects; demonstrates a resume-like alternative.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Khizar Fareed"
+        },
+        {
+          "level": "H1",
+          "text": "Khizar Fareed"
+        },
+        {
+          "level": "H2",
+          "text": "EDUCATION"
+        },
+        {
+          "level": "H2",
+          "text": "EXPERIENCE"
+        },
+        {
+          "level": "H2",
+          "text": "My Skills"
+        },
+        {
+          "level": "H2",
+          "text": "CERTIFICATION"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Banking Website"
+        },
+        {
+          "level": "H2",
+          "text": "Tesla Cybertruck"
+        },
+        {
+          "level": "H2",
+          "text": "Game"
+        },
+        {
+          "level": "H2",
+          "text": "Track-map"
+        },
+        {
+          "level": "H2",
+          "text": "Portfolio"
+        }
+      ],
+      "navigation": [
+        "Khizar Fareed",
+        "Home",
+        "Education",
+        "Skills",
+        "Projects",
+        "Contact"
+      ],
+      "sectionIds": [
+        "section-hero",
+        "section-education",
+        "section-skills",
+        "section-certification",
+        "section-projects",
+        "section-contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 61,
+      "name": "Vishvaas Kumar",
+      "url": "https://vishvaas.dev/",
+      "listedUrl": "https://vishvaas.dev",
+      "scanOrdinal": 71,
+      "observation": "Full-stack introduction groups technologies by engineering layer before project examples.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi There, I'm Vishvaas"
+        },
+        {
+          "level": "H1",
+          "text": "Github"
+        },
+        {
+          "level": "H1",
+          "text": "Tech Stack"
+        },
+        {
+          "level": "H2",
+          "text": "LANGUAGES"
+        },
+        {
+          "level": "H2",
+          "text": "FRONTEND"
+        },
+        {
+          "level": "H2",
+          "text": "BACKEND"
+        },
+        {
+          "level": "H2",
+          "text": "DATABASES"
+        },
+        {
+          "level": "H2",
+          "text": "CLOUD & INFRASTRUCTURE"
+        },
+        {
+          "level": "H2",
+          "text": "DEVOPS & TOOLS"
+        },
+        {
+          "level": "H2",
+          "text": "GRAPHICS & MEDIA"
+        },
+        {
+          "level": "H2",
+          "text": "APIS"
+        },
+        {
+          "level": "H1",
+          "text": "Projects"
+        }
+      ],
+      "navigation": [
+        "Github",
+        "LinkedIn",
+        "Spotify"
+      ],
+      "sectionIds": [
+        "hero",
+        "stack",
+        "github",
+        "tech-stack",
+        "projects"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 62,
+      "name": "Muzaffer Kadir Yilmaz",
+      "url": "https://www.mkdir.dev/",
+      "listedUrl": "https://mkdir.dev",
+      "scanOrdinal": 74,
+      "observation": "Software-engineer profile separates products, employment history, projects, skills and education.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Muzaffer Kadir YILMAZ"
+        },
+        {
+          "level": "H2",
+          "text": "My Products"
+        },
+        {
+          "level": "H2",
+          "text": "GitHub"
+        },
+        {
+          "level": "H2",
+          "text": "Work Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 15,
+      "emailLinks": 1
+    },
+    {
+      "number": 63,
+      "name": "Sumonta Saha Mridul",
+      "url": "https://sumonta056.github.io/",
+      "listedUrl": "https://sumonta056.github.io",
+      "scanOrdinal": 76,
+      "observation": "Student engineer mixes grouped skills, projects, achievements, writing and photography.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Hi, I'm"
+        },
+        {
+          "level": "H1",
+          "text": "Sumonta Saha Mridul"
+        },
+        {
+          "level": "H1",
+          "text": "About Me"
+        },
+        {
+          "level": "H1",
+          "text": "My Skills"
+        },
+        {
+          "level": "H2",
+          "text": "FRONTEND WEB DEVELOPEMT SKILLS"
+        },
+        {
+          "level": "H2",
+          "text": "App Developemt Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Programming Languages"
+        },
+        {
+          "level": "H2",
+          "text": "Backend Web Developemt Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Designing and Collaboration"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 0,
+      "emailLinks": 0
+    },
+    {
+      "number": 64,
+      "name": "Kritan Shrestha",
+      "url": "http://kritanshrestha.com.np/",
+      "listedUrl": "https://dev-kritan.github.io/portfolio/",
+      "scanOrdinal": 77,
+      "observation": "Engineering background supports career history, capabilities, featured systems and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Kritan Shrestha"
+        },
+        {
+          "level": "H2",
+          "text": "About Me & Engineering Profile"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Engineering Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "Kritan Shrestha",
+        "Home",
+        "About",
+        "Experience",
+        "Skills",
+        "Projects",
+        "Contact"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 1
+    },
+    {
+      "number": 65,
+      "name": "Wisaroot Lertthaweedech",
+      "url": "https://wisl.dev/",
+      "listedUrl": "https://wisl.dev",
+      "scanOrdinal": 78,
+      "observation": "Data-engineer introduction connects to open-source work and technical writing with minimal navigation.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Wisaroot Lertthaweedech"
+        },
+        {
+          "level": "H2",
+          "text": "Open source"
+        },
+        {
+          "level": "H2",
+          "text": "Blog"
+        }
+      ],
+      "navigation": [
+        "wisl.",
+        "home",
+        "blog",
+        "about",
+        "copied me@wisl.dev",
+        "about me →"
+      ],
+      "sectionIds": [
+        "oss",
+        "writing"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 2
+    },
+    {
+      "number": 66,
+      "name": "Uğur Atmaca",
+      "url": "https://uguratmacacv.web.app/",
+      "listedUrl": "https://uguratmacacv.web.app",
+      "scanOrdinal": 79,
+      "observation": "Software career is presented as a chronological timeline of study, internships, products and work.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Uğur Atmaca"
+        },
+        {
+          "level": "H2",
+          "text": "Selam Dünya"
+        },
+        {
+          "level": "H2",
+          "text": "Kutu oyunları"
+        },
+        {
+          "level": "H2",
+          "text": "İlk kitap denemesi"
+        },
+        {
+          "level": "H2",
+          "text": "Polatlı Çocuk Meclisi"
+        },
+        {
+          "level": "H2",
+          "text": "Polatlı Anadolu Öğretmen Lisesi"
+        },
+        {
+          "level": "H2",
+          "text": "Eskişehir Osmangazi Üniversitesi"
+        },
+        {
+          "level": "H2",
+          "text": "Basit Oyunlar"
+        },
+        {
+          "level": "H2",
+          "text": "Bilişim Günleri"
+        },
+        {
+          "level": "H2",
+          "text": "ESOGÜ -"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "cd-timeline"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 0
+    },
+    {
+      "number": 67,
+      "name": "Lampard Kipyegon",
+      "url": "https://lampard.netlify.app/",
+      "listedUrl": "https://lampard.netlify.app",
+      "scanOrdinal": 80,
+      "observation": "Data/ML profile uses a focused introduction, grouped capabilities, repository examples and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Lampard Kipyegon"
+        },
+        {
+          "level": "H2",
+          "text": "Bridging Data Intelligence & Practical Engineering"
+        },
+        {
+          "level": "H2",
+          "text": "Skills & Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects & Repositories"
+        },
+        {
+          "level": "H2",
+          "text": "Let's Build Something Great"
+        }
+      ],
+      "navigation": [
+        "LK Lampard Kipyegon ML"
+      ],
+      "sectionIds": [
+        "hero",
+        "about",
+        "skills",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 7,
+      "emailLinks": 1
+    },
+    {
+      "number": 68,
+      "name": "Jai Li",
+      "url": "https://lijw07.github.io/portfolio/",
+      "listedUrl": "https://lijw07.github.io/portfolio",
+      "scanOrdinal": 81,
+      "observation": "Software-engineer navigation foregrounds experience and projects; skills and education support them.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "JAI LI"
+        },
+        {
+          "level": "H2",
+          "text": "EXPERIENCE"
+        },
+        {
+          "level": "H2",
+          "text": "PROJECTS"
+        },
+        {
+          "level": "H2",
+          "text": "SKILLS"
+        },
+        {
+          "level": "H2",
+          "text": "EDUCATION"
+        },
+        {
+          "level": "H2",
+          "text": "GET IN TOUCH"
+        }
+      ],
+      "navigation": [
+        "EXPERIENCE",
+        "PROJECTS",
+        "SKILLS",
+        "EDUCATION",
+        "CONTACT"
+      ],
+      "sectionIds": [
+        "experience",
+        "projects",
+        "skills",
+        "education",
+        "contact"
+      ],
+      "githubLinks": 9,
+      "emailLinks": 0
+    },
+    {
+      "number": 69,
+      "name": "Kevin Iglesias",
+      "url": "https://iglesiaskevinralphbusiness.github.io/",
+      "listedUrl": "https://iglesiaskevinralphbusiness.github.io",
+      "scanOrdinal": 82,
+      "observation": "Developer/designer profile separates biography, projects and timeline.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "RALPH KEVIN"
+        },
+        {
+          "level": "H2",
+          "text": "I’m Ralph Kevin, a Web Designer & Developer based in Philippines."
+        },
+        {
+          "level": "H2",
+          "text": "PERSONALITY. UNIQUENESS."
+        },
+        {
+          "level": "H2",
+          "text": "PASSION. DEDICATION."
+        },
+        {
+          "level": "H2",
+          "text": "HARDWORK. TIMELINE."
+        },
+        {
+          "level": "H1",
+          "text": "RALPH KEVIN"
+        }
+      ],
+      "navigation": [
+        "Menu",
+        "About",
+        "Projects",
+        "Timeline"
+      ],
+      "sectionIds": [],
+      "githubLinks": 0,
+      "emailLinks": 2
+    },
+    {
+      "number": 70,
+      "name": "Rameshwar Bhagwat",
+      "url": "https://www.rameshwarbhagwat.me/",
+      "listedUrl": "https://www.rameshwarbhagwat.me",
+      "scanOrdinal": 83,
+      "observation": "Full-stack/AI profile contains extensive skills, services, work and achievements; homepage markup duplicates some content.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Rameshwar Bhagwat - Full Stack & AI Developer"
+        },
+        {
+          "level": "H2",
+          "text": "About Rameshwar Bhagwat"
+        },
+        {
+          "level": "H2",
+          "text": "Rameshwar Bhagwat - Professional Skills"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects by Rameshwar Bhagwat"
+        },
+        {
+          "level": "H2",
+          "text": "Rameshwar Bhagwat - Services"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "hero",
+        "about",
+        "certifications",
+        "my-journey",
+        "skills",
+        "work",
+        "activity",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 71,
+      "name": "Savan Rathod",
+      "url": "https://portfolio-8xwk.vercel.app/",
+      "listedUrl": "https://portfolio-8xwk.vercel.app",
+      "scanOrdinal": 84,
+      "observation": "Conventional biography, grouped skills, project cards and contact structure.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Savan Rathod, Web Developer & Software Engineer"
+        },
+        {
+          "level": "H2",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Skills & Expertise"
+        },
+        {
+          "level": "H2",
+          "text": "My Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "Portfolio",
+        "Home",
+        "About",
+        "Skills",
+        "Projects",
+        "Contact"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "skills",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 8,
+      "emailLinks": 2
+    },
+    {
+      "number": 72,
+      "name": "Judicaël Ahyi",
+      "url": "https://www.judicael-ahyi.com/",
+      "listedUrl": "https://judicael-ahyi.com",
+      "scanOrdinal": 85,
+      "observation": "Backend identity is presented as a code-like profile rather than conventional section headings.",
+      "headings": [],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 73,
+      "name": "Davide Santangelo",
+      "url": "https://www.davidesantangelo.com/",
+      "listedUrl": "https://davidesantangelo.com",
+      "scanOrdinal": 86,
+      "observation": "Selected open-source systems lead into focused capability groups, career background and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Thoughtful code. Useful software."
+        },
+        {
+          "level": "H2",
+          "text": "Built to be useful."
+        },
+        {
+          "level": "H2",
+          "text": "Curiosity, craft, and a working solution."
+        },
+        {
+          "level": "H2",
+          "text": "Learning by building."
+        },
+        {
+          "level": "H2",
+          "text": "Have something in mind? Let’s talk."
+        },
+        {
+          "level": "H2",
+          "text": ">_ A"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "hero",
+        "projects",
+        "about",
+        "experience",
+        "contact"
+      ],
+      "githubLinks": 11,
+      "emailLinks": 1
+    },
+    {
+      "number": 74,
+      "name": "Gabriel Tekombo",
+      "url": "https://gabrielthecode.com/",
+      "listedUrl": "https://gabrielthecode.com",
+      "scanOrdinal": 87,
+      "observation": "Android specialization connects employment history to detailed product case studies and architecture-oriented stack information.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "I turn ideas and average apps into outstanding mobile products."
+        },
+        {
+          "level": "H2",
+          "text": "Career, as a Logcat stream."
+        },
+        {
+          "level": "H2",
+          "text": "Case studies, not screenshots."
+        },
+        {
+          "level": "H2",
+          "text": "Building for the long run."
+        },
+        {
+          "level": "H2",
+          "text": "Have"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "trust",
+        "about",
+        "experience",
+        "work",
+        "stack",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 0
+    },
+    {
+      "number": 75,
+      "name": "Abhishek Bhardwaj",
+      "url": "https://www.imabhishek.site/",
+      "listedUrl": "https://www.imabhishek.site",
+      "scanOrdinal": 88,
+      "observation": "Software-developer homepage combines career history, stack, projects, equipment and recommendations.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Abhishek Bhardwaj"
+        },
+        {
+          "level": "H2",
+          "text": "Professional Journey"
+        },
+        {
+          "level": "H2",
+          "text": "Tech Arsenal"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Projects"
+        },
+        {
+          "level": "H2",
+          "text": "The Setup That Keeps Me Building"
+        },
+        {
+          "level": "H2",
+          "text": "Achievements & Badges"
+        },
+        {
+          "level": "H2",
+          "text": "Few Nice Words"
+        },
+        {
+          "level": "H2",
+          "text": "Let's Build Something Amazing"
+        }
+      ],
+      "navigation": [
+        "imabhishek"
+      ],
+      "sectionIds": [],
+      "githubLinks": 0,
+      "emailLinks": 2
+    },
+    {
+      "number": 76,
+      "name": "Newton Yuan",
+      "url": "https://newtonyuan.com/",
+      "listedUrl": "https://newtonyuan.com",
+      "scanOrdinal": 89,
+      "observation": "Software-engineer profile foregrounds stack, employment history, projects and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "NEWTON YUAN"
+        },
+        {
+          "level": "H2",
+          "text": "T T E E C C H H S S T T A A C C K K"
+        },
+        {
+          "level": "H2",
+          "text": "E E X X P"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "center",
+        "statement",
+        "skills",
+        "experience",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 77,
+      "name": "Seth Hall",
+      "url": "https://sethhallcreative.com/",
+      "listedUrl": "https://sethhallcreative.com",
+      "scanOrdinal": 90,
+      "observation": "Frontend/full-stack identity combines capabilities, recommendations, career-change story and selected work.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hello, my name is Seth"
+        },
+        {
+          "level": "H2",
+          "text": "Technical"
+        },
+        {
+          "level": "H2",
+          "text": "Relational"
+        },
+        {
+          "level": "H2",
+          "text": "Collaborative"
+        },
+        {
+          "level": "H2",
+          "text": "Organizational"
+        },
+        {
+          "level": "H2",
+          "text": "Interested in working together?"
+        },
+        {
+          "level": "H2",
+          "text": "Interested in working together?"
+        }
+      ],
+      "navigation": [
+        "Seth",
+        "Home",
+        "Web",
+        "Creative",
+        "About",
+        "GitHub",
+        "LinkedIn",
+        "Download"
+      ],
+      "sectionIds": [],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 78,
+      "name": "Enea Xharja",
+      "url": "https://eneaxharja.com/",
+      "listedUrl": "https://eneaxharja.com",
+      "scanOrdinal": 91,
+      "observation": "Minimal engineer introduction and biography with direct contact and social links.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Enea Xharja"
+        },
+        {
+          "level": "H2",
+          "text": "About me"
+        },
+        {
+          "level": "H2",
+          "text": "Welcome to my corner of the web"
+        },
+        {
+          "level": "H2",
+          "text": "Contact"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 79,
+      "name": "Edikan Bassey",
+      "url": "https://edikan-bassey.vercel.app/",
+      "listedUrl": "https://edikan-bassey.vercel.app",
+      "scanOrdinal": 92,
+      "observation": "Senior full-stack profile includes capabilities, client organizations, substantial projects and resume navigation.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Edikan Bassey"
+        },
+        {
+          "level": "H2",
+          "text": "By The Numbers"
+        },
+        {
+          "level": "H2",
+          "text": "Services I Offer"
+        },
+        {
+          "level": "H2",
+          "text": "Tech Stack"
+        },
+        {
+          "level": "H2",
+          "text": "Brands I've Worked With"
+        },
+        {
+          "level": "H2",
+          "text": "Projects I'm Proud Of"
+        }
+      ],
+      "navigation": [
+        "Edikan Bassey",
+        "Home",
+        "Portfolio",
+        "Blog"
+      ],
+      "sectionIds": [],
+      "githubLinks": 2,
+      "emailLinks": 3
+    },
+    {
+      "number": 80,
+      "name": "Stefan Topalovic",
+      "url": "https://www.stefantopalovic.com/",
+      "listedUrl": "https://www.stefantopalovic.com",
+      "scanOrdinal": 93,
+      "observation": "Compact frontend introduction, stack, employment history, projects and contact navigation.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hey, I'm Stefan. I'm a Frontend Software Developer. Open to work"
+        },
+        {
+          "level": "H2",
+          "text": "TECH STACK"
+        },
+        {
+          "level": "H2",
+          "text": "WORK EXPERIENCE"
+        },
+        {
+          "level": "H2",
+          "text": "PROJECTS"
+        }
+      ],
+      "navigation": [
+        "STEFAN TOPALOVIĆ",
+        "Work Experience",
+        "Projects",
+        "Contact"
+      ],
+      "sectionIds": [],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 81,
+      "name": "Subhan Nadeem",
+      "url": "https://subhan-dev-portfolio.vercel.app/",
+      "listedUrl": "https://subhan-dev-portfolio.vercel.app",
+      "scanOrdinal": 94,
+      "observation": "Full-stack freelance positioning groups technologies, client systems, service categories and project destinations.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Subhan Nadeem"
+        },
+        {
+          "level": "H1",
+          "text": "Subhan Nadeem, senior full-stack engineer: I build software & automations that run your business."
+        },
+        {
+          "level": "H2",
+          "text": "Tech Stack"
+        },
+        {
+          "level": "H2",
+          "text": "Companies I've built for"
+        },
+        {
+          "level": "H2",
+          "text": "What I build"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "services"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 3
+    },
+    {
+      "number": 82,
+      "name": "Samarth Kadam",
+      "url": "https://samarthkadam.vercel.app/",
+      "listedUrl": "https://samarthkadam.vercel.app",
+      "scanOrdinal": 95,
+      "observation": "Mobile/full-stack identity uses biography, expertise, work and contact navigation without standard heading markup.",
+      "headings": [],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 0
+    },
+    {
+      "number": 83,
+      "name": "Pratik Salunke",
+      "url": "https://pratiksalunkeportfolio.vercel.app/",
+      "listedUrl": "https://pratiksalunkeportfolio.vercel.app",
+      "scanOrdinal": 96,
+      "observation": "Terminal presentation exposes biography, experience, education, projects and skills through a profile interface.",
+      "headings": [],
+      "navigation": [
+        "Mail",
+        "GitHub",
+        "LinkedIn"
+      ],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 84,
+      "name": "Stimmie",
+      "url": "https://www.stimmie.dev/",
+      "listedUrl": "https://www.stimmie.dev",
+      "scanOrdinal": 97,
+      "observation": "Personal homepage distinguishes career content from projects, talks and writing.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "~* stimmie's homepage *~"
+        },
+        {
+          "level": "H2",
+          "text": "~ on this page ~"
+        },
+        {
+          "level": "H2",
+          "text": "~ find me ~"
+        },
+        {
+          "level": "H2",
+          "text": "~ stimmieverse ~"
+        },
+        {
+          "level": "H2",
+          "text": "~ the crib ~"
+        },
+        {
+          "level": "H2",
+          "text": "~ pizza & friends ~"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "about",
+        "resume-workshop",
+        "projects",
+        "talks",
+        "writing",
+        "github",
+        "currently",
+        "friends",
+        "book",
+        "support"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 2
+    },
+    {
+      "number": 85,
+      "name": "Nishmika Ekanayaka",
+      "url": "https://www.nishmika.me/",
+      "listedUrl": "https://nishmika-dev.vercel.app",
+      "scanOrdinal": 98,
+      "observation": "Junior developer uses concise navigation, a grouped stack and four application examples with evidence links.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hello, I'm Nishmika"
+        },
+        {
+          "level": "H2",
+          "text": "Software Developer"
+        },
+        {
+          "level": "H2",
+          "text": "About Me."
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch."
+        }
+      ],
+      "navigation": [
+        "About",
+        "Projects",
+        "Contact",
+        "Download CV"
+      ],
+      "sectionIds": [
+        "home",
+        "about",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 6,
+      "emailLinks": 2
+    },
+    {
+      "number": 86,
+      "name": "Shaun Furtado",
+      "url": "https://shaunfurtado.is-a.dev/",
+      "listedUrl": "https://shaunfurtado.is-a.dev",
+      "scanOrdinal": 99,
+      "observation": "Systems-engineer positioning is organized around AI, infrastructure and architectural specialization.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Shaun Furtado."
+        },
+        {
+          "level": "H2",
+          "text": "Applied Intelligence & Agentic Systems"
+        },
+        {
+          "level": "H2",
+          "text": "High-Throughput Infrastructure"
+        },
+        {
+          "level": "H2",
+          "text": "Deterministic Architecture"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 87,
+      "name": "Jainex Patel",
+      "url": "https://jainex.vercel.app/",
+      "listedUrl": "https://jainex.vercel.app",
+      "scanOrdinal": 100,
+      "observation": "Web/mobile developer foregrounds internship experience, selected builds and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "<Jainex />"
+        },
+        {
+          "level": "H1",
+          "text": "Jainex Patel"
+        },
+        {
+          "level": "H1",
+          "text": "I build things for the Web/Mobile"
+        },
+        {
+          "level": "H2",
+          "text": "Where I've Worked"
+        },
+        {
+          "level": "H2",
+          "text": "Some Things I've Built"
+        },
+        {
+          "level": "H2",
+          "text": "blaze"
+        },
+        {
+          "level": "H2",
+          "text": "ETHCinemaNation"
+        },
+        {
+          "level": "H2",
+          "text": "CoSnippet"
+        },
+        {
+          "level": "H2",
+          "text": "RepoVerifier"
+        },
+        {
+          "level": "H2",
+          "text": "Get In Touch"
+        }
+      ],
+      "navigation": [
+        "<Jainex"
+      ],
+      "sectionIds": [
+        "experience",
+        "projects",
+        "contact"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 0
+    },
+    {
+      "number": 88,
+      "name": "Parish Khan",
+      "url": "https://parish.cv/",
+      "listedUrl": "https://parish.cv",
+      "scanOrdinal": 101,
+      "observation": "Freelance subscription model needs work, services, pricing and process; a different conversion goal from employment.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "I ship features in hours, not months."
+        },
+        {
+          "level": "H2",
+          "text": "Shipped, not mocked up."
+        },
+        {
+          "level": "H2",
+          "text": "Shipped, not mocked up."
+        },
+        {
+          "level": "H2",
+          "text": "Two ways to work together."
+        },
+        {
+          "level": "H2",
+          "text": "Or just buy the fix."
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "work"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 89,
+      "name": "Zuned Aalim",
+      "url": "https://zunedaalim.com/",
+      "listedUrl": "https://zunedaalim.com",
+      "scanOrdinal": 102,
+      "observation": "Web developer/designer organizes services, selected work, biography, grouped tools and contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "WHAT I DO /"
+        },
+        {
+          "level": "H1",
+          "text": "SELECTED WORKS /"
+        },
+        {
+          "level": "H1",
+          "text": "Modern Marketing Website"
+        },
+        {
+          "level": "H1",
+          "text": "NURA"
+        },
+        {
+          "level": "H1",
+          "text": "Full-Stack Recruitment Platform"
+        },
+        {
+          "level": "H1",
+          "text": "Job Portal"
+        },
+        {
+          "level": "H1",
+          "text": "SAAS Platform"
+        },
+        {
+          "level": "H1",
+          "text": "Productivity SAAS"
+        },
+        {
+          "level": "H1",
+          "text": "ML Recommendation Engine"
+        },
+        {
+          "level": "H1",
+          "text": "CineRec"
+        },
+        {
+          "level": "H1",
+          "text": "Code-to-Image"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "Services",
+        "Works",
+        "About",
+        "Contact"
+      ],
+      "githubLinks": 2,
+      "emailLinks": 1
+    },
+    {
+      "number": 90,
+      "name": "Hamza Naseem",
+      "url": "https://hamzanaseem.vercel.app/",
+      "listedUrl": "https://hamzanaseem.vercel.app",
+      "scanOrdinal": 103,
+      "observation": "Frontend freelancer separates latest projects, biography, services, testimonials and contact.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Hi There,"
+        },
+        {
+          "level": "H1",
+          "text": "I am Hamza"
+        },
+        {
+          "level": "H1",
+          "text": "Portfolio"
+        },
+        {
+          "level": "H2",
+          "text": "Latest Projects"
+        },
+        {
+          "level": "H1",
+          "text": "About Me"
+        },
+        {
+          "level": "H2",
+          "text": "Unveiling the Layers of My Story"
+        },
+        {
+          "level": "H1",
+          "text": "Services"
+        },
+        {
+          "level": "H2",
+          "text": "Crafting Solutions Tailored to Your Needs"
+        },
+        {
+          "level": "H1",
+          "text": "Testimonial"
+        },
+        {
+          "level": "H2",
+          "text": "Reviews"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 0,
+      "emailLinks": 2
+    },
+    {
+      "number": 91,
+      "name": "Ankit Jha",
+      "url": "https://ankitjha.vercel.app/",
+      "listedUrl": "https://ankitjha.vercel.app",
+      "scanOrdinal": 104,
+      "observation": "Full-stack developer groups projects, experience, skills and contact; repository/activity evidence is prominent.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Ankit Jha 👋"
+        },
+        {
+          "level": "H2",
+          "text": "Code, Commits & Craft"
+        }
+      ],
+      "navigation": [
+        "AnkitJha",
+        "Home",
+        "Projects",
+        "Experience",
+        "Skills",
+        "Contact"
+      ],
+      "sectionIds": [],
+      "githubLinks": 3,
+      "emailLinks": 1
+    },
+    {
+      "number": 92,
+      "name": "Mohd Ubaid Khan",
+      "url": "https://mdubaid.in/",
+      "listedUrl": "https://mdubaid.in",
+      "scanOrdinal": 105,
+      "observation": "Full-stack engineer keeps biography and curated work central; resume and conversation links are actions.",
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Turning business ideas into scalable digital products"
+        },
+        {
+          "level": "H1",
+          "text": "Hey there! I'm Mohd Ubaid Khan 👋 a Full-Stack Engineer"
+        },
+        {
+          "level": "H1",
+          "text": "Mohd Ubaid Khan"
+        },
+        {
+          "level": "H1",
+          "text": "© 2026 Mohd Ubaid Khan."
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 3,
+      "emailLinks": 0
+    },
+    {
+      "number": 93,
+      "name": "Saim Shafique",
+      "url": "https://saimshafique.com/",
+      "listedUrl": "https://saimshafique.com",
+      "scanOrdinal": 106,
+      "observation": "Open-source/AI developer emphasizes contributions, biography, engineering services and direct contact.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Saim Shafique Open Source Open Source Developer ."
+        },
+        {
+          "level": "H2",
+          "text": "About Saim Shafique"
+        },
+        {
+          "level": "H2",
+          "text": "Core Engineering Services"
+        },
+        {
+          "level": "H2",
+          "text": "Site pages"
+        },
+        {
+          "level": "H2",
+          "text": "Machine-readable resources"
+        }
+      ],
+      "navigation": [
+        "About Saim Shafique",
+        "Contact",
+        "Privacy"
+      ],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 1
+    },
+    {
+      "number": 94,
+      "name": "Swarnava Dutta",
+      "url": "https://swarnava.dev/",
+      "listedUrl": "https://swarnava.dev",
+      "scanOrdinal": 107,
+      "observation": "AI architect combines research-system work, career information, technical writing and multiple contact paths.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Swarnava Dutta"
+        },
+        {
+          "level": "H2",
+          "text": "Notes from building production AI."
+        },
+        {
+          "level": "H2",
+          "text": "Have a role, project, or architecture question?"
+        },
+        {
+          "level": "H2",
+          "text": "I build multi-agent AI platforms, and RAG systems for"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "home",
+        "projects",
+        "testimonials",
+        "experience",
+        "services",
+        "about",
+        "blogs",
+        "contact"
+      ],
+      "githubLinks": 3,
+      "emailLinks": 3
+    },
+    {
+      "number": 95,
+      "name": "Bekah Hawrot Weigel",
+      "url": "https://bekahhw.com/",
+      "listedUrl": "http://bekahhw.github.io",
+      "scanOrdinal": 108,
+      "observation": "Developer-experience professional leads with writing; career work and consulting have separate destinations.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "I spent ten years teaching college English. Now I teach developers, search engines, and AI systems to understand each other."
+        },
+        {
+          "level": "H2",
+          "text": "Skills vs. fine-tuning (or, why"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [],
+      "githubLinks": 1,
+      "emailLinks": 0
+    },
+    {
+      "number": 96,
+      "name": "Vishal Kumar Singh",
+      "url": "https://vishalvoid.com/",
+      "listedUrl": "https://vishalvoid.com",
+      "scanOrdinal": 109,
+      "observation": "Full-stack developer shows selected projects, employment history, academic background and grouped tools.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Vishal Kr. Singh"
+        },
+        {
+          "level": "H2",
+          "text": "Works of a Developer"
+        },
+        {
+          "level": "H2",
+          "text": "Professional Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Academic Journey"
+        },
+        {
+          "level": "H2",
+          "text": "Weapons of modern development"
+        },
+        {
+          "level": "H2",
+          "text": "Let's build together"
+        },
+        {
+          "level": "H2",
+          "text": "Connect before AI takes over.."
+        }
+      ],
+      "navigation": [
+        "Home",
+        "Work"
+      ],
+      "sectionIds": [],
+      "githubLinks": 4,
+      "emailLinks": 3
+    },
+    {
+      "number": 97,
+      "name": "Ethan Lanting",
+      "url": "https://ethanlanting.dev/#home",
+      "listedUrl": "https://ethanlanting.dev/#home",
+      "scanOrdinal": 110,
+      "observation": "Engineer introduction leads directly into substantial application examples; navigation remains short.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Hi, I'm Ethan!"
+        },
+        {
+          "level": "H2",
+          "text": "Get in touch with me"
+        }
+      ],
+      "navigation": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "sectionIds": [
+        "about",
+        "contact"
+      ],
+      "githubLinks": 3,
+      "emailLinks": 1
+    },
+    {
+      "number": 98,
+      "name": "Deepu Kunjumon",
+      "url": "https://deepukunjumon.vercel.app/",
+      "listedUrl": "https://deepukunjumon.vercel.app",
+      "scanOrdinal": 111,
+      "observation": "Backend/full-stack developer uses a focused stack, selected work, career history and combined education/certifications.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Deepu Kunjumon"
+        },
+        {
+          "level": "H2",
+          "text": "Three years of shipping things people actually use."
+        },
+        {
+          "level": "H2",
+          "text": "A focused stack, used deliberately."
+        },
+        {
+          "level": "H2",
+          "text": "Selected work."
+        },
+        {
+          "level": "H2",
+          "text": "Where I’ve worked."
+        },
+        {
+          "level": "H2",
+          "text": "Education & certifications."
+        },
+        {
+          "level": "H2",
+          "text": "Let’s build"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "top",
+        "about",
+        "skills",
+        "projects",
+        "experience",
+        "education",
+        "contact"
+      ],
+      "githubLinks": 5,
+      "emailLinks": 2
+    },
+    {
+      "number": 99,
+      "name": "Atanu Biswas",
+      "url": "https://atanu-portfolio-devsecops-production.up.railway.app/",
+      "listedUrl": "https://atanu-portfolio-devsecops-production.up.railway.app",
+      "scanOrdinal": 112,
+      "observation": "DevSecOps/SRE profile adds engineering labs and systems projects to work history and industry certifications.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Securing & Scaling Cloud-Native Infrastructure."
+        },
+        {
+          "level": "H2",
+          "text": "DevSecOps Interactive Lab"
+        },
+        {
+          "level": "H2",
+          "text": "Automated Toolbelt & Skillsets"
+        },
+        {
+          "level": "H2",
+          "text": "Today's Learning & FDE Labs"
+        },
+        {
+          "level": "H2",
+          "text": "Work Experience"
+        },
+        {
+          "level": "H2",
+          "text": "Featured Systems & Projects"
+        },
+        {
+          "level": "H2",
+          "text": "Industry Certifications"
+        }
+      ],
+      "navigation": [],
+      "sectionIds": [
+        "hero",
+        "simulators",
+        "skills",
+        "learning",
+        "experience",
+        "projects",
+        "certifications",
+        "contact"
+      ],
+      "githubLinks": 3,
+      "emailLinks": 2
+    },
+    {
+      "number": 100,
+      "name": "Fidalgo Pedro",
+      "url": "https://fidalgo.dev/",
+      "listedUrl": "http://fidalgo.dev",
+      "scanOrdinal": 114,
+      "observation": "Product-engineer profile keeps biography, selected products and writing clearly separated.",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Senior Product Engineer."
+        },
+        {
+          "level": "H2",
+          "text": "ABOUT"
+        },
+        {
+          "level": "H2",
+          "text": "SELECTED WORK"
+        },
+        {
+          "level": "H2",
+          "text": "WRITING"
+        }
+      ],
+      "navigation": [
+        "Fidalgo",
+        "projects",
+        "blog",
+        "uses"
+      ],
+      "sectionIds": [
+        "projects"
+      ],
+      "githubLinks": 1,
+      "emailLinks": 2
+    }
+  ],
+  "excerptNote": "Quoted heading/navigation fragments capped at 25 words per counted homepage; see paraphrased observations for interpretation."
+}

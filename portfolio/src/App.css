@@ -406,6 +406,12 @@ body.light-mode .nav-link.active .link-text {
   color: #2b1646;
 }
 
+body.light-mode .nav-link.section-hovered,
+body.light-mode .nav-link.section-hovered .link-text {
+  color: #2b1646;
+  text-shadow: none;
+}
+
 body.light-mode .nav-link.active::before {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(233, 221, 255, 0.58)),
@@ -425,7 +431,7 @@ body.light-mode .hamburger-line {
 }
 
 body.light-mode .mobile-menu {
-  background: rgba(255, 255, 255, 0.92);
+  background: #faf7ff;
 }
 
 body.light-mode .mobile-menu-backdrop {
@@ -1025,7 +1031,7 @@ body.light-mode .availability-row {
 }
 
 body.light-mode .availability-row.active {
-  background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+  background: linear-gradient(90deg, #7341cd, #5b21b6);
 }
 
 body.light-mode .availability-row.active h3,

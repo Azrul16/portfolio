@@ -1,0 +1,53 @@
+{
+  "results": [
+    "light 320: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "light 390: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "light 768: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "light 1440: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "light: 6 featured / 17 archived projects, filtering, Details button, project dialog passed",
+    "light: mobile navigation and workflow section search passed",
+    "light: EmailJS submission payload, mocked success and reset passed (no email sent)",
+    "light: mocked EmailJS failure and mailto fallback passed",
+    "light: CV downloads a valid PDF",
+    {
+      "theme": "light",
+      "accessibility": []
+    },
+    {
+      "theme": "light",
+      "meta": {
+        "title": "Azrul Amaline | Flutter, Backend & DevOps",
+        "descriptions": 1,
+        "canonicals": 1,
+        "manifest": "/site.webmanifest",
+        "brokenInternalLinks": [],
+        "unsafeExternalLinks": []
+      }
+    },
+    "dark 320: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "dark 390: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "dark 768: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "dark 1440: sections, 6 skill groups, 8 delivery steps, overflow passed",
+    "dark: 6 featured / 17 archived projects, filtering, Details button, project dialog passed",
+    "dark: mobile navigation and workflow section search passed",
+    "dark: EmailJS submission payload, mocked success and reset passed (no email sent)",
+    "dark: mocked EmailJS failure and mailto fallback passed",
+    "dark: CV downloads a valid PDF",
+    {
+      "theme": "dark",
+      "accessibility": []
+    },
+    {
+      "theme": "dark",
+      "meta": {
+        "title": "Azrul Amaline | Flutter, Backend & DevOps",
+        "descriptions": 1,
+        "canonicals": 1,
+        "manifest": "/site.webmanifest",
+        "brokenInternalLinks": [],
+        "unsafeExternalLinks": []
+      }
+    }
+  ],
+  "pageErrors": []
+}

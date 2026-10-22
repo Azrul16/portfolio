@@ -1,0 +1,131 @@
+{
+  "checked": "2026-10-22",
+  "projectRepositoryLinks": [
+    {
+      "url": "https://github.com/Azrul16/researchlens-ai-rag-assistant",
+      "ok": true,
+      "fullName": "Azrul16/researchlens-ai-rag-assistant"
+    },
+    {
+      "url": "https://github.com/Azrul16/DevDroid-android-code-editor",
+      "ok": true,
+      "fullName": "Azrul16/DevDroid-android-code-editor"
+    },
+    {
+      "url": "https://github.com/Azrul16/Lecturer-AI_Powered_Study_App",
+      "ok": true,
+      "fullName": "Azrul16/Lecturer-AI_Powered_Study_App"
+    },
+    {
+      "url": "https://github.com/Azrul16/Smart-Home-Mobile-app",
+      "ok": true,
+      "fullName": "Azrul16/Smart-Home-Mobile-app"
+    },
+    {
+      "url": "https://github.com/Azrul16/BanglaSpeech2Text",
+      "ok": true,
+      "fullName": "Azrul16/BanglaSpeech2Text"
+    },
+    {
+      "url": "https://github.com/Azrul16/Notisaver-Flutter-app",
+      "ok": true,
+      "fullName": "Azrul16/Notisaver-Flutter-app"
+    },
+    {
+      "url": "https://github.com/Azrul16/anysql",
+      "ok": true,
+      "fullName": "Azrul16/anysql"
+    },
+    {
+      "url": "https://github.com/Azrul16/form_flutter",
+      "ok": true,
+      "fullName": "Azrul16/form_flutter"
+    },
+    {
+      "url": "https://github.com/Azrul16/form_validator",
+      "ok": true,
+      "fullName": "Azrul16/form_validator"
+    },
+    {
+      "url": "https://github.com/Azrul16/animated_status_card",
+      "ok": true,
+      "fullName": "Azrul16/animated_status_card"
+    },
+    {
+      "url": "https://github.com/Azrul16/push-notification-flutter-using-OneSignal",
+      "ok": true,
+      "fullName": "Azrul16/push-notification-flutter-using-OneSignal"
+    },
+    {
+      "url": "https://github.com/Azrul16/Researcher-WebBrowser",
+      "ok": true,
+      "fullName": "Azrul16/Researcher-WebBrowser"
+    },
+    {
+      "url": "https://github.com/Azrul16/Schedula",
+      "ok": true,
+      "fullName": "Azrul16/Schedula"
+    },
+    {
+      "url": "https://github.com/Azrul16/Meal-Monkey",
+      "ok": true,
+      "fullName": "Azrul16/Meal-Monkey"
+    },
+    {
+      "url": "https://github.com/Azrul16/med-reminder",
+      "ok": true,
+      "fullName": "Azrul16/med-reminder"
+    },
+    {
+      "url": "https://github.com/Azrul16/QuizzApp",
+      "ok": true,
+      "fullName": "Azrul16/QuizzApp"
+    },
+    {
+      "url": "https://github.com/Azrul16/hospital-management",
+      "ok": true,
+      "fullName": "Azrul16/hospital-management"
+    },
+    {
+      "url": "https://github.com/Azrul16/youtube-video-downloader",
+      "ok": true,
+      "fullName": "Azrul16/youtube-video-downloader"
+    },
+    {
+      "url": "https://github.com/Azrul16/file_shareing_server_using_python-flask",
+      "ok": true,
+      "fullName": "Azrul16/file_shareing_server_using_python-flask"
+    },
+    {
+      "url": "https://github.com/Azrul16/HTTP_proxy_server",
+      "ok": true,
+      "fullName": "Azrul16/HTTP_proxy_server"
+    },
+    {
+      "url": "https://github.com/Azrul16/sslc-backend",
+      "ok": true,
+      "fullName": "Azrul16/sslc-backend"
+    },
+    {
+      "url": "https://github.com/Azrul16/onlinefood",
+      "ok": true,
+      "fullName": "Azrul16/onlinefood"
+    },
+    {
+      "url": "https://github.com/Azrul16/object-detection-app",
+      "ok": true,
+      "fullName": "Azrul16/object-detection-app"
+    }
+  ],
+  "researchLensDeploymentEvidence": [
+    {
+      "url": "https://github.com/Azrul16/researchlens-ai-rag-assistant/blob/main/compose.yaml",
+      "supports": "Frontend/backend Docker builds, PostgreSQL service, persistent volumes, service health checks."
+    },
+    {
+      "url": "https://github.com/Azrul16/researchlens-ai-rag-assistant/blob/main/.github/workflows/ci.yml",
+      "supports": "GitHub Actions backend tests, frontend lint/typecheck/build, Docker Compose startup and HTTP smoke checks. CI evidence; no claim of automated production delivery."
+    }
+  ],
+  "tagScope": "Docker and GitHub Actions / CI labels added only to ResearchLens. No project-specific Nginx, AWS, Linux or continuous deployment claims added."
+}

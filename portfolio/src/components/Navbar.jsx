@@ -1,6 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
-import { FaBriefcase, FaDownload, FaGithub, FaLinkedin, FaMoon, FaSun, FaTwitter } from 'react-icons/fa';
+import {
+  FaBriefcase,
+  FaDownload,
+  FaGithub,
+  FaLinkedin,
+  FaMoon,
+  FaSun,
+  FaTwitter,
+} from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../assets/images/logo/logo.webp';
 import smallLogo from '../assets/images/logo/logo-80.webp';
@@ -13,7 +21,7 @@ const navItems = [
   { label: 'About', id: 'about' },
   { label: 'Education', id: 'education' },
   { label: 'Certificates', id: 'certificates' },
-  { label: 'Contact', id: 'contact' }
+  { label: 'Contact', id: 'contact' },
 ];
 const cvFileName = 'Azrul Amaline.pdf';
 
@@ -30,9 +38,18 @@ const Navbar = () => {
 
   useEffect(() => {
     let savedTheme;
-    try { savedTheme = window.localStorage.getItem('portfolio-theme'); } catch { /* Storage is optional. */ }
-    setTheme(savedTheme === 'light' || savedTheme === 'dark'
-      ? savedTheme : window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    try {
+      savedTheme = window.localStorage.getItem('portfolio-theme');
+    } catch {
+      /* Storage is optional. */
+    }
+    setTheme(
+      savedTheme === 'light' || savedTheme === 'dark'
+        ? savedTheme
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light'
+          : 'dark'
+    );
     setThemeReady(true);
   }, []);
 
@@ -40,7 +57,11 @@ const Navbar = () => {
     if (!themeReady) return;
     document.body.classList.toggle('light-mode', theme === 'light');
     document.body.classList.toggle('dark-mode', theme === 'dark');
-    try { window.localStorage.setItem('portfolio-theme', theme); } catch { /* Storage is optional. */ }
+    try {
+      window.localStorage.setItem('portfolio-theme', theme);
+    } catch {
+      /* Storage is optional. */
+    }
   }, [theme, themeReady]);
 
   useEffect(() => {
@@ -68,11 +89,15 @@ const Navbar = () => {
       }
 
       const activationLine = getNavbarOffset() + window.innerHeight * 0.22;
-      const isAtPageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      const isAtPageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
       const currentSection = isAtPageBottom
         ? sections[sections.length - 1]
         : sections.reduce((current, section) => {
-            return section.getBoundingClientRect().top <= activationLine ? section : current;
+            return section.getBoundingClientRect().top <= activationLine
+              ? section
+              : current;
           }, sections[0]);
 
       if (activeSectionRef.current !== currentSection.id) {
@@ -115,13 +140,20 @@ const Navbar = () => {
     }
 
     const hamburger = hamburgerRef.current;
-    const timer = window.setTimeout(() => document.querySelector('.mobile-nav-link')?.focus(), 0);
+    const timer = window.setTimeout(
+      () => document.querySelector('.mobile-nav-link')?.focus(),
+      0
+    );
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setMenuOpen(false);
       }
       if (event.key === 'Tab') {
-        const controls = [...document.querySelectorAll('#mobile-navigation a, #mobile-navigation button')];
+        const controls = [
+          ...document.querySelectorAll(
+            '#mobile-navigation a, #mobile-navigation button'
+          ),
+        ];
         const first = controls[0];
         const last = controls[controls.length - 1];
         if (event.shiftKey && document.activeElement === first) {
@@ -168,11 +200,14 @@ const Navbar = () => {
 
     const navbar = document.querySelector('.navbar');
     const navbarHeight = navbar?.getBoundingClientRect().height || 0;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
+    const targetTop =
+      target.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
 
     window.scrollTo({
       top: Math.max(targetTop, 0),
-      behavior: 'smooth'
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth',
     });
     activeSectionRef.current = sectionId;
     setActiveSection(sectionId);
@@ -194,7 +229,15 @@ const Navbar = () => {
           transition={{ duration: 0.25 }}
         >
           <a href="#home" onClick={(event) => handleLinkClick(event, 'home')}>
-            <img src={logo} srcSet={`${smallLogo} 80w, ${logo} 160w`} sizes="48px" alt="Azrul Amaline logo" className="logo-img" width="160" height="160" />
+            <img
+              src={logo}
+              srcSet={`${smallLogo} 80w, ${logo} 160w`}
+              sizes="48px"
+              alt="Azrul Amaline logo"
+              className="logo-img"
+              width="160"
+              height="160"
+            />
             <span className="logo-text">Azrul Amaline</span>
           </a>
         </motion.div>
@@ -213,14 +256,22 @@ const Navbar = () => {
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <a href={`#${itemId}`} onClick={(event) => handleLinkClick(event, itemId)} aria-current={isActive ? 'location' : undefined} className={`nav-link ${isActive ? 'active' : ''}`}>
+                <a
+                  href={`#${itemId}`}
+                  onClick={(event) => handleLinkClick(event, itemId)}
+                  aria-current={isActive ? 'location' : undefined}
+                  className={`nav-link ${isActive ? 'active' : ''}`}
+                >
                   <span className="link-text">{item.label}</span>
                   <motion.span
                     className="link-underline"
                     initial={{ width: 0 }}
                     animate={{
                       width: hoveredItem === index || isActive ? '100%' : 0,
-                      backgroundColor: hoveredItem === index || isActive ? 'var(--primary-color)' : 'transparent'
+                      backgroundColor:
+                        hoveredItem === index || isActive
+                          ? 'var(--primary-color)'
+                          : 'transparent',
                     }}
                     transition={{ duration: isActive ? 0 : 0.16 }}
                   />
@@ -237,9 +288,10 @@ const Navbar = () => {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             download={cvFileName}
-            
+            aria-label="Download CV"
           >
-            Download CV
+            <FaDownload className="navbar-download-icon" aria-hidden="true" />
+            <span className="navbar-download-label">Download CV</span>
           </motion.a>
 
           <motion.a
@@ -259,7 +311,11 @@ const Navbar = () => {
             type="button"
             className="theme-toggle-btn"
             onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-label={
+              theme === 'dark'
+                ? 'Switch to light theme'
+                : 'Switch to dark theme'
+            }
             aria-pressed={theme === 'light'}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.96 }}
@@ -305,10 +361,21 @@ const Navbar = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 520, damping: 38, mass: 0.6 }}
+              transition={{
+                type: 'spring',
+                stiffness: 520,
+                damping: 38,
+                mass: 0.6,
+              }}
               onClick={(event) => event.stopPropagation()}
             >
-              <button type="button" className="mobile-close-link" onClick={() => setMenuOpen(false)}>Close menu</button>
+              <button
+                type="button"
+                className="mobile-close-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                Close menu
+              </button>
               {navItems.map((item, index) => {
                 const itemId = item.id;
                 const isActive = activeSection === itemId;
@@ -320,36 +387,75 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.035 + 0.05, duration: 0.16 }}
                   >
-                    <a href={`#${itemId}`} onClick={(event) => handleLinkClick(event, itemId)} aria-current={isActive ? 'location' : undefined} className={`mobile-nav-link ${isActive ? 'active' : ''}`}>
+                    <a
+                      href={`#${itemId}`}
+                      onClick={(event) => handleLinkClick(event, itemId)}
+                      aria-current={isActive ? 'location' : undefined}
+                      className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                    >
                       {item.label}
                     </a>
                   </motion.div>
                 );
               })}
-              <a href={cvUrl} className="mobile-cv-link" download={cvFileName} onClick={() => {
+              <a
+                href={cvUrl}
+                className="mobile-cv-link"
+                download={cvFileName}
+                onClick={() => {
                   setMenuOpen(false);
-              }}>
+                }}
+              >
                 <FaDownload />
                 Download CV
               </a>
-              <a href="#contact" onClick={(event) => {
+              <a
+                href="#contact"
+                onClick={(event) => {
                   handleLinkClick(event, 'contact');
-              }} className="mobile-hire-link">
+                }}
+                className="mobile-hire-link"
+              >
                 <FaBriefcase />
                 Hire Me / Contact
               </a>
-              <button type="button" className="mobile-theme-link" onClick={toggleTheme}>
+              <button
+                type="button"
+                className="mobile-theme-link"
+                onClick={toggleTheme}
+              >
                 {theme === 'dark' ? <FaSun /> : <FaMoon />}
                 {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
               </button>
               <div className="mobile-socials">
-                <motion.a href="https://github.com/azrul16" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.a
+                  href="https://github.com/azrul16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open GitHub profile"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <FaGithub />
                 </motion.a>
-                <motion.a href="https://www.linkedin.com/in/azrul-amaline/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.a
+                  href="https://www.linkedin.com/in/azrul-amaline/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open LinkedIn profile"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <FaLinkedin />
                 </motion.a>
-                <motion.a href="https://x.com/AAmaline9489" target="_blank" rel="noopener noreferrer" aria-label="Open X profile" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.a
+                  href="https://x.com/AAmaline9489"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open X profile"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <FaTwitter />
                 </motion.a>
               </div>

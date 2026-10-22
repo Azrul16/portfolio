@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "light 320px: all sections loaded; no page overflow or broken images",
+    "light 390px: all sections loaded; no page overflow or broken images",
+    "light 768px: all sections loaded; no page overflow or broken images",
+    "light 1440px: all sections loaded; no page overflow or broken images",
+    "light: project filters, grid/carousel toggle, dialog text and sticky close passed",
+    "light: all 8 certificates open/close; close stays visible after scrolling",
+    "light: mobile menu focus trap, Escape/focus restoration, command search empty state passed",
+    "light: contact validation displays error without sending a message",
+    {
+      "theme": "light",
+      "automatedAccessibilityViolations": []
+    },
+    "dark 320px: all sections loaded; no page overflow or broken images",
+    "dark 390px: all sections loaded; no page overflow or broken images",
+    "dark 768px: all sections loaded; no page overflow or broken images",
+    "dark 1440px: all sections loaded; no page overflow or broken images",
+    "dark: project filters, grid/carousel toggle, dialog text and sticky close passed",
+    "dark: all 8 certificates open/close; close stays visible after scrolling",
+    "dark: mobile menu focus trap, Escape/focus restoration, command search empty state passed",
+    "dark: contact validation displays error without sending a message",
+    {
+      "theme": "dark",
+      "automatedAccessibilityViolations": []
+    }
+  ],
+  "pageErrors": []
+}

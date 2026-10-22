@@ -101,6 +101,19 @@
   color: #c4a8ff;
 }
 
+body.light-mode .command-palette-header span,
+body.light-mode .command-list p {
+  color: var(--light-ink-soft);
+}
+
+body.light-mode .command-list button span {
+  color: #6d28d9;
+}
+
+body.light-mode .command-palette input::placeholder {
+  color: var(--light-muted);
+}
+
 @media (max-width: 640px) {
   .command-palette-overlay {
     align-items: flex-end;

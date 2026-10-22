@@ -1,6 +1,6 @@
 ﻿# Azrul Amaline Portfolio
 
-A responsive personal portfolio for **Azrul Amaline**, a software developer from Bangladesh focused on Flutter mobile apps, reusable Dart packages, backend utilities, AI experiments, cybersecurity practice, and practical product-oriented software.
+A responsive personal portfolio for **Azrul Amaline — Flutter & Backend Developer | DevOps / Cloud Enthusiast**. The focus is cross-platform apps, Python APIs, Firebase integrations, and practical application deployment with Docker and Linux. AI, systems, and security practice support that core stack.
 
 The site brings together profile details, education, certificates, skills, featured case studies, a filterable project archive, CV download, GitHub links, and contact options in a polished React experience.
 
@@ -20,7 +20,8 @@ The site brings together profile details, education, certificates, skills, featu
 - Smooth section reveals and interactive UI motion with Framer Motion
 - Featured project case studies with challenge, outcome, role, features, and architecture details
 - Filterable project archive for apps, packages, backend tools, AI projects, and integrations
-- Skills section covering Flutter, Python, Firebase, backend frameworks, networking, cybersecurity tools, AI/ML, and IoT
+- A compact responsive skills grid with the original icon cards and light/dark contrast fixes
+- A responsive “From Code to Production” workflow covering development, checks, version control, containers, Linux, Nginx, and maintenance
 - Education, certificates, downloadable CV, and contact sections
 - SEO, sitemap, robots file, favicon, and social preview image assets
 - Keyboard-friendly project cards and reduced-motion-aware styling support
@@ -54,12 +55,15 @@ portfolio/
       Certificates.jsx
       Contact.jsx
       Education.jsx
+      DeliveryWorkflow.jsx
       Footer.jsx
       Navbar.jsx
       Profile.jsx
       Projects.jsx
       Skills.jsx
     App.jsx
+    data/
+      projects.jsx
     App.css
     index.css
     main.jsx
@@ -114,12 +118,12 @@ In the EmailJS template, use these variables: `from_name`, `from_email`, `reply_
 
 ## Available Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Starts the Vite development server. |
-| `npm run build` | Creates an optimized production build in `dist/`. |
-| `npm run preview` | Serves the production build locally for review. |
-| `npm run lint` | Runs ESLint across the project. |
+| Command                   | Description                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| `npm run dev`             | Starts the Vite development server.                                               |
+| `npm run build`           | Creates an optimized production build in `dist/`.                                 |
+| `npm run preview`         | Serves the production build locally for review.                                   |
+| `npm run lint`            | Runs ESLint across the project.                                                   |
 | `npm run optimize:images` | Regenerates responsive portraits, logo sizes, favicons, and certificate previews. |
 
 ## Deployment
@@ -157,14 +161,8 @@ The canonical deployment is `https://azrul.is-a.dev/`; `public/CNAME`, the sitem
 
 `npm run build` runs Vite, then `scripts/prerender.mjs` renders the full portfolio into `dist/index.html`. Deploy the complete `dist` folder; no Node server is required. Development still uses ordinary React rendering.
 
-The production page includes its content before JavaScript loads. The build removes unused CSS and inlines the remaining stylesheet. React attaches after the first paint, and below-the-fold sections hydrate as they approach the viewport or receive an interaction. Native `content-visibility` avoids unnecessary off-screen layout work. Keep section IDs stable because navigation and hydration use them.
+The production page includes its content before JavaScript loads. The build removes unused CSS and inlines the remaining stylesheet. React attaches after the first paint, and below-the-fold sections hydrate as they approach the viewport or receive an interaction. Native `content-visibility` avoids unnecessary off-screen layout work. Keep section IDs stable because navigation and hydration use them. Certificate previews preload on card hover or focus rather than downloading every large preview on section entry.
 
 The name splash starts directly from HTML and lasts 1 second total: the name stays visible over a static background logo for 0.6 seconds, followed by a 0.4-second logo expansion and reveal. It appears on every page load, including reloads, and the name matches the bold intro typography. There is no light sweep or flash. Reduced motion shows a static 0.6-second introduction without animation; interaction dismisses the splash early. The decorative name font is a locally hosted, licensed WOFF2 subset. EmailJS and confetti load when used.
 
-The final local simulated-mobile Lighthouse run scored 100 for performance, accessibility, best practices, and SEO. These are lab results; verify the deployed domain separately because hosting and device conditions affect scores. See the audit for measurements and remaining production checks.
-
-
-
-
-
-
+A previous local simulated-mobile Lighthouse run scored 100 for performance, accessibility, best practices, and SEO. These historical lab results are recorded in the original audit; see `audits/expanded-positioning/` for verification of the expanded portfolio. Deployed results depend on hosting and device conditions.

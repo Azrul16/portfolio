@@ -1,15 +1,15 @@
-import React from 'react';
 import { m as motion } from 'framer-motion';
 import './Education.css';
 
 const educationList = [
   {
     institution: 'Patuakhali Science and Technology University',
-    degree: 'B.Sc. in Computer Science',
+    degree: 'B.Sc. in Computer Science and Engineering (CSE)',
     years: '2022 - August 2026',
-    details: ['Focus areas: algorithms, data structures, AI, web systems, mobile app development, and practical software projects']
+    details: [
+      'Focus areas: algorithms, data structures, AI, web systems, mobile app development, and practical software projects',
+    ],
   },
-
 ];
 
 const containerVariants = {
@@ -18,24 +18,24 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.045,
-      delayChildren: 0.02
-    }
-  }
+      delayChildren: 0.02,
+    },
+  },
 };
 
 const itemVariants = {
   hidden: {
     opacity: 1,
-    y: 0
+    y: 0,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.34,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 const lineVariants = {
@@ -45,16 +45,22 @@ const lineVariants = {
     opacity: 1,
     transition: {
       duration: 0.32,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  }
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
 };
 
 const Education = () => {
   return (
     <section id="education" className="education-section">
-      <div className="education-glow education-glow-left" aria-hidden="true"></div>
-      <div className="education-glow education-glow-right" aria-hidden="true"></div>
+      <div
+        className="education-glow education-glow-left"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="education-glow education-glow-right"
+        aria-hidden="true"
+      ></div>
 
       <motion.div
         className="education-container"
@@ -68,7 +74,10 @@ const Education = () => {
         </motion.div>
 
         <div className="timeline">
-          <motion.div className="timeline-line" variants={lineVariants}></motion.div>
+          <motion.div
+            className="timeline-line"
+            variants={lineVariants}
+          ></motion.div>
           {educationList.map((edu, index) => (
             <motion.article
               className="timeline-item"
@@ -86,7 +95,7 @@ const Education = () => {
                   transition={{
                     duration: 0.24,
                     delay: 0.04 + index * 0.035,
-                    ease: [0.22, 1, 0.36, 1]
+                    ease: [0.22, 1, 0.36, 1],
                   }}
                 ></motion.span>
               </div>
@@ -99,7 +108,7 @@ const Education = () => {
                   transition={{
                     duration: 0.28,
                     delay: 0.04 + index * 0.035,
-                    ease: [0.22, 1, 0.36, 1]
+                    ease: [0.22, 1, 0.36, 1],
                   }}
                 >
                   {edu.years}
@@ -117,7 +126,7 @@ const Education = () => {
                         transition={{
                           duration: 0.24,
                           delay: 0.06 + index * 0.035,
-                          ease: [0.22, 1, 0.36, 1]
+                          ease: [0.22, 1, 0.36, 1],
                         }}
                       >
                         {detail}

@@ -377,15 +377,15 @@
 }
 
 .close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  position: sticky;
+  top: 0.75rem;
+  margin: 0.75rem 0.75rem 0 auto;
   z-index: 3;
   width: 46px;
   height: 46px;
   border: none;
   border-radius: 50%;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background:
@@ -421,7 +421,7 @@
   width: 19px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #ffffff, #eadcff);
+  background: currentColor;
   box-shadow: 0 0 12px color-mix(in srgb, var(--certificate-glow) 62%, transparent);
 }
 
@@ -433,12 +433,54 @@
   transform: rotate(-45deg);
 }
 
+/* These details sit on light panels too, including the portal mounted on body. */
+body.light-mode .certificate-issuer-lockup strong {
+  color: var(--light-ink);
+}
+
+body.light-mode .certificate-issuer-lockup span:not(.certificate-issuer-logo) {
+  color: #5a2fa0;
+}
+
+body.light-mode .certificate-issuer-logo,
+body.light-mode .certificate-modal-meta span {
+  color: #351c54;
+  background: #eee5f9;
+  border-color: #b9a4ce;
+}
+
+body.light-mode .modal-description {
+  color: var(--light-ink-soft);
+}
+
+body.light-mode .certificate-modal .close-btn {
+  color: #351c54;
+  background: #f4edff;
+  box-shadow: 0 0 0 1px #b9a4ce, 0 4px 12px rgba(53, 28, 84, 0.18);
+}
+
+body.light-mode .certificate-modal .close-btn:hover {
+  background: #e5d7ff;
+}
+
+body.light-mode .certificate-modal .close-btn:focus-visible {
+  outline-color: #6d28d9;
+}
+
+body.light-mode .close-line {
+  box-shadow: none;
+}
+
+.certificate-full-link:hover {
+  color: #170d24;
+}
+
 .modal-layout {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(280px, 0.98fr);
   gap: 1.4rem;
-  padding: 1.5rem;
+  padding: 0.75rem 1.5rem 1.5rem;
 }
 
 .modal-visual-panel,

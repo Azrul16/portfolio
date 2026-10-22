@@ -6,6 +6,7 @@ import './components/Profile.css';
 import './components/Footer.css';
 import './components/CommandPalette.css';
 import './components/Availability.css';
+import './components/DeliveryWorkflow.css';
 import './components/Collaboration.css';
 import './components/Skills.css';
 import './components/Projects.css';

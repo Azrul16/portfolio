@@ -24,9 +24,21 @@
 
 .contact-bg-gradient {
   background:
-    radial-gradient(circle at 15% 20%, rgba(159, 122, 234, 0.16), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(244, 114, 182, 0.12), transparent 24%),
-    linear-gradient(135deg, rgba(159, 122, 234, 0.08), rgba(253, 186, 116, 0.05));
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(159, 122, 234, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(244, 114, 182, 0.12),
+      transparent 24%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(159, 122, 234, 0.08),
+      rgba(253, 186, 116, 0.05)
+    );
 }
 
 .contact-container {
@@ -40,7 +52,11 @@
   margin-bottom: 1.75rem;
   padding: 1.75rem 1.9rem;
   border-radius: 26px;
-  background: linear-gradient(180deg, rgba(28, 13, 47, 0.94), rgba(17, 8, 29, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(28, 13, 47, 0.94),
+    rgba(17, 8, 29, 0.9)
+  );
   border: 1px solid rgba(196, 168, 255, 0.14);
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
 }
@@ -104,7 +120,11 @@
   width: 100%;
   padding: 1.7rem;
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(28, 13, 47, 0.94), rgba(17, 8, 29, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(28, 13, 47, 0.94),
+    rgba(17, 8, 29, 0.9)
+  );
   border: 1px solid rgba(196, 168, 255, 0.14);
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
 }
@@ -112,7 +132,11 @@
 .card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(196, 168, 255, 0.16), transparent 35%);
+  background: radial-gradient(
+    circle at top right,
+    rgba(196, 168, 255, 0.16),
+    transparent 35%
+  );
   opacity: 0.8;
   pointer-events: none;
 }
@@ -157,7 +181,10 @@
 .info-link-item {
   color: inherit;
   text-decoration: none;
-  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
 }
 
 .info-link-item:hover {
@@ -167,7 +194,9 @@
 }
 
 .email-info-item {
-  transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    border-color var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
 }
 
 .email-line {
@@ -184,9 +213,9 @@
 }
 
 .copy-email-icon-btn {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   padding: 0;
   border-radius: 50%;
   border: 1px solid rgba(196, 168, 255, 0.2);
@@ -196,6 +225,18 @@
   color: #c4a8ff;
   background: rgba(255, 255, 255, 0.055);
   font-size: 0.82rem;
+}
+
+.copy-email-status {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}
+.copy-email-status:empty {
+  display: none;
+}
+.email-line {
+  flex-wrap: wrap;
 }
 
 .copy-email-icon-btn:hover {
@@ -255,7 +296,10 @@
   color: var(--text-color);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
 }
 
 .social-item:hover {
@@ -344,12 +388,19 @@
   padding: 1.15rem;
   border: none;
   border-radius: 16px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: white;
   font-weight: 700;
   font-size: 1.05rem;
   cursor: pointer;
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
   margin-top: 0.5rem;
   position: relative;
   overflow: hidden;
@@ -358,7 +409,9 @@
 .btn-text,
 .btn-icon {
   position: absolute;
-  transition: transform 0.18s ease, opacity 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
 }
 
 .btn-icon {
@@ -454,8 +507,16 @@
 
 .contact-bg-gradient {
   background:
-    radial-gradient(circle at 15% 20%, rgba(159, 122, 234, 0.08), transparent 28%),
-    radial-gradient(circle at 85% 20%, rgba(244, 114, 182, 0.07), transparent 22%);
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(159, 122, 234, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(244, 114, 182, 0.07),
+      transparent 22%
+    );
 }
 
 .contact-hero-simple {
@@ -468,7 +529,11 @@
 }
 
 .contact-card {
-  background: linear-gradient(180deg, rgba(28, 13, 44, 0.82), rgba(16, 8, 27, 0.8));
+  background: linear-gradient(
+    180deg,
+    rgba(28, 13, 44, 0.82),
+    rgba(16, 8, 27, 0.8)
+  );
   box-shadow: none;
 }
 
@@ -537,7 +602,11 @@
   padding: 1rem 0.95rem;
   border-radius: 16px;
   background:
-    radial-gradient(circle at 18% 8%, rgba(196, 168, 255, 0.14), transparent 34%),
+    radial-gradient(
+      circle at 18% 8%,
+      rgba(196, 168, 255, 0.14),
+      transparent 34%
+    ),
     rgba(255, 255, 255, 0.032);
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -546,7 +615,12 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 42%, rgba(201, 163, 255, 0.08));
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 42%,
+    rgba(201, 163, 255, 0.08)
+  );
   pointer-events: none;
 }
 
@@ -620,7 +694,9 @@
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 12px 26px rgba(10, 2, 18, 0.14);
-  transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    border-color var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
 }
 
 .contact-action:hover {
@@ -641,11 +717,19 @@
 }
 
 .contact-action-primary {
-  background: linear-gradient(135deg, rgba(159, 122, 234, 0.34), rgba(109, 40, 217, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(159, 122, 234, 0.34),
+    rgba(109, 40, 217, 0.2)
+  );
 }
 
 .contact-action-accent {
-  background: linear-gradient(135deg, rgba(244, 114, 182, 0.22), rgba(159, 122, 234, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(244, 114, 182, 0.22),
+    rgba(159, 122, 234, 0.12)
+  );
 }
 
 .contact-action-github .contact-action-icon {
@@ -678,7 +762,9 @@
 
 .contact-card {
   border-color: rgba(210, 184, 255, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 42px rgba(8, 2, 16, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 42px rgba(8, 2, 16, 0.22);
 }
 
 .contact-card::after,
@@ -690,7 +776,13 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 35%, transparent 72%, rgba(201, 163, 255, 0.08));
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 35%,
+    transparent 72%,
+    rgba(201, 163, 255, 0.08)
+  );
   pointer-events: none;
 }
 
@@ -728,7 +820,6 @@
   .services-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
 }
 
 @media (max-width: 520px) {
@@ -744,7 +835,6 @@
   .service-item {
     min-height: auto;
   }
-
 }
 
 .form-card {
@@ -753,14 +843,26 @@
   flex-direction: column;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 8%, rgba(196, 168, 255, 0.18), transparent 34%),
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(196, 168, 255, 0.18),
+      transparent 34%
+    ),
     linear-gradient(180deg, rgba(34, 16, 55, 0.9), rgba(14, 7, 24, 0.9));
 }
 
 .form-card .card-glow {
   background:
-    radial-gradient(circle at 90% 0%, rgba(244, 114, 182, 0.18), transparent 32%),
-    radial-gradient(circle at 12% 12%, rgba(196, 168, 255, 0.16), transparent 28%);
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(244, 114, 182, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(196, 168, 255, 0.16),
+      transparent 28%
+    );
 }
 
 .form-card-topline,
@@ -779,7 +881,11 @@
   gap: 1rem;
   padding: 1.35rem 1.45rem 1.15rem;
   border-bottom: 1px solid rgba(210, 184, 255, 0.13);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.015)
+  );
 }
 
 .form-card-icon {
@@ -979,6 +1085,38 @@
   color: #ffe0e8;
   background: rgba(244, 114, 182, 0.12);
   border: 1px solid rgba(244, 114, 182, 0.26);
+}
+
+body.light-mode .info-icon,
+body.light-mode .copy-email-icon-btn {
+  color: #5a2fa0;
+  background: #eee5f9;
+  border-color: #b9a4ce;
+}
+
+body.light-mode .copy-email-icon-btn:hover {
+  color: #ffffff;
+  background: #6d28d9;
+}
+
+body.light-mode .info-content a:hover,
+body.light-mode .info-link-item:hover .info-content span {
+  color: #5a2fa0;
+}
+
+body.light-mode .form-card .form-group:focus-within label {
+  color: #5a2fa0;
+}
+
+body.light-mode .form-card .form-group input:focus,
+body.light-mode .form-card .form-group textarea:focus {
+  border-color: #6d28d9;
+  background: #ffffff;
+}
+
+body.light-mode .form-card .form-group input::placeholder,
+body.light-mode .form-card .form-group textarea::placeholder {
+  color: #655574;
 }
 
 @media (max-width: 640px) {
