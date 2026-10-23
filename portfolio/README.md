@@ -128,6 +128,9 @@ In the EmailJS template, use these variables: `from_name`, `from_email`, `reply_
 
 ## Deployment
 
+See [SEO and Google indexing setup](SEO.md) for Search Console verification,
+sitemap submission, and diagnosing missing name-search results after deployment.
+
 This is a static Vite application, so it can be deployed to Vercel, Netlify, GitHub Pages, Firebase Hosting, or any static hosting provider.
 
 Recommended deployment settings:

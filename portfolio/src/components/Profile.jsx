@@ -149,7 +149,8 @@ const Profile = () => {
             </motion.p>
 
             <motion.p className="hero-lead" variants={fadeUp}>
-              I build cross-platform mobile apps, backend APIs, and
+              I’m a Flutter and backend developer from Bangladesh. I build
+              cross-platform mobile apps, backend APIs, and
               deployment-ready systems with Flutter, Python, Firebase, Docker,
               and Linux. I enjoy taking products from development to deployment
               with practical, maintainable architecture.

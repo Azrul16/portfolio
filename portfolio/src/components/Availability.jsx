@@ -86,7 +86,8 @@ const Availability = () => {
         <motion.div className="availability-heading" variants={fadeUp}>
           <h2 id="availability-title">What I Build</h2>
           <p>
-            I’m a CSE graduate from PSTU, Bangladesh. Flutter and backend
+            I’m Azrul Amaline, a Computer Science and Engineering graduate from
+            Patuakhali Science and Technology University (PSTU), Bangladesh. Flutter and backend
             development are my core focus, with practical experience in
             deployment and Linux servers and a growing interest in cloud
             infrastructure.
