@@ -9,8 +9,54 @@ import {
 } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
 import researchLensScreenshot from '../assets/images/projects/researchlens-overview.webp';
+import boredomLibrary from '../assets/images/projects/boredom-buster/library-desktop.webp';
+import boredomPenFight from '../assets/images/projects/boredom-buster/pen-fight.webp';
+import boredomConnectFour from '../assets/images/projects/boredom-buster/connect-four.webp';
+import boredomCustomization from '../assets/images/projects/boredom-buster/customization.webp';
+import boredomMobile from '../assets/images/projects/boredom-buster/library-mobile.webp';
 
 export const projectList = [
+  {
+    title: 'Boredom Buster',
+    repoName: 'Azrul16/boredom-buster',
+    description:
+      'Twenty free browser games with Ziggy, three difficulty modes, and offline play.',
+    details:
+      'A Next.js game collection with local scores, daily challenges, and customizable arenas, built for keyboard and touch controls.',
+    category: 'Browser Games',
+    status: 'Live Demo',
+    tech: [<SiNextdotjs key="nextjs" />, <SiJavascript key="javascript" />],
+    technologyLabels: ['Next.js', 'React', 'TypeScript', 'Matter.js'],
+    highlights: ['20 games', 'Offline play', 'Daily challenges'],
+    features: [
+      '20 games with Easy, Medium, and Hard difficulty modes',
+      'Offline play after the first download finishes',
+      'Local scores, difficulty records, result sharing, and JSON backup downloads',
+      'Favorites, recent games, and daily challenges',
+      'Five palettes, three arenas, per-game colors, light/dark themes, and focus mode',
+      'Keyboard, touch, sound controls, and automatic or manual rematches',
+    ],
+    architecture: [
+      'Next.js / React / TypeScript',
+      'Matter.js game physics',
+      'Browser-local scores and settings',
+      'Static export hosted on Netlify',
+    ],
+    repoUrl: 'https://github.com/Azrul16/boredom-buster',
+    demoUrl: 'https://regal-valkyrie-a10d6b.netlify.app/',
+    image: boredomLibrary,
+    imageAlt: 'Boredom Buster desktop game library in dark mode',
+    imageWidth: 1440,
+    imageHeight: 1100,
+    screenshots: [
+      { src: boredomLibrary, alt: 'Desktop game library', width: 1440, height: 1100 },
+      { src: boredomPenFight, alt: 'Pen Fight game', width: 1440, height: 1100 },
+      { src: boredomConnectFour, alt: 'Connect Four game', width: 1440, height: 1100 },
+      { src: boredomCustomization, alt: 'Dark-mode customization panel', width: 1440, height: 1100 },
+      { src: boredomMobile, alt: 'Dark-mode mobile game library', width: 390, height: 844 },
+    ],
+    accent: 'rgba(167, 139, 250, 0.2)',
+  },
   {
     title: 'ResearchLens AI',
     repoName: 'Azrul16/researchlens-ai-rag-assistant',
@@ -550,6 +596,7 @@ export const filterOptions = [
   'Tools',
 ];
 export const caseStudyTitles = [
+  'Boredom Buster',
   'ResearchLens AI',
   'DevDroid Android Code Editor',
   'Lecturer App',

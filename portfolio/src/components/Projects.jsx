@@ -430,45 +430,55 @@ const Projects = () => {
                 >
                   {selectedProject.description}
                 </p>
-                {selectedProject.image && (
-                  <ProjectPreview project={selectedProject} />
-                )}
-
-                <div className="project-proof-lists">
-                  <div className="project-proof-list">
-                    <span className="modal-label">Key Features</span>
-                    <ul>
-                      {(
-                        selectedProject.features || selectedProject.highlights
-                      ).map((feature) => (
-                        <li key={feature}>{feature}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="project-proof-list">
-                    <span className="modal-label">Tools & Structure</span>
-                    <ul>
-                      {(
-                        selectedProject.architecture ||
-                        getTechLabels(selectedProject)
-                      ).map((tool) => (
-                        <li key={tool}>{tool}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="project-highlights modal-highlights">
-                  {selectedProject.highlights.map((item) => (
-                    <span key={item} className="project-highlight-pill">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="project-footer modal-footer">
-                  <TechStack project={selectedProject} />
+                <div className="project-dialog-actions">
                   <ProjectLinks project={selectedProject} />
+                </div>
+                <div className="project-dialog-layout">
+                  <div className="project-dialog-visual">
+                    {selectedProject.screenshots?.length ? (
+                      <ProjectGallery key={selectedProject.repoName} project={selectedProject} />
+                    ) : (
+                      <ProjectPreview project={selectedProject} />
+                    )}
+                    <div className="project-highlights modal-highlights">
+                      {selectedProject.highlights.map((item) => (
+                        <span key={item} className="project-highlight-pill">{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="project-dialog-information">
+                    {selectedProject.details && (
+                      <section className="project-dialog-overview">
+                        <h4 className="modal-label">Overview</h4>
+                        <p>{selectedProject.details}</p>
+                      </section>
+                    )}
+
+                    <div className="project-proof-lists">
+                      <div className="project-proof-list">
+                        <h4 className="modal-label">Key features</h4>
+                        <ul>
+                          {(
+                            selectedProject.features || selectedProject.highlights
+                          ).map((feature) => (
+                            <li key={feature}>{feature}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="project-proof-list">
+                        <h4 className="modal-label">Built with</h4>
+                        <ul>
+                          {(
+                            selectedProject.architecture ||
+                            getTechLabels(selectedProject)
+                          ).map((tool) => (
+                            <li key={tool}>{tool}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -592,6 +602,48 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
   );
 };
 
+const ProjectGallery = ({ project }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const viewerRef = useRef(null);
+  const screenshot = project.screenshots[activeIndex];
+
+  return (
+    <div className="project-gallery">
+      <figure className="project-gallery-stage">
+        <button type="button" className="project-gallery-expand" onClick={() => viewerRef.current?.showModal()} aria-label={`Enlarge ${screenshot.alt}`}>
+          <img src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} decoding="async" />
+        </button>
+        <figcaption aria-live="polite">
+          <span>{screenshot.alt}</span>
+          <span>{activeIndex + 1} / {project.screenshots.length}</span>
+        </figcaption>
+      </figure>
+      <div className="project-gallery-thumbnails" aria-label="Choose a screenshot">
+        {project.screenshots.map((item, index) => (
+          <button key={item.src} type="button" aria-label={`Show ${item.alt}`} aria-pressed={index === activeIndex} onClick={() => setActiveIndex(index)}>
+            <img src={item.src} alt="" width={item.width} height={item.height} loading="lazy" />
+          </button>
+        ))}
+      </div>
+      <dialog
+        ref={viewerRef}
+        className="project-image-viewer"
+        aria-label={`${screenshot.alt} enlarged`}
+        onClick={(event) => {
+          event.stopPropagation();
+          if (event.target === event.currentTarget) viewerRef.current?.close();
+        }}
+        onKeyDown={(event) => event.stopPropagation()}
+      >
+        <button type="button" className="project-image-viewer-close" onClick={() => viewerRef.current?.close()} aria-label="Close enlarged screenshot">
+          <FaTimes /> <span>Close</span>
+        </button>
+        <img src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} />
+      </dialog>
+    </div>
+  );
+};
+
 const ProjectPreview = ({ project }) => {
   if (project.image) {
     return (
@@ -600,8 +652,8 @@ const ProjectPreview = ({ project }) => {
         <img
           src={project.image}
           alt={project.imageAlt}
-          width="1440"
-          height="1478"
+          width={project.imageWidth || 1440}
+          height={project.imageHeight || 1478}
           loading="lazy"
           decoding="async"
         />
