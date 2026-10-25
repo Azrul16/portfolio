@@ -2037,3 +2037,18 @@ body.light-mode .project-gallery-stage > .project-gallery-expand {
     padding: 0.65rem;
   }
 }
+.projects-section .project-technology-icon {
+  color: var(--technology-color, #c7a8ff);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+body.light-mode .projects-section .project-technology-icon {
+  color: var(--technology-light-color, #63339b);
+}

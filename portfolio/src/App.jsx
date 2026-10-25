@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import './App.css';
 import DeferredSection from './components/DeferredSection';
 import Navbar from './components/Navbar';
@@ -17,6 +17,8 @@ const Contact = lazy(() => import('./components/Contact'));
 const DeliveryWorkflow = lazy(() => import('./components/DeliveryWorkflow'));
 
 function App() {
+  const [projectRequest, setProjectRequest] = useState(null);
+
   useEffect(() => {
     const scrollToHashSection = () => {
       const sectionId = window.location.hash.replace('#', '');
@@ -71,11 +73,11 @@ function App() {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <Profile />
-        <DeferredSection id="projects">
-          <Projects />
+        <DeferredSection id="projects" active={Boolean(projectRequest)}>
+          <Projects projectRequest={projectRequest} />
         </DeferredSection>
         <DeferredSection id="skills">
-          <Skills />
+          <Skills onViewProject={(repoName) => setProjectRequest({ repoName })} />
         </DeferredSection>
         <DeferredSection id="about">
           <Availability />

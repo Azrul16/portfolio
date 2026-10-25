@@ -1,6 +1,7 @@
 import './Skills.css';
 import {
   SiFlutter,
+  SiDocker,
   SiFirebase,
   SiPython,
   SiDjango,
@@ -31,6 +32,7 @@ import { m as motion } from 'framer-motion';
 import { fadeUp, staggerContainer, viewportOnce } from './motionConfig';
 
 const skillDefinitions = [
+  { name: 'Docker', icon: <SiDocker size="3.5em" />, color: '#2496ed', lightColor: '#0969aa' },
   {
     name: 'Flutter',
     icon: <SiFlutter size="3.5em" />,
@@ -155,7 +157,7 @@ const skillCategories = [
   {
     id: 'infrastructure',
     label: 'Servers & Deployment',
-    skills: ['Ubuntu', 'Webmin', 'Windows Server'],
+    skills: ['Docker', 'Ubuntu', 'Webmin', 'Windows Server'],
   },
   { id: 'ai', label: 'AI / Machine Learning', skills: ['Machine Learning'] },
   {
@@ -189,7 +191,34 @@ const allSkills = skillCategories.flatMap((category) =>
   }))
 );
 
-const Skills = () => {
+const skillEvidence = [
+  {
+    skill: 'Flutter',
+    detail: 'Android editor, file explorer, and Termux terminal integration.',
+    project: 'DevDroid',
+    repoName: 'Azrul16/DevDroid-android-code-editor',
+  },
+  {
+    skill: 'Python',
+    detail: 'FastAPI services for PDF processing, semantic search, and cited research chat.',
+    project: 'ResearchLens AI',
+    repoName: 'Azrul16/researchlens-ai-rag-assistant',
+  },
+  {
+    skill: 'Firebase',
+    detail: 'Authentication and Firestore data for menus, persistent carts, and order updates.',
+    project: 'Meal Monkey',
+    repoName: 'Azrul16/Meal-Monkey',
+  },
+  {
+    skill: 'Docker',
+    detail: 'Dockerfiles and Compose configuration for the frontend, API, and PostgreSQL services.',
+    project: 'ResearchLens AI',
+    repoName: 'Azrul16/researchlens-ai-rag-assistant',
+  },
+];
+
+const Skills = ({ onViewProject }) => {
   return (
     <section id="skills" className="skills-section">
       <div className="skills-shell">
@@ -227,6 +256,25 @@ const Skills = () => {
             <SkillItem key={skill.name} skill={skill} />
           ))}
         </motion.div>
+        <div className="skill-evidence" aria-labelledby="skill-evidence-title">
+          <h3 id="skill-evidence-title">See these skills in practice</h3>
+          <div className="skill-evidence-grid">
+            {skillEvidence.map((item) => (
+              <article className="skill-evidence-card" key={item.skill}>
+                <h4 className="skill-evidence-icon" aria-label={item.skill} title={item.skill}>
+                  {item.skill === 'Flutter' && <SiFlutter aria-hidden="true" />}
+                  {item.skill === 'Python' && <SiPython aria-hidden="true" />}
+                  {item.skill === 'Firebase' && <SiFirebase aria-hidden="true" />}
+                  {item.skill === 'Docker' && <SiDocker aria-hidden="true" />}
+                </h4>
+                <p>{item.detail}</p>
+                <button type="button" onClick={() => onViewProject(item.repoName)} aria-haspopup="dialog" aria-label={`View ${item.project} project demonstrating ${item.skill}`}>
+                  {item.project} <span aria-hidden="true">↗</span>
+                </button>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

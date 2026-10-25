@@ -42,7 +42,7 @@ function VisibilityGate({ id, children }) {
   return children;
 }
 
-export default function DeferredSection({ id, children }) {
+export default function DeferredSection({ id, children, active = false }) {
   return (
     <Suspense
       fallback={
@@ -51,7 +51,7 @@ export default function DeferredSection({ id, children }) {
         </section>
       }
     >
-      <VisibilityGate id={id}>{children}</VisibilityGate>
+      {active ? children : <VisibilityGate id={id}>{children}</VisibilityGate>}
     </Suspense>
   );
 }

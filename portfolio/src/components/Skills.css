@@ -381,3 +381,26 @@ body.light-mode .skill-category-legend li {
     font-size: 0.72rem;
   }
 }
+.skill-evidence { margin-top: 2rem; }
+.skill-evidence > h3 { margin: 0 0 1rem; font-size: 1.15rem; color: #f1eafa; }
+.skill-evidence-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.skill-evidence-card { display: flex; flex-direction: column; align-items: flex-start; padding: 1.15rem; border: 1px solid #635078; border-radius: 14px; background: #21172d; }
+.skill-evidence-card h4 { margin: 0; font-size: 1rem; color: #f1eafa; }
+.skill-evidence-card p { margin: 0.65rem 0 1rem; color: #d7cce3; font-size: 0.9rem; line-height: 1.65; }
+.skill-evidence-card button { margin-top: auto; padding: 0.6rem 0; min-height: 44px; border: 0; background: transparent; color: #d5b5ff; font: inherit; font-size: 0.9rem; text-align: left; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.skill-evidence-card button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 3px; }
+body.light-mode .skill-evidence > h3, body.light-mode .skill-evidence-card h4 { color: #30213e; }
+body.light-mode .skill-evidence-card { background: #f5effc; border-color: #c1a9d8; }
+body.light-mode .skill-evidence-card p { color: #51405f; }
+body.light-mode .skill-evidence-card button { color: #63339b; }
+@media (max-width: 1000px) { .skill-evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .skill-evidence-grid { grid-template-columns: 1fr; } }
+.skill-evidence-card .skill-evidence-icon { display: flex; align-items: center; font-size: 2rem; min-height: 40px; }
+.skill-evidence-icon[aria-label='Flutter'] { color: #54c5f8; }
+.skill-evidence-icon[aria-label='Python'] { color: #75b9ec; }
+.skill-evidence-icon[aria-label='Firebase'] { color: #ffca28; }
+.skill-evidence-icon[aria-label='Docker'] { color: #62baff; }
+body.light-mode .skill-evidence-icon[aria-label='Flutter'] { color: #02569b; }
+body.light-mode .skill-evidence-icon[aria-label='Python'] { color: #3776ab; }
+body.light-mode .skill-evidence-icon[aria-label='Firebase'] { color: #956000; }
+body.light-mode .skill-evidence-icon[aria-label='Docker'] { color: #0969aa; }

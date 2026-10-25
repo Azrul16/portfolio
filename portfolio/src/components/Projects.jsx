@@ -2,10 +2,71 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import './Projects.css';
 import ProjectPlaceholder from './ProjectPlaceholder';
 import {
+  SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiPython, SiFastapi,
+  SiDocker, SiGithubactions, SiFlutter, SiDart, SiFirebase, SiPostgresql,
+  SiHtml5, SiCss3, SiVite, SiCloudinary, SiQt, SiCplusplus,
+  SiNodedotjs, SiMatterdotjs,
+} from 'react-icons/si';
+
+const technologyIcons = {
+  'Next.js': SiNextdotjs,
+  React: SiReact,
+  TypeScript: SiTypescript,
+  JavaScript: SiJavascript,
+  Python: SiPython,
+  FastAPI: SiFastapi,
+  Docker: SiDocker,
+  'GitHub Actions / CI': SiGithubactions,
+  Flutter: SiFlutter,
+  Dart: SiDart,
+  Firebase: SiFirebase,
+  Firestore: SiFirebase,
+  'Cloud Firestore': SiFirebase,
+  PostgreSQL: SiPostgresql,
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  Vite: SiVite,
+  Cloudinary: SiCloudinary,
+  PyQt6: SiQt,
+  'Qt WebEngine': SiQt,
+  Groq: FaMicrochip,
+  'C++': SiCplusplus,
+  'Node.js': SiNodedotjs,
+  'Matter.js': SiMatterdotjs,
+};
+
+const technologyColors = {
+  'Next.js': ['#f5f5f5', '#111111'],
+  React: ['#61dafb', '#087ea4'],
+  TypeScript: ['#60a5fa', '#3178c6'],
+  JavaScript: ['#f7df1e', '#806900'],
+  Python: ['#75b9ec', '#3776ab'],
+  FastAPI: ['#35d0ba', '#008577'],
+  Docker: ['#54b7ff', '#0969aa'],
+  'GitHub Actions / CI': ['#73b4ff', '#2088ff'],
+  Flutter: ['#54c5f8', '#02569b'],
+  Dart: ['#55d5e5', '#0175c2'],
+  Firebase: ['#ffca28', '#a65b00'],
+  Firestore: ['#ffca28', '#a65b00'],
+  'Cloud Firestore': ['#ffca28', '#a65b00'],
+  PostgreSQL: ['#80b7e0', '#336791'],
+  HTML: ['#ff825f', '#c43e1c'],
+  CSS: ['#68aaff', '#1572b6'],
+  Vite: ['#bd8fff', '#7542c8'],
+  Cloudinary: ['#85a3ff', '#3448c5'],
+  PyQt6: ['#70dc82', '#217a32'],
+  'Qt WebEngine': ['#70dc82', '#217a32'],
+  Groq: ['#ff977a', '#bf4828'],
+  'C++': ['#79b7ff', '#00599c'],
+  'Node.js': ['#8bd775', '#417e38'],
+  'Matter.js': ['#74d8b5', '#217959'],
+};
+import {
   FaExternalLinkAlt,
   FaGithub,
   FaGripHorizontal,
   FaList,
+  FaMicrochip,
   FaTimes,
 } from 'react-icons/fa';
 import { AnimatePresence, m as motion } from 'framer-motion';
@@ -30,7 +91,7 @@ const revealVariants = {
   },
 };
 
-const Projects = () => {
+const Projects = ({ projectRequest }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All');
   const [archiveView, setArchiveView] = useState('carousel');
@@ -63,6 +124,12 @@ const Projects = () => {
 
   const openProject = (project) => setSelectedProject(project);
   const closeProject = () => setSelectedProject(null);
+
+  useEffect(() => {
+    if (!projectRequest) return;
+    const project = projectList.find((item) => item.repoName === projectRequest.repoName);
+    if (project) setSelectedProject(project);
+  }, [projectRequest]);
 
   const handleCarouselPointerDown = (event) => {
     if (event.pointerType !== 'mouse' || event.target.closest('a, button'))
@@ -631,11 +698,15 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
         <p className="case-study-summary">{project.description}</p>
 
         <div className="project-highlights">
-          {getTechLabels(project).map((item) => (
-            <span key={item} className="project-highlight-pill">
-              {item}
-            </span>
-          ))}
+          {getTechLabels(project).map((item) => {
+            const Icon = technologyIcons[item];
+            return Icon ? (
+              <span key={item} className="project-highlight-pill project-technology-icon" title={item} role="img" aria-label={item}
+                style={{ '--technology-color': technologyColors[item]?.[0], '--technology-light-color': technologyColors[item]?.[1] }}>
+                <Icon aria-hidden="true" />
+              </span>
+            ) : null;
+          })}
         </div>
 
         <div className="project-footer">
