@@ -5,6 +5,9 @@ node_modules/
 dist/
 dist-ssr/
 
+# Local audit reports and screenshots
+/audits/
+
 # Environment variables and local config
 .env
 .env.local
