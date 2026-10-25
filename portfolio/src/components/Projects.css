@@ -553,6 +553,11 @@
   backface-visibility: hidden;
 }
 
+.projects-loop-copy,
+.projects-loop-item {
+  display: contents;
+}
+
 .projects-carousel:hover .projects-track,
 .projects-carousel:focus-within .projects-track,
 .projects-carousel.is-dragging .projects-track {
@@ -1685,6 +1690,16 @@ body.light-mode .project-modal-simple .project-modal-close {
   border-radius: 18px;
   border: 1px solid #655382;
 }
+.compact-project > .screenshot-preview {
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.compact-project > .screenshot-preview img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  border-radius: 12px;
+}
 body.light-mode .screenshot-preview figcaption {
   color: #514066;
 }
@@ -1902,6 +1917,9 @@ body.light-mode .projects-section .project-view-toggle button {
   object-fit: cover;
   object-position: top;
   border-radius: 4px;
+}
+.android-mockup-gallery .project-gallery-thumbnails img {
+  object-fit: contain;
 }
 .project-modal-simple :is(button, a):focus-visible {
   outline: 2px solid #b69ae7;

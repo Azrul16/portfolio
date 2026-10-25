@@ -1,0 +1,102 @@
+[
+  {
+    "repo": "hospital-management",
+    "slug": "hospital-management",
+    "ref": "c4b1ad70c6387b15d7351fdb67ad9934b912bc0c",
+    "hero": ["03_doctor_list", "02_patient_home", "04_doctor_home"],
+    "color": "#55cca8",
+    "files": [
+      "mockups/01_login.png",
+      "mockups/02_patient_home.png",
+      "mockups/03_doctor_list.png",
+      "mockups/04_doctor_home.png"
+    ]
+  },
+  {
+    "repo": "Schedula",
+    "slug": "schedula",
+    "ref": "bdb63e38c959711f419149b0e877a7aa93edbde9",
+    "hero": [
+      "02_classes",
+      "03_notes",
+      "04_assignments"
+    ],
+    "color": "#ffd34f",
+    "files": [
+      "mockups/01_login.png",
+      "mockups/02_classes.png",
+      "mockups/03_notes.png",
+      "mockups/04_assignments.png",
+      "mockups/05_chat.png",
+      "mockups/06_profile.png",
+      "mockups/07_announcements.png"
+    ]
+  },
+  {
+    "repo": "Meal-Monkey",
+    "slug": "meal-monkey",
+    "ref": "5d76c3fd089e71f635fcaee9e5f681180e94ae87",
+    "hero": [
+      "04_home",
+      "06_food_detail",
+      "08_checkout"
+    ],
+    "color": "#ff975f",
+    "files": [
+      "mockups/01_splash.png",
+      "mockups/02_landing.png",
+      "mockups/03_login.png",
+      "mockups/04_home.png",
+      "mockups/05_menu.png",
+      "mockups/06_food_detail.png",
+      "mockups/07_my_order.png",
+      "mockups/08_checkout.png",
+      "mockups/09_offers.png",
+      "mockups/10_profile.png"
+    ]
+  },
+  {
+    "repo": "med-reminder",
+    "slug": "med-reminder",
+    "ref": "7f02f8394197bbd8ecee4815058a77d7b8cf518c",
+    "hero": [
+      "04_home",
+      "05_add_medicine",
+      "06_medicine_details"
+    ],
+    "color": "#b49bff",
+    "files": [
+      "mockups/01_splash.png",
+      "mockups/02_login.png",
+      "mockups/03_signup.png",
+      "mockups/04_home.png",
+      "mockups/05_add_medicine.png",
+      "mockups/06_medicine_details.png",
+      "mockups/07_medicine_list.png",
+      "mockups/08_medicine_info.png",
+      "mockups/09_bmi_calculator.png",
+      "mockups/10_success.png"
+    ]
+  },
+  {
+    "repo": "DevDroid-android-code-editor",
+    "slug": "devdroid",
+    "ref": "0e7affb7da2e507ea9e08fe82f4af05c4f31c829",
+    "hero": [
+      "03_project_explorer",
+      "04_editor",
+      "05_terminal"
+    ],
+    "color": "#7a8cff",
+    "files": [
+      "mockups/01_home.png",
+      "mockups/02_new_project.png",
+      "mockups/03_project_explorer.png",
+      "mockups/04_editor.png",
+      "mockups/05_terminal.png",
+      "mockups/06_git.png",
+      "mockups/07_settings.png",
+      "mockups/08_command_palette.png"
+    ]
+  }
+]

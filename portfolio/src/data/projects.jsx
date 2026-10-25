@@ -8,12 +8,21 @@ import {
   SiPython,
 } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
+import { androidMockups } from './androidMockups';
 import researchLensScreenshot from '../assets/images/projects/researchlens-overview.webp';
 import boredomLibrary from '../assets/images/projects/boredom-buster/library-desktop.webp';
 import boredomPenFight from '../assets/images/projects/boredom-buster/pen-fight.webp';
 import boredomConnectFour from '../assets/images/projects/boredom-buster/connect-four.webp';
 import boredomCustomization from '../assets/images/projects/boredom-buster/customization.webp';
 import boredomMobile from '../assets/images/projects/boredom-buster/library-mobile.webp';
+import researcherHome from '../assets/images/projects/researcher-browser/01-scholar-home.webp';
+import researcherPaper from '../assets/images/projects/researcher-browser/02-paper-reading.webp';
+import researcherBookmarks from '../assets/images/projects/researcher-browser/03-bookmark-library.webp';
+import researcherHistory from '../assets/images/projects/researcher-browser/04-browsing-history.webp';
+import gjswaHome from '../assets/images/projects/gjswa/home-desktop.webp';
+import gjswaDistricts from '../assets/images/projects/gjswa/districts-desktop.webp';
+import gjswaLogin from '../assets/images/projects/gjswa/login-desktop.webp';
+import gjswaMobile from '../assets/images/projects/gjswa/home-mobile.webp';
 
 export const projectList = [
   {
@@ -102,29 +111,33 @@ export const projectList = [
   },
   {
     title: 'DevDroid Android Code Editor',
+    ...androidMockups['DevDroid-android-code-editor'],
     repoName: 'Azrul16/DevDroid-android-code-editor',
     description:
-      'A Flutter code editor for writing and managing files on Android.',
+      'An Android coding workspace with a tabbed editor, project explorer, terminal, and Git controls.',
     details:
-      'DevDroid is one of the strongest mobile utility projects in the repository list: a code editor experience shaped around developer workflows on Android.',
+      'A Flutter development workspace for local projects, syntax-highlighted editing, and Termux-backed commands and Git. The interactive terminal connects to Termux over SSH; the app is under active development.',
     challenge:
       'Designing a compact coding environment that still feels usable on a small screen.',
     outcome:
-      'A practical developer tool concept that highlights Flutter UI structure, file-oriented workflows, and mobile productivity thinking.',
+      'An Android development workspace combining project files, code editing, terminal sessions, and Git workflows.',
     problem:
       'Mobile developers and learners often need a lightweight way to inspect and edit code when they are away from a desktop setup.',
     role: 'Solo developer responsible for product direction, Flutter UI structure, editor workflow, and repository implementation.',
     features: [
-      'Mobile-first code editing flow',
-      'File-oriented workspace structure',
-      'Developer utility interface',
-      'Android-focused interaction patterns',
+      'Local projects, recent workspaces, and file explorer',
+      'Tabbed code editing with syntax highlighting and language detection',
+      'Run, save, format, and terminal actions',
+      'Termux command execution and SSH-backed interactive terminal',
+      'Git status, pull, push, and stage-all commits through Termux',
+      'Editor, appearance, and terminal preferences',
     ],
     architecture: [
-      'Flutter',
-      'Dart',
-      'Android build target',
-      'Reusable screen and widget structure',
+      'Flutter / Dart / Provider',
+      're_editor / re_highlight',
+      'xterm / dartssh2',
+      'Termux through an Android native platform channel',
+      'SharedPreferences',
     ],
     learning:
       'Improved my ability to design dense mobile interfaces where navigation, editing, and file context need to stay understandable on a small screen.',
@@ -336,27 +349,82 @@ export const projectList = [
     title: 'Researcher Web Browser',
     repoName: 'Azrul16/Researcher-WebBrowser',
     description:
-      'A Python browser/research utility exploring focused information lookup and browsing workflows.',
+      'A desktop academic browser with Google Scholar search, saved research sources, and a floating AI assistant.',
     details:
-      'Researcher Web Browser is a Python project around research-oriented browsing, useful for showing tool-building outside mobile app work.',
+      'Built with PyQt6 and Qt WebEngine, Researcher combines tabbed paper browsing, bookmarks, history, and session restore. Its AI assistant can search Scholar, summarize pages, and act on browser tabs, with backend proxy or OS credential-store access to Groq.',
     challenge:
       'Creating a focused browsing workflow that supports research tasks without overcomplicating the tool.',
     outcome:
       'A Python utility project that broadens the portfolio beyond Flutter and shows experimentation with desktop-style tooling.',
-    category: 'Python Tool',
-    status: 'Public Repo',
+    category: 'Desktop Research Tool',
+    status: 'Open Source',
     tech: [<SiPython key="python" />],
-    highlights: ['Research workflow', 'Python utility', 'Tool building'],
+    technologyLabels: ['Python', 'PyQt6', 'Qt WebEngine', 'JavaScript', 'Groq'],
+    highlights: ['Scholar search', 'AI assistant', 'Saved research sources'],
+    features: [
+      'Tabbed browsing with pinned tabs and session restore',
+      'Google Scholar homepage and search-or-URL omnibox',
+      'Bookmark library and browsing history',
+      'Floating AI commands for search, page summaries, and tab actions',
+      'Optional PSTU proxy support and research mode',
+    ],
+    architecture: ['Python / PyQt6 / Qt WebEngine', 'HTML / CSS / JavaScript browser controls', 'QWebChannel bridge to Python actions', 'Groq via backend proxy or OS credential store', 'Local settings, bookmarks, history, and session persistence'],
+    image: researcherHome,
+    imageAlt: 'Researcher desktop browser showing Google Scholar and its floating AI assistant',
+    imageWidth: 1440,
+    imageHeight: 960,
+    screenshots: [
+      { src: researcherHome, alt: 'Google Scholar workspace and AI assistant', width: 1440, height: 960 },
+      { src: researcherPaper, alt: 'Reading an arXiv research paper', width: 1440, height: 960 },
+      { src: researcherBookmarks, alt: 'Saved research bookmark library', width: 1440, height: 960 },
+      { src: researcherHistory, alt: 'Research browsing history', width: 1440, height: 960 },
+    ],
     repoUrl: 'https://github.com/Azrul16/Researcher-WebBrowser',
     accent: 'rgba(255, 204, 87, 0.2)',
   },
   {
+    title: 'GJSWA Website',
+    repoName: 'Azrul16/GJSWA-website',
+    description:
+      'A student association website connecting members through profiles, notices, stories, and regional information.',
+    details:
+      'The Greater Jashore Student Welfare Association website at PSTU includes district showcases, committee information, teacher and alumni directories, and member publishing flows. The repository screenshots were captured locally without Firebase configuration, so the home views display a configuration message in place of live stories and notices.',
+    category: 'Community Website',
+    status: 'Open Source',
+    tech: [<SiJavascript key="javascript" />, <SiFirebase key="firebase" />],
+    technologyLabels: ['JavaScript', 'Firebase', 'HTML', 'CSS', 'Vite', 'Cloudinary'],
+    highlights: ['Member profiles', 'Stories and notices', 'District showcase'],
+    features: [
+      'Responsive home page and district showcases',
+      'Committee, teacher, staff, and alumni directories',
+      'Firebase authentication and member profile editing',
+      'Story and notice publishing flows',
+      'Cloudinary image handling',
+    ],
+    architecture: ['HTML / CSS / vanilla JavaScript / Vite', 'Firebase Authentication / Cloud Firestore', 'Page modules, service helpers, and data models', 'Cloudinary media uploads', 'Firebase Hosting / Cloud Functions / Firestore rules'],
+    repoUrl: 'https://github.com/Azrul16/GJSWA-website',
+    image: gjswaDistricts,
+    imageAlt: 'GJSWA district showcase with regional photography and information',
+    imageWidth: 1440,
+    imageHeight: 1100,
+    screenshots: [
+      { src: gjswaDistricts, alt: 'District showcase with regional photography', width: 1440, height: 1100 },
+      { src: gjswaHome, alt: 'Desktop home page (local preview)', width: 1440, height: 1000 },
+      { src: gjswaLogin, alt: 'Member sign-in page', width: 1440, height: 1450 },
+      { src: gjswaMobile, alt: 'Mobile home page (local preview)', width: 390, height: 844 },
+    ],
+    accent: 'rgba(85, 204, 168, 0.2)',
+  },
+  {
     title: 'Schedula',
+    ...androidMockups.Schedula,
     repoName: 'Azrul16/Schedula',
     description:
       'A class management app for schedules, assignments, class notes, and academic coordination.',
     details:
-      'Schedula contains class schedules, assignments, class notes, and management flows for class representatives or teachers.',
+      'A Flutter academic workspace with class timelines, semester notes, assignment tracking, announcements, student profiles, and a Gemini-powered assistant.',
+    features: ['Class schedules and assignment deadlines', 'Semester notes with file uploads and downloads', 'Academic announcements and student profiles', 'Gemini-powered chat assistant', 'Semester and student administration'],
+    architecture: ['Flutter / Dart', 'Firebase Authentication / Cloud Firestore / Cloud Storage', 'Firebase Cloud Messaging', 'Gemini API', 'Provider / GetX'],
     challenge:
       'Making academic coordination easier without turning the app into a heavy admin system.',
     outcome:
@@ -370,11 +438,14 @@ export const projectList = [
   },
   {
     title: 'Meal Monkey',
+    ...androidMockups['Meal-Monkey'],
     repoName: 'Azrul16/Meal-Monkey',
     description:
       'A Flutter food ordering experience focused on menu browsing, cart flow, and mobile-first ordering interactions.',
     details:
-      'Meal Monkey is a Dart and Flutter project that turns a food ordering idea into a practical mobile product with clean browsing and checkout-oriented flows.',
+      'A Flutter food-ordering app with Firebase-backed menus, a persistent cart, cash-on-delivery checkout, and an admin dashboard for menu and order management.',
+    features: ['Food search, categories, sorting, and dish details', 'Persistent cart with quantity controls', 'Delivery address and cash-on-delivery checkout', 'Order status updates and inbox messages', 'Admin menu management and order tracking'],
+    architecture: ['Flutter / Dart', 'Firebase Authentication', 'Cloud Firestore', 'Customer and admin interfaces'],
     challenge:
       'Keeping the ordering journey simple while still supporting the screens users expect from a food app.',
     outcome:
@@ -388,11 +459,14 @@ export const projectList = [
   },
   {
     title: 'Med Reminder',
+    ...androidMockups['med-reminder'],
     repoName: 'Azrul16/med-reminder',
     description:
       'A Flutter reminder app for medicine schedules and health-oriented daily routines.',
     details:
-      'Med Reminder shows a practical reminder product built around recurring health needs and simple notification-style flows.',
+      'A Flutter medicine organizer with scheduled dose notifications, local medicine storage, Firebase sign-in, an openFDA medicine browser, and a BMI calculator.',
+    features: ['Medicine name, dosage, type, and reminder intervals', 'Scheduled local notifications with per-medicine controls', 'On-device medicine storage', 'Medicine search and openFDA drug-label information', 'BMI calculator and Firebase account access'],
+    architecture: ['Flutter / Dart', 'Firebase Authentication', 'SharedPreferences', 'Flutter Local Notifications / timezone scheduling', 'Provider / RxDart', 'openFDA API'],
     challenge: 'Making reminder setup easy enough for everyday use.',
     outcome:
       'A mobile health utility that demonstrates practical Flutter app structure and user-centered reminders.',
@@ -423,11 +497,12 @@ export const projectList = [
   },
   {
     title: 'Hospital Management',
+    ...androidMockups['hospital-management'],
     repoName: 'Azrul16/hospital-management',
     description:
-      'A Flutter hospital management project exploring healthcare records and operational workflows.',
+      'MedEase connects patients, doctors, and administrators through appointment requests, prescriptions, and healthcare profiles.',
     details:
-      'Hospital Management adds a larger domain app to the portfolio, showing how Flutter can be used for structured healthcare workflows.',
+      'A Flutter and Firebase hospital management app with patient doctor discovery, appointment tracking, doctor approval and prescription workflows, and administrative oversight. The Android device mockups showcase the repository\'s sample UI screens.',
     challenge:
       'Organizing healthcare information clearly across multiple user and data flows.',
     outcome:
@@ -435,7 +510,23 @@ export const projectList = [
     category: 'Healthcare App',
     status: 'Public Repo',
     tech: [<SiFlutter key="flutter" />, <SiFirebase key="firebase" />],
-    highlights: ['Healthcare flow', 'Records UI', 'Flutter structure'],
+    technologyLabels: ['Flutter', 'Firebase', 'Dart', 'Cloud Firestore'],
+    highlights: ['Patient and doctor roles', 'Appointment requests', 'Prescription workflows'],
+    features: [
+      'Patient, doctor, and administrator workflows',
+      'Doctor directory and appointment requests with symptoms',
+      'Appointment acceptance, rejection, and status tracking',
+      'Doctor prescription management and appointment details',
+      'Patient and doctor profiles',
+      'Administrative doctor, patient, appointment, and prescription views',
+    ],
+    architecture: [
+      'Flutter / Dart / Material UI',
+      'Firebase Authentication',
+      'Cloud Firestore streams for doctors and appointments',
+      'Shared Firebase service with patient and doctor models',
+      'Separate patient, doctor, and administrator screen modules',
+    ],
     repoUrl: 'https://github.com/Azrul16/hospital-management',
     accent: 'rgba(85, 204, 168, 0.18)',
   },
@@ -596,13 +687,16 @@ export const filterOptions = [
   'Tools',
 ];
 export const caseStudyTitles = [
-  'Boredom Buster',
+  // Recruiter-facing priority: engineering depth, distinctiveness, and demo evidence.
   'ResearchLens AI',
   'DevDroid Android Code Editor',
-  'Lecturer App',
-  'BanglaSpeech2Text',
-  'SSLCOMMERZ Payment Integration',
-  'Online Food Website',
+  'Boredom Buster',
+  'Schedula',
+  'Researcher Web Browser',
+  'Hospital Management',
+  'Meal Monkey',
+  'Med Reminder',
+  'GJSWA Website',
 ];
 
 export const getTechLabels = (project) => {

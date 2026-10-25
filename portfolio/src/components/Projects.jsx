@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './Projects.css';
+import ProjectPlaceholder from './ProjectPlaceholder';
 import {
   FaExternalLinkAlt,
   FaGithub,
@@ -214,7 +215,7 @@ const Projects = () => {
                     if (card)
                       carousel.scrollBy({
                         left:
-                          direction * (card.getBoundingClientRect().width + 24),
+                          direction * (card.offsetWidth + parseFloat(getComputedStyle(card.closest('.projects-track')).gap)),
                         behavior: window.matchMedia(
                           '(prefers-reduced-motion: reduce)'
                         ).matches
@@ -260,15 +261,14 @@ const Projects = () => {
             onPointerLeave={stopCarouselDrag}
             onClickCapture={handleCarouselClickCapture}
           >
-            <div className="projects-track case-study-track">
-              {caseStudyProjects.map((project, index) => (
+            <LoopingProjectTrack projects={caseStudyProjects} className="case-study-track" dragState={dragState}>
+              {(project) => (
                 <CaseStudyCard
                   project={project}
-                  key={`${project.title}-${index}`}
                   openProject={openProject}
                 />
-              ))}
-            </div>
+              )}
+            </LoopingProjectTrack>
           </div>
         </motion.div>
 
@@ -349,15 +349,14 @@ const Projects = () => {
             onPointerLeave={stopCarouselDrag}
             onClickCapture={handleCarouselClickCapture}
           >
-            <div className="projects-track">
-              {filteredProjects.map((project, index) => (
+            <LoopingProjectTrack projects={filteredProjects} dragState={dragState}>
+              {(project) => (
                 <ProjectArchiveCard
                   project={project}
                   openProject={openProject}
-                  key={`${project.title}-${index}`}
                 />
-              ))}
-            </div>
+              )}
+            </LoopingProjectTrack>
           </motion.div>
         ) : (
           <motion.div
@@ -489,6 +488,61 @@ const Projects = () => {
   );
 };
 
+const LoopingProjectTrack = ({ projects, className = '', dragState, children }) => {
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const carousel = track.parentElement;
+    const copies = track.querySelectorAll('[data-loop-copy]');
+    // Copies remain clickable, while keyboard and screen-reader navigation
+    // visit each project only once in the middle set.
+    copies.forEach((copy) => {
+      copy.querySelectorAll('a, button, [tabindex]').forEach((element) => {
+        element.tabIndex = -1;
+      });
+    });
+    let span = 0;
+    const measure = () => {
+      const cards = track.querySelectorAll('.project-card');
+      if (!projects.length || !cards[projects.length]) return;
+      const nextSpan = cards[projects.length].offsetLeft - cards[0].offsetLeft;
+      const relative = span ? (carousel.scrollLeft - span) / span : 0;
+      span = nextSpan;
+      carousel.scrollTo({ left: span * (1 + relative), behavior: 'instant' });
+    };
+    const wrap = () => {
+      if (!span) return;
+      const left = carousel.scrollLeft;
+      if (left >= span && left < span * 2) return;
+      const target = span + ((left - span) % span + span) % span;
+      carousel.scrollTo({ left: target, behavior: 'instant' });
+      // Preserve the mouse anchor when a drag crosses the loop boundary.
+      if (dragState.current.isDragging) {
+        dragState.current.scrollLeft += target - left;
+      }
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(carousel);
+    carousel.addEventListener('scroll', wrap, { passive: true });
+    return () => {
+      observer.disconnect();
+      carousel.removeEventListener('scroll', wrap);
+    };
+  }, [projects, dragState]);
+
+  return (
+    <div ref={trackRef} className={`projects-track ${className}`}>
+      {[0, 1, 2].map((copy) => (
+        <div key={copy} className="projects-loop-copy" data-loop-copy={copy === 1 ? undefined : copy} aria-hidden={copy === 1 ? undefined : true}>
+          {projects.map((project) => <div className="projects-loop-item" key={project.title}>{children(project)}</div>)}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const ProjectArchiveCard = ({ project, openProject }) => (
   <motion.article
     className="project-card compact-project"
@@ -501,6 +555,7 @@ const ProjectArchiveCard = ({ project, openProject }) => (
     transition={springHover}
   >
     <div className="project-card-sheen" aria-hidden="true"></div>
+    <ProjectPreview project={project} />
     <div className="project-topline">
       <p className="project-category">{project.category}</p>
       <span className="project-status subtle">{project.status}</span>
@@ -608,7 +663,7 @@ const ProjectGallery = ({ project }) => {
   const screenshot = project.screenshots[activeIndex];
 
   return (
-    <div className="project-gallery">
+    <div className={`project-gallery${project.previewLabel ? ' android-mockup-gallery' : ''}`}>
       <figure className="project-gallery-stage">
         <button type="button" className="project-gallery-expand" onClick={() => viewerRef.current?.showModal()} aria-label={`Enlarge ${screenshot.alt}`}>
           <img src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} decoding="async" />
@@ -648,7 +703,7 @@ const ProjectPreview = ({ project }) => {
   if (project.image) {
     return (
       <figure className="project-preview screenshot-preview">
-        <figcaption>Application screenshot</figcaption>
+        <figcaption>{project.previewLabel || 'Application screenshot'}</figcaption>
         <img
           src={project.image}
           alt={project.imageAlt}
@@ -660,130 +715,7 @@ const ProjectPreview = ({ project }) => {
       </figure>
     );
   }
-  const editor = project.title.startsWith('DevDroid');
-  const study = project.title === 'Lecturer App';
-  const speech = project.title === 'BanglaSpeech2Text';
-  const payment = project.title.startsWith('SSLCOMMERZ');
-  return (
-    <figure
-      className={`project-preview concept-preview ${editor || study ? 'concept-mobile' : 'concept-desktop'}`}
-    >
-      <figcaption>Concept preview</figcaption>
-      <div className="concept-stage" aria-hidden="true">
-        <div
-          className={`concept-device ${editor || study ? 'concept-phone' : 'concept-window'}`}
-        >
-          <div className="concept-device-bar">
-            <i />
-            <span>
-              {editor
-                ? 'Workspace'
-                : study
-                  ? 'Study space'
-                  : speech
-                    ? 'Audio → text'
-                    : payment
-                      ? 'Payment flow'
-                      : 'Fresh picks'}
-            </span>
-            <i />
-          </div>
-          <div className="concept-screen">
-            {editor ? (
-              <>
-                <div className="concept-tabs">
-                  main.dart <span>＋</span>
-                </div>
-                <pre>
-                  <span>01 // Build something</span>
-                  {
-                    '\n02  class MyApp {\n03    Widget build() {\n04      return Scaffold(\n05        body: Text(\n06          "Hello, world!"\n07        ),\n08      );\n09    }\n10  }'
-                  }
-                </pre>
-                <div className="concept-banner">
-                  Dart workspace <span>⌘</span>
-                </div>
-              </>
-            ) : study ? (
-              <>
-                <small>YOUR NEXT CHAPTER</small>
-                <strong>
-                  Learn a little.
-                  <br />
-                  Remember more.
-                </strong>
-                <div className="concept-note">
-                  Lecture notes<span>Summarize your material</span>
-                </div>
-                <div className="concept-mini-grid">
-                  <span>
-                    ✦<br />
-                    Summary
-                  </span>
-                  <span>
-                    ✓<br />
-                    Practice quiz
-                  </span>
-                </div>
-                <div className="concept-banner">Make room for a new idea</div>
-              </>
-            ) : speech ? (
-              <>
-                <small>OFFLINE TRANSCRIPTION</small>
-                <strong>
-                  A voice.
-                  <br />A written word.
-                </strong>
-                <div className="concept-wave">
-                  {[16, 32, 22, 48, 34, 56, 28, 42, 18, 36, 50, 24, 38, 16].map(
-                    (height, index) => (
-                      <i key={index} style={{ height }} />
-                    )
-                  )}
-                </div>
-                <div className="concept-note" lang="bn">
-                  বাংলা ভাষার কথা<span>Bangla speech → readable text</span>
-                </div>
-              </>
-            ) : payment ? (
-              <>
-                <small>BACKEND INTEGRATION</small>
-                <strong>Connect the checkout.</strong>
-                <div className="concept-flow">
-                  <span>Order</span>
-                  <b>↓</b>
-                  <span>Payment gateway</span>
-                  <b>↓</b>
-                  <span>Server verification</span>
-                </div>
-              </>
-            ) : (
-              <>
-                <small>THE MENU IS OPEN</small>
-                <strong>
-                  Find your next
-                  <br />
-                  favorite bite.
-                </strong>
-                <div className="concept-food-grid">
-                  <div>
-                    <span>🍔</span>Burgers
-                  </div>
-                  <div>
-                    <span>🍕</span>Pizza
-                  </div>
-                  <div>
-                    <span>🥗</span>Fresh bowls
-                  </div>
-                </div>
-                <div className="concept-banner">Browse. Choose. Enjoy.</div>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    </figure>
-  );
+  return <ProjectPlaceholder project={project} />;
 };
 
 const QuickProjectActions = ({ project, openProject }) => {
