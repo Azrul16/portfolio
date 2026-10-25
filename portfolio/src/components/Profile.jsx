@@ -4,7 +4,7 @@ import profilePhoto from '../assets/images/photo/portrait.webp';
 import profilePhotoSmall from '../assets/images/photo/portrait-480.avif';
 import profilePhotoMedium from '../assets/images/photo/portrait-640.avif';
 import profilePhotoLarge from '../assets/images/photo/portrait-800.avif';
-import cvUrl from '../assets/CV.pdf';
+import cvUrl from '../assets/Azrul-Amalie-Flutter.pdf';
 import { FaDownload, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import {
   fadeScale,
@@ -26,7 +26,7 @@ const socialLinks = [
     url: 'https://github.com/azrul16',
   },
 ];
-const cvFileName = 'Azrul Amaline.pdf';
+const cvFileName = 'Azrul-Amalie-Flutter.pdf';
 
 const heroContainer = {
   hidden: {},

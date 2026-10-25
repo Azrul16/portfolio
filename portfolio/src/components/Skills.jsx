@@ -21,7 +21,6 @@ import {
 import { RiFirebaseFill } from 'react-icons/ri';
 import {
   FaWindows,
-  FaFingerprint,
   FaSkull,
   FaNetworkWired,
   FaDatabase,
@@ -99,12 +98,6 @@ const skillDefinitions = [
   { name: 'Nmap', icon: <FaNetworkWired size="3.5em" />, color: '#3B82F6' },
   { name: 'Wireshark', icon: <SiWireshark size="3.5em" />, color: '#1679C5' },
   {
-    name: 'Forensics',
-    icon: <FaFingerprint size="3.5em" />,
-    color: '#8AD1FF',
-    lightColor: '#2776aa',
-  },
-  {
     name: 'Autopsy',
     icon: <FaSkull size="3.5em" />,
     color: '#B5B5B5',
@@ -172,7 +165,6 @@ const skillCategories = [
       'Kali Linux',
       'Nmap',
       'Wireshark',
-      'Forensics',
       'Autopsy',
       'SQL Injection',
       'Hashcat',

@@ -12,7 +12,7 @@ import {
 import './Navbar.css';
 import logo from '../assets/images/logo/logo.webp';
 import smallLogo from '../assets/images/logo/logo-80.webp';
-import cvUrl from '../assets/CV.pdf';
+import cvUrl from '../assets/Azrul-Amalie-Flutter.pdf';
 
 const navItems = [
   { label: 'Home', id: 'home' },
@@ -23,7 +23,7 @@ const navItems = [
   { label: 'Certificates', id: 'certificates' },
   { label: 'Contact', id: 'contact' },
 ];
-const cvFileName = 'Azrul Amaline.pdf';
+const cvFileName = 'Azrul-Amalie-Flutter.pdf';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
