@@ -1,8 +1,0 @@
-[
-  "desktop: normal-motion layout and persisted theme toggle passed",
-  "mobile: normal-motion layout and persisted theme toggle passed",
-  "landscape: normal-motion layout and persisted theme toggle passed",
-  "No JavaScript: hero, all six skill groups, eight workflow steps, featured projects and CV link are prerendered",
-  "Certificate performance: zero large previews on section entry; one selected preview on keyboard focus",
-  "Metadata: valid Person/ItemList/WebSite JSON-LD; manifest, icons, robots and sitemap return 200"
-]
