@@ -26,7 +26,7 @@ const socialLinks = [
     url: 'https://github.com/azrul16',
   },
 ];
-const cvFileName = 'Azrul-Amalie-Flutter.pdf';
+const cvFileName = 'Azrul Amaline.pdf';
 
 const heroContainer = {
   hidden: {},

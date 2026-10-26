@@ -23,7 +23,7 @@ const navItems = [
   { label: 'Certificates', id: 'certificates' },
   { label: 'Contact', id: 'contact' },
 ];
-const cvFileName = 'Azrul-Amalie-Flutter.pdf';
+const cvFileName = 'Azrul Amaline.pdf';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
