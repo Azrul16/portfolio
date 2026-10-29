@@ -5,10 +5,13 @@ import {
   SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiPython, SiFastapi,
   SiDocker, SiGithubactions, SiFlutter, SiDart, SiFirebase, SiPostgresql,
   SiHtml5, SiCss3, SiVite, SiCloudinary, SiQt, SiCplusplus,
-  SiNodedotjs, SiMatterdotjs,
+  SiNodedotjs, SiMatterdotjs, SiDjango,
 } from 'react-icons/si';
 
 const technologyIcons = {
+  Django: SiDjango,
+  'Django REST Framework': SiDjango,
+  'Django Channels': SiDjango,
   'Next.js': SiNextdotjs,
   React: SiReact,
   TypeScript: SiTypescript,
@@ -36,6 +39,9 @@ const technologyIcons = {
 };
 
 const technologyColors = {
+  Django: ['#77d5ad', '#0c4b33'],
+  'Django REST Framework': ['#e58787', '#a53030'],
+  'Django Channels': ['#77d5ad', '#0c4b33'],
   'Next.js': ['#f5f5f5', '#111111'],
   React: ['#61dafb', '#087ea4'],
   TypeScript: ['#60a5fa', '#3178c6'],
@@ -773,7 +779,7 @@ const ProjectGallery = ({ project }) => {
 const ProjectPreview = ({ project }) => {
   if (project.image) {
     return (
-      <figure className="project-preview screenshot-preview">
+      <figure className={`project-preview screenshot-preview${project.previewLabel === 'iPhone UI mockups' || project.previewLabel === 'API explorer illustration' ? ' presentation-preview' : ''}`}>
         <figcaption>{project.previewLabel || 'Application screenshot'}</figcaption>
         <img
           src={project.image}

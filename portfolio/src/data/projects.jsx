@@ -9,7 +9,15 @@ import {
 } from 'react-icons/si';
 import { RiFirebaseFill } from 'react-icons/ri';
 import { androidMockups } from './androidMockups';
-import researchLensScreenshot from '../assets/images/projects/researchlens-overview.webp';
+import { additionalSelectedProjects } from './selectedProjects';
+import researchLensScreenshot from '../assets/images/projects/researchlens/overview.webp';
+import researchLensChat from '../assets/images/projects/researchlens/chat.webp';
+import researchLensPapers from '../assets/images/projects/researchlens/papers.webp';
+import researchLensSearch from '../assets/images/projects/researchlens/semantic-search.webp';
+import researchLensAnalysis from '../assets/images/projects/researchlens/analysis.webp';
+import researchLensComparison from '../assets/images/projects/researchlens/comparison.webp';
+import researchLensCitation from '../assets/images/projects/researchlens/source-citation.webp';
+import researchLensMobile from '../assets/images/projects/researchlens/mobile.webp';
 import boredomLibrary from '../assets/images/projects/boredom-buster/library-desktop.webp';
 import boredomPenFight from '../assets/images/projects/boredom-buster/pen-fight.webp';
 import boredomConnectFour from '../assets/images/projects/boredom-buster/connect-four.webp';
@@ -25,6 +33,7 @@ import gjswaLogin from '../assets/images/projects/gjswa/login-desktop.webp';
 import gjswaMobile from '../assets/images/projects/gjswa/home-mobile.webp';
 
 export const projectList = [
+  ...additionalSelectedProjects,
   {
     title: 'Boredom Buster',
     repoName: 'Azrul16/boredom-buster',
@@ -107,6 +116,18 @@ export const projectList = [
     image: researchLensScreenshot,
     imageAlt:
       'ResearchLens AI workspace with indexed papers and research actions',
+    imageWidth: 1440,
+    imageHeight: 1478,
+    screenshots: [
+      { src: researchLensScreenshot, alt: 'Research workspace overview', width: 1440, height: 1478 },
+      { src: researchLensChat, alt: 'Ask Papers chat with cited answers', width: 1440, height: 1000 },
+      { src: researchLensPapers, alt: 'PDF library and upload workflow', width: 1440, height: 1000 },
+      { src: researchLensSearch, alt: 'Semantic search results with page references', width: 1440, height: 1898 },
+      { src: researchLensAnalysis, alt: 'Structured research paper analysis', width: 1440, height: 1317 },
+      { src: researchLensComparison, alt: 'Side-by-side research paper comparison', width: 1440, height: 1407 },
+      { src: researchLensCitation, alt: 'Source citation and supporting passage', width: 1440, height: 1000 },
+      { src: researchLensMobile, alt: 'ResearchLens responsive mobile view', width: 390, height: 1940 },
+    ],
     accent: 'rgba(121, 194, 255, 0.2)',
   },
   {
@@ -689,6 +710,9 @@ export const filterOptions = [
 export const caseStudyTitles = [
   // Recruiter-facing priority: engineering depth, distinctiveness, and demo evidence.
   'ResearchLens AI',
+  'Mama Bus Koi',
+  'Syncora',
+  'ROV Commander',
   'DevDroid Android Code Editor',
   'Boredom Buster',
   'Schedula',
