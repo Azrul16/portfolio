@@ -1,17 +1,17 @@
-# Azrul Amaline Portfolio
+﻿# Azrul Amaline Portfolio
 
-A responsive personal portfolio for **Azrul Amaline**, a software developer from Bangladesh focused on Flutter mobile apps, reusable Dart packages, backend utilities, AI experiments, cybersecurity practice, and practical product-oriented software.
+A responsive personal portfolio for **Azrul Amaline — Flutter & Backend Developer | DevOps / Cloud Enthusiast**. The focus is cross-platform apps, Python APIs, Firebase integrations, and practical application deployment with Docker and Linux. AI, systems, and security practice support that core stack.
 
-The site brings together profile details, education, certificates, skills, featured case studies, a searchable project archive, CV download, GitHub links, and contact options in a polished React experience.
+The site brings together profile details, education, certificates, skills, featured case studies, a filterable project archive, CV download, GitHub links, and contact options in a polished React experience.
 
 ## Preview
 
-![Azrul Amaline portfolio preview](https://azrul.is-a.dev)
+![Azrul Amaline portfolio preview](public/assets/brand/azrul-amaline-og.jpeg)
 
 ## Links
 
 - Repository: [github.com/Azrul16/portfolio](https://github.com/Azrul16/portfolio)
-- Live site: Add your deployment URL here after publishing.
+- Live site: [azrul.is-a.dev](https://azrul.is-a.dev/)
 - GitHub profile: [github.com/Azrul16](https://github.com/Azrul16)
 
 ## Highlights
@@ -19,8 +19,9 @@ The site brings together profile details, education, certificates, skills, featu
 - Responsive single-page portfolio built with React and Vite
 - Smooth section reveals and interactive UI motion with Framer Motion
 - Featured project case studies with challenge, outcome, role, features, and architecture details
-- Searchable and filterable project archive for apps, packages, backend tools, AI projects, and integrations
-- Skills section covering Flutter, Python, Firebase, backend frameworks, networking, cybersecurity tools, AI/ML, and IoT
+- Filterable project archive for apps, packages, backend tools, AI projects, and integrations
+- A compact responsive skills grid with the original icon cards and light/dark contrast fixes
+- A responsive “From Code to Production” workflow covering development, checks, version control, containers, Linux, Nginx, and maintenance
 - Education, certificates, downloadable CV, and contact sections
 - SEO, sitemap, robots file, favicon, and social preview image assets
 - Keyboard-friendly project cards and reduced-motion-aware styling support
@@ -29,10 +30,9 @@ The site brings together profile details, education, certificates, skills, featu
 
 - React 19
 - Vite 7
-- React Router 7
 - Framer Motion
 - React Icons
-- React Intersection Observer
+- Native Intersection Observer for section hydration
 - ESLint 9
 - CSS organized alongside React components
 
@@ -51,16 +51,19 @@ portfolio/
       CV.pdf
       images/
     components/
-      About.jsx
+      Availability.jsx
       Certificates.jsx
       Contact.jsx
       Education.jsx
+      DeliveryWorkflow.jsx
       Footer.jsx
       Navbar.jsx
       Profile.jsx
       Projects.jsx
       Skills.jsx
     App.jsx
+    data/
+      projects.jsx
     App.css
     index.css
     main.jsx
@@ -115,14 +118,18 @@ In the EmailJS template, use these variables: `from_name`, `from_email`, `reply_
 
 ## Available Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Starts the Vite development server. |
-| `npm run build` | Creates an optimized production build in `dist/`. |
-| `npm run preview` | Serves the production build locally for review. |
-| `npm run lint` | Runs ESLint across the project. |
+| Command                   | Description                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| `npm run dev`             | Starts the Vite development server.                                               |
+| `npm run build`           | Creates an optimized production build in `dist/`.                                 |
+| `npm run preview`         | Serves the production build locally for review.                                   |
+| `npm run lint`            | Runs ESLint across the project.                                                   |
+| `npm run optimize:images` | Regenerates responsive portraits, logo sizes, favicons, and certificate previews. |
 
 ## Deployment
+
+See [SEO and Google indexing setup](SEO.md) for Search Console verification,
+sitemap submission, and diagnosing missing name-search results after deployment.
 
 This is a static Vite application, so it can be deployed to Vercel, Netlify, GitHub Pages, Firebase Hosting, or any static hosting provider.
 
@@ -144,3 +151,21 @@ After deploying, update the live site link in this README and the production URL
 ## License
 
 This portfolio is maintained by Azrul Amaline. Add a `LICENSE` file if you want to make reuse, modification, or distribution terms explicit.
+
+## Audit and image assets
+
+See [the website audit](WEBSITE_AUDIT.md) for verified fixes, test results, and remaining improvements.
+
+Run `npm run optimize:images` after changing the source portrait, logo, or certificate PNGs. Commit the generated AVIF, WebP, and favicon assets. Original certificate PNGs remain available in the full-resolution viewer.
+
+The canonical deployment is `https://azrul.is-a.dev/`; `public/CNAME`, the sitemap, and page metadata use this address. The Vite root base matches this custom domain.
+
+## Production rendering and performance
+
+`npm run build` runs Vite, then `scripts/prerender.mjs` renders the full portfolio into `dist/index.html`. Deploy the complete `dist` folder; no Node server is required. Development still uses ordinary React rendering.
+
+The production page includes its content before JavaScript loads. The build removes unused CSS and inlines the remaining stylesheet. React attaches after the first paint, and below-the-fold sections hydrate as they approach the viewport or receive an interaction. Native `content-visibility` avoids unnecessary off-screen layout work. Keep section IDs stable because navigation and hydration use them. Certificate previews preload on card hover or focus rather than downloading every large preview on section entry.
+
+The name splash starts directly from HTML and lasts 1 second total: the name stays visible over a static background logo for 0.6 seconds, followed by a 0.4-second logo expansion and reveal. It appears on every page load, including reloads, and the name matches the bold intro typography. There is no light sweep or flash. Reduced motion shows a static 0.6-second introduction without animation; interaction dismisses the splash early. The decorative name font is a locally hosted, licensed WOFF2 subset. EmailJS and confetti load when used.
+
+A previous local simulated-mobile Lighthouse run scored 100 for performance, accessibility, best practices, and SEO. These historical lab results are recorded in the original audit; see `audits/expanded-positioning/` for verification of the expanded portfolio. Deployed results depend on hosting and device conditions.

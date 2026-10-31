@@ -1,30 +1,39 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files
-src\firebase.js
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Dependencies
+node_modules/
 
-# testing
-/coverage
+# Production builds
+dist/
+dist-ssr/
 
-# production
-/build
+# Local audit reports and screenshots
+/audits/
 
-# misc
-.DS_Store
+# Environment variables and local config
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
+*.local
 
+# Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-.eslintcache
+# Local/generated app files
+src/firebase.js
 
-Server/node_modules
-Server/config.js
-portfolio/src/firebase.js
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
