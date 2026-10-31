@@ -1,0 +1,173 @@
+{
+  "reviewedOn": "2026-10-31",
+  "scope": "Repository metadata and README review for all 28 projects; targeted source review where documentation was sparse or claims needed checking. No projects were executed and no deployment, performance, authorship, or real-device behavior is certified.",
+  "repositories": [
+    {
+      "repository": "Azrul16/boredom-buster",
+      "readme": "https://github.com/Azrul16/boredom-buster/blob/main/README.md",
+      "readmeSha": "47b73158d817086fb827ffb21fbaceeee6957df2",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/researchlens-ai-rag-assistant",
+      "readme": "https://github.com/Azrul16/researchlens-ai-rag-assistant/blob/main/README.md",
+      "readmeSha": "4b256d00356f03d6c3d7f3608bba73cbee06256d",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/DevDroid-android-code-editor",
+      "readme": "https://github.com/Azrul16/DevDroid-android-code-editor/blob/main/README.md",
+      "readmeSha": "f715e39420e1a37ff055994ff983f3ba4a664b9d",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/Lecturer-AI_Powered_Study_App",
+      "readme": "https://github.com/Azrul16/Lecturer-AI_Powered_Study_App/blob/main/README.md",
+      "readmeSha": "16348a1a3e33f298999fca5f7ce75f271970727b",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/Smart-Home-Mobile-app",
+      "readme": "https://github.com/Azrul16/Smart-Home-Mobile-app/blob/main/README.md",
+      "readmeSha": "a7d72080aa906f5979f2c96064b8146a929b9497",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/BanglaSpeech2Text",
+      "readme": "https://github.com/Azrul16/BanglaSpeech2Text/blob/main/README.md",
+      "readmeSha": "7076b665733f59b8b792220c2ce8ea2fd0a4c55e",
+      "fork": true,
+      "parent": "shhossain/BanglaSpeech2Text"
+    },
+    {
+      "repository": "Azrul16/Notisaver-Flutter-app",
+      "readme": "https://github.com/Azrul16/Notisaver-Flutter-app/blob/main/README.md",
+      "readmeSha": "b849a768d87dd4c94f021a6588c4d650868de731",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/anysql",
+      "readme": "https://github.com/Azrul16/anysql/blob/main/README.md",
+      "readmeSha": "8c696cdec6d289165cfd33075c792a2503ed2e6c",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/form_flutter",
+      "readme": "https://github.com/Azrul16/form_flutter/blob/main/README.md",
+      "readmeSha": "fbeb7c6b90c2a0c3fa1f6994ab97b015e1f4ad7c",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/form_validator",
+      "readme": "https://github.com/Azrul16/form_validator/blob/main/README.md",
+      "readmeSha": "652567728ff8bcd218a00026a617ee107212ccf5",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/animated_status_card",
+      "readme": "https://github.com/Azrul16/animated_status_card/blob/main/README.md",
+      "readmeSha": "957227fd9ddf9acdaa815643cd607dbf0d13cc86",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/push-notification-flutter-using-OneSignal",
+      "readme": "https://github.com/Azrul16/push-notification-flutter-using-OneSignal/blob/main/README.md",
+      "readmeSha": "04a06e986e528ed03511d3d4f5c8528fc669c7a7",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/Researcher-WebBrowser",
+      "readme": "https://github.com/Azrul16/Researcher-WebBrowser/blob/main/README.md",
+      "readmeSha": "cefcfe9a5f5d25388df107c207c32c4fb748844c",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/GJSWA-website",
+      "readme": "https://github.com/Azrul16/GJSWA-website/blob/main/README.md",
+      "readmeSha": "635efd9452555e64095d3aa6979c844090b0e828",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/Schedula",
+      "readme": "https://github.com/Azrul16/Schedula/blob/main/README.md",
+      "readmeSha": "c3456c9e20aac6236ebedc15e7ac7475c3ead79c",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/Meal-Monkey",
+      "readme": "https://github.com/Azrul16/Meal-Monkey/blob/main/README.md",
+      "readmeSha": "e708ac41abef39db2019e75cd5c4f14d3e954d71",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/med-reminder",
+      "readme": "https://github.com/Azrul16/med-reminder/blob/main/README.md",
+      "readmeSha": "aad63b7f26dd6822d2370b4aa5df59dd8e72c554",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/QuizzApp",
+      "readme": "https://github.com/Azrul16/QuizzApp/blob/main/README.md",
+      "readmeSha": "2157c4419cc00d3a2b8bb5303528a6dbccf8a1af",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/hospital-management",
+      "readme": "https://github.com/Azrul16/hospital-management/blob/main/README.md",
+      "readmeSha": "08e070d245300cf6331b22c17c85bcb4b747bcbf",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/youtube-video-downloader",
+      "readme": "https://github.com/Azrul16/youtube-video-downloader/blob/main/README.md",
+      "readmeSha": "2fd194b37046bae0d1fd0eeab72a08b62eb1d5ff",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/file_shareing_server_using_python-flask",
+      "readme": "https://github.com/Azrul16/file_shareing_server_using_python-flask/blob/main/README.md",
+      "readmeSha": "288002b0a964efe11f713574df3565a9bccea334",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/HTTP_proxy_server",
+      "readme": "https://github.com/Azrul16/HTTP_proxy_server/blob/main/README.md",
+      "readmeSha": "5c4c136fbc2b341f339c7c8d7457795986172e75",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/sslc-backend",
+      "readme": "https://github.com/Azrul16/sslc-backend/blob/main/README.md",
+      "readmeSha": "2f973fdf5a689e160422260beadb21329bbc8f40",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/onlinefood",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/object-detection-app",
+      "readme": "https://github.com/Azrul16/object-detection-app/blob/main/README.md",
+      "readmeSha": "790e428af40e7ce85770a921f2b6142cd676d92f",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/Mama-Bus-Koi-AFlutterBusTrackingMobileApp",
+      "readme": "https://github.com/Azrul16/Mama-Bus-Koi-AFlutterBusTrackingMobileApp/blob/main/README.md",
+      "readmeSha": "bc2a8d647de5bed2c62d3396adb86c8772e22635",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/syncora-django-realtime-business-management-api",
+      "readme": "https://github.com/Azrul16/syncora-django-realtime-business-management-api/blob/main/README.md",
+      "readmeSha": "4c45662c730ece886b820f6daa143c70421a817e",
+      "fork": false
+    },
+    {
+      "repository": "Azrul16/ROV-Commander-Flutter-App",
+      "readme": "https://github.com/Azrul16/ROV-Commander-Flutter-App/blob/main/README.md",
+      "readmeSha": "85af302442d3a2f52d5de03506eb2f1ea4529c39",
+      "fork": false
+    }
+  ]
+}

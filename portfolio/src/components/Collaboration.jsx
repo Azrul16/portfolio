@@ -23,16 +23,7 @@ const Collaboration = () => (
       >
         <p className="collaboration-kicker">Open to job opportunities</p>
         <h2 id="collaboration-title">Let’s talk about your team.</h2>
-        <p>
-          I’m open to software development opportunities involving Flutter,
-          backend systems, or application deployment. I enjoy working across the
-          product lifecycle, from interfaces and APIs to reliable deployments.
-        </p>
-        <ul className="collaboration-work-modes" aria-label="Work preferences">
-          {['Remote', 'Onsite', 'Hybrid', 'Open to relocation'].map((mode) => (
-            <li key={mode}>{mode}</li>
-          ))}
-        </ul>
+        <p>Have a Flutter role in mind? Send the role description, team context, and location so we can discuss the fit.</p>
       </motion.div>
 
       <motion.div className="collaboration-actions" variants={staggerContainer}>

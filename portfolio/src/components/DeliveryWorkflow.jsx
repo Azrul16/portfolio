@@ -1,26 +1,13 @@
 import { m as motion } from 'framer-motion';
-import {
-  FaCode,
-  FaCheckDouble,
-  FaGithub,
-  FaCodeBranch,
-  FaDocker,
-  FaLinux,
-  FaRocket,
-} from 'react-icons/fa';
-import { SiNginx } from 'react-icons/si';
+import { FaCode, FaCheckDouble, FaDocker, FaRocket } from 'react-icons/fa';
 import { fadeUp, viewportOnce } from './motionConfig';
 import './DeliveryWorkflow.css';
 
 const deliverySteps = [
-  { title: 'Develop', detail: 'Apps & APIs', icon: FaCode },
-  { title: 'Test', detail: 'Check behavior', icon: FaCheckDouble },
-  { title: 'Git / GitHub', detail: 'Track changes', icon: FaGithub },
-  { title: 'CI/CD', detail: 'Automate checks', icon: FaCodeBranch },
-  { title: 'Docker', detail: 'Package the app', icon: FaDocker },
-  { title: 'Linux Server', detail: 'Configure & deploy', icon: FaLinux },
-  { title: 'Nginx', detail: 'Route requests', icon: SiNginx },
-  { title: 'Production', detail: 'Verify & maintain', icon: FaRocket },
+  { title: 'Build', detail: 'Implement app and API workflows', icon: FaCode },
+  { title: 'Check', detail: 'Run tests and automated CI checks', icon: FaCheckDouble },
+  { title: 'Package', detail: 'Define services and configuration in Docker', icon: FaDocker },
+  { title: 'Deploy', detail: 'Configure the server and verify the running app', icon: FaRocket },
 ];
 
 export default function DeliveryWorkflow() {
@@ -40,11 +27,7 @@ export default function DeliveryWorkflow() {
         <div className="section-title-block">
           <h2 id="delivery-title">From Code to Production</h2>
         </div>
-        <p className="delivery-intro">
-          How I approach application delivery: build the product, check it, and
-          make deployment repeatable. The tools depend on what each project
-          needs.
-        </p>
+        <p className="delivery-intro">ResearchLens AI includes Docker Compose health checks and GitHub Actions for backend tests, frontend checks, and Docker smoke checks. <a href="https://github.com/Azrul16/researchlens-ai-rag-assistant" target="_blank" rel="noopener noreferrer">View the repository</a></p>
         <ol className="delivery-steps">
           {deliverySteps.map(({ title, detail, icon }, index) => {
             const Icon = icon;

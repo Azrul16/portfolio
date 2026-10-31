@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { createElement, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './Projects.css';
 import ProjectPlaceholder from './ProjectPlaceholder';
 import {
@@ -70,19 +71,18 @@ const technologyColors = {
 import {
   FaExternalLinkAlt,
   FaGithub,
-  FaGripHorizontal,
-  FaList,
   FaMicrochip,
+  FaCode,
+  FaInfoCircle,
+  FaLightbulb,
   FaTimes,
 } from 'react-icons/fa';
 import { AnimatePresence, m as motion } from 'framer-motion';
-import { springHover, staggerContainer } from './motionConfig';
+import { springHover } from './motionConfig';
 import {
   projectList,
-  filterOptions,
   caseStudyTitles,
   getTechLabels,
-  projectMatchesFilter,
 } from '../data/projects';
 
 const revealVariants = {
@@ -99,8 +99,7 @@ const revealVariants = {
 
 const Projects = ({ projectRequest }) => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [archiveView, setArchiveView] = useState('carousel');
+  const [archiveOpen, setArchiveOpen] = useState(false);
   const projectCloseButtonRef = useRef(null);
   const caseStudyCarouselRef = useRef(null);
   const dragState = useRef({
@@ -114,7 +113,7 @@ const Projects = ({ projectRequest }) => {
     () =>
       caseStudyTitles
         .map((title) => projectList.find((project) => project.title === title))
-        .filter(Boolean),
+        .filter(Boolean).concat({ title: 'Show More Projects', isArchiveLink: true }),
     []
   );
   const moreProjects = useMemo(
@@ -122,12 +121,6 @@ const Projects = ({ projectRequest }) => {
       projectList.filter((project) => !caseStudyTitles.includes(project.title)),
     []
   );
-  const filteredProjects = useMemo(() => {
-    return moreProjects.filter((project) =>
-      projectMatchesFilter(project, activeFilter)
-    );
-  }, [activeFilter, moreProjects]);
-
   const openProject = (project) => setSelectedProject(project);
   const closeProject = () => setSelectedProject(null);
 
@@ -138,7 +131,7 @@ const Projects = ({ projectRequest }) => {
   }, [projectRequest]);
 
   const handleCarouselPointerDown = (event) => {
-    if (event.pointerType !== 'mouse' || event.target.closest('a, button'))
+    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen')
       return;
     if (event.button !== undefined && event.button !== 0) {
       return;
@@ -161,17 +154,20 @@ const Projects = ({ projectRequest }) => {
     }
 
     const movement = event.clientX - state.startX;
+    if (Math.abs(movement) <= 6 && !state.suppressClick) return;
     if (Math.abs(movement) > 6) {
       state.suppressClick = true;
       event.currentTarget.setPointerCapture?.(event.pointerId);
     }
 
     const carousel = event.currentTarget;
+    event.preventDefault();
     carousel.scrollLeft = state.scrollLeft - movement;
   };
 
   const stopCarouselDrag = (event) => {
     const carousel = event.currentTarget;
+    if (event.type === 'pointerleave' && carousel.hasPointerCapture?.(event.pointerId)) return;
     carousel.classList.remove('is-dragging');
     if (carousel.hasPointerCapture?.(event.pointerId))
       carousel.releasePointerCapture(event.pointerId);
@@ -194,7 +190,7 @@ const Projects = ({ projectRequest }) => {
   };
 
   useEffect(() => {
-    if (!selectedProject) {
+    if (!selectedProject && !archiveOpen) {
       document.body.style.overflow = '';
       return undefined;
     }
@@ -204,7 +200,8 @@ const Projects = ({ projectRequest }) => {
 
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
-        setSelectedProject(null);
+        if (selectedProject) setSelectedProject(null);
+        else setArchiveOpen(false);
       }
     };
 
@@ -215,10 +212,10 @@ const Projects = ({ projectRequest }) => {
       previousFocus?.focus({ preventScroll: true });
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedProject]);
+  }, [selectedProject, archiveOpen]);
 
   useEffect(() => {
-    if (!selectedProject) {
+    if (!selectedProject && !archiveOpen) {
       return undefined;
     }
 
@@ -227,7 +224,7 @@ const Projects = ({ projectRequest }) => {
     }, 0);
 
     return () => window.clearTimeout(timeoutId);
-  }, [selectedProject]);
+  }, [selectedProject, archiveOpen]);
 
   const handleProjectModalKeyDown = (event) => {
     if (event.key !== 'Tab') {
@@ -333,9 +330,29 @@ const Projects = ({ projectRequest }) => {
             onPointerCancel={stopCarouselDrag}
             onPointerLeave={stopCarouselDrag}
             onClickCapture={handleCarouselClickCapture}
+            onDragStart={(event) => event.preventDefault()}
           >
             <LoopingProjectTrack projects={caseStudyProjects} className="case-study-track" dragState={dragState}>
-              {(project) => (
+              {(project) => project.isArchiveLink ? (
+                <article className="project-card case-study-card show-more-projects-card"
+                  onClick={() => setArchiveOpen(true)}>
+                  <div className="show-more-preview" aria-hidden="true">
+                    {moreProjects.filter((item) => item.image).slice(0, 3).map((item) => (
+                      <img key={item.title} src={item.image} alt="" loading="lazy" decoding="async" draggable={false} />
+                    ))}
+                    <span className="show-more-preview-count">+{moreProjects.length} projects</span>
+                  </div>
+                  <div className="case-study-copy">
+                    <h3><button type="button" className="project-title-button" aria-haspopup="dialog"
+                      onClick={(event) => { event.stopPropagation(); setArchiveOpen(true); }}>Show More Projects</button></h3>
+                    <p className="case-study-summary">Explore more apps, tools, and experiments.</p>
+                    <div className="project-footer">
+                      <button type="button" className="project-action-link" aria-haspopup="dialog"
+                        onClick={(event) => { event.stopPropagation(); setArchiveOpen(true); }}>Browse projects ↗</button>
+                    </div>
+                  </div>
+                </article>
+              ) : (
                 <CaseStudyCard
                   project={project}
                   openProject={openProject}
@@ -345,111 +362,40 @@ const Projects = ({ projectRequest }) => {
           </div>
         </motion.div>
 
-        <motion.div
-          className="project-subsection-heading more-projects-heading"
-          initial={false}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
-          variants={revealVariants}
-        >
-          <h3>More Projects</h3>
-        </motion.div>
+        {archiveOpen && !selectedProject && createPortal(
+          <div className="projects-section project-modal-root">
+          <div className="project-modal-overlay" role="dialog" aria-modal="true"
+            aria-labelledby="archive-dialog-title" onClick={() => setArchiveOpen(false)}
+            onKeyDown={handleProjectModalKeyDown}>
+            <div className="project-modal project-modal-simple project-archive-modal" onClick={(event) => event.stopPropagation()}>
+              <button ref={projectCloseButtonRef} type="button" className="project-modal-close"
+                onClick={() => setArchiveOpen(false)} aria-label="Close more projects"><FaTimes /></button>
+              <h3 id="archive-dialog-title">More Projects</h3>
+              <p>Press and drag or swipe to browse. Select a project for details.</p>
 
-        <motion.div
-          className="projects-toolbar"
-          initial={false}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
-          variants={revealVariants}
-        >
-          <div className="project-filters" aria-label="Filter projects">
-            {filterOptions.map((filter) => (
-              <motion.button
-                type="button"
-                key={filter}
-                className={`project-filter ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => setActiveFilter(filter)}
-                aria-pressed={activeFilter === filter}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.96 }}
-                transition={springHover}
-              >
-                {filter}
-              </motion.button>
-            ))}
+              <div className="projects-carousel simple-project-carousel" role="region"
+                tabIndex={0} aria-label="More project cards"
+                onPointerDown={handleCarouselPointerDown}
+                onPointerMove={handleCarouselPointerMove}
+                onPointerUp={stopCarouselDrag}
+                onPointerCancel={stopCarouselDrag}
+                onPointerLeave={stopCarouselDrag}
+                onClickCapture={handleCarouselClickCapture}
+                onDragStart={(event) => event.preventDefault()}>
+                <div className="simple-project-track">
+                  {moreProjects.map((project) => (
+                    <ProjectArchiveCard key={project.title} project={project} openProject={openProject} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="project-view-toggle" aria-label="Project view mode">
-            <button
-              type="button"
-              className={archiveView === 'carousel' ? 'active' : ''}
-              onClick={() => setArchiveView('carousel')}
-              aria-label="Show carousel view"
-              aria-pressed={archiveView === 'carousel'}
-            >
-              <FaGripHorizontal />
-              <span>Carousel</span>
-            </button>
-            <button
-              type="button"
-              className={archiveView === 'grid' ? 'active' : ''}
-              onClick={() => setArchiveView('grid')}
-              aria-label="Show grid view"
-              aria-pressed={archiveView === 'grid'}
-            >
-              <FaList />
-              <span>Grid</span>
-            </button>
-          </div>
-        </motion.div>
-
-        <div className="sr-only" role="status">
-          <span>
-            {filteredProjects.length} of {moreProjects.length} projects in view
-          </span>
-          <span>{activeFilter} filter</span>
-        </div>
-
-        {archiveView === 'carousel' ? (
-          <motion.div
-            className="projects-carousel"
-            role="region"
-            tabIndex={0}
-            aria-label="Scrollable project archive"
-            onPointerDown={handleCarouselPointerDown}
-            onPointerMove={handleCarouselPointerMove}
-            onPointerUp={stopCarouselDrag}
-            onPointerCancel={stopCarouselDrag}
-            onPointerLeave={stopCarouselDrag}
-            onClickCapture={handleCarouselClickCapture}
-          >
-            <LoopingProjectTrack projects={filteredProjects} dragState={dragState}>
-              {(project) => (
-                <ProjectArchiveCard
-                  project={project}
-                  openProject={openProject}
-                />
-              )}
-            </LoopingProjectTrack>
-          </motion.div>
-        ) : (
-          <motion.div
-            className="projects-scan-grid"
-            initial={false}
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.08 }}
-            variants={staggerContainer}
-          >
-            {filteredProjects.map((project) => (
-              <ProjectArchiveCard
-                project={project}
-                openProject={openProject}
-                key={project.title}
-              />
-            ))}
-          </motion.div>
+          </div>, document.body
         )}
       </div>
 
+      {typeof document !== 'undefined' && createPortal(
+      <div className="projects-section project-modal-root">
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -466,9 +412,8 @@ const Projects = ({ projectRequest }) => {
             onKeyDown={handleProjectModalKeyDown}
           >
             <motion.div
-              className="project-modal project-modal-simple"
+              className="project-modal project-modal-simple project-case-study-dialog"
               onClick={(event) => event.stopPropagation()}
-              data-pointer-glow
               initial={{ opacity: 0, y: 14, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 14, scale: 0.98 }}
@@ -486,25 +431,9 @@ const Projects = ({ projectRequest }) => {
               </button>
 
               <div className="project-modal-copy full-width-copy">
-                <div className="project-topline">
-                  <p className="project-category">{selectedProject.category}</p>
-                  <span className="project-status">
-                    {selectedProject.status}
-                  </span>
-                </div>
-                <p className="project-repo-name modal-repo-name">
-                  {selectedProject.repoName}
-                </p>
-                <h3 id="project-modal-title">{selectedProject.title}</h3>
-                <p
-                  className="project-modal-description"
-                  id="project-modal-description"
-                >
-                  {selectedProject.description}
-                </p>
-                <div className="project-dialog-actions">
-                  <ProjectLinks project={selectedProject} />
-                </div>
+                <header className="project-case-study-header">
+                  <h3 id="project-modal-title">{selectedProject.title}</h3>
+                </header>
                 <div className="project-dialog-layout">
                   <div className="project-dialog-visual">
                     {selectedProject.screenshots?.length ? (
@@ -512,20 +441,38 @@ const Projects = ({ projectRequest }) => {
                     ) : (
                       <ProjectPreview project={selectedProject} />
                     )}
-                    <div className="project-highlights modal-highlights">
-                      {selectedProject.highlights.map((item) => (
-                        <span key={item} className="project-highlight-pill">{item}</span>
+                    <div className="project-gallery-technologies" aria-label="Technologies used">
+                      {getTechLabels(selectedProject).map((label) => (
+                        <span key={label} style={{ '--tech-accent': technologyColors[label]?.[0], '--tech-light': technologyColors[label]?.[1] }}>
+                          {technologyIcons[label] && <span aria-hidden="true">{createElement(technologyIcons[label])}</span>}
+                          {label}
+                        </span>
                       ))}
                     </div>
                   </div>
                   <div className="project-dialog-information">
-                    {selectedProject.details && (
-                      <section className="project-dialog-overview">
-                        <h4 className="modal-label">Overview</h4>
-                        <p>{selectedProject.details}</p>
+                    <p className="project-modal-description" id="project-modal-description">
+                      {selectedProject.description}
+                    </p>
+                    <div className="project-dialog-actions">
+                      <ProjectLinks project={selectedProject} />
+                      <span className="project-status">{selectedProject.status}</span>
+                    </div>
+                    {[
+                      ['role', 'My contribution', <FaGithub key="role" />],
+                      ['challenge', 'The challenge', <FaLightbulb key="challenge" />],
+                      ['approach', 'How it works', <FaCode key="approach" />],
+                      ['projectStatus', 'Good to know', <FaInfoCircle key="status" />],
+                    ].filter(([field]) => selectedProject[field]).map(([field, label, icon]) => (
+                      <section className="project-case-study-section" key={field}>
+                        <h4 className="modal-label"><span className="project-section-icon" aria-hidden="true">{icon}</span>{label}</h4>
+                        <p>{selectedProject[field]}</p>
+                        {field === 'role' && selectedProject.evidenceUrl && (
+                          <a className="project-contribution-evidence" href={selectedProject.evidenceUrl}
+                            target="_blank" rel="noopener noreferrer"><FaGithub aria-hidden="true" /> View commit ↗</a>
+                        )}
                       </section>
-                    )}
-
+                    ))}
                     <div className="project-proof-lists">
                       <div className="project-proof-list">
                         <h4 className="modal-label">Key features</h4>
@@ -537,8 +484,8 @@ const Projects = ({ projectRequest }) => {
                           ))}
                         </ul>
                       </div>
-                      <div className="project-proof-list">
-                        <h4 className="modal-label">Built with</h4>
+                      <details className="project-proof-list project-architecture-details">
+                        <summary>Technical details</summary>
                         <ul>
                           {(
                             selectedProject.architecture ||
@@ -547,7 +494,7 @@ const Projects = ({ projectRequest }) => {
                             <li key={tool}>{tool}</li>
                           ))}
                         </ul>
-                      </div>
+                      </details>
                     </div>
 
                   </div>
@@ -557,6 +504,7 @@ const Projects = ({ projectRequest }) => {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>, document.body)}
     </section>
   );
 };
@@ -617,20 +565,14 @@ const LoopingProjectTrack = ({ projects, className = '', dragState, children }) 
 };
 
 const ProjectArchiveCard = ({ project, openProject }) => (
-  <motion.article
+  <article
     className="project-card compact-project"
     onClick={() => openProject(project)}
-    data-pointer-glow
     style={{ '--project-accent': project.accent }}
-    variants={revealVariants}
-    whileHover={{ y: -4, scale: 1.005 }}
-    whileTap={{ scale: 0.99 }}
-    transition={springHover}
   >
     <div className="project-card-sheen" aria-hidden="true"></div>
     <ProjectPreview project={project} />
     <div className="project-topline">
-      <p className="project-category">{project.category}</p>
       <span className="project-status subtle">{project.status}</span>
     </div>
     <h3>
@@ -650,7 +592,7 @@ const ProjectArchiveCard = ({ project, openProject }) => (
       <TechStack project={project} />
       <QuickProjectActions project={project} openProject={openProject} />
     </div>
-  </motion.article>
+  </article>
 );
 
 const TechStack = ({ project }) => {
@@ -684,8 +626,7 @@ const CaseStudyCard = ({ project, openProject, isFeatured }) => {
 
       <div className="case-study-copy">
         <div className="project-topline">
-          <p className="project-category">{project.category}</p>
-          <span className="project-status">{project.status}</span>
+              <span className="project-status">{project.status}</span>
         </div>
         <h3>
           <button

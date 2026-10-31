@@ -80,7 +80,7 @@ function App() {
           <Skills onViewProject={(repoName) => setProjectRequest({ repoName })} />
         </DeferredSection>
         <DeferredSection id="about">
-          <Availability />
+          <Availability onViewProject={(repoName) => setProjectRequest({ repoName })} />
         </DeferredSection>
         <DeferredSection id="delivery">
           <DeliveryWorkflow />

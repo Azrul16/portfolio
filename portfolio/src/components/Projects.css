@@ -2057,3 +2057,475 @@ body.light-mode .project-gallery-stage > .project-gallery-expand {
 body.light-mode .projects-section .project-technology-icon {
   color: var(--technology-light-color, #63339b);
 }
+.project-archive-disclosure {
+  margin-top: 2rem;
+}
+
+.project-archive-summary {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid currentColor;
+  border-radius: 12px;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.project-archive-summary span {
+  font-weight: 400;
+}
+
+.project-archive-summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.project-archive-disclosure[open] > .project-archive-summary {
+  margin-bottom: 1.5rem;
+}
+
+.show-more-projects-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 420px;
+  padding: 2rem;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.show-more-projects-card > svg {
+  font-size: 3rem;
+  color: #9f7aea;
+}
+
+.show-more-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.show-more-projects-card:focus-visible {
+  outline: 2px solid #9f7aea;
+  outline-offset: -4px;
+}
+
+.project-archive-modal {
+  width: min(1200px, 95vw);
+  max-width: 1200px;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.project-archive-modal > h3 {
+  margin-right: 3rem;
+}
+
+
+/* Portaled dialogs sit above page navigation and stay inside the viewport. */
+.projects-section.project-modal-root {
+  display: contents;
+}
+
+.project-modal-root > .project-modal-overlay {
+  z-index: 3000;
+  box-sizing: border-box;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.project-modal-root .project-modal.project-modal-simple {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+  width: min(1120px, 100%);
+  max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: 0;
+  padding: 16px 24px 24px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+
+.project-modal-root .project-modal-simple .project-modal-close {
+  position: sticky;
+  top: 0;
+  right: auto;
+  z-index: 10;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin: 0 0 12px auto;
+  box-shadow: 0 0 0 5px #17121f;
+}
+
+body.light-mode .project-modal-root .project-modal-close {
+  box-shadow: 0 0 0 5px #fbf8ff;
+}
+
+.project-modal-root .project-archive-modal > h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.project-archive-modal > p {
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+.project-archive-modal .projects-toolbar {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .project-modal-root .project-modal.project-modal-simple {
+    padding: 12px 16px 20px;
+    border-radius: 16px;
+  }
+
+  .project-archive-modal .project-filters {
+    flex-wrap: wrap;
+  }
+}
+
+.project-archive-modal .simple-project-carousel {
+  scroll-behavior: auto;
+  scroll-snap-type: x proximity;
+  overflow-x: auto;
+  padding: 4px 0 16px;
+  scrollbar-width: thin;
+}
+
+.simple-project-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.simple-project-track > .project-card {
+  flex: 0 0 auto;
+  width: clamp(250px, 28vw, 320px);
+  scroll-snap-align: start;
+  animation: none;
+  transition: none;
+  transform: none;
+}
+
+.project-modal-root > .project-modal-overlay {
+  backdrop-filter: none;
+}
+
+.projects-section .show-more-projects-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
+  text-align: left;
+  min-height: 0;
+}
+
+.show-more-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 240px;
+  overflow: hidden;
+  padding: 24px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #292039, #17121f);
+}
+
+.show-more-preview img {
+  width: 31%;
+  height: 155px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 10px;
+  border: 1px solid #65507d;
+  pointer-events: none;
+}
+
+.show-more-preview img:first-child { transform: rotate(-8deg) translateY(12px); }
+.show-more-preview img:nth-child(3) { transform: rotate(8deg) translateY(12px); }
+
+.show-more-preview-count {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: #17121f;
+  color: #eee8f7;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.project-archive-modal .simple-project-carousel.is-dragging {
+  scroll-snap-type: none;
+  cursor: grabbing;
+}
+
+.simple-project-carousel .project-card,
+.simple-project-carousel button {
+  cursor: grab;
+}
+
+.simple-project-carousel.is-dragging * {
+  cursor: grabbing;
+}
+
+.simple-project-carousel img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.project-case-study-section {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(159, 122, 234, 0.18);
+}
+
+.project-case-study-section .modal-label {
+  margin: 0 0 0.5rem;
+}
+
+.project-case-study-section p {
+  overflow-wrap: anywhere;
+}
+.project-contribution-evidence {
+  display: inline-block;
+  margin-top: 0.65rem;
+  padding-block: 0.4rem;
+  color: #c4a8ff;
+  font-size: 0.875rem;
+  text-underline-offset: 4px;
+}
+
+body.light-mode .project-contribution-evidence {
+  color: #65339f;
+}
+
+
+/* Let article text wrap beside the gallery, then fill the space below it. */
+.project-modal-root .project-dialog-layout {
+  display: flow-root;
+  padding-top: 24px;
+  margin-top: 24px;
+}
+.project-modal-root .project-dialog-visual {
+  float: right;
+  width: 48%;
+  margin: 0 0 24px 32px;
+}
+.project-modal-root .project-dialog-information {
+  display: contents;
+}
+.project-modal-root .project-modal-description {
+  max-width: none;
+  margin-bottom: 16px;
+}
+.project-modal-root .project-dialog-actions {
+  display: block;
+  margin-bottom: 16px;
+}
+.project-modal-root .project-dialog-actions .project-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.project-modal-root .project-dialog-status { margin-bottom: 24px; }
+.project-modal-root .project-proof-lists {
+  display: block;
+}
+.project-modal-root .project-proof-list { margin-top: 24px; }
+.project-modal-root .project-case-study-section {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.project-modal-root .project-proof-list ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+@media (max-width: 760px) {
+  .project-modal-root .project-dialog-visual {
+    float: none;
+    width: 100%;
+    margin: 0 0 24px;
+  }
+}
+
+/* A quieter editorial treatment for the project story. */
+.project-modal-root .project-case-study-dialog {
+  padding: 24px 36px 36px;
+  background: radial-gradient(ellipse at 100% 0, var(--project-accent), transparent 45%), #17121f;
+}
+.project-modal-root .project-case-study-dialog > .project-modal-close {
+  float: right;
+  margin: 0 0 12px 16px;
+}
+.project-case-study-header {
+  padding: 8px 0 24px;
+  border-bottom: 1px solid rgba(191, 169, 224, 0.18);
+}
+.project-modal-root .project-case-study-header #project-modal-title {
+  margin: 0;
+  max-width: 24ch;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.project-modal-root .project-case-study-dialog .project-dialog-layout {
+  border: 0;
+  padding-top: 28px;
+  margin-top: 0;
+}
+.project-case-study-dialog .project-dialog-visual {
+  width: 46%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid rgba(191, 169, 224, 0.2);
+  border-radius: 18px;
+  background: rgba(128, 95, 172, 0.06);
+  margin-left: 36px;
+}
+.project-case-study-dialog .project-gallery-stage > .project-gallery-expand {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.project-modal-root .project-case-study-dialog .project-modal-description {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: #efe6fa;
+  text-wrap: pretty;
+}
+.project-case-study-dialog .project-case-study-section {
+  margin: 28px 0;
+}
+.project-case-study-dialog .project-case-study-section .modal-label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #eee4fa;
+}
+.project-section-number {
+  color: #ac8cd6;
+  font: 0.7rem var(--font-mono);
+}
+.project-case-study-dialog .project-case-study-section p {
+  line-height: 1.8;
+  color: #cfc2dc;
+}
+.project-case-study-dialog .project-dialog-status .project-status {
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 5px 12px;
+  color: #d9bfff;
+  border-color: #72538c;
+  background: #2a1d37;
+}
+.project-case-study-dialog .modal-highlights { gap: 6px; margin-top: 12px; }
+.project-case-study-dialog .modal-highlights .project-highlight-pill { font-size: 0.72rem; padding: 6px 9px; }
+body.light-mode .project-case-study-dialog .project-modal-description,
+body.light-mode .project-case-study-dialog .project-case-study-section .modal-label { color: #352145; }
+body.light-mode .project-case-study-dialog .project-case-study-section p { color: #62506f; }
+body.light-mode .project-section-number { color: #71429c; }
+body.light-mode .project-case-study-header,
+body.light-mode .project-case-study-dialog .project-dialog-visual { border-color: #ddcee9; }
+body.light-mode .project-case-study-dialog .project-dialog-status .project-status { color: #65339f; background: #f0e6fa; border-color: #d7bce9; }
+@media (max-width: 760px) {
+  .project-modal-root .project-case-study-dialog { padding: 16px 20px 24px; }
+  .project-case-study-header { padding-bottom: 20px; }
+  .project-modal-root .project-case-study-dialog .project-dialog-visual { width: 100%; margin-left: 0; }
+}
+
+.project-modal-root .project-case-study-header #project-modal-title {
+  color: #c4a8ff;
+  background: linear-gradient(105deg, #c4a8ff 5%, #f0abfc 55%, #93c5fd 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 4px;
+}
+.project-case-study-dialog .project-dialog-actions .project-action-link {
+  background: #2c1d3e;
+  border: 1px solid #72518f;
+  color: #e0c7ff;
+}
+.project-case-study-dialog .project-dialog-actions .project-action-link svg {
+  color: #c4a8ff;
+  font-size: 1.2rem;
+}
+.project-case-study-dialog .project-dialog-actions .project-action-link-accent {
+  background: #132f2e;
+  border-color: #347e71;
+  color: #a6ebd5;
+}
+.project-case-study-dialog .project-dialog-actions .project-action-link-accent svg { color: #6ee7b7; }
+.project-case-study-dialog .project-contribution-evidence svg { vertical-align: -0.12em; margin-right: 5px; }
+body.light-mode .project-modal-root .project-case-study-header #project-modal-title {
+  color: #7434a8;
+  background-image: linear-gradient(105deg, #7434a8 5%, #ac287d 55%, #2463ae 95%);
+}
+body.light-mode .project-case-study-dialog .project-dialog-actions .project-action-link { background: #f0e6fa; border-color: #c5a2e1; color: #65339f; }
+body.light-mode .project-case-study-dialog .project-dialog-actions .project-action-link svg { color: #7e3cba; }
+body.light-mode .project-case-study-dialog .project-dialog-actions .project-action-link-accent { background: #e1f4ed; border-color: #96c7b5; color: #22634e; }
+body.light-mode .project-case-study-dialog .project-dialog-actions .project-action-link-accent svg { color: #247259; }
+@media (forced-colors: active) {
+  .project-modal-root .project-case-study-header #project-modal-title { background: none; -webkit-text-fill-color: CanvasText; }
+}
+
+/* Final project reader: compact actions, readable story, and a framed gallery. */
+.project-modal-root .project-case-study-dialog { padding: 24px 32px 32px; }
+.project-case-study-header { padding-bottom: 22px; }
+.project-modal-root .project-case-study-dialog .project-dialog-visual {
+  width: 49%;
+  margin: 0 0 28px 32px;
+  padding: 10px;
+  background: #100c18;
+  border-color: #483356;
+  border-radius: 20px;
+}
+.project-case-study-dialog .project-gallery-stage > .project-gallery-expand { background: #100c18; }
+.project-gallery-technologies { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 4px 4px; }
+.project-gallery-technologies > span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; color: #ded3e9; background: #251c30; border: 1px solid #3d2f4b; border-radius: 8px; font-size: 0.72rem; line-height: 1.4; }
+.project-gallery-technologies svg { display: block; font-size: 1rem; color: var(--tech-accent, #c4a8ff); }
+.project-modal-root .project-case-study-dialog .project-dialog-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 20px 0 28px; }
+.project-case-study-dialog .project-dialog-actions .project-status { padding: 5px 10px; font-size: 0.65rem; letter-spacing: 0.04em; background: transparent; color: #c4b0d7; border-color: #4d3b5e; }
+.project-case-study-dialog .project-section-icon { display: inline-flex; align-items: center; color: #c4a8ff; font-size: 0.9rem; }
+.project-modal-root .project-case-study-dialog .project-case-study-section { margin: 24px 0; }
+.project-modal-root .project-case-study-dialog .project-case-study-section p { font-size: 0.95rem; line-height: 1.8; }
+.project-case-study-dialog .project-contribution-evidence { font-size: 0.8rem; margin-top: 5px; }
+.project-case-study-dialog .project-proof-list .modal-label { color: #d9c4f2; font-size: 0.9rem; text-transform: none; letter-spacing: 0; }
+.project-case-study-dialog .project-proof-list li { margin-bottom: 8px; line-height: 1.65; }
+.project-architecture-details { clear: both; border-top: 1px solid #44334f !important; padding-top: 16px !important; }
+.project-architecture-details summary { cursor: pointer; min-height: 44px; color: #c7aedf; font-size: 0.875rem; line-height: 1.6; }
+.project-architecture-details summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+body.light-mode .project-modal-root .project-case-study-dialog .project-dialog-visual,
+body.light-mode .project-case-study-dialog .project-gallery-stage > .project-gallery-expand { background: #f3edf8; border-color: #d9c9e5; }
+body.light-mode .project-gallery-technologies > span { color: #4c355f; background: #fff; border-color: #dfd0e9; }
+body.light-mode .project-gallery-technologies svg { color: var(--tech-light, #7441a0); }
+body.light-mode .project-case-study-dialog .project-section-icon { color: #8447b4; }
+body.light-mode .project-case-study-dialog .project-dialog-actions .project-status { color: #654c7a; border-color: #cdb5de; }
+body.light-mode .project-case-study-dialog .project-proof-list .modal-label,
+body.light-mode .project-architecture-details summary { color: #66398a; }
+@media (max-width: 760px) {
+  .project-modal-root .project-case-study-dialog { padding: 16px 20px 24px; }
+  .project-modal-root .project-case-study-dialog .project-dialog-visual { width: 100%; margin: 0 0 24px; }
+}
