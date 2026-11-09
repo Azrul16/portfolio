@@ -45,6 +45,7 @@ const CommandPalette = () => {
         (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
       const isSlashShortcut =
         event.key === '/' &&
+        !document.activeElement?.isContentEditable &&
         !['INPUT', 'TEXTAREA', 'SELECT'].includes(
           document.activeElement?.tagName
         );
@@ -98,6 +99,9 @@ const CommandPalette = () => {
   const runCommand = (sectionId) => {
     const target = document.getElementById(sectionId);
     if (target) {
+      if (window.location.hash !== `#${sectionId}`) {
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
       const navbarHeight =
         document.querySelector('.navbar')?.getBoundingClientRect().height || 0;
       window.scrollTo({
@@ -157,7 +161,11 @@ const CommandPalette = () => {
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search sections..."
                 aria-label="Search portfolio sections"
+                aria-describedby="command-shortcuts"
               />
+              <p id="command-shortcuts" style={{ padding: '0 1rem', color: '#e0d4f5' }}>
+                Open with Ctrl/⌘ K or /. Tab to a section, Enter to select, Escape to close.
+              </p>
               <div className="command-list">
                 {filteredCommands.length === 0 && (
                   <p role="status">No matching sections.</p>

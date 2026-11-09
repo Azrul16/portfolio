@@ -162,6 +162,18 @@ The canonical deployment is `https://azrul.is-a.dev/`; `public/CNAME`, the sitem
 
 ## Production rendering and performance
 
+The host must serve `dist/404.html` for unknown paths with HTTP status 404 (GitHub Pages supports this automatically). This portfolio uses section hashes rather than separate application routes.
+
+Set `VITE_MAINTENANCE_MODE=true` and rebuild to show the maintenance page. Restore `false` and rebuild to return the portfolio. Maintenance builds include `noindex`; static hosting still returns HTTP 200. For temporary outages, configure HTTP 503 and `Retry-After` at the hosting layer instead.
+
+React rendering failures show a reload and email fallback. Rendering and recoverable hydration errors emit the browser event `portfolio:error`; no remote error tracking service is configured. A monitoring integration can subscribe to that event. Browser errors outside React still require a monitoring SDK or global listeners. No visitor telemetry is transmitted by this hook.
+
+Section navigation updates the URL hash, supporting bookmarks and browser Back/Forward. Section search opens with Ctrl/⌘ K or `/`; use Tab and Enter to select and Escape to close.
+
+All `VITE_*` values are public in the generated JavaScript. Use only EmailJS's public identifiers here; never put private credentials in these variables. Enforce contact abuse protection through the email provider or a backend. Client-side cooldowns cannot enforce API rate limits.
+
+Offline caching and third-party analytics are not enabled. A service worker needs an explicit update/cache policy; adding one changes how deployments reach returning visitors. Review actual storage and tracking behavior before introducing a consent flow. A banner alone does not establish legal compliance.
+
 `npm run build` runs Vite, then `scripts/prerender.mjs` renders the full portfolio into `dist/index.html`. Deploy the complete `dist` folder; no Node server is required. Development still uses ordinary React rendering.
 
 The production page includes its content before JavaScript loads. The build removes unused CSS and inlines the remaining stylesheet. React attaches after the first paint, and below-the-fold sections hydrate as they approach the viewport or receive an interaction. Native `content-visibility` avoids unnecessary off-screen layout work. Keep section IDs stable because navigation and hydration use them. Certificate previews preload on card hover or focus rather than downloading every large preview on section entry.

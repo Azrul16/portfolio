@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
 import CommandPalette from './components/CommandPalette';
+import Maintenance from './components/Maintenance';
 
 // The full content is prerendered; load section code as it approaches the viewport.
 const Availability = lazy(() => import('./components/Availability'));
@@ -52,6 +53,8 @@ function App() {
       window.removeEventListener('hashchange', scrollToHashSection);
     };
   }, []);
+
+  if (import.meta.env.VITE_MAINTENANCE_MODE === 'true') return <Maintenance />;
 
   return (
     <div className="App">

@@ -17,6 +17,10 @@ try {
   const { render } = await import(pathToFileURL(join(directory, 'entry-server.js')));
   let template = await readFile('dist/index.html', 'utf8');
   const markup = await render();
+  const maintenance = markup.includes('My portfolio is being updated.');
+  if (maintenance) {
+    template = template.replace('content="index, follow, max-image-preview:large"', 'content="noindex, follow"');
+  }
   const stylesheet = template.match(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/);
   if (stylesheet) {
     const css = await readFile(join('dist', stylesheet[1]), 'utf8');
@@ -29,13 +33,13 @@ try {
     console.log(`Production CSS: ${css.length} → ${usedStyles.length} bytes before compression`);
   }
   // Fail deployment if lazy sections stop rendering into crawlable HTML.
-  for (const id of ['home', 'projects', 'skills', 'about', 'education', 'certificates', 'contact']) {
+  for (const id of maintenance ? [] : ['home', 'projects', 'skills', 'about', 'education', 'certificates', 'contact']) {
     if (!markup.includes(`id="${id}"`)) {
       throw new Error(`Prerender is missing the ${id} section.`);
     }
   }
   const headings = [...markup.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];
-  if (headings.length !== 1 || !headings[0][1].replace(/<[^>]+>/g, '').includes('Azrul Amaline')) {
+  if (!maintenance && (headings.length !== 1 || !headings[0][1].replace(/<[^>]+>/g, '').includes('Azrul Amaline'))) {
     throw new Error('The portfolio must have one primary heading containing the full name.');
   }
   const canonicalUrl = 'https://azrul.is-a.dev/';

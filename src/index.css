@@ -28,10 +28,27 @@ html {
 }
 
 a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
 [tabindex]:focus-visible {
   outline: 3px solid #a78bfa;
   outline-offset: 4px;
 }
+
+.site-status-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.site-status-page a { color: #bfa5ff; }
+body.light-mode .site-status-page a { color: #54249c; }
 
 :root {
   --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;

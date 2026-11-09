@@ -209,6 +209,9 @@ const Navbar = () => {
         : 'smooth',
     });
     activeSectionRef.current = sectionId;
+    if (window.location.hash !== `#${sectionId}`) {
+      window.history.pushState(null, '', `#${sectionId}`);
+    }
     setActiveSection(sectionId);
   };
 
