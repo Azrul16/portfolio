@@ -13,6 +13,7 @@ The site brings together profile details, education, certificates, skills, featu
 - Repository: [github.com/Azrul16/portfolio](https://github.com/Azrul16/portfolio)
 - Live site: [azrul.is-a.dev](https://azrul.is-a.dev/)
 - GitHub profile: [github.com/Azrul16](https://github.com/Azrul16)
+- Facebook Profile : [Facebook.com/Azrul-Amaline](www.facebook.com/azrul16)
 
 ## Highlights
 
